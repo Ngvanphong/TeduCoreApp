@@ -34,6 +34,7 @@ namespace TeduCoreApp.Controllers
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
+
           UrlEncoder urlEncoder)
         {
             _userManager = userManager;
