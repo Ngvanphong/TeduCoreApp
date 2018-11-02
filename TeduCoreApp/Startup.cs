@@ -13,6 +13,10 @@ using TeduCoreApp.Models;
 using TeduCoreApp.Services;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.EF;
+using AutoMapper;
+using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.Implementation;
+using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp
 {
@@ -46,11 +50,23 @@ namespace TeduCoreApp
             // Seek database
             services.AddTransient<DbInitializer>();
 
+            //Automapper
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            services.AddSingleton(Mapper.Configuration);
+            //UnitOfWork
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+
+            //Repository 
+            services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
+
+            // Service
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -73,7 +89,7 @@ namespace TeduCoreApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            dbInitializer.Seed().Wait();
+            
         }
     }
 }

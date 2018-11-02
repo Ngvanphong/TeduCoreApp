@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.Interfaces;
 using TeduCoreApp.Infrastructure.SharedKernel;
@@ -15,6 +16,21 @@ namespace TeduCoreApp.Data.Entities
         public ProductCategory()
         {
             Products = new List<Product>();
+        }
+        public ProductCategory(ProductCategoryViewModel productCategoryVm)
+        {
+            Name = productCategoryVm.Name;
+            Description = productCategoryVm.Description;
+            ParentId = productCategoryVm.ParentId;
+            HomeFlag = productCategoryVm.HomeFlag;
+            HomeOrder = productCategoryVm.HomeOrder;
+            Image = productCategoryVm.Image;
+            SortOrder = productCategoryVm.SortOrder;
+            Status = productCategoryVm.Status;
+            SeoPageTitle = productCategoryVm.SeoPageTitle;
+            SeoAlias = productCategoryVm.SeoAlias;
+            SeoKeywords = productCategoryVm.SeoKeywords;
+            SeoDescription = productCategoryVm.SeoDescription;
         }
         [Required]
         [MaxLength(50)]
@@ -36,8 +52,8 @@ namespace TeduCoreApp.Data.Entities
         public Status Status { set; get; }
         [MaxLength(255)]
         public string SeoPageTitle { set; get; }
-        [MaxLength(255)]
-        [Column(TypeName ="varchar")]
+
+        [Column(TypeName ="varchar(255)")]
         public string SeoAlias { set; get; }
         [MaxLength(255)]
         public string SeoKeywords { set; get; }

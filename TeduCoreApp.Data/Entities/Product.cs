@@ -39,7 +39,7 @@ namespace TeduCoreApp.Data.Entities
         public int ViewCount { get; set; }
         [MaxLength(255)]
         public string Tag { set; get; }
-        [MaxLength(50)]
+        [MaxLength(255)]
         public string Unit { get; set; }
 
         public DateTime DateCreated { set; get; }
@@ -49,8 +49,7 @@ namespace TeduCoreApp.Data.Entities
         public Status Status { set; get; }
         [MaxLength(255)]
         public string SeoPageTitle { set; get; }
-        [MaxLength(255)]
-        [Column(TypeName ="varchar")]
+        [Column(TypeName ="varchar(255)")]
         public string SeoAlias { set; get; }
         [MaxLength(255)]
         public string SeoKeywords { set; get; }

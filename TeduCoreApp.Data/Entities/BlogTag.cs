@@ -10,13 +10,11 @@ namespace TeduCoreApp.Data.Entities
     [Table("BlogTags")]
     public class BlogTag : DomainEntity<int>
     {
-        [Key]
-        [Column(Order =1)]
+
         public int BlogId { set; get; }
 
-        [Required]
-        [Key]
-        [Column(TypeName ="varchar(50)",Order =2)]
+      
+        [Column(TypeName ="varchar(50)")]
         public string TagId { set; get; }
 
         [ForeignKey("BlogId")]
