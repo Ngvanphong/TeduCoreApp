@@ -42,17 +42,39 @@ namespace TeduCoreApp
             services.AddIdentity<AppUser, AppRole>()
                  .AddEntityFrameworkStores<AppDbContext>()
                  .AddDefaultTokenProviders();
+
+
             // Indentity
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
+            //Config Indentity
+            services.Configure<IdentityOptions>(option =>
+            {
+                //password setting
+                option.Password.RequireDigit = true;
+                option.Password.RequiredLength = 6;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireLowercase = false;
+                //lock setting
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                option.Lockout.MaxFailedAccessAttempts=10;
+                // check had email
+                option.User.RequireUniqueEmail = true;
+
+            });
+
+      
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             // Seek database
             services.AddTransient<DbInitializer>();
 
             //Automapper
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+            
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 

@@ -10,7 +10,7 @@ using TeduCoreApp.Data.EF;
 namespace TeduCoreApp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181102181821_initial")]
+    [Migration("20181103015714_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,7 +169,8 @@ namespace TeduCoreApp.Data.EF.Migrations
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Announcement", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128);
 
                     b.Property<string>("Content")
                         .HasMaxLength(250);
@@ -196,7 +197,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AnnouncementId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(128);
 
                     b.Property<bool?>("HasRead");
 
@@ -515,7 +517,8 @@ namespace TeduCoreApp.Data.EF.Migrations
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Function", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255);
 
                     b.Property<string>("IconCss");
 
@@ -542,7 +545,8 @@ namespace TeduCoreApp.Data.EF.Migrations
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Language", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128);
 
                     b.Property<bool>("IsDefault");
 
@@ -598,7 +602,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<bool>("CanUpdate");
 
                     b.Property<string>("FunctionId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.Property<Guid>("RoleId");
 

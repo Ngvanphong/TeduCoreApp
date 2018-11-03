@@ -12,6 +12,7 @@ namespace TeduCoreApp.Data.Entities
     {
   
         [Required]
+        [MaxLength(128)]
         public string AnnouncementId { get; set; }
 
         public Guid UserId { get; set; }

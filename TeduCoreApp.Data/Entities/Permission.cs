@@ -15,6 +15,7 @@ namespace TeduCoreApp.Data.Entities
 
 
         [Required]
+        [MaxLength(255)]
         public string FunctionId { get; set; }
 
         public bool CanCreate { set; get; }

@@ -7,7 +7,7 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Application.AutoMapper
 {
-    public class DomainToViewModelMappingProfile:Profile
+    public class  DomainToViewModelMappingProfile:Profile
     {
         public DomainToViewModelMappingProfile()
         {

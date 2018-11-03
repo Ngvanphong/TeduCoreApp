@@ -83,14 +83,16 @@ namespace TeduCoreApp.Data.EF
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());
             builder.AddConfiguration(new FooterConfiguration());
-            builder.AddConfiguration(new PageConfiguration());
-            builder.AddConfiguration(new FooterConfiguration());
+            builder.AddConfiguration(new PageConfiguration());        
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
             builder.AddConfiguration(new AdvertistmentPagesCongiguration());
+            builder.AddConfiguration(new FunctionConfiguration());
+            builder.AddConfiguration(new LanguageConfiguration());
+            builder.AddConfiguration(new AnnouncementConfiguration());
 
 
-     
+
         }
 
         public override int SaveChanges()

@@ -24,7 +24,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Announcements",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(maxLength: 128, nullable: false),
                     Title = table.Column<string>(maxLength: 250, nullable: false),
                     Content = table.Column<string>(maxLength: 250, nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
@@ -248,7 +248,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Functions",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(maxLength: 255, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
                     URL = table.Column<string>(maxLength: 250, nullable: false),
                     ParentId = table.Column<string>(maxLength: 128, nullable: true),
@@ -265,7 +265,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Languages",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(maxLength: 128, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
                     IsDefault = table.Column<bool>(nullable: false),
                     Resources = table.Column<string>(nullable: true),
@@ -406,7 +406,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AnnouncementId = table.Column<string>(nullable: false),
+                    AnnouncementId = table.Column<string>(maxLength: 128, nullable: false),
                     UserId = table.Column<Guid>(nullable: false),
                     HasRead = table.Column<bool>(nullable: true)
                 },
@@ -462,7 +462,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<Guid>(nullable: false),
-                    FunctionId = table.Column<string>(nullable: false),
+                    FunctionId = table.Column<string>(maxLength: 255, nullable: false),
                     CanCreate = table.Column<bool>(nullable: false),
                     CanRead = table.Column<bool>(nullable: false),
                     CanUpdate = table.Column<bool>(nullable: false),
