@@ -17,6 +17,7 @@ using AutoMapper;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.Application.AutoMapper;
 
 namespace TeduCoreApp
 {
@@ -38,11 +39,6 @@ namespace TeduCoreApp
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddIdentity<AppUser, AppRole>()
-                 .AddEntityFrameworkStores<AppDbContext>()
-                 .AddDefaultTokenProviders();
-
 
             // Indentity
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
@@ -72,9 +68,12 @@ namespace TeduCoreApp
 
             //Automapper
             services.AddAutoMapper();
-            services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-            
+            var configMappper = AutoMapperConfig.RegisterMappings();
+            services.AddScoped<IMapper>(sp => configMappper.CreateMapper());
+            //services.AddSingleton(Mapper.Configuration);
+            //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
+
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
