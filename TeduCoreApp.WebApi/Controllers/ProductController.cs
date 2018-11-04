@@ -12,8 +12,8 @@ namespace TeduCoreApp.WebApi.Controllers
     public class ProductController : ApiController
     {
        
-        [HttpGet]
-        [Permission(Action="ttt",Function ="444")]
+        [HttpPost]
+        [Permission(Action = "Read", Function = "USER")]
         public IActionResult Get()
         {
             return new OkObjectResult("success");

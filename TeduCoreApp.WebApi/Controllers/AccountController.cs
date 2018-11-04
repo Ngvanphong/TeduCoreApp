@@ -43,6 +43,7 @@ namespace TeduCoreApp.WebApi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
+       
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             if (!ModelState.IsValid)
@@ -58,9 +59,16 @@ namespace TeduCoreApp.WebApi.Controllers
                     return new BadRequestObjectResult(result.ToString());
                 }
                 var roles = await _userManager.GetRolesAsync(user);
+                var permissionViewModels = new List<PermissionViewModel>();
+                try
+                {
+                   permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
+                }
+                catch
+                {
 
-                var permissionViewModels = _premissionService.GetByUserId(user.Id);
-                
+                }
+                            
                 var claims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
@@ -89,9 +97,8 @@ namespace TeduCoreApp.WebApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [Route("register")]
-        //[Permission(Action = "Read", Function = "USER")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)

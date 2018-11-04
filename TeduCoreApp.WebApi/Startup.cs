@@ -20,7 +20,9 @@ using TeduCoreApp.Application.AutoMapper;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.EF;
+using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.WebApi
@@ -108,9 +110,11 @@ namespace TeduCoreApp.WebApi
 
             //Repository 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
+            services.AddTransient<IPermissionRepository, PermissionRepository>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IPermissionService, PermissionService>();
 
             services.AddMvc()
                 .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());
