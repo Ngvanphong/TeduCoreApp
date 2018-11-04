@@ -8,15 +8,9 @@ using TeduCoreApp.WebApi.Provider;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
-
-    public class ProductController : ApiController
+   
+    public class ProductCategoryController : ApiController
     {
        
-        [HttpGet]
-        [Permission(Action="ttt",Function ="444")]
-        public IActionResult Get()
-        {
-            return new OkObjectResult("success");
-        }
     }
 }

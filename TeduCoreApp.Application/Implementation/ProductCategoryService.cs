@@ -3,24 +3,25 @@ using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TeduCoreApp.Application.Interfaces;
-using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
+using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.Application.Implementation
 {
     public class ProductCategoryService : IProductCategoryService
     {
-        IRepository<ProductCategory, int> _productCategoryRepository;
-        IUnitOfWork _unitOfWork;
+        private IRepository<ProductCategory, int> _productCategoryRepository;
+        private IUnitOfWork _unitOfWork;
+
         public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)
         {
             _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;
         }
+
         public ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm)
         {
             ProductCategory productCategory = Mapper.Map<ProductCategory>(productCategoryVm);
@@ -44,7 +45,7 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (!string.IsNullOrEmpty(keyword))
             {
-                var ProductCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword)||x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
+                var ProductCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
                 return ProductCategory.ProjectTo<ProductCategoryViewModel>().ToList();
             }
             else
@@ -66,10 +67,9 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
         {
-           return _productCategoryRepository.FindAll(x=>x.Status==Status.Active&&x.HomeFlag==true,c=>c.Products)
-                .OrderByDescending(x => x.HomeOrder).Take(top)
-                .ProjectTo<ProductCategoryViewModel>().ToList();
-            
+            return _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.HomeFlag == true, c => c.Products)
+                 .OrderByDescending(x => x.HomeOrder).Take(top)
+                 .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
         public void ReOrder(int sourceId, int targetId)

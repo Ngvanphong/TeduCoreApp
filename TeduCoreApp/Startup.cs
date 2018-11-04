@@ -41,6 +41,7 @@ namespace TeduCoreApp
                 .AddDefaultTokenProviders();
 
             // Indentity
+            services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
             //Config Indentity

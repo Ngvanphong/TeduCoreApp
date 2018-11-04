@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Infrastructure.Interfaces;
+
+namespace TeduCoreApp.Data.IRepositories
+{
+    public interface IPermissionRepository : IRepository<Permission,int>
+    {
+        List<Permission> GetByUserId(Guid userId);
+
+    };
+   
+}
