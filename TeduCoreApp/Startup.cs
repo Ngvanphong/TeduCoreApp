@@ -18,6 +18,9 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.Application.AutoMapper;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
+using TeduCoreApp.Helpers;
 
 namespace TeduCoreApp
 {
@@ -75,6 +78,8 @@ namespace TeduCoreApp
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             //UnitOfWork
             services.AddTransient<IUnitOfWork,EFUnitOfWork>();
+            //Cliam 
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomerClaimsPrincipalFactory>();
 
             //Repository 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
@@ -82,11 +87,11 @@ namespace TeduCoreApp
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logerFactory )
         {
             if (env.IsDevelopment())
             {
@@ -102,6 +107,8 @@ namespace TeduCoreApp
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            logerFactory.AddFile("Logs/tedu-{Date}.txt");
 
             app.UseMvc(routes =>
             {

@@ -5,6 +5,26 @@
     <UserSecretsId>aspnet-TeduCoreApp-2458B62F-27C3-47F8-BBDA-478B8F713AE0</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="node_modules\alertifyjs\build\css\alertify.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\package.json" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
@@ -12,12 +32,47 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="node_modules\alertifyjs\.jshintrc" />
+    <None Include="node_modules\alertifyjs\build\alertify.js" />
+    <None Include="node_modules\alertifyjs\build\alertify.min.js" />
+    <None Include="node_modules\alertifyjs\build\alertifyjs.zip" />
+    <None Include="node_modules\alertifyjs\CONTRIBUTING.md" />
+    <None Include="node_modules\alertifyjs\Gruntfile.js" />
+    <None Include="node_modules\alertifyjs\LICENSE" />
+    <None Include="node_modules\alertifyjs\README.md" />
+    <None Include="node_modules\alertifyjs\RELEASENOTES.md" />
+    <None Include="node_modules\alertifyjs\src\js\alert.js" />
+    <None Include="node_modules\alertifyjs\src\js\alertify.js" />
+    <None Include="node_modules\alertifyjs\src\js\confirm.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\actions.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\commands.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\dialog.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\events.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\focus.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\intro.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\move.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\outro.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\resize.js" />
+    <None Include="node_modules\alertifyjs\src\js\dialog\transition.js" />
+    <None Include="node_modules\alertifyjs\src\js\event.js" />
+    <None Include="node_modules\alertifyjs\src\js\intro.js" />
+    <None Include="node_modules\alertifyjs\src\js\notifier.js" />
+    <None Include="node_modules\alertifyjs\src\js\outro.js" />
+    <None Include="node_modules\alertifyjs\src\js\prompt.js" />
+    <None Include="node_modules\alertifyjs\src\less\alertify.less" />
+    <None Include="node_modules\alertifyjs\src\less\themes\bootstrap.less" />
+    <None Include="node_modules\alertifyjs\src\less\themes\default.less" />
+    <None Include="node_modules\alertifyjs\src\less\themes\semantic.less" />
   </ItemGroup>
 
   <ItemGroup>

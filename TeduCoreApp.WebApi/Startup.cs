@@ -24,6 +24,7 @@ using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.WebApi.Helpers;
 
 namespace TeduCoreApp.WebApi
 {
@@ -107,6 +108,9 @@ namespace TeduCoreApp.WebApi
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+
+            //Cliam 
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomerClaimsPrincipalFactoryApi>();
 
             //Repository 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();

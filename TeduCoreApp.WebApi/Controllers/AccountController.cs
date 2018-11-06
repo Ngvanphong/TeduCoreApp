@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Permission;
+using TeduCoreApp.WebApi.Helper;
 using TeduCoreApp.WebApi.Models;
 using TeduCoreApp.WebApi.Provider;
 
@@ -44,16 +45,13 @@ namespace TeduCoreApp.WebApi.Controllers
         [AllowAnonymous]
         [Route("login")]
        
-        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+        public async Task<IActionResult> Login(string userName,string password,bool rememberMe=false)
         {
-            if (!ModelState.IsValid)
-            {
-                return new BadRequestObjectResult(model);
-            }
-            var user = await _userManager.FindByNameAsync(model.UserName);
+         
+            var user = await _userManager.FindByNameAsync(userName);
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, true);
+                var result = await _signInManager.PasswordSignInAsync(userName, password, false, true);
                 if (!result.Succeeded)
                 {
                     return new BadRequestObjectResult(result.ToString());
@@ -68,18 +66,17 @@ namespace TeduCoreApp.WebApi.Controllers
                 {
 
                 }
-                            
-                var claims = new[]
-                {
-                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                    new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim("fullName", user.FullName),
-                    new Claim("avatar", string.IsNullOrEmpty(user.Avatar)? string.Empty:user.Avatar),
-                    new Claim("roles", JsonConvert.SerializeObject(roles)),
-                    new Claim("permissions",JsonConvert.SerializeObject(permissionViewModels)),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                };
+                var claims = User.Claims;
+                var props = new Dictionary<string,string>
+                    {
+                        {"fullName", user.FullName},
+                        {"avatar", user.Avatar },
+                        {"email", user.Email},
+                        {"username", user.UserName},
+                        {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
+                        {"roles",JsonConvert.SerializeObject(roles) }
+
+                    };
                 _logger.LogError(_config["Tokens"]);
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -91,7 +88,7 @@ namespace TeduCoreApp.WebApi.Controllers
                     signingCredentials: creds);
                 _logger.LogInformation(1, "User logged in.");
 
-                return new OkObjectResult(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+                return new OkObjectResult(new { token = new JwtSecurityTokenHandler().WriteToken(token), userLogin=props});
             }
             return new BadRequestObjectResult("Login failure");
         }
