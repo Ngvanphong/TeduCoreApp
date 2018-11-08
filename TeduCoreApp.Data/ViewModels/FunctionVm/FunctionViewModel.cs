@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 
-namespace TeduCoreApp.Data.ViewModels.Product
+namespace TeduCoreApp.Data.ViewModels.FunctionVm
 {
    public class FunctionViewModel
     {
@@ -26,6 +25,7 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public string IconCss { get; set; }
         public int SortOrder { set; get; }
         public Status Status { set; get; }
-       
+
+        public List<FunctionViewModel> ChildFunctions { get; set; }
     }
 }

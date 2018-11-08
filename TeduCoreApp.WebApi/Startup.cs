@@ -24,7 +24,7 @@ using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
-using TeduCoreApp.WebApi.Helpers;
+
 
 namespace TeduCoreApp.WebApi
 {
@@ -42,7 +42,7 @@ namespace TeduCoreApp.WebApi
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), o => o.MigrationsAssembly("TeduCoreApp.Data.EF")));
-
+            //Token
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
@@ -103,22 +103,24 @@ namespace TeduCoreApp.WebApi
             //Automapper
             services.AddAutoMapper();
             var configMappper = AutoMapperConfig.RegisterMappings();
-            services.AddScoped<IMapper>(sp => configMappper.CreateMapper());
+            services.AddScoped(sp => configMappper.CreateMapper());
             //services.AddSingleton(Mapper.Configuration);
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
-            //Cliam 
-            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomerClaimsPrincipalFactoryApi>();
+            //Cliam  (error authen token not fix)
+           //services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomerClaimsPrincipalFactoryApi>();
 
             //Repository 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
+            services.AddTransient<IRepository<Function, string>, EFRepository<Function, string>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IPermissionService, PermissionService>();
+            services.AddTransient<IFunctionService, FunctionService>();
 
             services.AddMvc()
                 .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());

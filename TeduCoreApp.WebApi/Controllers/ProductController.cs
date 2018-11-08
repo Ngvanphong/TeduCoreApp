@@ -12,10 +12,10 @@ namespace TeduCoreApp.WebApi.Controllers
     public class ProductController : ApiController
     {
        
-        [HttpPost]
-        [Permission(Action = "Read", Function = "USER")]
+        [HttpGet]      
         public IActionResult Get()
         {
+
             return new OkObjectResult("success");
         }
     }

@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Permission;
-using TeduCoreApp.WebApi.Helper;
 using TeduCoreApp.WebApi.Models;
-using TeduCoreApp.WebApi.Provider;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
- 
     public class AccountController : ApiController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -30,6 +26,7 @@ namespace TeduCoreApp.WebApi.Controllers
         private readonly ILogger _logger;
         private readonly IConfiguration _config;
         private readonly IPermissionService _premissionService;
+
         public AccountController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
@@ -41,13 +38,12 @@ namespace TeduCoreApp.WebApi.Controllers
             _config = config;
             _premissionService = premissionService;
         }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
-       
-        public async Task<IActionResult> Login(string userName,string password,bool rememberMe=false)
+        public async Task<IActionResult> Login(string userName, string password, bool rememberMe = false)
         {
-         
             var user = await _userManager.FindByNameAsync(userName);
             if (user != null)
             {
@@ -57,17 +53,26 @@ namespace TeduCoreApp.WebApi.Controllers
                     return new BadRequestObjectResult(result.ToString());
                 }
                 var roles = await _userManager.GetRolesAsync(user);
+
                 var permissionViewModels = new List<PermissionViewModel>();
                 try
                 {
-                   permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
+                    permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
                 }
                 catch
                 {
-
                 }
-                var claims = User.Claims;
-                var props = new Dictionary<string,string>
+                var claims = new[]
+                     {
+                        new Claim("Id", user.Id.ToString()??string.Empty),
+                        new Claim("fullName", user.FullName??string.Empty),
+                        new Claim("avatar", user.Avatar??string.Empty),
+                        new Claim("email", user.Email),
+                        new Claim("username",user.UserName.ToString()),
+                        new Claim("roles", string.Join(";",roles)??string.Empty),
+                        new Claim("permissions", JsonConvert.SerializeObject(permissionViewModels)??string.Empty)
+                    };
+                var props = new Dictionary<string, string>
                     {
                         {"fullName", user.FullName},
                         {"avatar", user.Avatar },
@@ -75,7 +80,6 @@ namespace TeduCoreApp.WebApi.Controllers
                         {"username", user.UserName},
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
                         {"roles",JsonConvert.SerializeObject(roles) }
-
                     };
                 _logger.LogError(_config["Tokens"]);
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
@@ -83,12 +87,12 @@ namespace TeduCoreApp.WebApi.Controllers
 
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],
                     _config["Tokens:Issuer"],
-                    claims,
+                     claims,
                     expires: DateTime.UtcNow.AddMinutes(30),
                     signingCredentials: creds);
                 _logger.LogInformation(1, "User logged in.");
 
-                return new OkObjectResult(new { token = new JwtSecurityTokenHandler().WriteToken(token), userLogin=props});
+                return new OkObjectResult(new { token = new JwtSecurityTokenHandler().WriteToken(token), userLogin = props });
             }
             return new BadRequestObjectResult("Login failure");
         }
