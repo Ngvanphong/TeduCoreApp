@@ -17,11 +17,12 @@ namespace TeduCoreApp.Application.Implementation
     {
         private IRepository<Function,string> _functionRepository;
         private IUnitOfWork _unitOfWork;
-
-        public FunctionService(IRepository<Function, string> functionRepository, IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public FunctionService(IRepository<Function, string> functionRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
           _functionRepository = functionRepository;
            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public bool CheckExistedId(string id)
         {
@@ -47,7 +48,7 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (string.IsNullOrEmpty(filter))
             {
-                List<FunctionViewModel> query = _functionRepository.FindAll(x => x.Status).OrderBy(x => x.ParentId).ProjectTo<FunctionViewModel>().ToList();
+                List<FunctionViewModel> query =_mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Status==Data.Enums.Status.Active).OrderBy(x => x.ParentId).ToList());
                 return query;
             }
             else

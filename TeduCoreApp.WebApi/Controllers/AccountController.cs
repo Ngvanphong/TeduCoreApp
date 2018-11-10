@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -62,7 +65,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 catch
                 {
                 }
-                var claims = new[]
+                var claims = new []
                      {
                         new Claim("Id", user.Id.ToString()??string.Empty),
                         new Claim("fullName", user.FullName??string.Empty),
@@ -72,19 +75,19 @@ namespace TeduCoreApp.WebApi.Controllers
                         new Claim("roles", string.Join(";",roles)??string.Empty),
                         new Claim("permissions", JsonConvert.SerializeObject(permissionViewModels)??string.Empty)
                     };
+                var claim4 = User.Claims;
                 var props = new Dictionary<string, string>
                     {
                         {"fullName", user.FullName},
                         {"avatar", user.Avatar },
-                        {"email", user.Email},
+                        {ClaimTypes.Email, user.Email},
                         {"username", user.UserName},
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
-                        {"roles",JsonConvert.SerializeObject(roles) }
+                        {ClaimTypes.Role,JsonConvert.SerializeObject(roles) }
                     };
-                _logger.LogError(_config["Tokens"]);
+               
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);               
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],
                     _config["Tokens:Issuer"],
                      claims,

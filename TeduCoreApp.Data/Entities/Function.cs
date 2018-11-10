@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.Interfaces;
+using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -16,13 +17,13 @@ namespace TeduCoreApp.Data.Entities
         {
 
         }
-        public Function(string name, string url, string parentId, string iconCss, int sortOrder)
+        public Function(FunctionViewModel functionVm)
         {
-            this.Name = name;
-            this.URL = url;
-            this.ParentId = parentId;
-            this.IconCss = iconCss;
-            this.SortOrder = sortOrder;
+            this.Name = functionVm.Name;
+            this.URL = functionVm.URL;
+            this.ParentId = functionVm.ParentId;
+            this.IconCss = functionVm.IconCss;
+            this.SortOrder = functionVm.SortOrder;
             this.Status = Status.Active;
         }
         [Required]

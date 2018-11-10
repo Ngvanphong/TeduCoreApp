@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,12 +6,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
-using TeduCoreApp.Application.AutoMapper;
+using System;
+using System.Text;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.EF;
@@ -24,7 +18,7 @@ using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
-
+using TeduCoreApp.WebApi.Helpers;
 
 namespace TeduCoreApp.WebApi
 {
@@ -52,12 +46,12 @@ namespace TeduCoreApp.WebApi
                 s.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title="TeduCoreApp",
+                    Title = "TeduCoreApp",
                 });
             });
             //Crors orgin
             services.AddCors(o => o.AddPolicy("TeduCorsPolicy", builder =>
-               builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+               builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()
             ));
 
             // Indentity
@@ -78,7 +72,6 @@ namespace TeduCoreApp.WebApi
                 option.Lockout.MaxFailedAccessAttempts = 10;
                 // check had email
                 option.User.RequireUniqueEmail = true;
-
             });
 
             //Config authen
@@ -90,7 +83,6 @@ namespace TeduCoreApp.WebApi
             {
                 cfg.RequireHttpsMetadata = false;
                 cfg.SaveToken = true;
-
                 cfg.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidIssuer = Configuration["Tokens:Issuer"],
@@ -99,20 +91,21 @@ namespace TeduCoreApp.WebApi
                 };
             });
 
-
             //Automapper
             services.AddAutoMapper();
-            var configMappper = AutoMapperConfig.RegisterMappings();
-            services.AddScoped(sp => configMappper.CreateMapper());
+            //var configMappper = AutoMapperConfig.RegisterMappings();
+            //services.AddScoped(sp => configMappper.CreateMapper());
+          
             //services.AddSingleton(Mapper.Configuration);
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
-            //Cliam  (error authen token not fix)
-           //services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomerClaimsPrincipalFactoryApi>();
+            //Cliam  
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactoryApi>();
 
-            //Repository 
+            //Repository
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
             services.AddTransient<IRepository<Function, string>, EFRepository<Function, string>>();
@@ -122,8 +115,9 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddTransient<IFunctionService, FunctionService>();
 
+           
             services.AddMvc()
-                .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());
+                .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -133,7 +127,7 @@ namespace TeduCoreApp.WebApi
             app.UseCors("TeduCorsPolicy");
             // use swash
             app.UseSwagger();
-            app.UseSwaggerUI(s=>s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1"));
+            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1"));
 
             if (env.IsDevelopment())
             {
@@ -150,7 +144,7 @@ namespace TeduCoreApp.WebApi
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-
+            
             app.UseMvc();
         }
     }
