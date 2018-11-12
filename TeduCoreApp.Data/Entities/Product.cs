@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.Interfaces;
+using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -12,6 +13,30 @@ namespace TeduCoreApp.Data.Entities
     [Table("Products")]
     public class Product : DomainEntity<int>, IHasSeoMetaData, ISwitchable, IDateTracking
     {
+        public Product()
+        {
+
+        }
+        public Product(ProductViewModel productVm)
+        {
+            Name = productVm.Name;
+            CategoryId = productVm.CategoryId;
+            Image = productVm.Image;
+            Price = productVm.Price;
+            OriginalPrice = productVm.OriginalPrice;
+            PromotionPrice = productVm.PromotionPrice;
+            Description = productVm.Description;
+            Content = productVm.Content;
+            HomeFlag = productVm.HomeFlag;
+            HotFlag = productVm.HotFlag;
+            Tag = productVm.Tag;
+            Unit = productVm.Unit;
+            Status = productVm.Status;
+            SeoPageTitle = productVm.SeoPageTitle;
+            SeoAlias = productVm.SeoAlias;
+            SeoKeywords = productVm.SeoKeywords;
+            SeoDescription = productVm.SeoDescription;           
+        }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }

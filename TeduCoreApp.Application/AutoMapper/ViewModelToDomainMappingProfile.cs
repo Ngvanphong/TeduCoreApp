@@ -17,6 +17,8 @@ namespace TeduCoreApp.Application.AutoMapper
                 .ConstructUsing(c => new ProductCategory(c));
             CreateMap<FunctionViewModel, Function>()
                .ConstructUsing(c => new Function(c));
+            CreateMap<ProductViewModel, Product>()
+               .ConstructUsing(c => new Product(c));
         }
     }
 }

@@ -6,7 +6,7 @@ using TeduCoreApp.Data.ViewModels.FunctionVm;
 
 namespace TeduCoreApp.Application.Interfaces
 {
-   public interface IFunctionService
+   public interface IFunctionService:IDisposable
     {
         FunctionViewModel Create(FunctionViewModel functionVm);
 
@@ -14,7 +14,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<FunctionViewModel> GetAllWithPermission(string userId);
 
-        List<FunctionViewModel> GetAllWithParentID(string parentId);
+        List<FunctionViewModel> GetAllWithParentId(string parentId);
 
         FunctionViewModel Get(string id);
 

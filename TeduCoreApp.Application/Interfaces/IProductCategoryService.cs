@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.Interfaces
 {
-    public interface IProductCategoryService
+    public interface IProductCategoryService: IDisposable
     {
         ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm);
 

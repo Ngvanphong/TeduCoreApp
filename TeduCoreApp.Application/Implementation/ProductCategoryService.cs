@@ -15,11 +15,12 @@ namespace TeduCoreApp.Application.Implementation
     {
         private IRepository<ProductCategory, int> _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
-
-        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)
+        private IMapper _mapper;
+        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork,IMapper mapper)
         {
             _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm)
@@ -34,10 +35,15 @@ namespace TeduCoreApp.Application.Implementation
             _productCategoryRepository.Remove(id);
         }
 
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
         public List<ProductCategoryViewModel> GetAll()
         {
-            List<ProductCategoryViewModel> lisProductCategoryVm = _productCategoryRepository.FindAll().OrderBy(x => x.ParentId)
-                .ProjectTo<ProductCategoryViewModel>().ToList();
+            List<ProductCategoryViewModel> lisProductCategoryVm =_mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll()
+                .OrderBy(x => x.ParentId) .ToList());
             return lisProductCategoryVm;
         }
 
@@ -45,19 +51,21 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (!string.IsNullOrEmpty(keyword))
             {
-                var ProductCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword)).OrderBy(x => x.ParentId);
-                return ProductCategory.ProjectTo<ProductCategoryViewModel>().ToList();
+                var productCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
+                    .OrderBy(x => x.ParentId).ToList();
+                return _mapper.Map<List<ProductCategoryViewModel>>(productCategory);
             }
             else
             {
-                return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId).ProjectTo<ProductCategoryViewModel>().ToList();
+                return _mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll().OrderBy(x => x.ParentId).ToList());
             }
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
-            return _productCategoryRepository.FindAll(x => x.ParentId == parentId && x.Status == Status.Active).OrderBy(x => x.Name)
-                .ProjectTo<ProductCategoryViewModel>().ToList();
+            return _mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll(x => x.ParentId == parentId && x.Status == Status.Active)
+                .OrderBy(x => x.Name).ToList());
+
         }
 
         public ProductCategoryViewModel GetById(int id)
@@ -67,9 +75,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
         {
-            return _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.HomeFlag == true, c => c.Products)
-                 .OrderByDescending(x => x.HomeOrder).Take(top)
-                 .ProjectTo<ProductCategoryViewModel>().ToList();
+            return _mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll(x => x.Status == Status.Active && x.HomeFlag == true, c => c.Products)
+                 .OrderByDescending(x => x.HomeOrder).Take(top).ToList());                
         }
 
         public void ReOrder(int sourceId, int targetId)

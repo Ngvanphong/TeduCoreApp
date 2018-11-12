@@ -6,17 +6,17 @@ using TeduCoreApp.Data.ViewModels.Permission;
 
 namespace TeduCoreApp.Application.Interfaces
 {
-   public interface IPermissionService
+   public interface IPermissionService:IDisposable
     {
-        ICollection<PermissionViewModel> GetByFunctionId(string functionId);
+        List<PermissionViewModel> GetByFunctionId(string functionId);
 
-        ICollection<PermissionViewModel> GetByUserId(Guid userId);
+        List<PermissionViewModel> GetByUserId(Guid userId);
 
         void Add(PermissionViewModel permission);
 
         void DeleteAll(string functionId);
 
-        void DeleteAllByRoleID(string roleID);
+        void DeleteAllByRoleId(string roleId);
 
         void SaveChange();
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.IRepositories;
@@ -29,19 +30,24 @@ namespace TeduCoreApp.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public void DeleteAllByRoleID(string roleID)
+        public void DeleteAllByRoleId(string roleId)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<PermissionViewModel> GetByFunctionId(string functionId)
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        public List<PermissionViewModel> GetByFunctionId(string functionId)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<PermissionViewModel> GetByUserId(Guid userId)
+        public List<PermissionViewModel> GetByUserId(Guid userId)
         {
-            return Mapper.Map<ICollection<PermissionViewModel>>(_permissionRepository.GetByUserId(userId));
+            return Mapper.Map<List<PermissionViewModel>>(_permissionRepository.GetByUserId(userId).ToList());
         }
 
         public void SaveChange()

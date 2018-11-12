@@ -405,16 +405,20 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.BlogTag", b =>
                 {
-                    b.Property<string>("TagId")
-                        .HasColumnType("varchar(50)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BlogId");
 
-                    b.Property<int>("Id");
+                    b.Property<string>("TagId")
+                        .HasColumnType("varchar(50)");
 
-                    b.HasKey("TagId", "BlogId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("TagId");
 
                     b.ToTable("BlogTags");
                 });
@@ -772,16 +776,22 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.ProductTag", b =>
                 {
-                    b.Property<string>("TagId")
-                        .HasColumnType("varchar(50)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("TagId", "ProductId");
+                    b.Property<string>("TagId")
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductTag");
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Size", b =>
@@ -967,8 +977,7 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.HasOne("TeduCoreApp.Data.Entities.Tag", "Tag")
                         .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TagId");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Permission", b =>
@@ -1027,8 +1036,7 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.HasOne("TeduCoreApp.Data.Entities.Tag", "Tag")
                         .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TagId");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.WholePrice", b =>

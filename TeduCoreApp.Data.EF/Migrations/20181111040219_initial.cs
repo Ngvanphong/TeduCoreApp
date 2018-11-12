@@ -527,13 +527,14 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "BlogTags",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BlogId = table.Column<int>(nullable: false),
-                    TagId = table.Column<string>(type: "varchar(50)", nullable: false)
+                    TagId = table.Column<string>(type: "varchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogTags", x => new { x.TagId, x.BlogId });
+                    table.PrimaryKey("PK_BlogTags", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BlogTags_Blogs_BlogId",
                         column: x => x.BlogId,
@@ -545,7 +546,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                         column: x => x.TagId,
                         principalTable: "Tags",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -673,27 +674,29 @@ namespace TeduCoreApp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductTag",
+                name: "ProductTags",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(nullable: false),
-                    TagId = table.Column<string>(type: "varchar(50)", nullable: false)
+                    TagId = table.Column<string>(type: "varchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductTag", x => new { x.TagId, x.ProductId });
+                    table.PrimaryKey("PK_ProductTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductTag_Products_ProductId",
+                        name: "FK_ProductTags_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductTag_Tags_TagId",
+                        name: "FK_ProductTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -769,6 +772,11 @@ namespace TeduCoreApp.Data.EF.Migrations
                 column: "BlogId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BlogTags_TagId",
+                table: "BlogTags",
+                column: "TagId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Permissions_FunctionId",
                 table: "Permissions",
                 column: "FunctionId");
@@ -804,9 +812,14 @@ namespace TeduCoreApp.Data.EF.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductTag_ProductId",
-                table: "ProductTag",
+                name: "IX_ProductTags_ProductId",
+                table: "ProductTags",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductTags_TagId",
+                table: "ProductTags",
+                column: "TagId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WholePrices_ProductId",
@@ -868,7 +881,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "ProductQuantities");
 
             migrationBuilder.DropTable(
-                name: "ProductTag");
+                name: "ProductTags");
 
             migrationBuilder.DropTable(
                 name: "Slides");

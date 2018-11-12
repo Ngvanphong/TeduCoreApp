@@ -42,7 +42,7 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public int? ViewCount { get; set; }
 
         [StringLength(255)]
-        public string Tags { get; set; }
+        public string Tag { get; set; }
 
         [StringLength(255)]
         public string Unit { get; set; }

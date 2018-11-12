@@ -84,6 +84,7 @@ namespace TeduCoreApp.Data.EF
         {
             _context.Set<T>().Update(entity);
         }
+       
     }
 
 }

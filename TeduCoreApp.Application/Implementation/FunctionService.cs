@@ -1,29 +1,27 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
-using TeduCoreApp.Data.ViewModels.Product;
-using TeduCoreApp.Infrastructure.Interfaces;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-
 using TeduCoreApp.Data.ViewModels.FunctionVm;
+using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.Application.Implementation
 {
     public class FunctionService : IFunctionService
     {
-        private IRepository<Function,string> _functionRepository;
+        private IRepository<Function, string> _functionRepository;
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+
         public FunctionService(IRepository<Function, string> functionRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
-          _functionRepository = functionRepository;
-           _unitOfWork = unitOfWork;
+            _functionRepository = functionRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
         public bool CheckExistedId(string id)
         {
             throw new NotImplementedException();
@@ -48,18 +46,19 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (string.IsNullOrEmpty(filter))
             {
-                List<FunctionViewModel> query =_mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Status==Data.Enums.Status.Active).OrderBy(x => x.ParentId).ToList());
+                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
+                    .OrderBy(x => x.ParentId).ToList());
                 return query;
             }
             else
             {
-                List<FunctionViewModel> query = _functionRepository.FindAll(x =>x.Name.Contains(filter)&&x.Status==Data.Enums.Status.Active ).OrderBy(x => x.ParentId)
-                    .ProjectTo<FunctionViewModel>().ToList();
+                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Name.Contains(filter) && x.Status == Data.Enums.Status.Active)
+                    .OrderBy(x => x.ParentId).ToList());
                 return query;
             }
         }
 
-        public List<FunctionViewModel> GetAllWithParentID(string parentId)
+        public List<FunctionViewModel> GetAllWithParentId(string parentId)
         {
             throw new NotImplementedException();
         }
@@ -77,6 +76,11 @@ namespace TeduCoreApp.Application.Implementation
         public void Update(FunctionViewModel functionVm)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }

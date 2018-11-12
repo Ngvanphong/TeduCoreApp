@@ -109,13 +109,17 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
             services.AddTransient<IRepository<Function, string>, EFRepository<Function, string>>();
+            services.AddTransient<IRepository<Product, int>, EFRepository<Product, int>>();
+            services.AddTransient<IRepository<ProductTag, int>, EFRepository<ProductTag, int>>();
+            services.AddTransient<ITagRepository, TagRepository>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IProductService, ProductService>();
 
-           
+
             services.AddMvc()
                 .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
         }

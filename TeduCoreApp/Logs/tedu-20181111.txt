@@ -1,0 +1,602 @@
+2018-11-11T11:14:41.0371143+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.0743464+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.1005297+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.1457162+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.1521415+07:00  [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.1594886+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.1649847+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T11:14:41.4123832+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-11-11T11:14:42.7927601+07:00  [INF] Executed DbCommand ("127"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T11:14:43.6309046+07:00  [INF] Executed DbCommand ("157"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-11T11:14:44.2388998+07:00  [INF] Executed DbCommand ("20"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-11-11T11:14:44.2964070+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-11T11:14:44.3071112+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-11-11T11:14:44.3154218+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-11T11:14:44.3252010+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2018-11-11T11:14:44.3375443+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T11:14:44.5417515+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-11-11T11:14:44.6657647+07:00  [INF] Executed DbCommand ("18"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2018-11-11T11:14:44.9488793+07:00  [INF] Executed DbCommand ("67"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Decimal), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = Boolean), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTimeOffset), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (DbType = Boolean), @p18='?' (Size = 4000), @p19='?' (DbType = Int32), @p20='?' (DbType = Boolean), @p21='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUsers] ([Id], [AccessFailedCount], [Avatar], [Balance], [BirthDay], [ConcurrencyStamp], [DateCreated], [DateModified], [Email], [EmailConfirmed], [FullName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [Status], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21);" (0723d8ff)
+2018-11-11T11:14:44.9740367+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-11-11T11:14:45.1395646+07:00  [INF] Executed DbCommand ("46"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2018-11-11T11:14:45.2230661+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[RoleId], [e].[UserId]
+FROM [AppUserRoles] AS [e]
+WHERE ([e].[RoleId] = @__get_Item_0) AND ([e].[UserId] = @__get_Item_1)" (0723d8ff)
+2018-11-11T11:14:45.2373590+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2018-11-11T11:14:45.2777052+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-11-11T11:14:45.2902721+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2018-11-11T11:14:45.3136933+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2018-11-11T11:14:45.4355366+07:00  [INF] Executed DbCommand ("105"ms) [Parameters=["@p21='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTimeOffset), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 4000), @p18='?' (DbType = Int32), @p19='?' (DbType = Boolean), @p20='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AppUsers] SET [AccessFailedCount] = @p0, [Avatar] = @p1, [Balance] = @p2, [BirthDay] = @p3, [ConcurrencyStamp] = @p4, [DateCreated] = @p5, [DateModified] = @p6, [Email] = @p7, [EmailConfirmed] = @p8, [FullName] = @p9, [LockoutEnabled] = @p10, [LockoutEnd] = @p11, [NormalizedEmail] = @p12, [NormalizedUserName] = @p13, [PasswordHash] = @p14, [PhoneNumber] = @p15, [PhoneNumberConfirmed] = @p16, [SecurityStamp] = @p17, [Status] = @p18, [TwoFactorEnabled] = @p19, [UserName] = @p20
+WHERE [Id] = @p21;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2018-11-11T11:14:45.4813001+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-11-11T11:14:45.5260637+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-11-11T11:14:45.6204772+07:00  [INF] Executed DbCommand ("28"ms) [Parameters=["@p0='?' (Size = 255) (DbType = AnsiString), @p1='?' (Size = 4000), @p2='?' (Size = 255), @p3='?' (Size = 4000), @p4='?' (Size = 128), @p5='?' (Size = 128), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 250), @p9='?' (Size = 255), @p10='?' (Size = 4000), @p11='?' (Size = 128), @p12='?' (Size = 128), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (Size = 250), @p16='?' (Size = 255), @p17='?' (Size = 4000), @p18='?' (Size = 128), @p19='?' (Size = 128), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32), @p22='?' (Size = 250), @p23='?' (Size = 255), @p24='?' (Size = 4000), @p25='?' (Size = 128), @p26='?' (Size = 128), @p27='?' (DbType = Int32), @p28='?' (DbType = Int32), @p29='?' (Size = 250), @p30='?' (Size = 255), @p31='?' (Size = 4000), @p32='?' (Size = 128), @p33='?' (Size = 128), @p34='?' (DbType = Int32), @p35='?' (DbType = Int32), @p36='?' (Size = 250), @p37='?' (Size = 255), @p38='?' (Size = 4000), @p39='?' (Size = 128), @p40='?' (Size = 128), @p41='?' (DbType = Int32), @p42='?' (DbType = Int32), @p43='?' (Size = 250), @p44='?' (Size = 255), @p45='?' (Size = 4000), @p46='?' (Size = 128), @p47='?' (Size = 128), @p48='?' (DbType = Int32), @p49='?' (DbType = Int32), @p50='?' (Size = 250), @p51='?' (Size = 255), @p52='?' (Size = 4000), @p53='?' (Size = 128), @p54='?' (Size = 128), @p55='?' (DbType = Int32), @p56='?' (DbType = Int32), @p57='?' (Size = 250), @p58='?' (Size = 255), @p59='?' (Size = 4000), @p60='?' (Size = 128), @p61='?' (Size = 128), @p62='?' (DbType = Int32), @p63='?' (DbType = Int32), @p64='?' (Size = 250), @p65='?' (Size = 255), @p66='?' (Size = 4000), @p67='?' (Size = 128), @p68='?' (Size = 128), @p69='?' (DbType = Int32), @p70='?' (DbType = Int32), @p71='?' (Size = 250), @p72='?' (Size = 255), @p73='?' (Size = 4000), @p74='?' (Size = 128), @p75='?' (Size = 128), @p76='?' (DbType = Int32), @p77='?' (DbType = Int32), @p78='?' (Size = 250), @p79='?' (Size = 255), @p80='?' (Size = 4000), @p81='?' (Size = 128), @p82='?' (Size = 128), @p83='?' (DbType = Int32), @p84='?' (DbType = Int32), @p85='?' (Size = 250), @p86='?' (Size = 255), @p87='?' (Size = 4000), @p88='?' (Size = 128), @p89='?' (Size = 128), @p90='?' (DbType = Int32), @p91='?' (DbType = Int32), @p92='?' (Size = 250), @p93='?' (Size = 255), @p94='?' (Size = 4000), @p95='?' (Size = 128), @p96='?' (Size = 128), @p97='?' (DbType = Int32), @p98='?' (DbType = Int32), @p99='?' (Size = 250), @p100='?' (Size = 255), @p101='?' (Size = 4000), @p102='?' (Size = 128), @p103='?' (Size = 128), @p104='?' (DbType = Int32), @p105='?' (DbType = Int32), @p106='?' (Size = 250), @p107='?' (Size = 255), @p108='?' (Size = 4000), @p109='?' (Size = 128), @p110='?' (Size = 128), @p111='?' (DbType = Int32), @p112='?' (DbType = Int32), @p113='?' (Size = 250), @p114='?' (Size = 255), @p115='?' (Size = 4000), @p116='?' (Size = 128), @p117='?' (Size = 128), @p118='?' (DbType = Int32), @p119='?' (DbType = Int32), @p120='?' (Size = 250), @p121='?' (Size = 255), @p122='?' (Size = 4000), @p123='?' (Size = 128), @p124='?' (Size = 128), @p125='?' (DbType = Int32), @p126='?' (DbType = Int32), @p127='?' (Size = 250), @p128='?' (Size = 255), @p129='?' (Size = 4000), @p130='?' (Size = 128), @p131='?' (Size = 128), @p132='?' (DbType = Int32), @p133='?' (DbType = Int32), @p134='?' (Size = 250), @p135='?' (Size = 255), @p136='?' (Size = 4000), @p137='?' (Size = 128), @p138='?' (Size = 128), @p139='?' (DbType = Int32), @p140='?' (DbType = Int32), @p141='?' (Size = 250), @p142='?' (Size = 255), @p143='?' (Size = 4000), @p144='?' (Size = 128), @p145='?' (Size = 128), @p146='?' (DbType = Int32), @p147='?' (DbType = Int32), @p148='?' (Size = 250), @p149='?' (Size = 255), @p150='?' (Size = 4000), @p151='?' (Size = 128), @p152='?' (Size = 128), @p153='?' (DbType = Int32), @p154='?' (DbType = Int32), @p155='?' (Size = 250), @p156='?' (Size = 255), @p157='?' (Size = 4000), @p158='?' (Size = 128), @p159='?' (Size = 128), @p160='?' (DbType = Int32), @p161='?' (DbType = Int32), @p162='?' (Size = 250), @p163='?' (Size = 255), @p164='?' (Size = 4000), @p165='?' (Size = 128), @p166='?' (Size = 128), @p167='?' (DbType = Int32), @p168='?' (DbType = Int32), @p169='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Footers] ([Id], [Content])
+VALUES (@p0, @p1);
+INSERT INTO [Functions] ([Id], [IconCss], [Name], [ParentId], [SortOrder], [Status], [URL])
+VALUES (@p2, @p3, @p4, @p5, @p6, @p7, @p8),
+(@p9, @p10, @p11, @p12, @p13, @p14, @p15),
+(@p16, @p17, @p18, @p19, @p20, @p21, @p22),
+(@p23, @p24, @p25, @p26, @p27, @p28, @p29),
+(@p30, @p31, @p32, @p33, @p34, @p35, @p36),
+(@p37, @p38, @p39, @p40, @p41, @p42, @p43),
+(@p44, @p45, @p46, @p47, @p48, @p49, @p50),
+(@p51, @p52, @p53, @p54, @p55, @p56, @p57),
+(@p58, @p59, @p60, @p61, @p62, @p63, @p64),
+(@p65, @p66, @p67, @p68, @p69, @p70, @p71),
+(@p72, @p73, @p74, @p75, @p76, @p77, @p78),
+(@p79, @p80, @p81, @p82, @p83, @p84, @p85),
+(@p86, @p87, @p88, @p89, @p90, @p91, @p92),
+(@p93, @p94, @p95, @p96, @p97, @p98, @p99),
+(@p100, @p101, @p102, @p103, @p104, @p105, @p106),
+(@p107, @p108, @p109, @p110, @p111, @p112, @p113),
+(@p114, @p115, @p116, @p117, @p118, @p119, @p120),
+(@p121, @p122, @p123, @p124, @p125, @p126, @p127),
+(@p128, @p129, @p130, @p131, @p132, @p133, @p134),
+(@p135, @p136, @p137, @p138, @p139, @p140, @p141),
+(@p142, @p143, @p144, @p145, @p146, @p147, @p148),
+(@p149, @p150, @p151, @p152, @p153, @p154, @p155),
+(@p156, @p157, @p158, @p159, @p160, @p161, @p162),
+(@p163, @p164, @p165, @p166, @p167, @p168, @p169);" (0723d8ff)
+2018-11-11T11:14:45.6543789+07:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-11-11T11:14:45.7509737+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-11-11T11:14:45.8345748+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-11-11T11:14:45.8548588+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-11-11T11:14:45.8810686+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-11-11T11:14:45.9964593+07:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T11:14:46.0355850+07:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T11:14:46.0459505+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T11:14:46.4429780+07:00 0HLI7HGRF0CB2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-11-11T11:14:46.7818494+07:00 0HLI7HGRF0CB2:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-11-11T11:14:53.4500729+07:00 0HLI7HGRF0CB2:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-11-11T11:14:55.1653853+07:00 0HLI7HGRF0CB4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner2.svg   (ca22a1cb)
+2018-11-11T11:14:55.1667431+07:00 0HLI7HGRF0CB3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-11-11T11:14:55.2067241+07:00 0HLI7HGRF0CB2:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 8273.1284ms (afa2e885)
+2018-11-11T11:14:55.2116247+07:00 0HLI7HGRF0CB5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/css/site.css   (ca22a1cb)
+2018-11-11T11:14:55.2378568+07:00 0HLI7HGRF0CB2:00000001 [INF] Request finished in 8847.5037ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-11T11:14:55.2424710+07:00 0HLI7HGRF0CB5:00000001 [INF] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\css\site.css"' (27b0a520)
+2018-11-11T11:14:55.2533039+07:00 0HLI7HGRF0CB3:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-11-11T11:14:55.2630604+07:00 0HLI7HGRF0CB4:00000001 [INF] Sending file. Request path: '"/images/banner2.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner2.svg"' (27b0a520)
+2018-11-11T11:14:55.3581906+07:00 0HLI7HGRF0CB2:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/jquery/dist/jquery.js   (ca22a1cb)
+2018-11-11T11:14:55.3768581+07:00 0HLI7HGRF0CB4:00000001 [INF] Request finished in 228.2681ms 200 image/svg+xml (791a596a)
+2018-11-11T11:14:55.3853946+07:00 0HLI7HGRF0CB5:00000001 [INF] Request finished in 259.5882ms 200 text/css (791a596a)
+2018-11-11T11:14:55.4501494+07:00 0HLI7HGRF0CB6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner3.svg   (ca22a1cb)
+2018-11-11T11:14:55.4576308+07:00 0HLI7HGRF0CB5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2018-11-11T11:14:55.4859805+07:00 0HLI7HGRF0CB2:00000002 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2018-11-11T11:14:55.4907260+07:00 0HLI7HGRF0CB6:00000001 [INF] Sending file. Request path: '"/images/banner3.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner3.svg"' (27b0a520)
+2018-11-11T11:14:55.5440291+07:00 0HLI7HGRF0CB5:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2018-11-11T11:14:55.5675319+07:00 0HLI7HGRF0CB7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner1.svg   (ca22a1cb)
+2018-11-11T11:14:55.5776298+07:00 0HLI7HGRF0CB4:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner4.svg   (ca22a1cb)
+2018-11-11T11:14:55.5988841+07:00 0HLI7HGRF0CB7:00000001 [INF] Sending file. Request path: '"/images/banner1.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner1.svg"' (27b0a520)
+2018-11-11T11:14:55.6284094+07:00 0HLI7HGRF0CB4:00000002 [INF] Sending file. Request path: '"/images/banner4.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner4.svg"' (27b0a520)
+2018-11-11T11:14:55.6655478+07:00 0HLI7HGRF0CB5:00000002 [INF] Request finished in 160.7115ms 200 application/javascript (791a596a)
+2018-11-11T11:14:55.6926784+07:00 0HLI7HGRF0CB6:00000001 [INF] Request finished in 167.0786ms 200 image/svg+xml (791a596a)
+2018-11-11T11:14:55.7738377+07:00 0HLI7HGRF0CB3:00000001 [INF] Request finished in 620.2507ms 200 text/css (791a596a)
+2018-11-11T11:14:55.8349656+07:00 0HLI7HGRF0CB4:00000002 [INF] Request finished in 270.7136ms 200 image/svg+xml (791a596a)
+2018-11-11T11:14:55.8635176+07:00 0HLI7HGRF0CB2:00000002 [INF] Request finished in 518.5824ms 200 application/javascript (791a596a)
+2018-11-11T11:14:55.8800573+07:00 0HLI7HGRF0CB6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/js/site.js?v=ji3-IxbEzYWjzzLCGkF1KDjrT2jLbbrSYXw-AhMPNIA   (ca22a1cb)
+2018-11-11T11:14:55.8864017+07:00 0HLI7HGRF0CB7:00000001 [INF] Request finished in 71.9339ms 200 image/svg+xml (791a596a)
+2018-11-11T11:14:55.9788753+07:00 0HLI7HGRF0CB6:00000002 [INF] Sending file. Request path: '"/js/site.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\js\site.js"' (27b0a520)
+2018-11-11T11:14:56.0229975+07:00 0HLI7HGRF0CB5:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2018-11-11T11:14:56.1159118+07:00 0HLI7HGRF0CB6:00000002 [INF] Request finished in 218.208ms 200 application/javascript (791a596a)
+2018-11-11T11:14:56.1470992+07:00 0HLI7HGRF0CB5:00000003 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2018-11-11T11:14:56.2522356+07:00 0HLI7HGRF0CB5:00000003 [INF] Request finished in 314.6283ms 200 font/woff2 (791a596a)
+2018-11-11T11:14:56.2801435+07:00 0HLI7HGRF0CB7:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/favicon.ico   (ca22a1cb)
+2018-11-11T11:14:56.2910684+07:00 0HLI7HGRF0CB7:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\favicon.ico"' (27b0a520)
+2018-11-11T11:14:56.3202883+07:00 0HLI7HGRF0CB7:00000002 [INF] Request finished in 36.7454ms 200 image/x-icon (791a596a)
+2018-11-11T23:20:01.9982948+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0193474+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0251029+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0311343+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0373674+07:00  [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0438782+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.0509085+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:20:02.2893532+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-11-11T23:20:03.4069381+07:00  [INF] Executed DbCommand ("115"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:20:03.5646121+07:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:20:03.6098398+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-11-11T23:20:03.9361260+07:00  [INF] Executed DbCommand ("202"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-11-11T23:20:03.9712272+07:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-11-11T23:20:04.1714099+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-11-11T23:20:04.3295394+07:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-11-11T23:20:04.3799803+07:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-11-11T23:20:09.0334015+07:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-11-11T23:21:21.8769308+07:00  [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:21:21.9161763+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:21:21.9272683+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:21:22.3167390+07:00 0HLI7U6S2EN5G:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-11-11T23:21:22.8359711+07:00 0HLI7U6S2EN5G:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-11-11T23:21:29.9893768+07:00 0HLI7U6S2EN5G:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-11-11T23:21:31.0349008+07:00 0HLI7U6S2EN5G:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 8281.9655ms (afa2e885)
+2018-11-11T23:21:31.0545122+07:00 0HLI7U6S2EN5G:00000001 [INF] Request finished in 8780.9353ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-11T23:21:31.0698938+07:00 0HLI7U6S2EN5H:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/css/site.css   (ca22a1cb)
+2018-11-11T23:21:31.0878602+07:00 0HLI7U6S2EN5H:00000001 [INF] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\css\site.css"' (27b0a520)
+2018-11-11T23:21:31.0960040+07:00 0HLI7U6S2EN5I:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/jquery/dist/jquery.js   (ca22a1cb)
+2018-11-11T23:21:31.1246480+07:00 0HLI7U6S2EN5I:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2018-11-11T23:21:31.1271141+07:00 0HLI7U6S2EN5G:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-11-11T23:21:31.1837335+07:00 0HLI7U6S2EN5H:00000001 [INF] Request finished in 73.1988ms 200 text/css (791a596a)
+2018-11-11T23:21:31.1847505+07:00 0HLI7U6S2EN5G:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-11-11T23:21:31.2322437+07:00 0HLI7U6S2EN5H:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2018-11-11T23:21:31.2752036+07:00 0HLI7U6S2EN5G:00000002 [INF] Request finished in 150.4752ms 200 text/css (791a596a)
+2018-11-11T23:21:31.2876230+07:00 0HLI7U6S2EN5I:00000001 [INF] Request finished in 169.5418ms 200 application/javascript (791a596a)
+2018-11-11T23:21:31.3066614+07:00 0HLI7U6S2EN5H:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2018-11-11T23:21:31.3266178+07:00 0HLI7U6S2EN5I:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/js/site.js?v=ji3-IxbEzYWjzzLCGkF1KDjrT2jLbbrSYXw-AhMPNIA   (ca22a1cb)
+2018-11-11T23:21:31.3323199+07:00 0HLI7U6S2EN5G:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner1.svg   (ca22a1cb)
+2018-11-11T23:21:31.3491029+07:00 0HLI7U6S2EN5H:00000002 [INF] Request finished in 115.9077ms 200 application/javascript (791a596a)
+2018-11-11T23:21:31.3732549+07:00 0HLI7U6S2EN5G:00000003 [INF] Sending file. Request path: '"/images/banner1.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner1.svg"' (27b0a520)
+2018-11-11T23:21:31.4290751+07:00 0HLI7U6S2EN5H:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner2.svg   (ca22a1cb)
+2018-11-11T23:21:31.4328105+07:00 0HLI7U6S2EN5G:00000003 [INF] Request finished in 97.8349ms 200 image/svg+xml (791a596a)
+2018-11-11T23:21:31.4662400+07:00 0HLI7U6S2EN5I:00000002 [INF] Sending file. Request path: '"/js/site.js"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\js\site.js"' (27b0a520)
+2018-11-11T23:21:31.4715355+07:00 0HLI7U6S2EN5G:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner3.svg   (ca22a1cb)
+2018-11-11T23:21:31.4735411+07:00 0HLI7U6S2EN5H:00000003 [INF] Sending file. Request path: '"/images/banner2.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner2.svg"' (27b0a520)
+2018-11-11T23:21:31.5460297+07:00 0HLI7U6S2EN5I:00000002 [INF] Request finished in 167.6319ms 200 application/javascript (791a596a)
+2018-11-11T23:21:31.5468905+07:00 0HLI7U6S2EN5G:00000004 [INF] Sending file. Request path: '"/images/banner3.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner3.svg"' (27b0a520)
+2018-11-11T23:21:31.6069562+07:00 0HLI7U6S2EN5H:00000003 [INF] Request finished in 167.1851ms 200 image/svg+xml (791a596a)
+2018-11-11T23:21:31.6152776+07:00 0HLI7U6S2EN5G:00000004 [INF] Request finished in 115.9162ms 200 image/svg+xml (791a596a)
+2018-11-11T23:21:31.6418782+07:00 0HLI7U6S2EN5I:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/images/banner4.svg   (ca22a1cb)
+2018-11-11T23:21:31.6487311+07:00 0HLI7U6S2EN5I:00000003 [INF] Sending file. Request path: '"/images/banner4.svg"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\images\banner4.svg"' (27b0a520)
+2018-11-11T23:21:31.6863130+07:00 0HLI7U6S2EN5H:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2018-11-11T23:21:31.6919467+07:00 0HLI7U6S2EN5I:00000003 [INF] Request finished in 89.6957ms 200 image/svg+xml (791a596a)
+2018-11-11T23:21:31.7059604+07:00 0HLI7U6S2EN5H:00000004 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2018-11-11T23:21:31.7383320+07:00 0HLI7U6S2EN5H:00000004 [INF] Request finished in 47.1053ms 200 font/woff2 (791a596a)
+2018-11-11T23:25:40.4201524+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4592632+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4668114+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4732396+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4805595+07:00  [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4901321+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.4968318+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:25:40.7598112+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-11-11T23:25:41.7550440+07:00  [INF] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:25:41.8957349+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:25:41.9321468+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-11-11T23:25:42.0673760+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-11-11T23:25:42.0805553+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-11-11T23:25:43.0688551+07:00  [INF] Executed DbCommand ("488"ms) [Parameters=["@p0='?' (Size = 250), @p1='?' (Size = 250), @p2='?' (Size = 250), @p3='?' (Size = 250), @p4='?' (Size = 250), @p5='?' (Size = 250), @p6='?' (Size = 250), @p7='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Colors] USING (
+VALUES (@p0, @p1, 0),
+(@p2, @p3, 1),
+(@p4, @p5, 2),
+(@p6, @p7, 3)) AS i ([Code], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Code], [Name])
+VALUES (i.[Code], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Colors] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-11-11T23:25:43.1534197+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-11-11T23:25:43.2477502+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-11-11T23:25:43.2821595+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-11-11T23:25:43.3056487+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-11-11T23:25:51.5213974+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:25:51.5450401+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:25:51.5554432+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:25:51.9518458+07:00 0HLI7U9CCVKK8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-11-11T23:25:52.3451874+07:00 0HLI7U9CCVKK8:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-11-11T23:25:56.8685402+07:00 0HLI7U9CCVKK8:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-11-11T23:25:58.1130756+07:00 0HLI7U9CCVKK8:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 5775.3444ms (afa2e885)
+2018-11-11T23:25:58.1316769+07:00 0HLI7U9CCVKK8:00000001 [INF] Request finished in 6237.745ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-11T23:27:26.8493612+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.8856469+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.8921735+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.8980497+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.9046490+07:00  [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.9115659+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:26.9169623+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-11-11T23:27:27.1295957+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-11-11T23:27:28.2993359+07:00  [INF] Executed DbCommand ("68"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:27:28.4170692+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:27:28.4565700+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-11-11T23:27:28.5799826+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-11-11T23:27:28.5903652+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-11-11T23:27:28.6045909+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-11-11T23:27:29.1883956+07:00  [INF] Executed DbCommand ("81"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPages] ([Id], [Name])
+VALUES (@p0, @p1);" (0723d8ff)
+2018-11-11T23:27:29.1973323+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPages] ([Id], [Name])
+VALUES (@p0, @p1);" (0723d8ff)
+2018-11-11T23:27:29.2047228+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPages] ([Id], [Name])
+VALUES (@p0, @p1);" (0723d8ff)
+2018-11-11T23:27:29.2320854+07:00  [INF] Executed DbCommand ("20"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 250), @p2='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPositions] ([Id], [Name], [PageId])
+VALUES (@p0, @p1, @p2);" (0723d8ff)
+2018-11-11T23:27:29.2379295+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 250), @p2='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPositions] ([Id], [Name], [PageId])
+VALUES (@p0, @p1, @p2);" (0723d8ff)
+2018-11-11T23:27:29.2439874+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 250), @p2='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPositions] ([Id], [Name], [PageId])
+VALUES (@p0, @p1, @p2);" (0723d8ff)
+2018-11-11T23:27:29.2757103+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-11-11T23:27:29.4560683+07:00  [INF] Executed DbCommand ("32"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 250), @p2='?' (DbType = Int32), @p3='?' (Size = 25), @p4='?' (Size = 250), @p5='?' (Size = 250), @p6='?' (DbType = Boolean), @p7='?' (Size = 250), @p8='?' (Size = 4000), @p9='?' (Size = 250), @p10='?' (DbType = Int32), @p11='?' (Size = 25), @p12='?' (Size = 250), @p13='?' (Size = 250), @p14='?' (DbType = Boolean), @p15='?' (Size = 250), @p16='?' (Size = 4000), @p17='?' (Size = 250), @p18='?' (DbType = Int32), @p19='?' (Size = 25), @p20='?' (Size = 250), @p21='?' (Size = 250), @p22='?' (DbType = Boolean), @p23='?' (Size = 250), @p24='?' (Size = 4000), @p25='?' (Size = 250), @p26='?' (DbType = Int32), @p27='?' (Size = 25), @p28='?' (Size = 250), @p29='?' (Size = 250), @p30='?' (DbType = Boolean), @p31='?' (Size = 250), @p32='?' (Size = 4000), @p33='?' (Size = 250), @p34='?' (DbType = Int32), @p35='?' (Size = 25), @p36='?' (Size = 250), @p37='?' (Size = 250), @p38='?' (DbType = Boolean), @p39='?' (Size = 250), @p40='?' (Size = 4000), @p41='?' (Size = 250), @p42='?' (DbType = Int32), @p43='?' (Size = 25), @p44='?' (Size = 250), @p45='?' (Size = 250), @p46='?' (DbType = Boolean), @p47='?' (Size = 250), @p48='?' (Size = 4000), @p49='?' (Size = 250), @p50='?' (DbType = Int32), @p51='?' (Size = 25), @p52='?' (Size = 250), @p53='?' (Size = 250), @p54='?' (DbType = Boolean), @p55='?' (Size = 250), @p56='?' (Size = 4000), @p57='?' (Size = 250), @p58='?' (DbType = Int32), @p59='?' (Size = 25), @p60='?' (Size = 250), @p61='?' (Size = 250), @p62='?' (DbType = Boolean), @p63='?' (Size = 250), @p64='?' (Size = 4000), @p65='?' (Size = 250), @p66='?' (DbType = Int32), @p67='?' (Size = 25), @p68='?' (Size = 250), @p69='?' (Size = 250), @p70='?' (DbType = Boolean), @p71='?' (Size = 250), @p72='?' (Size = 4000), @p73='?' (Size = 250), @p74='?' (DbType = Int32), @p75='?' (Size = 25), @p76='?' (Size = 250), @p77='?' (Size = 250), @p78='?' (DbType = Boolean), @p79='?' (Size = 250), @p80='?' (Size = 4000), @p81='?' (Size = 250), @p82='?' (DbType = Int32), @p83='?' (Size = 25), @p84='?' (Size = 250), @p85='?' (Size = 250), @p86='?' (DbType = Boolean), @p87='?' (Size = 250), @p88='?' (Size = 4000), @p89='?' (Size = 250), @p90='?' (DbType = Int32), @p91='?' (Size = 25), @p92='?' (Size = 250), @p93='?' (Size = 250), @p94='?' (DbType = Boolean), @p95='?' (Size = 250), @p96='?' (Size = 4000), @p97='?' (Size = 250), @p98='?' (DbType = Int32), @p99='?' (Size = 25), @p100='?' (Size = 250), @p101='?' (Size = 250), @p102='?' (DbType = Boolean), @p103='?' (Size = 250), @p104='?' (Size = 4000), @p105='?' (Size = 250), @p106='?' (DbType = Int32), @p107='?' (Size = 25), @p108='?' (Size = 250), @p109='?' (Size = 250), @p110='?' (DbType = Boolean), @p111='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Slides] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, 0),
+(@p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, 1),
+(@p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, 2),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, 3),
+(@p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, 4),
+(@p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, 5),
+(@p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55, 6),
+(@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, 7),
+(@p64, @p65, @p66, @p67, @p68, @p69, @p70, @p71, 8),
+(@p72, @p73, @p74, @p75, @p76, @p77, @p78, @p79, 9),
+(@p80, @p81, @p82, @p83, @p84, @p85, @p86, @p87, 10),
+(@p88, @p89, @p90, @p91, @p92, @p93, @p94, @p95, 11),
+(@p96, @p97, @p98, @p99, @p100, @p101, @p102, @p103, 12),
+(@p104, @p105, @p106, @p107, @p108, @p109, @p110, @p111, 13)) AS i ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url])
+VALUES (i.[Content], i.[Description], i.[DisplayOrder], i.[GroupAlias], i.[Image], i.[Name], i.[Status], i.[Url])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Slides] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-11-11T23:27:29.5037125+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-11-11T23:27:29.5687982+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=["@p0='?' (Size = 250), @p1='?' (Size = 250), @p2='?' (Size = 250), @p3='?' (Size = 250), @p4='?' (Size = 250), @p5='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Sizes] USING (
+VALUES (@p0, 0),
+(@p1, 1),
+(@p2, 2),
+(@p3, 3),
+(@p4, 4),
+(@p5, 5)) AS i ([Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Name])
+VALUES (i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Sizes] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-11-11T23:27:29.5877494+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-11-11T23:27:30.2795513+07:00  [INF] Executed DbCommand ("500"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 255), @p3='?', @p4='?' (DbType = Int32), @p5='?' (Size = 255), @p6='?' (Size = 50), @p7='?' (DbType = Int32), @p8='?' (Size = 255) (DbType = AnsiString), @p9='?' (Size = 255), @p10='?' (Size = 255), @p11='?' (Size = 255), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (Size = 255), @p17='?', @p18='?' (DbType = Int32), @p19='?' (Size = 255), @p20='?' (Size = 50), @p21='?' (DbType = Int32), @p22='?' (Size = 255) (DbType = AnsiString), @p23='?' (Size = 255), @p24='?' (Size = 255), @p25='?' (Size = 255), @p26='?' (DbType = Int32), @p27='?' (DbType = Int32), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 255), @p31='?', @p32='?' (DbType = Int32), @p33='?' (Size = 255), @p34='?' (Size = 50), @p35='?' (DbType = Int32), @p36='?' (Size = 255) (DbType = AnsiString), @p37='?' (Size = 255), @p38='?' (Size = 255), @p39='?' (Size = 255), @p40='?' (DbType = Int32), @p41='?' (DbType = Int32), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (Size = 255), @p45='?', @p46='?' (DbType = Int32), @p47='?' (Size = 255), @p48='?' (Size = 50), @p49='?' (DbType = Int32), @p50='?' (Size = 255) (DbType = AnsiString), @p51='?' (Size = 255), @p52='?' (Size = 255), @p53='?' (Size = 255), @p54='?' (DbType = Int32), @p55='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [ProductCategories] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, 0),
+(@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, 1),
+(@p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, 2),
+(@p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55, 3)) AS i ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status])
+VALUES (i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HomeOrder], i.[Image], i.[Name], i.[ParentId], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[SortOrder], i.[Status])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [ProductCategories] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-11-11T23:27:30.4395102+07:00  [INF] Executed DbCommand ("116"ms) [Parameters=["@p56='?' (DbType = Int32), @p57='?' (Size = 4000), @p58='?' (DbType = DateTime2), @p59='?' (DbType = DateTime2), @p60='?' (Size = 500), @p61='?', @p62='?', @p63='?' (Size = 255), @p64='?' (Size = 50), @p65='?' (DbType = Decimal), @p66='?' (DbType = Decimal), @p67='?', @p68='?' (Size = 255) (DbType = AnsiString), @p69='?' (Size = 255), @p70='?' (Size = 255), @p71='?' (Size = 255), @p72='?' (DbType = Int32), @p73='?' (Size = 255), @p74='?' (Size = 255), @p75='?' (DbType = Int32), @p76='?' (DbType = Int32), @p77='?' (Size = 4000), @p78='?' (DbType = DateTime2), @p79='?' (DbType = DateTime2), @p80='?' (Size = 500), @p81='?', @p82='?', @p83='?' (Size = 255), @p84='?' (Size = 50), @p85='?' (DbType = Decimal), @p86='?' (DbType = Decimal), @p87='?', @p88='?' (Size = 255) (DbType = AnsiString), @p89='?' (Size = 255), @p90='?' (Size = 255), @p91='?' (Size = 255), @p92='?' (DbType = Int32), @p93='?' (Size = 255), @p94='?' (Size = 255), @p95='?' (DbType = Int32), @p96='?' (DbType = Int32), @p97='?' (Size = 4000), @p98='?' (DbType = DateTime2), @p99='?' (DbType = DateTime2), @p100='?' (Size = 500), @p101='?', @p102='?', @p103='?' (Size = 255), @p104='?' (Size = 50), @p105='?' (DbType = Decimal), @p106='?' (DbType = Decimal), @p107='?', @p108='?' (Size = 255) (DbType = AnsiString), @p109='?' (Size = 255), @p110='?' (Size = 255), @p111='?' (Size = 255), @p112='?' (DbType = Int32), @p113='?' (Size = 255), @p114='?' (Size = 255), @p115='?' (DbType = Int32), @p116='?' (DbType = Int32), @p117='?' (Size = 4000), @p118='?' (DbType = DateTime2), @p119='?' (DbType = DateTime2), @p120='?' (Size = 500), @p121='?', @p122='?', @p123='?' (Size = 255), @p124='?' (Size = 50), @p125='?' (DbType = Decimal), @p126='?' (DbType = Decimal), @p127='?', @p128='?' (Size = 255) (DbType = AnsiString), @p129='?' (Size = 255), @p130='?' (Size = 255), @p131='?' (Size = 255), @p132='?' (DbType = Int32), @p133='?' (Size = 255), @p134='?' (Size = 255), @p135='?' (DbType = Int32), @p136='?' (DbType = Int32), @p137='?' (Size = 4000), @p138='?' (DbType = DateTime2), @p139='?' (DbType = DateTime2), @p140='?' (Size = 500), @p141='?', @p142='?', @p143='?' (Size = 255), @p144='?' (Size = 50), @p145='?' (DbType = Decimal), @p146='?' (DbType = Decimal), @p147='?', @p148='?' (Size = 255) (DbType = AnsiString), @p149='?' (Size = 255), @p150='?' (Size = 255), @p151='?' (Size = 255), @p152='?' (DbType = Int32), @p153='?' (Size = 255), @p154='?' (Size = 255), @p155='?' (DbType = Int32), @p156='?' (DbType = Int32), @p157='?' (Size = 4000), @p158='?' (DbType = DateTime2), @p159='?' (DbType = DateTime2), @p160='?' (Size = 500), @p161='?', @p162='?', @p163='?' (Size = 255), @p164='?' (Size = 50), @p165='?' (DbType = Decimal), @p166='?' (DbType = Decimal), @p167='?', @p168='?' (Size = 255) (DbType = AnsiString), @p169='?' (Size = 255), @p170='?' (Size = 255), @p171='?' (Size = 255), @p172='?' (DbType = Int32), @p173='?' (Size = 255), @p174='?' (Size = 255), @p175='?' (DbType = Int32), @p176='?' (DbType = Int32), @p177='?' (Size = 4000), @p178='?' (DbType = DateTime2), @p179='?' (DbType = DateTime2), @p180='?' (Size = 500), @p181='?', @p182='?', @p183='?' (Size = 255), @p184='?' (Size = 50), @p185='?' (DbType = Decimal), @p186='?' (DbType = Decimal), @p187='?', @p188='?' (Size = 255) (DbType = AnsiString), @p189='?' (Size = 255), @p190='?' (Size = 255), @p191='?' (Size = 255), @p192='?' (DbType = Int32), @p193='?' (Size = 255), @p194='?' (Size = 255), @p195='?' (DbType = Int32), @p196='?' (DbType = Int32), @p197='?' (Size = 4000), @p198='?' (DbType = DateTime2), @p199='?' (DbType = DateTime2), @p200='?' (Size = 500), @p201='?', @p202='?', @p203='?' (Size = 255), @p204='?' (Size = 50), @p205='?' (DbType = Decimal), @p206='?' (DbType = Decimal), @p207='?', @p208='?' (Size = 255) (DbType = AnsiString), @p209='?' (Size = 255), @p210='?' (Size = 255), @p211='?' (Size = 255), @p212='?' (DbType = Int32), @p213='?' (Size = 255), @p214='?' (Size = 255), @p215='?' (DbType = Int32), @p216='?' (DbType = Int32), @p217='?' (Size = 4000), @p218='?' (DbType = DateTime2), @p219='?' (DbType = DateTime2), @p220='?' (Size = 500), @p221='?', @p222='?', @p223='?' (Size = 255), @p224='?' (Size = 50), @p225='?' (DbType = Decimal), @p226='?' (DbType = Decimal), @p227='?', @p228='?' (Size = 255) (DbType = AnsiString), @p229='?' (Size = 255), @p230='?' (Size = 255), @p231='?' (Size = 255), @p232='?' (DbType = Int32), @p233='?' (Size = 255), @p234='?' (Size = 255), @p235='?' (DbType = Int32), @p236='?' (DbType = Int32), @p237='?' (Size = 4000), @p238='?' (DbType = DateTime2), @p239='?' (DbType = DateTime2), @p240='?' (Size = 500), @p241='?', @p242='?', @p243='?' (Size = 255), @p244='?' (Size = 50), @p245='?' (DbType = Decimal), @p246='?' (DbType = Decimal), @p247='?', @p248='?' (Size = 255) (DbType = AnsiString), @p249='?' (Size = 255), @p250='?' (Size = 255), @p251='?' (Size = 255), @p252='?' (DbType = Int32), @p253='?' (Size = 255), @p254='?' (Size = 255), @p255='?' (DbType = Int32), @p256='?' (DbType = Int32), @p257='?' (Size = 4000), @p258='?' (DbType = DateTime2), @p259='?' (DbType = DateTime2), @p260='?' (Size = 500), @p261='?', @p262='?', @p263='?' (Size = 255), @p264='?' (Size = 50), @p265='?' (DbType = Decimal), @p266='?' (DbType = Decimal), @p267='?', @p268='?' (Size = 255) (DbType = AnsiString), @p269='?' (Size = 255), @p270='?' (Size = 255), @p271='?' (Size = 255), @p272='?' (DbType = Int32), @p273='?' (Size = 255), @p274='?' (Size = 255), @p275='?' (DbType = Int32), @p276='?' (DbType = Int32), @p277='?' (Size = 4000), @p278='?' (DbType = DateTime2), @p279='?' (DbType = DateTime2), @p280='?' (Size = 500), @p281='?', @p282='?', @p283='?' (Size = 255), @p284='?' (Size = 50), @p285='?' (DbType = Decimal), @p286='?' (DbType = Decimal), @p287='?', @p288='?' (Size = 255) (DbType = AnsiString), @p289='?' (Size = 255), @p290='?' (Size = 255), @p291='?' (Size = 255), @p292='?' (DbType = Int32), @p293='?' (Size = 255), @p294='?' (Size = 255), @p295='?' (DbType = Int32), @p296='?' (DbType = Int32), @p297='?' (Size = 4000), @p298='?' (DbType = DateTime2), @p299='?' (DbType = DateTime2), @p300='?' (Size = 500), @p301='?', @p302='?', @p303='?' (Size = 255), @p304='?' (Size = 50), @p305='?' (DbType = Decimal), @p306='?' (DbType = Decimal), @p307='?', @p308='?' (Size = 255) (DbType = AnsiString), @p309='?' (Size = 255), @p310='?' (Size = 255), @p311='?' (Size = 255), @p312='?' (DbType = Int32), @p313='?' (Size = 255), @p314='?' (Size = 255), @p315='?' (DbType = Int32), @p316='?' (DbType = Int32), @p317='?' (Size = 4000), @p318='?' (DbType = DateTime2), @p319='?' (DbType = DateTime2), @p320='?' (Size = 500), @p321='?', @p322='?', @p323='?' (Size = 255), @p324='?' (Size = 50), @p325='?' (DbType = Decimal), @p326='?' (DbType = Decimal), @p327='?', @p328='?' (Size = 255) (DbType = AnsiString), @p329='?' (Size = 255), @p330='?' (Size = 255), @p331='?' (Size = 255), @p332='?' (DbType = Int32), @p333='?' (Size = 255), @p334='?' (Size = 255), @p335='?' (DbType = Int32), @p336='?' (DbType = Int32), @p337='?' (Size = 4000), @p338='?' (DbType = DateTime2), @p339='?' (DbType = DateTime2), @p340='?' (Size = 500), @p341='?', @p342='?', @p343='?' (Size = 255), @p344='?' (Size = 50), @p345='?' (DbType = Decimal), @p346='?' (DbType = Decimal), @p347='?', @p348='?' (Size = 255) (DbType = AnsiString), @p349='?' (Size = 255), @p350='?' (Size = 255), @p351='?' (Size = 255), @p352='?' (DbType = Int32), @p353='?' (Size = 255), @p354='?' (Size = 255), @p355='?' (DbType = Int32), @p356='?' (DbType = Int32), @p357='?' (Size = 4000), @p358='?' (DbType = DateTime2), @p359='?' (DbType = DateTime2), @p360='?' (Size = 500), @p361='?', @p362='?', @p363='?' (Size = 255), @p364='?' (Size = 50), @p365='?' (DbType = Decimal), @p366='?' (DbType = Decimal), @p367='?', @p368='?' (Size = 255) (DbType = AnsiString), @p369='?' (Size = 255), @p370='?' (Size = 255), @p371='?' (Size = 255), @p372='?' (DbType = Int32), @p373='?' (Size = 255), @p374='?' (Size = 255), @p375='?' (DbType = Int32), @p376='?' (DbType = Int32), @p377='?' (Size = 4000), @p378='?' (DbType = DateTime2), @p379='?' (DbType = DateTime2), @p380='?' (Size = 500), @p381='?', @p382='?', @p383='?' (Size = 255), @p384='?' (Size = 50), @p385='?' (DbType = Decimal), @p386='?' (DbType = Decimal), @p387='?', @p388='?' (Size = 255) (DbType = AnsiString), @p389='?' (Size = 255), @p390='?' (Size = 255), @p391='?' (Size = 255), @p392='?' (DbType = Int32), @p393='?' (Size = 255), @p394='?' (Size = 255), @p395='?' (DbType = Int32), @p396='?' (DbType = Int32), @p397='?' (Size = 4000), @p398='?' (DbType = DateTime2), @p399='?' (DbType = DateTime2), @p400='?' (Size = 500), @p401='?', @p402='?', @p403='?' (Size = 255), @p404='?' (Size = 50), @p405='?' (DbType = Decimal), @p406='?' (DbType = Decimal), @p407='?', @p408='?' (Size = 255) (DbType = AnsiString), @p409='?' (Size = 255), @p410='?' (Size = 255), @p411='?' (Size = 255), @p412='?' (DbType = Int32), @p413='?' (Size = 255), @p414='?' (Size = 255), @p415='?' (DbType = Int32), @p416='?' (DbType = Int32), @p417='?' (Size = 4000), @p418='?' (DbType = DateTime2), @p419='?' (DbType = DateTime2), @p420='?' (Size = 500), @p421='?', @p422='?', @p423='?' (Size = 255), @p424='?' (Size = 50), @p425='?' (DbType = Decimal), @p426='?' (DbType = Decimal), @p427='?', @p428='?' (Size = 255) (DbType = AnsiString), @p429='?' (Size = 255), @p430='?' (Size = 255), @p431='?' (Size = 255), @p432='?' (DbType = Int32), @p433='?' (Size = 255), @p434='?' (Size = 255), @p435='?' (DbType = Int32), @p436='?' (DbType = Int32), @p437='?' (Size = 4000), @p438='?' (DbType = DateTime2), @p439='?' (DbType = DateTime2), @p440='?' (Size = 500), @p441='?', @p442='?', @p443='?' (Size = 255), @p444='?' (Size = 50), @p445='?' (DbType = Decimal), @p446='?' (DbType = Decimal), @p447='?', @p448='?' (Size = 255) (DbType = AnsiString), @p449='?' (Size = 255), @p450='?' (Size = 255), @p451='?' (Size = 255), @p452='?' (DbType = Int32), @p453='?' (Size = 255), @p454='?' (Size = 255), @p455='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Products] USING (
+VALUES (@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65, @p66, @p67, @p68, @p69, @p70, @p71, @p72, @p73, @p74, @p75, 0),
+(@p76, @p77, @p78, @p79, @p80, @p81, @p82, @p83, @p84, @p85, @p86, @p87, @p88, @p89, @p90, @p91, @p92, @p93, @p94, @p95, 1),
+(@p96, @p97, @p98, @p99, @p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, @p108, @p109, @p110, @p111, @p112, @p113, @p114, @p115, 2),
+(@p116, @p117, @p118, @p119, @p120, @p121, @p122, @p123, @p124, @p125, @p126, @p127, @p128, @p129, @p130, @p131, @p132, @p133, @p134, @p135, 3),
+(@p136, @p137, @p138, @p139, @p140, @p141, @p142, @p143, @p144, @p145, @p146, @p147, @p148, @p149, @p150, @p151, @p152, @p153, @p154, @p155, 4),
+(@p156, @p157, @p158, @p159, @p160, @p161, @p162, @p163, @p164, @p165, @p166, @p167, @p168, @p169, @p170, @p171, @p172, @p173, @p174, @p175, 5),
+(@p176, @p177, @p178, @p179, @p180, @p181, @p182, @p183, @p184, @p185, @p186, @p187, @p188, @p189, @p190, @p191, @p192, @p193, @p194, @p195, 6),
+(@p196, @p197, @p198, @p199, @p200, @p201, @p202, @p203, @p204, @p205, @p206, @p207, @p208, @p209, @p210, @p211, @p212, @p213, @p214, @p215, 7),
+(@p216, @p217, @p218, @p219, @p220, @p221, @p222, @p223, @p224, @p225, @p226, @p227, @p228, @p229, @p230, @p231, @p232, @p233, @p234, @p235, 8),
+(@p236, @p237, @p238, @p239, @p240, @p241, @p242, @p243, @p244, @p245, @p246, @p247, @p248, @p249, @p250, @p251, @p252, @p253, @p254, @p255, 9),
+(@p256, @p257, @p258, @p259, @p260, @p261, @p262, @p263, @p264, @p265, @p266, @p267, @p268, @p269, @p270, @p271, @p272, @p273, @p274, @p275, 10),
+(@p276, @p277, @p278, @p279, @p280, @p281, @p282, @p283, @p284, @p285, @p286, @p287, @p288, @p289, @p290, @p291, @p292, @p293, @p294, @p295, 11),
+(@p296, @p297, @p298, @p299, @p300, @p301, @p302, @p303, @p304, @p305, @p306, @p307, @p308, @p309, @p310, @p311, @p312, @p313, @p314, @p315, 12),
+(@p316, @p317, @p318, @p319, @p320, @p321, @p322, @p323, @p324, @p325, @p326, @p327, @p328, @p329, @p330, @p331, @p332, @p333, @p334, @p335, 13),
+(@p336, @p337, @p338, @p339, @p340, @p341, @p342, @p343, @p344, @p345, @p346, @p347, @p348, @p349, @p350, @p351, @p352, @p353, @p354, @p355, 14),
+(@p356, @p357, @p358, @p359, @p360, @p361, @p362, @p363, @p364, @p365, @p366, @p367, @p368, @p369, @p370, @p371, @p372, @p373, @p374, @p375, 15),
+(@p376, @p377, @p378, @p379, @p380, @p381, @p382, @p383, @p384, @p385, @p386, @p387, @p388, @p389, @p390, @p391, @p392, @p393, @p394, @p395, 16),
+(@p396, @p397, @p398, @p399, @p400, @p401, @p402, @p403, @p404, @p405, @p406, @p407, @p408, @p409, @p410, @p411, @p412, @p413, @p414, @p415, 17),
+(@p416, @p417, @p418, @p419, @p420, @p421, @p422, @p423, @p424, @p425, @p426, @p427, @p428, @p429, @p430, @p431, @p432, @p433, @p434, @p435, 18),
+(@p436, @p437, @p438, @p439, @p440, @p441, @p442, @p443, @p444, @p445, @p446, @p447, @p448, @p449, @p450, @p451, @p452, @p453, @p454, @p455, 19)) AS i ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tag], [Unit], [ViewCount], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tag], [Unit], [ViewCount])
+VALUES (i.[CategoryId], i.[Content], i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HotFlag], i.[Image], i.[Name], i.[OriginalPrice], i.[Price], i.[PromotionPrice], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[Status], i.[Tag], i.[Unit], i.[ViewCount])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Products] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-11-11T23:27:30.4547593+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:27:30.4947005+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (Size = 255), @p1='?' (Size = 128), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?', @p6='?' (DbType = DateTime2), @p7='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);" (0723d8ff)
+2018-11-11T23:27:30.5536527+07:00  [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:27:30.5756511+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 255), @p1='?' (Size = 128), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?', @p6='?' (DbType = DateTime2), @p7='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);" (0723d8ff)
+2018-11-11T23:27:30.5903280+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-11T23:27:30.6034662+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 255), @p1='?' (Size = 128), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?', @p6='?' (DbType = DateTime2), @p7='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);" (0723d8ff)
+2018-11-11T23:27:31.0496346+07:00 0HLI7UA9TB314:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-11-11T23:27:31.4524962+07:00 0HLI7UA9TB314:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-11-11T23:27:35.6106822+07:00 0HLI7UA9TB314:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-11-11T23:27:36.6644634+07:00 0HLI7UA9TB314:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 5133.5476ms (afa2e885)
+2018-11-11T23:27:36.7121127+07:00 0HLI7UA9TB314:00000001 [INF] Request finished in 5741.8631ms 200 text/html; charset=utf-8 (791a596a)
