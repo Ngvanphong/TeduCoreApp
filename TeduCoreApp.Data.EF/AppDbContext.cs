@@ -92,7 +92,6 @@ namespace TeduCoreApp.Data.EF
             builder.AddConfiguration(new AnnouncementConfiguration());
 
 
-
         }
 
         public override int SaveChanges()

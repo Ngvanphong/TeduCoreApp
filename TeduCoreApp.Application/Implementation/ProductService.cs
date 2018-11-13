@@ -122,8 +122,7 @@ namespace TeduCoreApp.Application.Implementation
         public List<ProductViewModel> GetAll(int? categoryId, string hotPromotion, string keyword, int page, int pageSize, out int totalRow)
         {
            List<Product> listProduct = _productRepository
-                    .FindAll(c => c.ProductCategory).OrderByDescending(d => d.DateCreated).ToList();
-            totalRow = listProduct.Count();
+                    .FindAll(c => c.ProductCategory).OrderByDescending(d => d.DateCreated).ToList();         
             if (categoryId.HasValue)
             {
                 listProduct = _productRepository
@@ -152,7 +151,8 @@ namespace TeduCoreApp.Application.Implementation
                     .FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword), c => c.ProductCategory)
                     .OrderByDescending(d => d.DateCreated).ToList();
                 }
-            }                                          
+            }
+            totalRow = listProduct.Count();
             listProduct = listProduct.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             return _mapper.Map<List<ProductViewModel>>(listProduct);
         }
