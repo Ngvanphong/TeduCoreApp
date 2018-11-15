@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
@@ -19,6 +20,11 @@ namespace TeduCoreApp.Data.EF
         public void Add(T entity)
         {
             _context.Add(entity);
+        }
+        public async Task<T> AddAsync(T entity)
+        {
+           await _context.AddAsync(entity);
+           return entity;
         }
 
         public void Dispose()
@@ -83,6 +89,7 @@ namespace TeduCoreApp.Data.EF
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+          
         }
        
     }

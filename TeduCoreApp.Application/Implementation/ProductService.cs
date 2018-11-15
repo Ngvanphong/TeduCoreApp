@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
@@ -35,10 +36,10 @@ namespace TeduCoreApp.Application.Implementation
             GC.SuppressFinalize(this);
         }
 
-        public ProductViewModel Add(ProductViewModel productVm)
+        public async Task<ProductViewModel> AddAsync(ProductViewModel productVm)
         {
             Product product = _mapper.Map<Product>(productVm);
-            _productRepository.Add(product);
+            await _productRepository.AddAsync(product);
             _unitOfWork.Commit();
             if (!string.IsNullOrEmpty(product.Tag))
             {
@@ -74,6 +75,8 @@ namespace TeduCoreApp.Application.Implementation
             _unitOfWork.Commit();
             if (!string.IsNullOrEmpty(product.Tag))
             {
+                DeleteProductTagByProductId(product.Id);
+                _unitOfWork.Commit();
                 string[] listTag = product.Tag.Split(',');
                 for (int i = 0; i < listTag.Length; i++)
                 {
@@ -121,8 +124,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductViewModel> GetAll(int? categoryId, string hotPromotion, string keyword, int page, int pageSize, out int totalRow)
         {
-           List<Product> listProduct = _productRepository
-                    .FindAll(c => c.ProductCategory).OrderByDescending(d => d.DateCreated).ToList();         
+            List<Product> listProduct = _productRepository
+                     .FindAll(c => c.ProductCategory).OrderByDescending(d => d.DateCreated).ToList();
             if (categoryId.HasValue)
             {
                 listProduct = _productRepository
@@ -132,7 +135,7 @@ namespace TeduCoreApp.Application.Implementation
             if (!string.IsNullOrEmpty(hotPromotion))
             {
                 listProduct = _productRepository
-                    .FindAll(x => x.HotFlag == true,c=>c.ProductCategory)
+                    .FindAll(x => x.HotFlag == true, c => c.ProductCategory)
                     .OrderByDescending(d => d.DateCreated).ToList();
             }
             if (!string.IsNullOrEmpty(keyword))
@@ -215,6 +218,22 @@ namespace TeduCoreApp.Application.Implementation
         public void SaveChanges()
         {
             _unitOfWork.Commit();
+        }
+
+        public void UpdateDb(Product productDb)
+        {
+            _productRepository.Update(productDb);
+        }
+
+        public Product GetProductDbById(int id)
+        {
+            return _productRepository.FindById(id);
+        }
+
+        private void DeleteProductTagByProductId(int productId)
+        {
+            List<ProductTag> listProductTags = _productTagRepository.FindAll(x => x.ProductId == productId).ToList();
+            _productTagRepository.RemoveMultiple(listProductTags);
         }
     }
 }

@@ -18,9 +18,10 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<FunctionViewModel, Function>()
                .ConstructUsing(c => new Function(c));
             CreateMap<ProductViewModel, Product>()
-               .ConstructUsing(c => new Product(c));
+               .ConstructUsing(c => new Product(c));         
             CreateMap<ProductImageViewModel, ProductImage>()
               .ConstructUsing(c => new ProductImage(c));
+           
         }
     }
 }

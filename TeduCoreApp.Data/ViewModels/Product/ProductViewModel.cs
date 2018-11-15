@@ -18,9 +18,6 @@ namespace TeduCoreApp.Data.ViewModels.Product
         [Required]
         public int CategoryId { get; set; }
 
-        [StringLength(255)]
-        public string Image { get; set; }
-
         [Required]
         [DefaultValue(0)]
         public decimal Price { get; set; }
@@ -34,6 +31,9 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public string Description { get; set; }
 
         public string Content { get; set; }
+
+        [MaxLength(500)]
+        public string ThumbnailImage { get; set; }
 
         public bool? HomeFlag { get; set; }
 
@@ -64,5 +64,6 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }
+
     }
 }

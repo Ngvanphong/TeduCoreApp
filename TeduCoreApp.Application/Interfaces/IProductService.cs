@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.Interfaces
 {
     public interface IProductService: IDisposable
     {
-        ProductViewModel Add(ProductViewModel product);
+        Task<ProductViewModel> AddAsync(ProductViewModel product);
 
         void Update(ProductViewModel product);
+
+        void UpdateDb(Product productDb);
 
         void Delete(int id);
 
@@ -22,6 +26,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductViewModel> GetAllPaging(int page, int pageSize, out int totalRow);
 
         ProductViewModel GetById(int id);
+
+        Product GetProductDbById(int id);
 
         List<ProductViewModel> GetHotProduct();
 
@@ -39,6 +45,7 @@ namespace TeduCoreApp.Application.Interfaces
 
        List<ProductViewModel> GetProductRelate(int CategoryId);
 
+    
         void SaveChanges();
     }
 }
