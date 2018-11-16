@@ -13,6 +13,9 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Function, FunctionViewModel>();
             CreateMap<Product, ProductViewModel>();
             CreateMap<ProductImage, ProductImageViewModel>();
+            CreateMap<Size, SizeViewModel>();
+            CreateMap<Color, ColorViewModel>();
+            CreateMap<ProductQuantity, ProductQuantityViewModel>();
         }
     }
 }

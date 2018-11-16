@@ -113,6 +113,9 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<ProductTag, int>, EFRepository<ProductTag, int>>();
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IRepository<ProductImage, int>, EFRepository<ProductImage, int>>();
+            services.AddTransient<IRepository<Size, int>, EFRepository<Size, int>>();
+            services.AddTransient<IRepository<Color, int>, EFRepository<Color, int>>();
+            services.AddTransient<IRepository<ProductQuantity, int>, EFRepository<ProductQuantity, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -120,6 +123,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IProductImageService,ProductImageService>();
+            services.AddTransient<IProductQuantityService, ProductQuantityService>();
 
 
             services.AddMvc()
