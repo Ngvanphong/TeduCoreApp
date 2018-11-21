@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Infrastructure.Interfaces;
@@ -12,22 +13,25 @@ namespace TeduCoreApp.Application.Implementation
 {
     public class PermissionService : IPermissionService
     {
-        IPermissionRepository _permissionRepository;
-        IUnitOfWork _unitOfWork;
+        private IPermissionRepository _permissionRepository;
+        private IUnitOfWork _unitOfWork;
+        private IMapper _mapper;
 
-        public PermissionService(IPermissionRepository permissionRepository, IUnitOfWork unitOfWork)
+        public PermissionService(IPermissionRepository permissionRepository, IUnitOfWork unitOfWork,IMapper mapper)
         {
             _permissionRepository = permissionRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public void Add(PermissionViewModel permission)
         {
-            throw new NotImplementedException();
+            _permissionRepository.Add(_mapper.Map<Permission>(permission));
         }
 
         public void DeleteAll(string functionId)
         {
-            throw new NotImplementedException();
+            List<Permission> listPermission= _permissionRepository.FindAll(x => x.FunctionId == functionId).ToList();
+            _permissionRepository.RemoveMultiple(listPermission);
         }
 
         public void DeleteAllByRoleId(string roleId)
@@ -42,7 +46,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<PermissionViewModel> GetByFunctionId(string functionId)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<PermissionViewModel>>(_permissionRepository.FindAll(x => x.FunctionId == functionId,r=>r.AppRole).ToList());
         }
 
         public List<PermissionViewModel> GetByUserId(Guid userId)
@@ -50,9 +54,9 @@ namespace TeduCoreApp.Application.Implementation
             return Mapper.Map<List<PermissionViewModel>>(_permissionRepository.GetByUserId(userId).ToList());
         }
 
-        public void SaveChange()
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
     }
 }

@@ -72,5 +72,5 @@ var notification = function () {
     })
 }
 }
-notification.init();
+
    

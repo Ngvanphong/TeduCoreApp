@@ -30,5 +30,7 @@ namespace TeduCoreApp.Data.Entities
 
         [ForeignKey("FunctionId")]
         public virtual Function Function { get; set; }
+
+       
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Infrastructure.Interfaces;
 
@@ -11,11 +12,11 @@ namespace TeduCoreApp.Application.Implementation
 {
     public class FunctionService : IFunctionService
     {
-        private IRepository<Function, string> _functionRepository;
+        private IFunctionRepository _functionRepository;
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public FunctionService(IRepository<Function, string> functionRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public FunctionService(IFunctionRepository functionRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _functionRepository = functionRepository;
             _unitOfWork = unitOfWork;
@@ -24,35 +25,40 @@ namespace TeduCoreApp.Application.Implementation
 
         public bool CheckExistedId(string id)
         {
-            throw new NotImplementedException();
+            Function function = _functionRepository.FindById(id);
+            if (function != null)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public FunctionViewModel Create(FunctionViewModel functionVm)
+        public void Create(FunctionViewModel functionVm)
         {
-            throw new NotImplementedException();
+            _functionRepository.Add(_mapper.Map<Function>(functionVm));
         }
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            _functionRepository.Remove(_functionRepository.FindById(id));
         }
 
         public FunctionViewModel Get(string id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<FunctionViewModel>(_functionRepository.FindById(id));
         }
 
         public List<FunctionViewModel> GetAll(string filter)
         {
-            if (string.IsNullOrEmpty(filter))
+            if (!string.IsNullOrEmpty(filter))
             {
-                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
+                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll()
                     .OrderBy(x => x.ParentId).ToList());
                 return query;
             }
             else
             {
-                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Name.Contains(filter) && x.Status == Data.Enums.Status.Active)
+                List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.Name.Contains(filter))
                     .OrderBy(x => x.ParentId).ToList());
                 return query;
             }
@@ -60,22 +66,22 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<FunctionViewModel> GetAllWithParentId(string parentId)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll(x => x.ParentId == parentId).ToList());
         }
 
         public List<FunctionViewModel> GetAllWithPermission(string userId)
         {
-            throw new NotImplementedException();
+           return _mapper.Map<List<FunctionViewModel>>(_functionRepository.GetListFunctionWithPermission(userId));
         }
 
-        public void SaveChange()
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public void Update(FunctionViewModel functionVm)
         {
-            throw new NotImplementedException();
+            _functionRepository.Update(_mapper.Map<Function>(functionVm));
         }
 
         public void Dispose()

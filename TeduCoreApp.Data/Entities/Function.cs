@@ -19,12 +19,12 @@ namespace TeduCoreApp.Data.Entities
         }
         public Function(FunctionViewModel functionVm)
         {
-            this.Name = functionVm.Name;
-            this.URL = functionVm.URL;
-            this.ParentId = functionVm.ParentId;
-            this.IconCss = functionVm.IconCss;
-            this.SortOrder = functionVm.SortOrder;
-            this.Status = Status.Active;
+            Name = functionVm.Name;
+            URL = functionVm.URL;
+            ParentId = functionVm.ParentId;
+            IconCss = functionVm.IconCss;
+            SortOrder = functionVm.SortOrder;
+            Status = Status.Active;
         }
         [Required]
         [StringLength(128)]

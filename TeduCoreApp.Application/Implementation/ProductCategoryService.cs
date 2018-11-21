@@ -16,6 +16,7 @@ namespace TeduCoreApp.Application.Implementation
         private IRepository<ProductCategory, int> _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
+
         public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork,IMapper mapper)
         {
             _productCategoryRepository = productCategoryRepository;
@@ -52,7 +53,7 @@ namespace TeduCoreApp.Application.Implementation
             if (!string.IsNullOrEmpty(keyword))
             {
                 var productCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
-                    .OrderBy(x => x.ParentId).ToList();
+                    .ToList();
                 return _mapper.Map<List<ProductCategoryViewModel>>(productCategory);
             }
             else
@@ -84,7 +85,7 @@ namespace TeduCoreApp.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _unitOfWork.Commit();
         }

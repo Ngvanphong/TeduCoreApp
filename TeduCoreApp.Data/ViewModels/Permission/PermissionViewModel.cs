@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using TeduCoreApp.Data.Entities;
-
+using TeduCoreApp.Data.ViewModels.FunctionVm;
+using TeduCoreApp.Data.ViewModels.Identity;
 
 namespace TeduCoreApp.Data.ViewModels.Permission
 {
@@ -19,10 +20,10 @@ namespace TeduCoreApp.Data.ViewModels.Permission
         public bool CanUpdate { set; get; }
         public bool CanDelete { set; get; }
 
-        public virtual AppRole AppRole { get; set; }
+        public virtual AppRoleViewModel AppRole { get; set; }
 
 
-        public virtual Function Function { get; set; }
+        public virtual FunctionViewModel Function { get; set; }
 
     }
 }

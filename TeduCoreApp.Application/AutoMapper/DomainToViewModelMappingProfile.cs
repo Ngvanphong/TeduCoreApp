@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
+using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -16,6 +17,8 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Size, SizeViewModel>();
             CreateMap<Color, ColorViewModel>();
             CreateMap<ProductQuantity, ProductQuantityViewModel>();
+            CreateMap<AppRole, AppRoleViewModel>();
+            CreateMap<AppUser, AppUserViewModel>();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TeduCoreApp.Application.Interfaces
 {
    public interface IFunctionService:IDisposable
     {
-        FunctionViewModel Create(FunctionViewModel functionVm);
+        void Create(FunctionViewModel functionVm);
 
         List<FunctionViewModel> GetAll(string filter);
 
@@ -22,7 +22,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Delete(string id);
 
-        void SaveChange();
+        void SaveChanges();
 
         bool CheckExistedId(string id);
     }

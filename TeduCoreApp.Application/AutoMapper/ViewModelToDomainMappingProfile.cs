@@ -5,6 +5,7 @@ using System.Text;
 
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
+using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -27,6 +28,10 @@ namespace TeduCoreApp.Application.AutoMapper
              .ConstructUsing(c => new Color(c));
             CreateMap<ProductQuantityViewModel, ProductQuantity>()
              .ConstructUsing(c => new ProductQuantity(c));
+            CreateMap<AppRoleViewModel,AppRole>()
+            .ConstructUsing(c => new AppRole(c.Name,c.Description));
+            CreateMap<AppUserViewModel, AppUser>()
+             .ConstructUsing(c => new AppUser(c));
 
         }
     }

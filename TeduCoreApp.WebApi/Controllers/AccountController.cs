@@ -75,7 +75,6 @@ namespace TeduCoreApp.WebApi.Controllers
                         new Claim("roles", string.Join(";",roles)??string.Empty),
                         new Claim("permissions", JsonConvert.SerializeObject(permissionViewModels)??string.Empty)
                     };
-                var claim4 = User.Claims;
                 var props = new Dictionary<string, string>
                     {
                         {"fullName", user.FullName},
@@ -84,8 +83,7 @@ namespace TeduCoreApp.WebApi.Controllers
                         {"username", user.UserName},
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
                         {ClaimTypes.Role,JsonConvert.SerializeObject(roles) }
-                    };
-               
+                    };             
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);               
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],

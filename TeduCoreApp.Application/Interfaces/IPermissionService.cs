@@ -18,6 +18,6 @@ namespace TeduCoreApp.Application.Interfaces
 
         void DeleteAllByRoleId(string roleId);
 
-        void SaveChange();
+        void SaveChanges();
     }
 }
