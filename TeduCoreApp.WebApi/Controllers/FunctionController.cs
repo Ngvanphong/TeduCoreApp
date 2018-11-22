@@ -131,7 +131,7 @@ namespace TeduCoreApp.WebApi.Controllers
                     }
                 }
                 _permissionService.SaveChanges();
-                return new OkObjectResult("success");
+                return new OkObjectResult("Success");
             }
             return new BadRequestObjectResult(ModelState);
         }

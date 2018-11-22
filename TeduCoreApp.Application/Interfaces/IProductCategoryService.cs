@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.Interfaces
@@ -10,6 +11,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Update(ProductCategoryViewModel productCategoryVm);
 
+        void UpdateDb(ProductCategory productCategory);
+
         void Delete(int id);
 
         List<ProductCategoryViewModel> GetAll();
@@ -19,6 +22,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductCategoryViewModel> GetAllByParentId(int parentId);
 
         ProductCategoryViewModel GetById(int id);
+
+        ProductCategory GetByIdDb(int id);
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
 

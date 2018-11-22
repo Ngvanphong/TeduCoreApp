@@ -26,7 +26,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm)
         {
-            ProductCategory productCategory = Mapper.Map<ProductCategory>(productCategoryVm);
+            ProductCategory productCategory = _mapper.Map<ProductCategory>(productCategoryVm);
             _productCategoryRepository.Add(productCategory);
             return productCategoryVm;
         }
@@ -71,7 +71,12 @@ namespace TeduCoreApp.Application.Implementation
 
         public ProductCategoryViewModel GetById(int id)
         {
-            return Mapper.Map<ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
+            return _mapper.Map<ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
+        }
+
+        public ProductCategory GetByIdDb(int id)
+        {
+            return _productCategoryRepository.FindById(id);
         }
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
@@ -92,8 +97,13 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Update(ProductCategoryViewModel productCategoryVm)
         {
-            ProductCategory productCategogy = Mapper.Map<ProductCategory>(productCategoryVm);
+            ProductCategory productCategogy = _mapper.Map<ProductCategory>(productCategoryVm);
             _productCategoryRepository.Update(productCategogy);
+        }
+
+        public void UpdateDb(ProductCategory productCategory)
+        {
+            _productCategoryRepository.Update(productCategory);
         }
 
         public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)

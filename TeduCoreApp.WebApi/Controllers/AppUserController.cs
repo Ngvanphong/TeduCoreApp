@@ -53,8 +53,9 @@ namespace TeduCoreApp.WebApi.Controllers
         {
             AppUser appUser = await _userManager.FindByIdAsync(id);
             var listRole = await _userManager.GetRolesAsync(appUser);
-            appUser.Roles = listRole;        
-            return new OkObjectResult(_mapper.Map<AppUserViewModel>(appUser));
+            AppUserViewModel appUserVm = _mapper.Map<AppUserViewModel>(appUser);
+            appUserVm.Roles = listRole;
+            return new OkObjectResult(appUserVm);
         }
 
         [HttpPost]

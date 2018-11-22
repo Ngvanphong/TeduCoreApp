@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -60,12 +62,14 @@ namespace TeduCoreApp.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                string oldPath = _productCategoryService.GetById(productCategoryVm.Id).Image;
+                ProductCategory productCategoryDb = _productCategoryService.GetByIdDb(productCategoryVm.Id);
+                string oldPath = productCategoryDb.Image;
                 if (oldPath != productCategoryVm.Image && !string.IsNullOrEmpty(oldPath))
                 {
                     DeleteElementImage(oldPath);
                 }
-                _productCategoryService.Update(productCategoryVm);
+                productCategoryDb.UpdateProductCategory(productCategoryVm);
+                _productCategoryService.UpdateDb(productCategoryDb);
                 _productCategoryService.SaveChanges();
                 return new OkObjectResult(productCategoryVm);
             }

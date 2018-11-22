@@ -26,8 +26,7 @@ namespace TeduCoreApp.Data.Entities
             PhoneNumber = appUserVm.PhoneNumber;
             Email = appUserVm.Email;
             DateCreated = appUserVm.DateCreated;
-            DateModified = appUserVm.DateModified;
-            Roles = appUserVm.Roles;
+            DateModified = appUserVm.DateModified;         
         }
 
         public string FullName { get; set; }
@@ -44,6 +43,6 @@ namespace TeduCoreApp.Data.Entities
 
         public Status Status { get; set; }
 
-        public virtual ICollection<string> Roles { get; set; }
+        
     }
 }

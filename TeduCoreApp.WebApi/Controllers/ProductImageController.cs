@@ -71,7 +71,5 @@ namespace TeduCoreApp.WebApi.Controllers
             System.IO.File.Delete(fullPath);
         }
 
-
-
     }
 }
