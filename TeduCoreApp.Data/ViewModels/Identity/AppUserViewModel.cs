@@ -29,6 +29,12 @@ namespace TeduCoreApp.Data.ViewModels.Identity
 
         public Status Status { get; set; }
 
+        public bool? Gender { get; set; }
+
+        public string Address { get; set; }
+
+        public string Password { get; set; }
+
         public virtual ICollection<string> Roles { get; set; }
     }
 }

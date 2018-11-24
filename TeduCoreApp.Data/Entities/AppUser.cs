@@ -26,7 +26,7 @@ namespace TeduCoreApp.Data.Entities
             PhoneNumber = appUserVm.PhoneNumber;
             Email = appUserVm.Email;
             DateCreated = appUserVm.DateCreated;
-            DateModified = appUserVm.DateModified;         
+            DateModified = appUserVm.DateModified;          
         }
 
         public string FullName { get; set; }
@@ -43,6 +43,10 @@ namespace TeduCoreApp.Data.Entities
 
         public Status Status { get; set; }
 
-        
+        public string Address { get; set; }
+
+        public bool? Gender { get; set; }
+
+
     }
 }

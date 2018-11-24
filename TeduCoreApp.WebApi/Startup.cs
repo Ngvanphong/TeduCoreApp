@@ -124,6 +124,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IProductImageService,ProductImageService>();
             services.AddTransient<IProductQuantityService, ProductQuantityService>();
+            services.AddTransient<IAppUserService, AppUserService>();
 
 
             services.AddMvc()

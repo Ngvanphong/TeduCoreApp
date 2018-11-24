@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -17,12 +19,14 @@ namespace TeduCoreApp.WebApi.Controllers
         private UserManager<AppUser> _userManager;
         private IMapper _mapper;
         private IHostingEnvironment _env;
+        private IAppUserService _appUserService;
 
-        public AppUserController(UserManager<AppUser> userManager, IMapper mapper, IHostingEnvironment env)
+        public AppUserController(UserManager<AppUser> userManager, IMapper mapper, IHostingEnvironment env, IAppUserService appUserService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _env = env;
+            _appUserService = appUserService;
         }
 
         [HttpGet]
@@ -67,7 +71,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 try
                 {
                     AppUser appUser = _mapper.Map<AppUser>(appUserVm);
-                    var result = await _userManager.CreateAsync(appUser);
+                    var result = await _userManager.CreateAsync(appUser, appUserVm.Password);
                     if (result.Succeeded)
                     {
                         var role = appUserVm.Roles.ToArray();
@@ -92,22 +96,20 @@ namespace TeduCoreApp.WebApi.Controllers
                 try
                 {
                     AppUser appUser = await _userManager.FindByIdAsync(appUserVm.Id.ToString());
+                    var roles = await _userManager.GetRolesAsync(appUser);
+                    await _appUserService.RemoveRolesFromUserCustom(appUser.Id.ToString(), roles.ToArray());
                     string oldPath = appUser.Avatar;
-                    AppUser newAppUser = _mapper.Map<AppUser>(appUserVm);
-                    var result = await _userManager.UpdateAsync(newAppUser);
-                    if (result.Succeeded)
+                    if (oldPath != appUserVm.Avatar && !string.IsNullOrEmpty(oldPath))
                     {
-                        if (oldPath != appUserVm.Avatar && !string.IsNullOrEmpty(oldPath))
-                        {
-                            DeleteElementImage(oldPath);
-                        }
-                        var roles = await _userManager.GetRolesAsync(newAppUser);
-                        await _userManager.RemoveFromRolesAsync(newAppUser, roles);
-                        var newRoles = appUserVm.Roles.ToArray();
-                        newRoles = newRoles ?? new string[] { };
-                        await _userManager.AddToRolesAsync(newAppUser, newRoles);
-                        return new OkObjectResult(appUserVm);
+                        DeleteElementImage(oldPath);
                     }
+                    appUser.UpdateUser(appUserVm);
+                    appUser.SecurityStamp = Guid.NewGuid().ToString();
+                    await _userManager.UpdateAsync(appUser);
+                    var newRoles = appUserVm.Roles.ToArray();
+                    newRoles = newRoles ?? new string[] { };
+                    await _userManager.AddToRolesAsync(appUser, newRoles);
+                    return new OkObjectResult(appUserVm);
                 }
                 catch (Exception ex)
                 {
