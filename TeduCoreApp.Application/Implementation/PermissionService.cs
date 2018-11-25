@@ -25,7 +25,12 @@ namespace TeduCoreApp.Application.Implementation
         }
         public void Add(PermissionViewModel permission)
         {
-            _permissionRepository.Add(_mapper.Map<Permission>(permission));
+            _permissionRepository.Add(_mapper.Map<Permission>(permission));          
+        }
+
+        public void AddDb(Permission permission)
+        {
+            _permissionRepository.Update(permission);
         }
 
         public void DeleteAll(string functionId)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -115,7 +116,9 @@ namespace TeduCoreApp.WebApi.Controllers
                 foreach(var permissionVm in data.Permissions)
                 {
                      permissionVm.FunctionId = data.FunctionId;
-                    _permissionService.Add(permissionVm);
+                    Permission permissionDb = new Permission();
+                    permissionDb.UpdatePermission(permissionVm);
+                    _permissionService.AddDb(permissionDb);
                 }
                 List<FunctionViewModel> childFunctions = _functionService.GetAllWithParentId(data.FunctionId);
                 if (childFunctions.Count() > 0)
@@ -126,7 +129,9 @@ namespace TeduCoreApp.WebApi.Controllers
                         foreach (var permissionVm in data.Permissions)
                         {
                             permissionVm.FunctionId = childFunction.Id;
-                            _permissionService.Add(permissionVm);
+                            Permission permissionDb = new Permission();
+                            permissionDb.UpdatePermission(permissionVm);
+                            _permissionService.AddDb(permissionDb);
                         }
                     }
                 }
@@ -135,5 +140,61 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             return new BadRequestObjectResult(ModelState);
         }
+
+        [HttpGet]
+        [Route("getall")]
+        public IActionResult Get(string filter)
+        {
+            return new OkObjectResult(_functionService.GetAll(filter));
+        }
+
+        [HttpGet]
+        [Route("detail/{id}")]
+        public IActionResult Detail(string id)
+        {
+            return new OkObjectResult(_functionService.Get(id));
+        }
+
+        [HttpPost]
+        [Route("add")]
+        public IActionResult Add([FromBody] FunctionViewModel functionVm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _functionService.Add(functionVm);
+                    _functionService.SaveChanges();
+                    return new OkObjectResult(functionVm);
+                }
+                catch(Exception ex)
+                {
+                    return new BadRequestObjectResult(ex);
+                }
+            }
+            return new BadRequestObjectResult(ModelState);
+        }
+
+        [HttpPut]
+        [Route("update")]
+        public IActionResult Update([FromBody] FunctionViewModel functionVm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _functionService.Update(functionVm);
+                    _functionService.SaveChanges();
+                    return new OkObjectResult(functionVm);
+                }
+                catch (Exception ex)
+                {
+                    return new BadRequestObjectResult(ex);
+                }
+            }
+            return new BadRequestObjectResult(ModelState);
+        }
+
+
     }
 }

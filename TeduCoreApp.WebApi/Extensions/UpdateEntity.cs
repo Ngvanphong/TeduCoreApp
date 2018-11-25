@@ -1,5 +1,6 @@
 ﻿using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Identity;
+using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.WebApi.Extensions
@@ -33,6 +34,16 @@ namespace TeduCoreApp.WebApi.Extensions
             appUser.Status = appUserVm.Status;
             appUser.PhoneNumber = appUserVm.PhoneNumber;
             appUser.UserName = appUserVm.UserName;
+        }
+
+        public static void UpdatePermission(this Permission permission,PermissionViewModel permissionVm)
+        {
+            permission.RoleId = permissionVm.RoleId;
+            permission.CanCreate = permissionVm.CanCreate;
+            permission.CanRead = permissionVm.CanRead;
+            permission.CanUpdate = permissionVm.CanUpdate;
+            permission.CanDelete = permissionVm.CanDelete;
+            permission.FunctionId = permissionVm.FunctionId;        
         }
     }
 }

@@ -50,7 +50,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<FunctionViewModel> GetAll(string filter)
         {
-            if (!string.IsNullOrEmpty(filter))
+            if (string.IsNullOrEmpty(filter))
             {
                 List<FunctionViewModel> query = _mapper.Map<List<FunctionViewModel>>(_functionRepository.FindAll()
                     .OrderBy(x => x.ParentId).ToList());
@@ -87,6 +87,11 @@ namespace TeduCoreApp.Application.Implementation
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public void Add(FunctionViewModel functionVm)
+        {
+            _functionRepository.Add(_mapper.Map<Function>(functionVm));           
         }
     }
 }

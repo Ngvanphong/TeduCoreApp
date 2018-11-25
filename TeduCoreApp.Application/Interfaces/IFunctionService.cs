@@ -18,6 +18,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         FunctionViewModel Get(string id);
 
+        void Add(FunctionViewModel functionVm);
+
         void Update(FunctionViewModel functionVm);
 
         void Delete(string id);

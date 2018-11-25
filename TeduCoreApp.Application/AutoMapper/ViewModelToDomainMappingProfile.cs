@@ -6,6 +6,7 @@ using System.Text;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
+using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -32,7 +33,8 @@ namespace TeduCoreApp.Application.AutoMapper
             .ConstructUsing(c => new AppRole(c.Name,c.Description));
             CreateMap<AppUserViewModel, AppUser>()
              .ConstructUsing(c => new AppUser(c));
-
+            CreateMap<PermissionViewModel, Permission>()
+             .ConstructUsing(c => new Permission(c));
         }
     }
 }

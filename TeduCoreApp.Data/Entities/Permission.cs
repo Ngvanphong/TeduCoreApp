@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -10,8 +11,21 @@ namespace TeduCoreApp.Data.Entities
     [Table("Permissions")]
     public class Permission : DomainEntity<int>
     {
+        public Permission()
+        {
+
+        }
+        public Permission(PermissionViewModel permissionVm)
+        {
+            RoleId = permissionVm.RoleId;
+            FunctionId = permissionVm.FunctionId;
+            CanCreate = permissionVm.CanCreate;
+            CanRead = permissionVm.CanRead;
+            CanUpdate = permissionVm.CanUpdate;
+            CanDelete = permissionVm.CanDelete;
+            }
   
-        public Guid RoleId { get; set; }
+        public  Guid RoleId { get; set; }
 
 
         [Required]

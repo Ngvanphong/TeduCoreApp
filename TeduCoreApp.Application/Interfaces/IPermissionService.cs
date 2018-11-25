@@ -14,6 +14,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Add(PermissionViewModel permission);
 
+        void AddDb(Permission permission);
+
         void DeleteAll(string functionId);
 
         void DeleteAllByRoleId(string roleId);
