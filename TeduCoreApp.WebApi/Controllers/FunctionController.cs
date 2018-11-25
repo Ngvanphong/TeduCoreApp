@@ -195,6 +195,15 @@ namespace TeduCoreApp.WebApi.Controllers
             return new BadRequestObjectResult(ModelState);
         }
 
+        [HttpDelete]
+        [Route("delete")]
+        public IActionResult Delete(string id)
+        {
+            _functionService.Delete(id);
+            _functionService.SaveChanges();
+            return new OkObjectResult(id);
+        }
+
 
     }
 }
