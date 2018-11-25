@@ -101,7 +101,7 @@ namespace TeduCoreApp.WebApi.Controllers
                     string oldPath = appUser.Avatar;
                     if (oldPath != appUserVm.Avatar && !string.IsNullOrEmpty(oldPath))
                     {
-                        DeleteElementImage(oldPath);
+                        oldPath.DeletementByString(_env);
                     }
                     appUser.UpdateUser(appUserVm);
                     appUser.SecurityStamp = Guid.NewGuid().ToString();
@@ -126,17 +126,12 @@ namespace TeduCoreApp.WebApi.Controllers
             AppUser appUser = await _userManager.FindByIdAsync(id);
             if (!string.IsNullOrEmpty(appUser.Avatar))
             {
-                DeleteElementImage(appUser.Avatar);
+                appUser.Avatar.DeletementByString(_env);
             }
             await _userManager.DeleteAsync(appUser);
             return new OkObjectResult(id);
         }
 
-        public void DeleteElementImage(string path)
-        {
-            string webHost = _env.WebRootPath;
-            string fullPath = webHost + path;
-            System.IO.File.Delete(fullPath);
-        }
+       
     }
 }

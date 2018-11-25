@@ -9,6 +9,7 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -103,7 +104,7 @@ namespace TeduCoreApp.WebApi.Controllers
             _productService.SaveChanges();
             for (int i = 0; i < listProductImageVm.Count(); i++)
             {
-                DeleteElementImage(listProductImageVm[i].Path);
+                listProductImageVm[i].Path.DeletementByString(_env);
             }
             return Ok();
         }
@@ -120,17 +121,12 @@ namespace TeduCoreApp.WebApi.Controllers
                 _productService.SaveChanges();
                 for (int i = 0; i < listProductImageVm.Count(); i++)
                 {
-                    DeleteElementImage(listProductImageVm[i].Path);
+                    listProductImageVm[i].Path.DeletementByString(_env);
                 }
             }
             return Ok();
         }
 
-        public void DeleteElementImage(string path)
-        {
-            string webHost = _env.WebRootPath;
-            string fullPath = webHost+ path;
-            System.IO.File.Delete(fullPath);
-        }
+       
     }
 }

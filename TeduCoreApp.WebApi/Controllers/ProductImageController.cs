@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -61,15 +62,9 @@ namespace TeduCoreApp.WebApi.Controllers
             ProductImageViewModel productImageVm = _productImageService.GetById(id);
             _productImageService.Delete(id);
             _productImageService.SaveChanges();
-            DeleteElementImage(productImageVm.Path);
+            productImageVm.Path.DeletementByString(_env);
             return new OkObjectResult(id);
         }
-        private void DeleteElementImage(string path)
-        {
-            string webHost = _env.WebRootPath;
-            string fullPath = webHost + path;
-            System.IO.File.Delete(fullPath);
-        }
-
+       
     }
 }

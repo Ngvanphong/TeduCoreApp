@@ -66,7 +66,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 string oldPath = productCategoryDb.Image;
                 if (oldPath != productCategoryVm.Image && !string.IsNullOrEmpty(oldPath))
                 {
-                    DeleteElementImage(oldPath);
+                    oldPath.DeletementByString(_env);
                 }
                 productCategoryDb.UpdateProductCategory(productCategoryVm);
                 _productCategoryService.UpdateDb(productCategoryDb);
@@ -87,7 +87,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 _productCategoryService.SaveChanges();
                 if (!string.IsNullOrEmpty(pathImage))
                 {
-                    DeleteElementImage(pathImage);
+                    pathImage.DeletementByString(_env);
                 }
                 return new OkObjectResult(id);
             }
@@ -97,11 +97,6 @@ namespace TeduCoreApp.WebApi.Controllers
             }
         }
 
-        public void DeleteElementImage(string path)
-        {
-            string webHost = _env.WebRootPath;
-            string fullPath = webHost + path;
-            System.IO.File.Delete(fullPath);
-        }
+       
     }
 }
