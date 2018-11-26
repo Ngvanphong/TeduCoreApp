@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
@@ -15,12 +18,17 @@ namespace TeduCoreApp.Application.Implementation
         private IFunctionRepository _functionRepository;
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private RoleManager<AppRole> _roleManager;
+        private IPermissionRepository _permissionRepository;
 
-        public FunctionService(IFunctionRepository functionRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public FunctionService(IFunctionRepository functionRepository, IUnitOfWork unitOfWork, IMapper mapper,
+            RoleManager<AppRole> roleManager, IPermissionRepository permissionRepository)
         {
             _functionRepository = functionRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _roleManager = roleManager;
+            _permissionRepository = permissionRepository;
         }
 
         public bool CheckExistedId(string id)
@@ -92,6 +100,23 @@ namespace TeduCoreApp.Application.Implementation
         public void Add(FunctionViewModel functionVm)
         {
             _functionRepository.Add(_mapper.Map<Function>(functionVm));           
+        }
+
+        public Task<bool> CheckPermission(string functionId, string action, string[] roles)
+        {
+            var functions = _functionRepository.FindAll();
+            var permissions = _permissionRepository.FindAll();
+            var query = from f in functions
+                        join p in permissions on f.Id equals p.FunctionId
+                        join r in _roleManager.Roles on p.RoleId equals r.Id
+                        where roles.Contains(r.Name) && f.Id == functionId
+                        && ((p.CanCreate && action == "Create")
+                        || (p.CanUpdate && action == "Update")
+                        || (p.CanDelete && action == "Delete")
+                        || (p.CanRead && action == "Read"))
+                        select p;
+            return query.AnyAsync();
+
         }
     }
 }

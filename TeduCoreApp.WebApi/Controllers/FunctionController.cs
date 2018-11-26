@@ -83,7 +83,7 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 foreach(var role in listRole)
                 {
-                    if (!listPermissionVm.Any(x => x.FunctionId == functionId))
+                    if (!listPermissionVm.Any(x => x.RoleId == role.Id))
                     {
                         listPermissionVm.Add(new PermissionViewModel()
                         {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -88,7 +89,8 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 try
                 {
-                    AppRole appRole = _mapper.Map<AppRole>(appRoleVm);
+                    AppRole appRole =  await _roleManager.FindByIdAsync(appRoleVm.Id.ToString());
+                    appRole.UpdateAppRole(appRoleVm);
                     await _roleManager.UpdateAsync(appRole);
                     return new OkObjectResult(appRoleVm);
                 }

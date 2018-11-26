@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -18,7 +19,9 @@ using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Helpers;
+using TeduCoreApp.WebApi.ServiceLocators;
 
 namespace TeduCoreApp.WebApi
 {
@@ -95,20 +98,24 @@ namespace TeduCoreApp.WebApi
             services.AddAutoMapper();
             //var configMappper = AutoMapperConfig.RegisterMappings();
             //services.AddScoped(sp => configMappper.CreateMapper());
-          
+
             //services.AddSingleton(Mapper.Configuration);
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             //UnitOfWork
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
-            //Cliam  
+            //Cliam
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactoryApi>();
 
+            //Permission
+            services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationCrudHandler>();
+
             //Repository
+
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
-            services.AddTransient<IFunctionRepository,FunctionRepository>();
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
             services.AddTransient<IRepository<Product, int>, EFRepository<Product, int>>();
             services.AddTransient<IRepository<ProductTag, int>, EFRepository<ProductTag, int>>();
             services.AddTransient<ITagRepository, TagRepository>();
@@ -122,13 +129,15 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IProductImageService,ProductImageService>();
+            services.AddTransient<IProductImageService, ProductImageService>();
             services.AddTransient<IProductQuantityService, ProductQuantityService>();
             services.AddTransient<IAppUserService, AppUserService>();
 
+            ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 
             services.AddMvc()
                 .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
+      
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -155,8 +164,8 @@ namespace TeduCoreApp.WebApi
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            
             app.UseMvc();
+           
         }
     }
 }

@@ -45,5 +45,10 @@ namespace TeduCoreApp.WebApi.Extensions
             permission.CanDelete = permissionVm.CanDelete;
             permission.FunctionId = permissionVm.FunctionId;        
         }
+        public static void UpdateAppRole(this AppRole appRole, AppRoleViewModel appRoleVm)
+        {
+            appRole.Name = appRoleVm.Name;
+            appRole.Description = appRoleVm.Description;
+        }
     }
 }

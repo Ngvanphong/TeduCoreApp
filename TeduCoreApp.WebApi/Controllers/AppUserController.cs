@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +10,11 @@ using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Identity;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
+
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -20,19 +24,27 @@ namespace TeduCoreApp.WebApi.Controllers
         private IMapper _mapper;
         private IHostingEnvironment _env;
         private IAppUserService _appUserService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public AppUserController(UserManager<AppUser> userManager, IMapper mapper, IHostingEnvironment env, IAppUserService appUserService)
+        public AppUserController(UserManager<AppUser> userManager, IMapper mapper, IHostingEnvironment env, IAppUserService appUserService,
+         IAuthorizationService authorizationService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _env = env;
             _appUserService = appUserService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getlistpaging")]
-        public IActionResult Get(int pageSize, int page = 1, string filter = "")
+        public async Task<IActionResult> Get(int pageSize, int page = 1, string filter = "")
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             var listUser = _userManager.Users;
             int totalRow = 0;
             if (!string.IsNullOrEmpty(filter))
@@ -55,6 +67,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("detail/{id}")]
         public async Task<IActionResult> Detail(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             AppUser appUser = await _userManager.FindByIdAsync(id);
             var listRole = await _userManager.GetRolesAsync(appUser);
             AppUserViewModel appUserVm = _mapper.Map<AppUserViewModel>(appUser);
@@ -70,6 +87,11 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 try
                 {
+                    var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+                    if (hasPermission.Succeeded == false)
+                    {
+                        return new BadRequestObjectResult(CommonConstants.Forbidden);
+                    }
                     AppUser appUser = _mapper.Map<AppUser>(appUserVm);
                     var result = await _userManager.CreateAsync(appUser, appUserVm.Password);
                     if (result.Succeeded)
@@ -95,6 +117,11 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 try
                 {
+                    var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Update);
+                    if (hasPermission.Succeeded == false)
+                    {
+                        return new BadRequestObjectResult(CommonConstants.Forbidden);
+                    }
                     AppUser appUser = await _userManager.FindByIdAsync(appUserVm.Id.ToString());
                     var roles = await _userManager.GetRolesAsync(appUser);
                     await _appUserService.RemoveRolesFromUserCustom(appUser.Id.ToString(), roles.ToArray());
@@ -123,6 +150,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("delete")]
         public async Task<IActionResult> Delete(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             AppUser appUser = await _userManager.FindByIdAsync(id);
             if (!string.IsNullOrEmpty(appUser.Avatar))
             {
@@ -131,7 +163,5 @@ namespace TeduCoreApp.WebApi.Controllers
             await _userManager.DeleteAsync(appUser);
             return new OkObjectResult(id);
         }
-
-       
     }
 }

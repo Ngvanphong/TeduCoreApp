@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Data.ViewModels.Permission;
@@ -17,11 +21,12 @@ namespace TeduCoreApp.Application.Implementation
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
 
+
         public PermissionService(IPermissionRepository permissionRepository, IUnitOfWork unitOfWork,IMapper mapper)
         {
             _permissionRepository = permissionRepository;
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
+            _mapper = mapper;           
         }
         public void Add(PermissionViewModel permission)
         {
@@ -32,6 +37,8 @@ namespace TeduCoreApp.Application.Implementation
         {
             _permissionRepository.Update(permission);
         }
+
+      
 
         public void DeleteAll(string functionId)
         {

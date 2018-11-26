@@ -7,6 +7,7 @@ namespace TeduCoreApp.Utilities.Enums
     public enum RoleEnum
     {
         Admin,
-        Member
+        Staff,
+        Customer
     }
 }

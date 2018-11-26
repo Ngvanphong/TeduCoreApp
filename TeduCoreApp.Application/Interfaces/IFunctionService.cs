@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 
 
@@ -27,5 +28,7 @@ namespace TeduCoreApp.Application.Interfaces
         void SaveChanges();
 
         bool CheckExistedId(string id);
+
+        Task<bool> CheckPermission(string functionId, string action, string[] roles);
     }
 }
