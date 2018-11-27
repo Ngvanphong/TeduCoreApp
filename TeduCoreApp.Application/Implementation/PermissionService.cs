@@ -63,7 +63,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<PermissionViewModel> GetByUserId(Guid userId)
         {
-            return Mapper.Map<List<PermissionViewModel>>(_permissionRepository.GetByUserId(userId).ToList());
+            return _mapper.Map<List<PermissionViewModel>>(_permissionRepository.GetByUserId(userId).ToList());
         }
 
         public void SaveChanges()

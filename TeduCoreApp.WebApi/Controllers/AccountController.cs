@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -58,14 +55,10 @@ namespace TeduCoreApp.WebApi.Controllers
                 var roles = await _userManager.GetRolesAsync(user);
 
                 var permissionViewModels = new List<PermissionViewModel>();
-                try
-                {
-                    permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
-                }
-                catch
-                {
-                }
-                var claims = new []
+
+                permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
+
+                var claims = new[]
                      {
                         new Claim("Id", user.Id.ToString()??string.Empty),
                         new Claim("fullName", user.FullName??string.Empty),
@@ -79,13 +72,13 @@ namespace TeduCoreApp.WebApi.Controllers
                     {
                         {"fullName", user.FullName},
                         {"avatar", user.Avatar },
-                        {ClaimTypes.Email, user.Email},
+                        {"email", user.Email},
                         {"username", user.UserName},
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
-                        {ClaimTypes.Role,JsonConvert.SerializeObject(roles) }
-                    };             
+                        {"roles",JsonConvert.SerializeObject(roles) }
+                    };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);               
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],
                     _config["Tokens:Issuer"],
                      claims,
