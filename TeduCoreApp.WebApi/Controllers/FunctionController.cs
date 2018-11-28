@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
@@ -81,7 +80,7 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             else
             {
-                foreach(var role in listRole)
+                foreach (var role in listRole)
                 {
                     if (!listPermissionVm.Any(x => x.RoleId == role.Id))
                     {
@@ -113,9 +112,9 @@ namespace TeduCoreApp.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 _permissionService.DeleteAll(data.FunctionId);
-                foreach(var permissionVm in data.Permissions)
+                foreach (var permissionVm in data.Permissions)
                 {
-                     permissionVm.FunctionId = data.FunctionId;
+                    permissionVm.FunctionId = data.FunctionId;
                     Permission permissionDb = new Permission();
                     permissionDb.UpdatePermission(permissionVm);
                     _permissionService.AddDb(permissionDb);
@@ -123,7 +122,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 List<FunctionViewModel> childFunctions = _functionService.GetAllWithParentId(data.FunctionId);
                 if (childFunctions.Count() > 0)
                 {
-                    foreach(var childFunction in childFunctions)
+                    foreach (var childFunction in childFunctions)
                     {
                         _permissionService.DeleteAll(childFunction.Id);
                         foreach (var permissionVm in data.Permissions)
@@ -167,7 +166,7 @@ namespace TeduCoreApp.WebApi.Controllers
                     _functionService.SaveChanges();
                     return new OkObjectResult(functionVm);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return new BadRequestObjectResult(ex);
                 }
@@ -203,7 +202,5 @@ namespace TeduCoreApp.WebApi.Controllers
             _functionService.SaveChanges();
             return new OkObjectResult(id);
         }
-
-
     }
 }

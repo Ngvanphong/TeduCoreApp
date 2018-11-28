@@ -1,4 +1,5 @@
 ﻿using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
@@ -49,6 +50,21 @@ namespace TeduCoreApp.WebApi.Extensions
         {
             appRole.Name = appRoleVm.Name;
             appRole.Description = appRoleVm.Description;
+        }
+        public static void UpdateBlog(this Blog blog,BlogViewModel blogVm)
+        {
+            blog.Name = blogVm.Name;
+            blog.Image = blogVm.Image;
+            blog.Status = blogVm.Status;
+            blog.HomeFlag = blogVm.HomeFlag;
+            blog.HotFlag = blogVm.HotFlag;
+            blog.SeoPageTitle = blogVm.SeoPageTitle;
+            blog.SeoAlias = blogVm.SeoAlias;
+            blog.SeoKeywords = blogVm.SeoKeywords;
+            blog.SeoDescription = blogVm.SeoDescription;
+            blog.Tags = blogVm.Tags;
+            blog.Content = blogVm.Content;
+            blog.Description = blogVm.Description;         
         }
     }
 }

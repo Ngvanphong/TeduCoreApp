@@ -54,9 +54,9 @@ namespace TeduCoreApp.WebApi.Controllers
                             {
                                 directory = @"\UploadedFiles\Products\";
                             }
-                            else if (type == "news")
+                            else if (type == "post")
                             {
-                                directory = @"\UploadedFiles\News\";
+                                directory = @"\UploadedFiles\Posts\";
                             }
                             else if (type == "banner")
                             {

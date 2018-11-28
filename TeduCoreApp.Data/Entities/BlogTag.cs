@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -10,6 +11,15 @@ namespace TeduCoreApp.Data.Entities
     [Table("BlogTags")]
     public class BlogTag : DomainEntity<int>
     {
+        public BlogTag()
+        {
+
+        }
+        public BlogTag(BlogTagViewModel blogTagVm)
+        {
+            BlogId = blogTagVm.BlogId;
+            TagId = blogTagVm.TagId;
+        }
 
         public int BlogId { set; get; }
 

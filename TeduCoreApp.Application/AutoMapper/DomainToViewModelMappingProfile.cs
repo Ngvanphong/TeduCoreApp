@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
 {
@@ -21,6 +23,9 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<AppRole, AppRoleViewModel>();
             CreateMap<AppUser, AppUserViewModel>();
             CreateMap<Permission, PermissionViewModel>();
+            CreateMap<Tag, TagViewModel>();
+            CreateMap<BlogTag, BlogTagViewModel>();
+            CreateMap<Blog, BlogViewModel>();
         }
     }
 }

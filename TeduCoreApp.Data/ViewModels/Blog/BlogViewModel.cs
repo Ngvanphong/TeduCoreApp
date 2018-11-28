@@ -4,34 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TeduCoreApp.Data.Enums;
-using TeduCoreApp.Data.Interfaces;
-using TeduCoreApp.Data.ViewModels.Blog;
-using TeduCoreApp.Infrastructure.SharedKernel;
 
-namespace TeduCoreApp.Data.Entities
+namespace TeduCoreApp.Data.ViewModels.Blog
 {
-    [Table("Blogs")]
-    public class Blog : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
+   public class BlogViewModel
     {
-        public Blog() { }
-       
-
-        public Blog(BlogViewModel blogVm)
-        {
-            Name = blogVm.Name;
-            Image = blogVm.Image;
-            Description = blogVm.Description;
-            Content = blogVm.Content;
-            HomeFlag = blogVm.HomeFlag;
-            HotFlag = blogVm.HotFlag;
-            ViewCount = blogVm.ViewCount;
-            Tags = blogVm.Tags;
-            Status = blogVm.Status;
-            SeoPageTitle = blogVm.SeoPageTitle;
-            SeoAlias = blogVm.SeoAlias;
-            SeoKeywords = blogVm.SeoKeywords;
-            SeoDescription = blogVm.SeoDescription;
-        }
+        public int Id { get; set; }
         [Required]
         [MaxLength(256)]
         public string Name { set; get; }
@@ -51,7 +29,8 @@ namespace TeduCoreApp.Data.Entities
 
         public string Tags { get; set; }
 
-        public virtual ICollection<BlogTag> BlogTags { set; get; }
+        public virtual ICollection<BlogTagViewModel> BlogTags { set; get; }
+
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
         public Status Status { set; get; }
@@ -59,7 +38,7 @@ namespace TeduCoreApp.Data.Entities
         [MaxLength(256)]
         public string SeoPageTitle { set; get; }
 
-        [Column(TypeName ="varchar(256)")]
+        [Column(TypeName = "varchar(256)")]
         public string SeoAlias { set; get; }
 
         [MaxLength(256)]

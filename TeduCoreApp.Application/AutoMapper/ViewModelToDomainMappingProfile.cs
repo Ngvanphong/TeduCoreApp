@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
 {
@@ -35,6 +37,12 @@ namespace TeduCoreApp.Application.AutoMapper
              .ConstructUsing(c => new AppUser(c));
             CreateMap<PermissionViewModel, Permission>()
              .ConstructUsing(c => new Permission(c));
+            CreateMap<BlogViewModel, Blog>()
+            .ConstructUsing(c => new Blog(c));
+            CreateMap<TagViewModel, Tag>()
+           .ConstructUsing(c => new Tag(c));
+            CreateMap<BlogTagViewModel, BlogTag>()
+           .ConstructUsing(c => new BlogTag(c));
         }
     }
 }
