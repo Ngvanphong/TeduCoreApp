@@ -18,6 +18,7 @@ using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
+using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Helpers;
@@ -125,6 +126,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<ProductQuantity, int>, EFRepository<ProductQuantity, int>>();
             services.AddTransient<IRepository<Blog, int>, EFRepository<Blog, int>>();
             services.AddTransient<IRepository<BlogTag, int>, EFRepository<BlogTag, int>>();
+            services.AddTransient<IRepository<BlogImage, int>, EFRepository<BlogImage, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -135,12 +137,12 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IProductQuantityService, ProductQuantityService>();
             services.AddTransient<IAppUserService, AppUserService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IBlogImageService, BlogImageService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 
             services.AddMvc()
                 .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-      
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -168,7 +170,6 @@ namespace TeduCoreApp.WebApi
             });
 
             app.UseMvc();
-           
         }
     }
 }

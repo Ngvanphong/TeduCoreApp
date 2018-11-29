@@ -20,6 +20,7 @@ namespace TeduCoreApp.Data.Entities
             ProductId = productImageVm.Id;
             Path = productImageVm.Path;
             Caption = productImageVm.Caption;
+            SwitchImage = productImageVm.SwitchImage;
         }
         public int ProductId { get; set; }
 
@@ -31,5 +32,7 @@ namespace TeduCoreApp.Data.Entities
 
         [StringLength(250)]
         public string Caption { get; set; }
+
+        public bool SwitchImage { get; set; }
     }
 }

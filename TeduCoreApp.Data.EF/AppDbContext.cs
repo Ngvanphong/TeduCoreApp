@@ -35,6 +35,7 @@ namespace TeduCoreApp.Data.EF
         public DbSet<BillDetail> BillDetails { set; get; }
         public DbSet<Blog> Blogs { set; get; }
         public DbSet<BlogTag> BlogTags { set; get; }
+        public DbSet<BlogImage> BlogImages { get; set; }
         public DbSet<Color> Colors { set; get; }
         public DbSet<Contact> Contacts { set; get; }
         public DbSet<Feedback> Feedbacks { set; get; }
@@ -57,6 +58,7 @@ namespace TeduCoreApp.Data.EF
         public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
         public DbSet<Advertistment> Advertistments { get; set; }
         public DbSet<AdvertistmentPosition> AdvertistmentPositions { get; set; }
+       
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

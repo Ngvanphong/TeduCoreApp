@@ -66,5 +66,7 @@ namespace TeduCoreApp.WebApi.Extensions
             blog.Content = blogVm.Content;
             blog.Description = blogVm.Description;         
         }
+
+       
     }
 }

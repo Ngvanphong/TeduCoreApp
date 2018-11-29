@@ -26,6 +26,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Tag, TagViewModel>();
             CreateMap<BlogTag, BlogTagViewModel>();
             CreateMap<Blog, BlogViewModel>();
+            CreateMap<BlogImage, BlogImageViewModel>();
         }
     }
 }

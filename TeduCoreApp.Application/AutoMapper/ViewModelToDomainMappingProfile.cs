@@ -43,6 +43,8 @@ namespace TeduCoreApp.Application.AutoMapper
            .ConstructUsing(c => new Tag(c));
             CreateMap<BlogTagViewModel, BlogTag>()
            .ConstructUsing(c => new BlogTag(c));
+            CreateMap<BlogImageViewModel, BlogImage>()
+          .ConstructUsing(c => new BlogImage(c));
         }
     }
 }
