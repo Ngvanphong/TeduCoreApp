@@ -43,8 +43,14 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductImageViewModel> GetProductImageByProdutId(int productId)
         {
-            return _mapper.Map<List<ProductImageViewModel>>(_productImageRepository.FindAll(x => x.ProductId == productId)
+            return _mapper.Map<List<ProductImageViewModel>>(_productImageRepository.FindAll(x => x.ProductId == productId&&x.SwitchImage==false)
                 .OrderByDescending(i => i.Id).ToList());
+        }
+
+        public List<ProductImageViewModel> GetProductImageContentByProdutId(int productId)
+        {
+            return _mapper.Map<List<ProductImageViewModel>>(_productImageRepository.FindAll(x => x.ProductId == productId)
+               .OrderByDescending(i=>i.SwitchImage).ToList());
         }
 
         public void SaveChanges()

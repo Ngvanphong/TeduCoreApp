@@ -23,6 +23,12 @@ namespace TeduCoreApp.WebApi.Controllers
         }
         
         [HttpGet]
+        [Route("getallImageContent")]
+        public IActionResult GetIamgeContent(int productId)
+        {
+            return new OkObjectResult(_productImageService.GetProductImageContentByProdutId(productId));
+        }
+        [HttpGet]
         [Route("getall")]
         public IActionResult Get(int productId)
         {

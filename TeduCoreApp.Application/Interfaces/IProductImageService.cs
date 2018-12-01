@@ -17,6 +17,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductImageViewModel> GetProductImageByProdutId(int productId);
 
+        List<ProductImageViewModel> GetProductImageContentByProdutId(int productId);
+
         void SaveChanges();
     }
 }
