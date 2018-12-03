@@ -3,6 +3,7 @@ using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Slide;
 
 namespace TeduCoreApp.WebApi.Extensions
 {
@@ -65,6 +66,18 @@ namespace TeduCoreApp.WebApi.Extensions
             blog.Tags = blogVm.Tags;
             blog.Content = blogVm.Content;
             blog.Description = blogVm.Description;         
+        }
+
+        public static void UpdateSlide(this Slide slide, SlideViewModel slideVm)
+        {
+            slide.Name = slideVm.Name;
+            slide.Image = slideVm.Image;
+            slide.Status = slideVm.Status;
+            slide.Url = slideVm.Url;
+            slide.Content = slideVm.Content;
+            slide.Description = slideVm.Description;
+            slide.DisplayOrder = slideVm.DisplayOrder;
+            slide.OrtherPageHome = slideVm.OrtherPageHome;         
         }
 
        

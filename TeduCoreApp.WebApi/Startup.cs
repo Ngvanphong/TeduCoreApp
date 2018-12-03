@@ -127,6 +127,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<Blog, int>, EFRepository<Blog, int>>();
             services.AddTransient<IRepository<BlogTag, int>, EFRepository<BlogTag, int>>();
             services.AddTransient<IRepository<BlogImage, int>, EFRepository<BlogImage, int>>();
+            services.AddTransient<IRepository<Slide, int>, EFRepository<Slide, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -138,6 +139,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IAppUserService, AppUserService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IBlogImageService, BlogImageService>();
+            services.AddTransient<ISlideService, SlideService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 

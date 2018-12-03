@@ -8,7 +8,6 @@ namespace TeduCoreApp.WebApi.Extensions
 {
     public static class DeleteElement
     {
-
         public static void DeletementByString(this string path , IHostingEnvironment env)
         {
             string webHost = env.WebRootPath;

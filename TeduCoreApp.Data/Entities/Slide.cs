@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TeduCoreApp.Data.ViewModels.Slide;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -10,6 +11,22 @@ namespace TeduCoreApp.Data.Entities
     [Table("Slides")]
     public class Slide : DomainEntity<int>
     {
+        public Slide()
+        {
+
+        }
+
+        public Slide(SlideViewModel slideVm)
+        {
+            Name = slideVm.Name;
+            Description = slideVm.Description;
+            Image = slideVm.Image;
+            Url = slideVm.Url;
+            DisplayOrder = slideVm.DisplayOrder;
+            Status = slideVm.Status;
+            Content = slideVm.Content;
+            OrtherPageHome = slideVm.OrtherPageHome;
+        }
         [StringLength(250)]
         [Required]
         public string Name { set; get; }
@@ -29,9 +46,7 @@ namespace TeduCoreApp.Data.Entities
         public bool Status { set; get; }
 
         public string Content { set; get; }
-
-        [StringLength(25)]
-        [Required]
-        public string GroupAlias { get; set; }
+       
+        public bool OrtherPageHome { get; set; }
     }
 }

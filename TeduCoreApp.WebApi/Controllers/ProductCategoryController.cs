@@ -12,13 +12,11 @@ namespace TeduCoreApp.WebApi.Controllers
     public class ProductCategoryController : ApiController
     {
         private IProductCategoryService _productCategoryService;
-        private IUnitOfWork _unitOfWork;
         private IHostingEnvironment _env;
 
-        public ProductCategoryController(IProductCategoryService productCategoryService, IUnitOfWork unitOfWork, IHostingEnvironment env)
+        public ProductCategoryController(IProductCategoryService productCategoryService, IHostingEnvironment env)
         {
             _productCategoryService = productCategoryService;
-            _unitOfWork = unitOfWork;
             _env = env;
         }
 

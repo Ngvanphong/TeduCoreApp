@@ -9,6 +9,7 @@ using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Slide;
 using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -45,6 +46,8 @@ namespace TeduCoreApp.Application.AutoMapper
            .ConstructUsing(c => new BlogTag(c));
             CreateMap<BlogImageViewModel, BlogImage>()
           .ConstructUsing(c => new BlogImage(c));
+            CreateMap<SlideViewModel, Slide>()
+         .ConstructUsing(c => new Slide(c));
         }
     }
 }
