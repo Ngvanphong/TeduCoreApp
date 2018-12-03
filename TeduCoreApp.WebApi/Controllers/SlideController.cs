@@ -60,7 +60,7 @@ namespace TeduCoreApp.WebApi.Controllers
             return new BadRequestObjectResult(ModelState);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public IActionResult Update([FromBody] SlideViewModel slideVm)
         {

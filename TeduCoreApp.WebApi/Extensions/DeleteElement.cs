@@ -10,9 +10,17 @@ namespace TeduCoreApp.WebApi.Extensions
     {
         public static void DeletementByString(this string path , IHostingEnvironment env)
         {
-            string webHost = env.WebRootPath;
-            string fullPath = webHost + path;
-            System.IO.File.Delete(fullPath);
+            try
+            {
+                string webHost = env.WebRootPath;
+                string fullPath = webHost + path;
+                System.IO.File.Delete(fullPath);
+            }
+            catch
+            {
+
+            }
+           
         }
     }
 }
