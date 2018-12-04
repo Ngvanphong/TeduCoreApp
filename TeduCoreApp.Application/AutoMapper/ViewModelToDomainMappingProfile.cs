@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
@@ -48,6 +49,10 @@ namespace TeduCoreApp.Application.AutoMapper
           .ConstructUsing(c => new BlogImage(c));
             CreateMap<SlideViewModel, Slide>()
          .ConstructUsing(c => new Slide(c));
+            CreateMap<BillViewModel, Bill>()
+         .ConstructUsing(c => new Bill(c));
+            CreateMap<BillDetailViewModel, BillDetail>()
+         .ConstructUsing(c => new BillDetail(c));
         }
     }
 }

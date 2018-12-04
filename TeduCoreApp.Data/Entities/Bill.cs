@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.Interfaces;
+using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -15,32 +16,18 @@ namespace TeduCoreApp.Data.Entities
     {
         public Bill() { }
 
-        public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
+        public Bill(BillViewModel billVm)
         {
-            CustomerName = customerName;
-            CustomerAddress = customerAddress;
-            CustomerMobile = customerMobile;
-            CustomerMessage = customerMessage;
-            BillStatus = billStatus;
-            PaymentMethod = paymentMethod;
-            Status = status;
-            CustomerId = customerId;
+            CustomerName = billVm.CustomerName;
+            CustomerAddress = billVm.CustomerAddress;
+            CustomerMobile = billVm.CustomerMobile;
+            CustomerMessage = billVm.CustomerMessage;
+            BillStatus = billVm.BillStatus;
+            PaymentMethod = billVm.PaymentMethod;
+            Status = billVm.Status;
+            CustomerId = billVm.CustomerId;
         }
-
-        public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
-        {
-            Id = id;
-            CustomerName = customerName;
-            CustomerAddress = customerAddress;
-            CustomerMobile = customerMobile;
-            CustomerMessage = customerMessage;
-            BillStatus = billStatus;
-            PaymentMethod = paymentMethod;
-            Status = status;
-            CustomerId = customerId;
-        }
+    
         [Required]
         [MaxLength(256)]
         public string CustomerName { set; get; }
@@ -66,9 +53,8 @@ namespace TeduCoreApp.Data.Entities
 
         [DefaultValue(Status.Active)]
         public Status Status { set; get; } = Status.Active;
-
-     
-        public Guid CustomerId { set; get; }
+   
+        public Guid? CustomerId { set; get; }
 
         [ForeignKey("CustomerId")]
         public virtual AppUser User { set; get; }

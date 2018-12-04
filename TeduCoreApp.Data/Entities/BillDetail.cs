@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
@@ -11,25 +12,14 @@ namespace TeduCoreApp.Data.Entities
     {
         public BillDetail() { }
 
-        public BillDetail(int id, int billId, int productId, int quantity, decimal price, int colorId, int sizeId)
+        public BillDetail(BillDetailViewModel billDetailVm)
         {
-            Id = id;
-            BillId = billId;
-            ProductId = productId;
-            Quantity = quantity;
-            Price = price;
-            ColorId = colorId;
-            SizeId = sizeId;
-        }
-
-        public BillDetail(int billId, int productId, int quantity, decimal price, int colorId, int sizeId)
-        {
-            BillId = billId;
-            ProductId = productId;
-            Quantity = quantity;
-            Price = price;
-            ColorId = colorId;
-            SizeId = sizeId;
+            BillId = billDetailVm.BillId;
+            ProductId = billDetailVm.ProductId;
+            Quantity = billDetailVm.Quantity;
+            Price = billDetailVm.Price;
+            ColorId = billDetailVm.ColorId;
+            SizeId = billDetailVm.SizeId;
         }
         public int BillId { set; get; }
 
