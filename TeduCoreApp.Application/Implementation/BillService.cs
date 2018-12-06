@@ -68,12 +68,12 @@ namespace TeduCoreApp.Application.Implementation
             var query = _billRepository.FindAll();
             if (!string.IsNullOrEmpty(startDate))
             {
-                DateTime dateStart = DateTime.ParseExact(startDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
+                DateTime dateStart = DateTime.ParseExact(startDate, "ddd MMM dd yyyy HH:mm:ss 'GMT 0700 (Indochina Time)'", CultureInfo.InvariantCulture);
                 query = query.Where(x => x.DateCreated >= dateStart);
             }
             if (!string.IsNullOrEmpty(endDate))
             {
-                DateTime dateEnd = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.GetCultureInfo("vi-VN"));
+                DateTime dateEnd = DateTime.ParseExact(endDate, "ddd MMM dd yyyy HH:mm:ss 'GMT 0700 (Indochina Time)'", CultureInfo.InvariantCulture);
                 query = query.Where(x => x.DateCreated <= dateEnd);
             }
             if (!string.IsNullOrEmpty(customerName))
@@ -86,6 +86,7 @@ namespace TeduCoreApp.Application.Implementation
             }
             totalRow = query.Count();
             query= query.OrderByDescending(x => x.DateCreated).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
             return _mapper.Map<List<BillViewModel>>(query.ToList());
         }
 

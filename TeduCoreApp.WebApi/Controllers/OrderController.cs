@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Bill;
+using TeduCoreApp.Utilities.Dtos;
 using TeduCoreApp.WebApi.Signalr;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -25,10 +26,16 @@ namespace TeduCoreApp.WebApi.Controllers
         [HttpGet]
         [Route("getlistpaging")]
         public IActionResult Get(string startDate, string endDate,
-            string customerName, BillStatus billStatus, int page, int pageSize, string filter = null)
+            string customerName, BillStatus billStatus, int pageSize, int page = 1)
         {
             int totalRows = 0;
-            return new OkObjectResult(_billService.GetList(startDate, endDate, customerName, billStatus, page, pageSize, out totalRows));
+            List<BillViewModel> listBillVm = _billService.GetList(startDate, endDate, customerName, billStatus, page, pageSize, out totalRows);
+            return new OkObjectResult(new ApiResultPaging<BillViewModel>() {
+                Items = listBillVm,
+                TotalRows = totalRows,
+                PageIndex=page,
+                PageSize=pageSize,
+            });
         }
 
         [HttpPost]
