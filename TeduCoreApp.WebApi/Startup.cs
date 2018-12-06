@@ -23,6 +23,7 @@ using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Helpers;
 using TeduCoreApp.WebApi.ServiceLocators;
+using TeduCoreApp.WebApi.Signalr;
 
 namespace TeduCoreApp.WebApi
 {
@@ -112,6 +113,9 @@ namespace TeduCoreApp.WebApi
             //Permission
             services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationCrudHandler>();
 
+            //Hup
+            services.AddSingleton<WebHub, WebHub>();
+
             //Repository
 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
@@ -130,6 +134,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<Slide, int>, EFRepository<Slide, int>>();
             services.AddTransient<IRepository<Bill, int>, EFRepository<Bill, int>>();
             services.AddTransient<IRepository<BillDetail, int>, EFRepository<BillDetail, int>>();
+            services.AddTransient<IRepository<BillUserAnnoucement, int>, EFRepository<BillUserAnnoucement, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -143,11 +148,14 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IBlogImageService, BlogImageService>();
             services.AddTransient<ISlideService, SlideService>();
             services.AddTransient<IBillService, BillService>();
+            services.AddTransient<IBillUserAnnoucementService, BillUserAnnoucementService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 
             services.AddMvc()
                 .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -164,7 +172,7 @@ namespace TeduCoreApp.WebApi
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>
@@ -175,6 +183,11 @@ namespace TeduCoreApp.WebApi
             });
 
             app.UseMvc();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<WebHub>("/hub");
+            });
         }
     }
 }

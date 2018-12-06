@@ -46,6 +46,7 @@ namespace TeduCoreApp.Data.EF
         public DbSet<ProductImage> ProductImages { set; get; }
         public DbSet<ProductQuantity> ProductQuantities { set; get; }
         public DbSet<ProductTag> ProductTags { set; get; }
+        public DbSet<BillUserAnnoucement> BillUserAnnoucements { set; get; }
 
         public DbSet<Size> Sizes { set; get; }
         public DbSet<Slide> Slides { set; get; }

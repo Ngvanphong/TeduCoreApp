@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Bill;
+using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
@@ -32,6 +33,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Slide, SlideViewModel>();
             CreateMap<Bill, BillViewModel>();
             CreateMap<BillDetail, BillDetailViewModel>();
+            CreateMap<BillUserAnnoucement, BillUserAnnoucementViewModel>();
         }
     }
 }

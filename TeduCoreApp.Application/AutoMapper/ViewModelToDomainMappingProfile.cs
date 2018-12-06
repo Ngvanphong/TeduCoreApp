@@ -5,6 +5,7 @@ using System.Text;
 
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Bill;
+using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
@@ -53,6 +54,8 @@ namespace TeduCoreApp.Application.AutoMapper
          .ConstructUsing(c => new Bill(c));
             CreateMap<BillDetailViewModel, BillDetail>()
          .ConstructUsing(c => new BillDetail(c));
+            CreateMap<BillUserAnnoucementViewModel, BillUserAnnoucement>()
+        .ConstructUsing(c => new BillUserAnnoucement(c));
         }
     }
 }
