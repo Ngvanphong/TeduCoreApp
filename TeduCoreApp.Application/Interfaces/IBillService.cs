@@ -8,7 +8,7 @@ namespace TeduCoreApp.Application.Interfaces
 {
     public interface IBillService:IDisposable
     {
-        void Add (BillViewModel billVm);
+        int Add (BillViewModel billVm);
 
         void Update(BillViewModel billVm);
 

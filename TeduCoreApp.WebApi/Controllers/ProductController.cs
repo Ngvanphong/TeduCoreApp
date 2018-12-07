@@ -27,6 +27,14 @@ namespace TeduCoreApp.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("getallparents")]
+        public IActionResult GetAll()
+        {
+            return new OkObjectResult(_productService.GetAll());
+        }
+
+
+        [HttpGet]
         [Route("getall")]
         public IActionResult GetAll(string keyword, int? categoryId, string filterHotPromotion, int pageSize = 10, int page = 1)
         {

@@ -22,7 +22,6 @@ namespace TeduCoreApp.Data.ViewModels.Bill
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        [Required]
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
@@ -38,6 +37,6 @@ namespace TeduCoreApp.Data.ViewModels.Bill
 
         public Guid? CustomerId { set; get; }
       
-        public virtual ICollection<BillDetailViewModel> BillDetails { set; get; }
+        public virtual List<BillDetailViewModel> BillDetails { set; get; }
     }
 }

@@ -18,7 +18,6 @@ using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
-using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Helpers;
@@ -113,9 +112,7 @@ namespace TeduCoreApp.WebApi
             //Permission
             services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationCrudHandler>();
 
-            //Hup
-            services.AddSingleton<WebHub, WebHub>();
-
+  
             //Repository
 
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
@@ -155,7 +152,12 @@ namespace TeduCoreApp.WebApi
             services.AddMvc()
                 .AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddSignalR();
+            services.AddSignalR()
+            .AddJsonProtocol(options =>
+            {
+                options.PayloadSerializerSettings.ContractResolver =
+                new DefaultContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -172,7 +174,7 @@ namespace TeduCoreApp.WebApi
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            
+
             app.UseAuthentication();
 
             app.UseMvc(routes =>

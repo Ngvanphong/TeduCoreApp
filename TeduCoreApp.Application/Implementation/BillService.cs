@@ -27,9 +27,12 @@ namespace TeduCoreApp.Application.Implementation
             _mapper = mapper;
         }
 
-        public void Add(BillViewModel billVm)
+        public int Add(BillViewModel billVm)
         {
-            _billRepository.Add(_mapper.Map<Bill>(billVm));
+            Bill bill = new Bill();
+            bill = _mapper.Map<Bill>(billVm);
+            _billRepository.Add(bill);
+            return bill.Id;
         }
 
         public void AddBillDetail(BillDetailViewModel billDetail)
@@ -65,22 +68,26 @@ namespace TeduCoreApp.Application.Implementation
         public List<BillViewModel> GetList(string startDate, string endDate, string customerName,BillStatus? billStatus, 
             int pageIndex,int pageSize, out int totalRow)
         {
+            
+
             var query = _billRepository.FindAll();
             if (!string.IsNullOrEmpty(startDate))
             {
-                DateTime dateStart = DateTime.ParseExact(startDate, "ddd MMM dd yyyy HH:mm:ss 'GMT 0700 (Indochina Time)'", CultureInfo.InvariantCulture);
+                startDate = startDate.Substring(0, 24);
+                DateTime dateStart = DateTime.ParseExact(startDate, "ddd MMM dd yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 query = query.Where(x => x.DateCreated >= dateStart);
             }
             if (!string.IsNullOrEmpty(endDate))
             {
-                DateTime dateEnd = DateTime.ParseExact(endDate, "ddd MMM dd yyyy HH:mm:ss 'GMT 0700 (Indochina Time)'", CultureInfo.InvariantCulture);
+                endDate = endDate.Substring(0, 24);
+                DateTime dateEnd = DateTime.ParseExact(endDate, "ddd MMM dd yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 query = query.Where(x => x.DateCreated <= dateEnd);
             }
             if (!string.IsNullOrEmpty(customerName))
             {
                 query = query.Where(x => x.CustomerName.Contains(customerName));
             }
-            if (billStatus.HasValue)
+            if (billStatus.HasValue&& billStatus!=BillStatus.All)
             {
                 query = query.Where(x => x.BillStatus==billStatus);
             }

@@ -38,9 +38,9 @@ namespace TeduCoreApp.WebApi.Controllers
             BillUserAnnoucementViewModel query = _billUserAnnoucementService.GetById(id);
             if (query == null)
             {
-                BillUserAnnoucement billUserAnnoucement = new BillUserAnnoucement();
+                BillUserAnnoucement billUserAnnoucement = new BillUserAnnoucement() { };
                 billUserAnnoucement.UserId = Guid.Parse(userId);
-                billUserAnnoucement.BillId = query.BillId;
+                billUserAnnoucement.BillId = id;
                 billUserAnnoucement.HasRead = true;
                 _billUserAnnoucementService.AddDb(billUserAnnoucement);
                 _billUserAnnoucementService.SaveChanges();

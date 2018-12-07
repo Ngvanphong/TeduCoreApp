@@ -10,6 +10,7 @@ namespace TeduCoreApp.Data.Enums
         InProgress,
         Returned,
         Cancelled,
-        Completed
+        Completed,
+        All,
     }
 }
