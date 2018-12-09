@@ -132,6 +132,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<Bill, int>, EFRepository<Bill, int>>();
             services.AddTransient<IRepository<BillDetail, int>, EFRepository<BillDetail, int>>();
             services.AddTransient<IRepository<BillUserAnnoucement, int>, EFRepository<BillUserAnnoucement, int>>();
+            services.AddTransient<IRepository<WholePrice, int>, EFRepository<WholePrice, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -146,6 +147,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<ISlideService, SlideService>();
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IBillUserAnnoucementService, BillUserAnnoucementService>();
+            services.AddTransient<IWholePriceService, WholePriceService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 

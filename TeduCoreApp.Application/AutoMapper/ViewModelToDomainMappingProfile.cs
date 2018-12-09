@@ -56,6 +56,9 @@ namespace TeduCoreApp.Application.AutoMapper
          .ConstructUsing(c => new BillDetail(c));
             CreateMap<BillUserAnnoucementViewModel, BillUserAnnoucement>()
         .ConstructUsing(c => new BillUserAnnoucement(c));
+            CreateMap<WholePriceViewModel, WholePrice>()
+      .ConstructUsing(c => new WholePrice(c));
+
         }
     }
 }

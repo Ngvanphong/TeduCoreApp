@@ -34,6 +34,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Bill, BillViewModel>();
             CreateMap<BillDetail, BillDetailViewModel>();
             CreateMap<BillUserAnnoucement, BillUserAnnoucementViewModel>();
+            CreateMap<WholePrice, WholePriceViewModel>();
         }
     }
 }

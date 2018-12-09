@@ -22,8 +22,6 @@ namespace TeduCoreApp.Application.Interfaces
 
         void AddBillDetail(BillDetailViewModel billDetail);
 
-        void AddBillDetailDb(BillDetail billDetailDb);
-
         void DeleteBillDetail(int id);
 
         void DeleteBill(int id);

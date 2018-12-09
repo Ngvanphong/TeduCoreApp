@@ -40,11 +40,6 @@ namespace TeduCoreApp.Application.Implementation
             _billDetailRepository.Add(_mapper.Map<BillDetail>(billDetail));
         }
 
-        public void AddBillDetailDb(BillDetail billDetailDb)
-        {
-            _billDetailRepository.Add(billDetailDb);
-        }
-
         public void DeleteBill(int id)
         {
             _billRepository.Remove(id);

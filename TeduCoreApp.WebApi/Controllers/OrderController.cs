@@ -50,8 +50,6 @@ namespace TeduCoreApp.WebApi.Controllers
             return new OkObjectResult(_billService.GetBillDetails(id));
         }
 
-
-
         [HttpPost]
         [Route("add")]
         public IActionResult Add([FromBody] BillViewModel billVm)
@@ -91,11 +89,6 @@ namespace TeduCoreApp.WebApi.Controllers
         public IActionResult Delete(int id)
         {
             _billService.DeleteBill(id);
-            List<BillDetailViewModel> listBillDetail = _billService.GetBillDetails(id);
-            foreach(var item in listBillDetail)
-            {
-                _billService.DeleteBillDetail(item.Id);
-            }
             _billService.SaveChanges();
             return new OkObjectResult(id);
         }
