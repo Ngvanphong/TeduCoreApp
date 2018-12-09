@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -80,8 +81,8 @@ namespace TeduCoreApp.Data.EF
 
             #endregion Identity Config
 
-           // builder.Entity<BlogTag>().HasKey(x => new { x.TagId, x.BlogId });
-           // builder.Entity<ProductTag>().HasKey(x => new { x.TagId, x.ProductId });
+            // builder.Entity<BlogTag>().HasKey(x => new { x.TagId, x.BlogId });
+            // builder.Entity<ProductTag>().HasKey(x => new { x.TagId, x.ProductId });
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());

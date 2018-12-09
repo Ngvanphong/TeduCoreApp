@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Data.ViewModels.Bill
 {
@@ -19,6 +20,12 @@ namespace TeduCoreApp.Data.ViewModels.Bill
         public int ColorId { get; set; }
 
         public int SizeId { get; set; }
+
+        public virtual ProductViewModel Product { set; get; }
+
+        public virtual ColorViewModel Color { set; get; }
+
+        public virtual SizeViewModel Size { set; get; }
 
     }
 }

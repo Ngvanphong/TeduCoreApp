@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Infrastructure.SharedKernel;
 
@@ -13,8 +11,8 @@ namespace TeduCoreApp.Data.Entities
     {
         public Permission()
         {
-
         }
+
         public Permission(PermissionViewModel permissionVm)
         {
             RoleId = permissionVm.RoleId;
@@ -23,10 +21,9 @@ namespace TeduCoreApp.Data.Entities
             CanRead = permissionVm.CanRead;
             CanUpdate = permissionVm.CanUpdate;
             CanDelete = permissionVm.CanDelete;
-            }
-  
-        public  Guid RoleId { get; set; }
+        }
 
+        public Guid RoleId { get; set; }
 
         [Required]
         [MaxLength(255)]
@@ -38,13 +35,10 @@ namespace TeduCoreApp.Data.Entities
         public bool CanUpdate { set; get; }
         public bool CanDelete { set; get; }
 
-
         [ForeignKey("RoleId")]
         public virtual AppRole AppRole { get; set; }
 
         [ForeignKey("FunctionId")]
         public virtual Function Function { get; set; }
-
-       
     }
 }

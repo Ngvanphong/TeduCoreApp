@@ -1,4 +1,5 @@
 ﻿using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
@@ -78,6 +79,16 @@ namespace TeduCoreApp.WebApi.Extensions
             slide.Description = slideVm.Description;
             slide.DisplayOrder = slideVm.DisplayOrder;
             slide.OrtherPageHome = slideVm.OrtherPageHome;         
+        }
+
+        public static void UpdateBillDetail(this BillDetail billDetail, BillDetailViewModel billDetailVm)
+        {
+         billDetail.BillId = billDetailVm.BillId;
+         billDetail.ProductId = billDetailVm.ProductId;
+         billDetail.Quantity = billDetailVm.Quantity;
+         billDetail.Price = billDetailVm.Price;
+         billDetail.ColorId = billDetailVm.ColorId;
+         billDetail.SizeId = billDetailVm.SizeId;
         }
 
        

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Utilities.Dtos;
@@ -35,6 +36,22 @@ namespace TeduCoreApp.WebApi.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("detail/{id}")]
+        public IActionResult Detail(int id)
+        {
+            return new OkObjectResult(_billService.GetDetail(id));
+        }
+
+        [HttpGet]
+        [Route("getalldetails/{id}")]
+        public IActionResult DetaiBillDetail(int id)
+        {
+            return new OkObjectResult(_billService.GetBillDetails(id));
+        }
+
+
+
         [HttpPost]
         [Route("add")]
         public IActionResult Add([FromBody] BillViewModel billVm)
@@ -42,13 +59,21 @@ namespace TeduCoreApp.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
-                    int billId=_billService.Add(billVm);                
-                    foreach (var billDetail in billVm.BillDetails)
+                {               
+                    var listBillDetails = new List<BillDetailViewModel>();
+                    foreach (var item in billVm.BillDetails)
                     {
-                        billDetail.BillId = billId;
-                        _billService.AddBillDetail(billDetail);
+                        listBillDetails.Add(new BillDetailViewModel()
+                        {                           
+                            ProductId = item.ProductId,
+                            Quantity = item.Quantity,
+                            Price = item.Price,
+                            SizeId = item.SizeId,
+                            ColorId=item.ColorId,
+                        });
                     }
+                    billVm.BillDetails = listBillDetails;
+                    _billService.Add(billVm);
                     _billService.SaveChanges();                 
                     return new OkObjectResult(billVm);
                 }
@@ -59,6 +84,20 @@ namespace TeduCoreApp.WebApi.Controllers
                            
             }
             return new BadRequestObjectResult(ModelState);
+        }
+
+        [HttpDelete]
+        [Route("delete")]
+        public IActionResult Delete(int id)
+        {
+            _billService.DeleteBill(id);
+            List<BillDetailViewModel> listBillDetail = _billService.GetBillDetails(id);
+            foreach(var item in listBillDetail)
+            {
+                _billService.DeleteBillDetail(item.Id);
+            }
+            _billService.SaveChanges();
+            return new OkObjectResult(id);
         }
 
     }

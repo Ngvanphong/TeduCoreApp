@@ -26,6 +26,7 @@ namespace TeduCoreApp.Data.Entities
             PaymentMethod = billVm.PaymentMethod;
             Status = billVm.Status;
             CustomerId = billVm.CustomerId;
+            CustomerEmail = billVm.CustomerEmail;
         }
     
         [Required]
@@ -40,7 +41,9 @@ namespace TeduCoreApp.Data.Entities
         [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        [Required]
+        [MaxLength(256)]
+        public string CustomerEmail { set; get; }
+
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 

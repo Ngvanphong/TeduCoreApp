@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Bill;
 
@@ -20,6 +21,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<BillDetailViewModel> GetBillDetails(int billId);
 
         void AddBillDetail(BillDetailViewModel billDetail);
+
+        void AddBillDetailDb(BillDetail billDetailDb);
 
         void DeleteBillDetail(int id);
 

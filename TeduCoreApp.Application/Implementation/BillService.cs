@@ -40,6 +40,11 @@ namespace TeduCoreApp.Application.Implementation
             _billDetailRepository.Add(_mapper.Map<BillDetail>(billDetail));
         }
 
+        public void AddBillDetailDb(BillDetail billDetailDb)
+        {
+            _billDetailRepository.Add(billDetailDb);
+        }
+
         public void DeleteBill(int id)
         {
             _billRepository.Remove(id);
@@ -57,7 +62,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<BillDetailViewModel> GetBillDetails(int billId)
         {
-            return _mapper.Map<List<BillDetailViewModel>>(_billDetailRepository.FindAll(x => x.BillId == billId).ToList());
+            return _mapper.Map<List<BillDetailViewModel>>(_billDetailRepository
+                .FindAll(x => x.BillId == billId,x=>x.Product,x=>x.Size,x=>x.Color).ToList());
         }
 
         public BillViewModel GetDetail(int id)

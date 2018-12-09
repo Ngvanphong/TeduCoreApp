@@ -23,6 +23,9 @@ namespace TeduCoreApp.Data.ViewModels.Bill
         public string CustomerMobile { set; get; }
 
         [MaxLength(256)]
+        public string CustomerEmail { set; get; }
+
+        [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
         public PaymentMethod PaymentMethod { set; get; }

@@ -12,6 +12,7 @@ namespace TeduCoreApp.Data.Entities
     [Table("Colors")]
     public class Color : DomainEntity<int>
     {
+       
         public Color()
         {
 
