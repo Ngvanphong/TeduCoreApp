@@ -82,7 +82,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],
                     _config["Tokens:Issuer"],
                      claims,
-                    expires: DateTime.UtcNow.AddMinutes(30),
+                    expires: DateTime.UtcNow.AddMinutes(60),
                     signingCredentials: creds);
                 _logger.LogInformation(1, "User logged in.");
 
