@@ -1721,3 +1721,109 @@ END" (0723d8ff)
 2018-12-10T23:37:51.4139089+07:00 0HLIUNN40GAIF:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:44356/favicon.ico   (ca22a1cb)
 2018-12-10T23:37:51.4279674+07:00 0HLIUNN40GAIF:00000010 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\favicon.ico"' (27b0a520)
 2018-12-10T23:37:51.4625559+07:00 0HLIUNN40GAIF:00000010 [INF] Request finished in 37.8239ms 200 image/x-icon (791a596a)
+2018-12-10T23:41:07.7200031+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7415418+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7484974+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7553258+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7603630+07:00  [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7656661+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.7713164+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2018-12-10T23:41:07.9896310+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-10T23:41:09.5107860+07:00  [INF] Executed DbCommand ("93"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-10T23:41:09.6352875+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-10T23:41:09.6775140+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-10T23:41:10.3912630+07:00  [INF] Executed DbCommand ("544"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-10T23:41:10.4706955+07:00  [INF] Executed DbCommand ("67"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-10T23:41:10.4828964+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertistmentPages] AS [a]" (0723d8ff)
+2018-12-10T23:41:10.5097853+07:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-10T23:41:10.5249967+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-10T23:41:10.5470632+07:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-10T23:41:10.5749588+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-10T23:41:10.5942123+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-10T23:41:10.6082618+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-10T23:41:11.1276142+07:00 0HLIUNP5ABTUI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-12-10T23:41:11.7580836+07:00 0HLIUNP5ABTUI:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-10T23:41:16.0234041+07:00 0HLIUNP5ABTUI:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-10T23:41:17.5867663+07:00 0HLIUNP5ABTUJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/css/style.css   (ca22a1cb)
+2018-12-10T23:41:17.8326668+07:00 0HLIUNP5ABTUI:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 6021.9197ms (afa2e885)
+2018-12-10T23:41:17.8371189+07:00 0HLIUNP5ABTUJ:00000001 [INF] The file "/client-side/css/style.css" was not modified (f1f8d725)
+2018-12-10T23:41:18.0372243+07:00 0HLIUNP5ABTUI:00000001 [INF] Request finished in 6780.195ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-10T23:41:18.1012573+07:00 0HLIUNP5ABTUJ:00000001 [INF] Request finished in 358.5997ms 304 text/css (791a596a)
+2018-12-10T23:41:20.9015350+07:00 0HLIUNP5ABTUI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/images/btn_remove.png   (ca22a1cb)
+2018-12-10T23:41:20.9171823+07:00 0HLIUNP5ABTUI:00000002 [INF] Sending file. Request path: '"/client-side/images/btn_remove.png"'. Physical path: '"C:\Users\Nguyenvan.PHONGNGUYEN\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\client-side\images\btn_remove.png"' (27b0a520)
+2018-12-10T23:41:20.9494563+07:00 0HLIUNP5ABTUI:00000002 [INF] Request finished in 46.6311ms 200 image/png (791a596a)
+2018-12-10T23:43:11.1143767+07:00 0HLIUNP5ABTUK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/checkout.html   (ca22a1cb)
+2018-12-10T23:43:11.2082433+07:00 0HLIUNP5ABTUK:00000001 [INF] Request finished in 44.7106ms 404  (791a596a)
+2018-12-10T23:44:50.1381430+07:00 0HLIUNP5ABTUL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-12-10T23:44:50.1538386+07:00 0HLIUNP5ABTUL:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-10T23:44:50.1799590+07:00 0HLIUNP5ABTUL:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-10T23:44:50.2619672+07:00 0HLIUNP5ABTUL:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 95.9756ms (afa2e885)
+2018-12-10T23:44:50.3321273+07:00 0HLIUNP5ABTUL:00000001 [INF] Request finished in 143.1259ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-10T23:44:50.3875524+07:00 0HLIUNP5ABTUL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/css/style.css   (ca22a1cb)
+2018-12-10T23:44:50.3970143+07:00 0HLIUNP5ABTUL:00000002 [INF] The file "/client-side/css/style.css" was not modified (f1f8d725)
+2018-12-10T23:44:50.4105857+07:00 0HLIUNP5ABTUL:00000002 [INF] Request finished in 16.7701ms 304 text/css (791a596a)
+2018-12-10T23:45:04.9169038+07:00 0HLIUNP5ABTUL:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/css/bootstrap.min.css.map   (ca22a1cb)
+2018-12-10T23:45:04.9571534+07:00 0HLIUNP5ABTUL:00000003 [INF] Request finished in 8.9038ms 404  (791a596a)
+2018-12-10T23:47:53.4639530+07:00 0HLIUNP5ABTUM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-12-10T23:47:53.4825252+07:00 0HLIUNP5ABTUM:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-10T23:47:53.4903125+07:00 0HLIUNP5ABTUM:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-10T23:47:54.1503572+07:00 0HLIUNP5ABTUM:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 671.3783ms (afa2e885)
+2018-12-10T23:47:54.2731696+07:00 0HLIUNP5ABTUM:00000001 [INF] Request finished in 725.9267ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-10T23:47:54.3269158+07:00 0HLIUNP5ABTUM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/css/style.css   (ca22a1cb)
+2018-12-10T23:47:54.3739634+07:00 0HLIUNP5ABTUM:00000002 [INF] The file "/client-side/css/style.css" was not modified (f1f8d725)
+2018-12-10T23:47:54.4689118+07:00 0HLIUNP5ABTUM:00000002 [INF] Request finished in 102.3388ms 304 text/css (791a596a)
+2018-12-10T23:47:55.1139149+07:00 0HLIUNP5ABTUM:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/css/bootstrap.min.css.map   (ca22a1cb)
+2018-12-10T23:47:55.1353638+07:00 0HLIUNP5ABTUM:00000003 [INF] Request finished in 12.076ms 404  (791a596a)
+2018-12-10T23:48:09.0722734+07:00 0HLIUNP5ABTUM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2018-12-10T23:48:09.0853946+07:00 0HLIUNP5ABTUM:00000004 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-10T23:48:09.1002776+07:00 0HLIUNP5ABTUM:00000004 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-10T23:48:09.1696102+07:00 0HLIUNP5ABTUM:00000004 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 80.3203ms (afa2e885)
+2018-12-10T23:48:09.2336466+07:00 0HLIUNP5ABTUM:00000004 [INF] Request finished in 121.7612ms 200 text/html; charset=utf-8 (791a596a)
