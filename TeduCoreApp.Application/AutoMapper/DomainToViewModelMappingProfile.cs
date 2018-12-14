@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
@@ -35,6 +36,9 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<BillDetail, BillDetailViewModel>();
             CreateMap<BillUserAnnoucement, BillUserAnnoucementViewModel>();
             CreateMap<WholePrice, WholePriceViewModel>();
+            CreateMap<Advertistment, AdvertistmentViewModel>();
+            CreateMap<AdvertistmentPage, AdvertistmentPageViewModel>();
+            CreateMap<AdvertistmentPosition, AdvertistmentPositionViewModel>();
         }
     }
 }

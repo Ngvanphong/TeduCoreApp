@@ -1,8 +1,10 @@
-﻿<nav>
+﻿@using TeduCoreApp.Data.ViewModels.Product
+@model List<ProductCategoryViewModel>
+<nav>
     <div class="container">
         <div class="nav-inner">
             <div class="mm-toggle-wrap hidden-sm hidden-md hidden-lg">
-                <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Categories</span> </div>
+                <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Danh mục</span> </div>
             </div>
             <!-- BEGIN NAV -->
             <ul id="nav" class="hidden-xs">
@@ -18,289 +20,69 @@
                     </ul>
                 </li>
                 <li class="drop-menu">
-                    <a href="#"> <span>Pages</span> </a>
+                    <a href="#"> <span>Sản phẩm</span> </a>
                     <ul>
-                        <li class="sub-cat">
-                            <a href="shop_grid.html"><span>Shop Grid</span></a>
-                            <ul>
-                                <li> <a href="shop_grid_right.html"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                                <li> <a href="shop_grid_fullwidth.html"> <span>Shop Grid Fullwidth</span> </a> </li>
-                            </ul>
-                        </li>
-                        <li class="sub-cat">
-                            <a href="shop_list.html"> <span>Shop List</span> </a>
-                            <ul>
-                                <li> <a href="shop_list_right.html"> <span>Shop List Right Sidebar</span> </a> </li>
-                            </ul>
-                        </li>
-                        <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
-                        <li> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
-                        <li><a href="checkout.html"><span>Checkout</span></a> </li>
-                        <li> <a href="wishlist.html"> <span>Wishlist</span> </a> </li>
-                        <li><a href="compare.html"><span>Compare</span></a> </li>
-                        <li><a href="quick_view.html"><span>Quick View</span></a> </li>
-                        <li><a href="404error.html"><span>404 Error Page</span></a> </li>
+                        @{
+                            var parent = Model.Where(x => x.ParentId == null);
+                            foreach (var item in parent)
+                            {
+                                if (Model.Except(parent).Where(x => x.ParentId == item.Id).Count() == 0)
+                                {
+                                    var url = "/" + item.SeoAlias + ".pc-" + item.Id + ".html";
+                                    <li> <a href="@url"> <span>@item.Name</span> </a> </li>
+                                }
+                                else
+                                {
+                                    var child = Model.Except(parent).Where(x => x.ParentId == item.Id);
+                                    <li class="sub-cat">
+                                        <a href="#"> <span>@item.Name</span> </a>
+                                        @foreach (var subItem in child)
+                                        {
+                                            var subUrl = "/" + item.SeoAlias + ".pc-" + subItem.Id + ".html";
+                                            <ul><li> <a href="@subUrl"> <span>@subItem.Name</span> </a> </li></ul>
+                                        }
+                                    </li>
+                                }
+                            }
+                        }
                     </ul>
                 </li>
-                <li class="mega-menu">
-                    <a class="level-top" href="shop_grid.html"><span>Smartphones</span></a>
-                    <div class="jtv-menu-block-wrapper">
-                        <div class="jtv-menu-block-wrapper2">
-                            <div class="nav-block jtv-nav-block-center">
-                                <div class="col-1">
-                                    <ul class="level0">
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Micromax Canvas</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Computer Systems</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Digital Timer</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Dell Laptops</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Dish Antenna</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Coolpad Note 3</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Data Cables</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>HTC U11</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Premium Dual</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Coolpad</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Lenovo Phab 2</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Honor 6X</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Lenovo Vibe K5</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Cases & Covers</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Oppo F3 Plus</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Moto G Plus</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Screen Protectors</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Moto G5 Plus</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>HTC U Play</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Infocus Turbo 5</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Lenovo K8 Note</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mobile Chargers</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>VR headsets</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Bluetooth headsets</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Samsung On PRO</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item">
-                                            <a href="shop_grid.html"><span>Sony Xperia XZ</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mobile Phones</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Asus Micromax</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Moto G Plus 4th Gen</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Power Banks</span></a> </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-2">
-                                    <div class="jtv-nav-image1"> <a title="" href="#"><img class="img-responsive" alt="menu_image" src="/client-side/images/menu-img1.jpg"> </a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="mega-menu">
-                    <a class="level-top" href="shop_grid.html"><span>Camera & Photo</span></a>
-                    <div class="jtv-menu-block-wrapper">
-                        <div class="jtv-menu-block-wrapper2">
-                            <div class="nav-block jtv-nav-block-center">
-                                <ul class="level0">
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Mirrorless Cameras</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Fujifilm</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>sports</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Accessories</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Phones & Cases</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Digital Cameras</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Film Photography</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Printers & Scanners</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Projectors</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Tripods & Monopods</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Security Cameras</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Surveillance</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Photograph</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Lighting & Studio</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Flashes</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Action Cameras</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Graphite Croco</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Swiss Military Red</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Hidesign</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Benetton</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Digital SLRs</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Adorama Camera</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Entegron</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Camera & Video</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Focus Camera</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Olympus</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Unique Photo</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Multimeter</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Digital Panel</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Heating Devices</span></a> </li>
-                                        </ul>
-                                    </li>
+
+                @{
+                    var parentDisplays = Model.Where(x => x.ParentId == null && x.HomeFlag == true).OrderBy(x => x.HomeOrder).Take(4);
+                    foreach (var parentDisplay in parentDisplays)
+                    {
+                        if (Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id).Count() == 0)
+                        {
+                            <li class="drop-menu">
+                                @{
+                                    var url = "/" + parentDisplay.SeoAlias + ".pc-" + parentDisplay.Id + ".html";
+                                }
+                                <a href="@url"> <span>@parentDisplay.Name</span> </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="drop-menu">
+                                @{
+                                    var childDisplays = Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id);
+                                }
+                                <a href="#"> <span>@parentDisplay.Name</span> </a>
+                                <ul>
+
+                                    @foreach (var subDisplay in childDisplays)
+                                    {
+                                        var subDisplayUrl = "/" + subDisplay.SeoAlias + ".pc-" + subDisplay.Id + ".html";
+                                        <li> <a href="@subDisplayUrl"> <span>@subDisplay.Name</span> </a> </li>
+                                    }
                                 </ul>
-                            </div>
-                            <div class="jtv-nav-banner">
-                                <div class="jtv-banner-box">
-                                    <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="/client-side/images/menu-img2.jpg" alt="Handbag"> </a> </div>
-                                </div>
-                                <div class="jtv-banner-box">
-                                    <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="/client-side/images/menu-img3.jpg" alt="Handbag"> </a> </div>
-                                </div>
-                                <div class="jtv-banner-box jtv-banner-box_last">
-                                    <div class="jtv-nav-banner-img"> <a href="#"><img class="img-responsive" src="/client-side/images/menu-img4.jpg" alt="Handbag"> </a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="mega-menu">
-                    <a class="level-top" href="shop_grid.html"><span>Apple Store</span></a>
-                    <div class="jtv-menu-block-wrapper">
-                        <div class="jtv-menu-block-wrapper2">
-                            <div class="nav-block jtv-nav-block-center">
-                                <ul class="level0">
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Apple iPhone 7</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Hobo Bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Fabric Bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Backpack Bga</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Laptop Bga</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>TV/Movies</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Print Laptop Bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Office Bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>shoulder bags</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>leather totes</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Comics & Cartoons</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>leather totes</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Office Bag </span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Fabric Bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>WallyPhones</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Professional</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Clutches bag</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Genuine bag </span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>WallyPhones </span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Leather Phones</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Sports</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Vivo Mobiles</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Moto Z Play</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Moto G5 Plus</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Infocus Turbo 5</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Sony Xperia</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Coolpad Mega 3</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Oppo F3 Plus</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Asus Zenfone</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Samsung On8</span></a> </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="mega-menu">
-                    <a class="level-top" href="shop_grid.html"><span>Computers</span></a>
-                    <div class="jtv-menu-block-wrapper">
-                        <div class="jtv-menu-block-wrapper2">
-                            <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
-                                <ul class="level0">
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Desktops</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Accessories</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Computer Systems</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Motherboards</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Computer Scanners</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Tablet PC</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Computer Cables</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Transformer Testing</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Hard Disk Drive</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>RAM Card</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Laptops</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>USB Pen Drive</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Desktop Computer</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Mainframes</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Flash Driv</span></a> </li>
-                                        </ul>
-                                    </li>
-                                    <li class="parent item">
-                                        <a href="shop_grid.html"><span>Industrial Computer</span></a>
-                                        <ul class="level1">
-                                            <li> <a href="shop_grid.html"><span>Connectors</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Graphics Card</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>PCI Cards</span></a> </li>
-                                            <li> <a href="shop_grid.html"><span>Cables & Modules</span></a> </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="nav-block nav-block-right std jtv-menu-box-right"><img class="img-responsive" src="/client-side/images/menu-img5.jpg" alt="menu img"> </div>
-                        </div>
-                    </div>
-                </li>
+                            </li>
+
+                        }
+                    }
+                }
+
                 <li class="mega-menu"> <a class="level-top" href="blog.html"><span>Blog</span></a> </li>
                 <li class="nav-custom-link mega-menu">
                     <a href="#" class="level-top"> <span>Buy this theme</span> </a>

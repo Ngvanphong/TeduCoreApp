@@ -112,27 +112,7 @@ namespace TeduCoreApp.Data.EF
                 _context.Colors.AddRange(listColor);
                 _context.SaveChanges();
             }
-            if (_context.AdvertistmentPages.Count() == 0)
-            {
-                List<AdvertistmentPage> pages = new List<AdvertistmentPage>()
-                {
-                    new AdvertistmentPage() {Id="home", Name="Trang chủ",AdvertistmentPositions = new List<AdvertistmentPosition>(){
-                        new AdvertistmentPosition(){Id="home-left",Name="Bên trái"}
-                    } },
-                    new AdvertistmentPage() {Id="product-cate", Name="Danh mục sản phẩm" ,
-                        AdvertistmentPositions = new List<AdvertistmentPosition>(){
-                        new AdvertistmentPosition(){Id="product-cate-left",Name="Bên trái"}
-                    }},
-                    new AdvertistmentPage() {Id="product-detail", Name="Chi tiết sản phẩm",
-                        AdvertistmentPositions = new List<AdvertistmentPosition>(){
-                        new AdvertistmentPosition(){Id="product-detail-left",Name="Bên trái"}
-                    } },
-
-                };
-                _context.AdvertistmentPages.AddRange(pages);
-                _context.SaveChanges();
-            }
-
+           
 
             if (_context.Slides.Count() == 0)
             {

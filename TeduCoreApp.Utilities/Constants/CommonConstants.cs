@@ -11,5 +11,16 @@ namespace TeduCoreApp.Utilities.Constants
         public const string BlogTag = "Blog";
         public const string Admin = "Admin";
         public const string Forbidden = "Forbidden";
+
+        public class PageName
+        {
+            public const string Home = "Home";
+            public const string Orther = "Orther";         
+        }
+        public class PositonName
+        {
+            public const string Top = "Top";
+            public const string Bottom = "Bottom";
+        }
     }
 }

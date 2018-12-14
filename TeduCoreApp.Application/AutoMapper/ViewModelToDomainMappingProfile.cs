@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
@@ -16,7 +14,7 @@ using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
 {
-    public class ViewModelToDomainMappingProfile:Profile
+    public class ViewModelToDomainMappingProfile : Profile
     {
         public ViewModelToDomainMappingProfile()
         {
@@ -25,7 +23,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<FunctionViewModel, Function>()
                .ConstructUsing(c => new Function(c));
             CreateMap<ProductViewModel, Product>()
-               .ConstructUsing(c => new Product(c));         
+               .ConstructUsing(c => new Product(c));
             CreateMap<ProductImageViewModel, ProductImage>()
               .ConstructUsing(c => new ProductImage(c));
             CreateMap<SizeViewModel, Size>()
@@ -34,8 +32,8 @@ namespace TeduCoreApp.Application.AutoMapper
              .ConstructUsing(c => new Color(c));
             CreateMap<ProductQuantityViewModel, ProductQuantity>()
              .ConstructUsing(c => new ProductQuantity(c));
-            CreateMap<AppRoleViewModel,AppRole>()
-            .ConstructUsing(c => new AppRole(c.Name,c.Description));
+            CreateMap<AppRoleViewModel, AppRole>()
+            .ConstructUsing(c => new AppRole(c.Name, c.Description));
             CreateMap<AppUserViewModel, AppUser>()
              .ConstructUsing(c => new AppUser(c));
             CreateMap<PermissionViewModel, Permission>()
@@ -57,8 +55,13 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<BillUserAnnoucementViewModel, BillUserAnnoucement>()
         .ConstructUsing(c => new BillUserAnnoucement(c));
             CreateMap<WholePriceViewModel, WholePrice>()
-      .ConstructUsing(c => new WholePrice(c));
-
+        .ConstructUsing(c => new WholePrice(c));
+            CreateMap<AdvertistmentViewModel, Advertistment>()
+        .ConstructUsing(c => new Advertistment(c));
+            CreateMap<AdvertistmentPageViewModel, AdvertistmentPage>()
+        .ConstructUsing(c => new AdvertistmentPage(c));
+            CreateMap<AdvertistmentPositionViewModel, AdvertistmentPosition>()
+       .ConstructUsing(c => new AdvertistmentPosition(c));
         }
     }
 }
