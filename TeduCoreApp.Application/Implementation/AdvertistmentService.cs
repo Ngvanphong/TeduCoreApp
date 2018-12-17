@@ -52,9 +52,19 @@ namespace TeduCoreApp.Application.Implementation
             _advertistmentPageRepository.Remove(id);
         }
 
+        public void DeletePositionName(string id)
+        {
+            _advertistmentPositionRepostitory.Remove(id);
+        }
+
         public AdvertistmentViewModel Detail(int id)
         {
             return _mapper.Map<AdvertistmentViewModel>(_advertistmentRepository.FindById(id));
+        }
+
+        public Advertistment DetailDb(int id)
+        {
+            return _advertistmentRepository.FindById(id);
         }
 
         public void Dispose()
@@ -70,8 +80,18 @@ namespace TeduCoreApp.Application.Implementation
                 query = query.Where(x => x.Name.Contains(filter));
             }
             totalRow = query.Count();
-            query = query.OrderByDescending(x => x.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+            query = query.OrderByDescending(x => x.PageId).OrderBy(y=>y.PositionId).Skip((page - 1) * pageSize).Take(pageSize);
             return _mapper.Map<List<AdvertistmentViewModel>>(query.ToList());
+        }
+
+        public List<AdvertistmentPageViewModel> GetAllPage()
+        {
+            return _mapper.Map<List<AdvertistmentPageViewModel>>(_advertistmentPageRepository.FindAll().ToList());
+        }
+
+        public List<AdvertistmentPositionViewModel> GetAllPosition()
+        {
+            return _mapper.Map<List<AdvertistmentPositionViewModel>>(_advertistmentPositionRepostitory.FindAll().ToList());
         }
 
         public List<AdvertistmentViewModel> GetbyPageAndPosition(string pageId, string positonId)

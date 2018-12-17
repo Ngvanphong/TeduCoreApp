@@ -16,7 +16,13 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<AdvertistmentViewModel> GetAll(int page, int pageSize, string filter, out int totalRow);
 
+        List<AdvertistmentPageViewModel> GetAllPage();
+
+        List<AdvertistmentPositionViewModel> GetAllPosition();
+
         AdvertistmentViewModel Detail(int id);
+
+        Advertistment DetailDb(int id);
 
         List<AdvertistmentViewModel> GetbyPageAndPosition(string pageId, string positonId);
 
@@ -25,6 +31,8 @@ namespace TeduCoreApp.Application.Interfaces
         void AddPageName(AdvertistmentPageViewModel advertistmentPageVm);
 
         void DeletePageName(string id);
+
+        void DeletePositionName(string id);
 
         void AddPosition(AdvertistmentPositionViewModel advertistmentPositionVm);
 

@@ -1,4 +1,6 @@
-﻿using TeduCoreApp.Data.Entities;
+﻿using System;
+using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
@@ -89,6 +91,19 @@ namespace TeduCoreApp.WebApi.Extensions
          billDetail.Price = billDetailVm.Price;
          billDetail.ColorId = billDetailVm.ColorId;
          billDetail.SizeId = billDetailVm.SizeId;
+        }
+        
+        public static void UpdateAdvertistment(this Advertistment advertistment, AdvertistmentViewModel advertistmentVm)
+        {
+         advertistment.Name = advertistmentVm.Name;
+         advertistment.Description = advertistmentVm.Description;
+         advertistment.Image = advertistmentVm.Image;
+         advertistment.Url = advertistmentVm.Url;
+         advertistment.PositionId = advertistmentVm.PositionId;
+         advertistment.PageId = advertistmentVm.PageId;
+         advertistment.Status = advertistmentVm.Status;
+         advertistment.DateModified = DateTime.Now;
+         advertistment.SortOrder = advertistmentVm.SortOrder;
         }
 
        

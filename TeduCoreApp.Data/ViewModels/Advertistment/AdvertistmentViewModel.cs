@@ -9,8 +9,8 @@ namespace TeduCoreApp.Data.ViewModels.Advertistment
 {
    public class AdvertistmentViewModel
     {
-        [MaxLength(20)]
-        public string Id { get; set; }
+       
+        public int Id { get; set; }
 
         [StringLength(250)]
         public string Name { get; set; }
@@ -35,6 +35,6 @@ namespace TeduCoreApp.Data.ViewModels.Advertistment
         public DateTime DateModified { set; get; }
         public int SortOrder { set; get; }
 
-        public virtual AdvertistmentPosition AdvertistmentPosition { get; set; }
+        
     }
 }
