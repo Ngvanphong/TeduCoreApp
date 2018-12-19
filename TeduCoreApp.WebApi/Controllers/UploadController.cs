@@ -48,27 +48,27 @@ namespace TeduCoreApp.WebApi.Controllers
                             string directory = string.Empty;
                             if (type == "avatar")
                             {
-                                directory = @"\UploadedFiles\Avatars\";
+                                directory = @"/UploadedFiles/Avatars/";
                             }
                             else if (type == "product")
                             {
-                                directory = @"\UploadedFiles\Products\";
+                                directory = @"/UploadedFiles/Products/";
                             }
                             else if (type == "post")
                             {
-                                directory = @"\UploadedFiles\Posts\";
+                                directory = @"/UploadedFiles/Posts/";
                             }
                             else if (type == "banner")
                             {
-                                directory = @"\UploadedFiles\Banners\";
+                                directory = @"/UploadedFiles/Banners/";
                             }
                             else if (type == "advertistment")
                             {
-                                directory = @"\UploadedFiles\Advertistments\";
+                                directory = @"/UploadedFiles/Advertistments/";
                             }
                             else
                             {
-                                directory = @"\UploadedFiles\";
+                                directory = @"/UploadedFiles/";
                             }
 
                             if (!Directory.Exists(webHost + directory))

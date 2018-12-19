@@ -37,6 +37,7 @@ namespace TeduCoreApp.WebApi.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _config = config;
             _premissionService = premissionService;
+            
         }
 
         [HttpPost]
@@ -77,6 +78,7 @@ namespace TeduCoreApp.WebApi.Controllers
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
                         {"roles",JsonConvert.SerializeObject(roles) }
                     };
+               
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],

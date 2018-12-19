@@ -80,7 +80,7 @@ namespace TeduCoreApp.Application.Implementation
                 query = query.Where(x => x.Name.Contains(filter));
             }
             totalRow = query.Count();
-            query = query.OrderByDescending(x => x.PageId).OrderBy(y=>y.PositionId).Skip((page - 1) * pageSize).Take(pageSize);
+            query = query.OrderByDescending(x => x.PositionId).OrderBy(y=>y.PageId).Skip((page - 1) * pageSize).Take(pageSize);
             return _mapper.Map<List<AdvertistmentViewModel>>(query.ToList());
         }
 
@@ -103,7 +103,7 @@ namespace TeduCoreApp.Application.Implementation
                 query = query.Where(x => x.PositionId == positonId);
             }
 
-            return _mapper.Map<List<AdvertistmentViewModel>>(query.ToList());
+            return _mapper.Map<List<AdvertistmentViewModel>>(query.OrderBy(x=>x.SortOrder).ToList());
         }
 
         public void SaveChanges()

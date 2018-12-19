@@ -21,6 +21,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAll();
 
+        List<ProductViewModel> GetNewProduct(int number);
+
         List<ProductViewModel> GetAll(int? categoryId, string hotPromotion, string keyword, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetAllPaging(int page, int pageSize, out int totalRow);
@@ -29,11 +31,11 @@ namespace TeduCoreApp.Application.Interfaces
 
         Product GetProductDbById(int id);
 
-        List<ProductViewModel> GetHotProduct();
+        List<ProductViewModel> GetHotProduct(int number);
 
         List<ProductViewModel> GetAllHotProduct(int page, int pageSize, out int totalRow);
 
-        List<ProductViewModel> GetPromotionProduct();
+        List<ProductViewModel> GetPromotionProduct(int number);
 
         List<ProductViewModel> GetAllPromotionProduct(int page, int pageSize, out int totalRow);
 

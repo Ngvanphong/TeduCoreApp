@@ -172,9 +172,10 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<ProductViewModel>(_productRepository.FindById(id));
         }
 
-        public List<ProductViewModel> GetHotProduct()
+        public List<ProductViewModel> GetHotProduct(int number)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.HotFlag == true && x.Status == Data.Enums.Status.Active)
+                .OrderByDescending(x=>x.DateModified).Take(number).ToList());
         }
 
         public List<ProductViewModel> GetAllHotProduct(int page, int pageSize, out int totalRow)
@@ -185,9 +186,10 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<ProductViewModel>>(listHotProduct.Take((page - 1) * pageSize).Take(pageSize));
         }
 
-        public List<ProductViewModel> GetPromotionProduct()
+        public List<ProductViewModel> GetPromotionProduct(int number)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.Status == Data.Enums.Status.Active&&x.PromotionPrice.HasValue)
+               .OrderByDescending(x => x.DateModified).Take(number).ToList());
         }
 
         public List<ProductViewModel> GetAllPromotionProduct(int page, int pageSize, out int totalRow)
@@ -234,6 +236,12 @@ namespace TeduCoreApp.Application.Implementation
         {
             List<ProductTag> listProductTags = _productTagRepository.FindAll(x => x.ProductId == productId).ToList();
             _productTagRepository.RemoveMultiple(listProductTags);
+        }
+
+        public List<ProductViewModel> GetNewProduct(int number)
+        {
+            return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
+                .OrderByDescending(x => x.DateModified).Take(number).ToList());
         }
     }
 }

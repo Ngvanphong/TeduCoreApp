@@ -11,19 +11,21 @@ namespace TeduCoreApp.Models
 {
     public class HomeViewModel
     {
+    public List<SlideViewModel> ListSlide { get; set; }
 
-        List<SlideViewModel> listSlide { get; set; }
+    public List<AdvertistmentViewModel> ListAdvertistmentTop { get; set; }
+        
+    public List<AdvertistmentViewModel> ListAdvertistmentBottom { set; get; }
 
-        List<AdvertistmentViewModel> listAdvertistmentTop { get; set; }
+    public List<ProductViewModel> ListNewProduct { get; set; }
+  
+    public List<ProductViewModel> ListHotProduct { get; set; }
 
-        List<AdvertistmentViewModel> listAdvertistmentBottop { set; get; }
+    public List<ProductViewModel> ListPromotionProduct { get; set; }
+   
+    public List<BlogViewModel> ListBlog { get; set; }
 
-        List<ProductViewModel> listNewProduct { get; set; }
+    public string DomainApi { get; set; }
 
-        List<ProductViewModel> listHotProduct { get; set; }
-
-        List<ProductViewModel> listPromotionProduct { get; set; }
-
-        List<BlogViewModel> listBlog { get; set; }
     }
 }

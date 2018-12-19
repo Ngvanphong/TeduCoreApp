@@ -11,7 +11,9 @@ using System;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.EF;
+using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Helpers;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.Services;
@@ -73,9 +75,42 @@ namespace TeduCoreApp
 
             //Repository
             services.AddTransient<IRepository<ProductCategory, int>, EFRepository<ProductCategory, int>>();
+            services.AddTransient<IPermissionRepository, PermissionRepository>();
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
+            services.AddTransient<IRepository<Product, int>, EFRepository<Product, int>>();
+            services.AddTransient<IRepository<ProductTag, int>, EFRepository<ProductTag, int>>();
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IRepository<ProductImage, int>, EFRepository<ProductImage, int>>();
+            services.AddTransient<IRepository<Size, int>, EFRepository<Size, int>>();
+            services.AddTransient<IRepository<Color, int>, EFRepository<Color, int>>();
+            services.AddTransient<IRepository<ProductQuantity, int>, EFRepository<ProductQuantity, int>>();
+            services.AddTransient<IRepository<Blog, int>, EFRepository<Blog, int>>();
+            services.AddTransient<IRepository<BlogTag, int>, EFRepository<BlogTag, int>>();
+            services.AddTransient<IRepository<BlogImage, int>, EFRepository<BlogImage, int>>();
+            services.AddTransient<IRepository<Slide, int>, EFRepository<Slide, int>>();
+            services.AddTransient<IRepository<Bill, int>, EFRepository<Bill, int>>();
+            services.AddTransient<IRepository<BillDetail, int>, EFRepository<BillDetail, int>>();
+            services.AddTransient<IRepository<BillUserAnnoucement, int>, EFRepository<BillUserAnnoucement, int>>();
+            services.AddTransient<IRepository<WholePrice, int>, EFRepository<WholePrice, int>>();
+            services.AddTransient<IRepository<Advertistment, int>, EFRepository<Advertistment, int>>();
+            services.AddTransient<IRepository<AdvertistmentPage, string>, EFRepository<AdvertistmentPage, string>>();
+            services.AddTransient<IRepository<AdvertistmentPosition, string>, EFRepository<AdvertistmentPosition, string>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IPermissionService, PermissionService>();
+            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductImageService, ProductImageService>();
+            services.AddTransient<IProductQuantityService, ProductQuantityService>();
+            services.AddTransient<IAppUserService, AppUserService>();
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IBlogImageService, BlogImageService>();
+            services.AddTransient<ISlideService, SlideService>();
+            services.AddTransient<IBillService, BillService>();
+            services.AddTransient<IBillUserAnnoucementService, BillUserAnnoucementService>();
+            services.AddTransient<IWholePriceService, WholePriceService>();
+            services.AddTransient<IAdvertistmentService, AdvertistmentService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
