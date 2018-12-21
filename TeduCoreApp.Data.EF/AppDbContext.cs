@@ -83,6 +83,9 @@ namespace TeduCoreApp.Data.EF
 
             // builder.Entity<BlogTag>().HasKey(x => new { x.TagId, x.BlogId });
             // builder.Entity<ProductTag>().HasKey(x => new { x.TagId, x.ProductId });
+            builder.Entity<Product>().Property(Product => Product.Price).HasColumnType("decimal(12,3)");
+            builder.Entity<Product>().Property(Product => Product.PromotionPrice).HasColumnType("decimal(12,3)");
+            builder.Entity<Product>().Property(Product => Product.OriginalPrice).HasColumnType("decimal(12,3)");
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());

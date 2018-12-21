@@ -32,8 +32,8 @@ namespace TeduCoreApp.Controllers
             homeVm.ListNewProduct = _productService.GetNewProduct(8);
             homeVm.ListPromotionProduct = _productService.GetPromotionProduct(8);
             homeVm.ListSlide = _slideService.GetAll(false);
-            homeVm.ListAdvertistmentBottom = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositonName.Bottom);
-            homeVm.ListAdvertistmentTop = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositonName.Top);
+            homeVm.ListAdvertistmentBottom = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositionName.Bottom);
+            homeVm.ListAdvertistmentTop = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositionName.Top);
             homeVm.ListBlog = _blogService.GetAll();
             homeVm.DomainApi = _config["DomainApi:Domain"];
             return View(homeVm);

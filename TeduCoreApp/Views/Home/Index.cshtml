@@ -144,7 +144,7 @@
                                                             }
                                                             else
                                                             {
-                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@newProduct.Price@newProduct.Unit</span> </span> </div>
+                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @newProduct.Price@newProduct.Unit</span> </p>
                                                             }
                                                         </div>
                                                     </div>
@@ -187,8 +187,7 @@
                                                             }
                                                             else
                                                             {
-                                                                <div class="price-box"> <span class="regular-price"> <span class="price">@hotProduct.Price@hotProduct.Unit</span> </span> </div>
-
+                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @hotProduct.Price@hotProduct.Unit</span> </p>
                                                             }
                                                         </div>
                                                     </div>
@@ -212,7 +211,7 @@
                                     <div class="item-inner">
                                         <div class="item-img">
                                             <div class="item-img-info">
-                                                <a class="product-image" title="@promotionProduct.Name" href="@urlPromotion"> <img class="img-responsive" alt="@promotionProduct.Name" src="@Model.DomainApi@promotionProduct.ThumbnailImage"> </a>                                  
+                                                <a class="product-image" title="@promotionProduct.Name" href="@urlPromotion"> <img class="img-responsive" alt="@promotionProduct.Name" src="@Model.DomainApi@promotionProduct.ThumbnailImage"> </a>
                                                 <div class="action">  <a href="@urlPromotion" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
                                             </div>
                                         </div>
@@ -249,48 +248,29 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="blog-outer-container">
                 <div class="jtv-title" style="text-align:center">
-                    <h2>Latest Blog</h2>
+                    <h2>Bài viết mới</h2>
                 </div>
                 <div class="blog-inner">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive" alt="Blog" src="/client-side/images/blog-img1.jpg"> </a> </div>
-                        <div class="blog-preview_info">
-                            <h3><a href="blog_single_post.html">Winter Morning ShopMart</a></h3>
-                            <ul class="post-meta">
-                                <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                <li><i class="fa fa-comments"></i><a href="#">12 comments</a> </li>
-                                <li><i class="fa fa-calendar"></i>2017-02-25</li>
-                            </ul>
-                            <div class="blog-preview_desc">In adipiscing leo magna, a vehicula mi convallis ac. Vivamus volutpat, ante nec congue dictum.</div>
-                            <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a>
+                    @foreach (var blog in Model.ListBlog)
+                    {
+                        var urlBlog = "/" + blog.SeoAlias + ".b-" + blog.Id + ".html";
+                        <div class="col-md-4 col-sm-4">
+                            <div class="entry-thumb"> <a href="@urlBlog"> <img class="img-responsive" alt="@blog.Name" src="@Model.DomainApi@blog.Image"> </a> </div>
+                            <div class="blog-preview_info">
+                                <h3><a href="@urlBlog">@blog.Name</a></h3>
+                                <ul class="post-meta">
+                                    @if (blog.ViewCount > 0)
+                                    {
+                                        <li><i class="fa fa-comments"></i><a href="#">@blog.ViewCount</a> </li>
+                                    }
+                                    <li><i class="fa fa-calendar"></i>@blog.DateCreated</li>
+                                </ul>
+                                <div class="blog-preview_desc">@blog.Description</div>
+                                <a class="blog-preview_btn" href="@urlBlog">Xem thêm  <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive" alt="Blog" src="/client-side/images/blog-img1.jpg"> </a> </div>
-                        <div class="blog-preview_info">
-                            <h3><a href="blog_single_post.html">Winter Morning ShopMart</a></h3>
-                            <ul class="post-meta">
-                                <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                <li><i class="fa fa-comments"></i><a href="#">12 comments</a> </li>
-                                <li><i class="fa fa-calendar"></i>2017-02-25</li>
-                            </ul>
-                            <div class="blog-preview_desc">In adipiscing leo magna, a vehicula mi convallis ac. Vivamus volutpat, ante nec congue dictum.</div>
-                            <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive" alt="Blog" src="/client-side/images/blog-img1.jpg"> </a> </div>
-                        <div class="blog-preview_info">
-                            <h3><a href="blog_single_post.html">Perfect for promoting</a></h3>
-                            <ul class="post-meta">
-                                <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                <li><i class="fa fa-comments"></i><a href="#">45 comments</a> </li>
-                                <li><i class="fa fa-calendar"></i>2017-04-05</li>
-                            </ul>
-                            <div class="blog-preview_desc">Nam a dolor dictum, dapibus libero eu, malesuada nulla. Aliquam convallis vulputate augue.</div>
-                            <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
+
+                    }
                 </div>
             </div>
         </div>
@@ -298,91 +278,42 @@
 </div>
 
 <!-- End Latest Blog -->
-<!-- Brand Logo -->
 
-<div class="brand-logo">
-    <div class="container">
-        <div class="slider-items-products">
-            <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-                <div class="slider-items slider-width-col6">
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand3.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand1.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand2.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand4.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand5.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand6.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand2.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img class="img-responsive" src="/client-side/images/brand4.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
+<div class="container">
+    <div class="jtv-title" style="text-align:center; margin-bottom:20px">
+        <h2> </h2>
+    </div>
+    <div class="row">
+        @{int flag = 1;}
+        @foreach (var advertistmentBottom in Model.ListAdvertistmentBottom)
+        {
+            <div class="col-sm-4">
+                <div class="jtv-text-top-banner">
+                    <a href="@advertistmentBottom.Url" title="@advertistmentBottom.Name">
+                        <img class="img-responsive" src="@Model.DomainApi@advertistmentBottom.Image" alt="@advertistmentBottom.Name"> <span class="jtv-b-content top-left">
+                        </span> <span class="jtv-b-content bottom-left">
+                            <span class="banner-label-wrapper">
+                                <span class="title">
+                                    <span class="black-text">@advertistmentBottom.Name</span><br>
+                                </span>
+                                @if (flag == 2)
+                                {
+                                    <span class="title">
+                                        <small>@advertistmentBottom.Description</small>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="title"><small>@advertistmentBottom.Description</small></span><br>
+                                    <span class="btn-buy">Visit Now</span>
+                                }
+                            </span>
+                        </span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="jtv-text-top-banner">
-                <a href="/#" title="">
-                    <img class="img-responsive" src="/client-side/images/banner-img6.jpg" alt=""> <span class="jtv-b-content top-left">
-                        <span class="banner-label-wrapper">
-                            <span class="banner-label small pink-bg">
-                                25%<br>
-                                <em>off</em>
-                            </span>
-                        </span>
-                    </span> <span class="jtv-b-content bottom-left">
-                        <span class="text">Only in our store</span> <span class="title">
-                            <span class="black-text">Special Offer</span><br>
-                            <small>Exclusive Savings</small>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="jtv-text-top-banner">
-                <a href="/#" title="">
-                    <img class="img-responsive" src="/client-side/images/banner-img8.jpg" alt=""> <span class="jtv-b-content top-center">
-                        <span class="title">
-                            <span class="black-text">Smart Camera</span><br>
-                            <small>Superior Image Quality</small>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="jtv-text-top-banner">
-                <a href="/#" title="">
-                    <img class="img-responsive" src="/client-side/images/banner-img7.jpg" alt=""> <span class="jtv-b-content middle-center"> <span class="strong-title">45% OFF</span> </span> <span class="jtv-b-content bottom-center">
-                        <span class="text-left">
-                            <span class="media-body text-right">
-                                <span class="subtitle skincolor">
-                                    Best<br>
-                                    Headphones
-                                </span>
-                            </span>
-                        </span>
-                    </span> <span class="jtv-b-price-box"> <span class="banner-text-wrapper"> <span class="jtv-b-price-text">From</span> <span class="jtv-b-price">$29</span> </span> </span>
-                </a>
-            </div>
-        </div>
+            flag += 1;
+
+        }
     </div>
 </div>

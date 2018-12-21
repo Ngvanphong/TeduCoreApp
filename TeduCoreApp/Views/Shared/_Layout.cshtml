@@ -20,6 +20,8 @@
     <!-- CSS Style -->
     <link rel="stylesheet" href="~/client-side/style.css">
 
+    <link href="~/node_modules/alertifyjs/build/css/alertify.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="cms-index-index cms-home-page">
@@ -28,15 +30,16 @@
     @await Component.InvokeAsync("MobileMenu")
     <div id="page">
         <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
         <!-- Header -->
         @Html.Partial("_Header.cshtml")
         <!-- end header -->
         <!-- Navigation -->
-        @await Component.InvokeAsync("MainNavigation")       
+        @await Component.InvokeAsync("MainNavigation")
         <!-- end nav -->
         @RenderBody()
+
         <!-- Footer -->
         @await Component.InvokeAsync("Footer")
     </div>
@@ -63,8 +66,15 @@
     <!-- rev-slider js -->
     <script type="text/javascript" src="~/client-side/js/rev-slider.js"></script>
 
+    <!-- mustache js -->
+    <script src="~/node_modules/mustache/mustache.min.js"></script>
+    <!-- alertify js -->
+    <script src="~/node_modules/alertifyjs/build/alertify.min.js"></script>
+    <!-- twbs pagination-->
+    <script src="~/node_modules/twbs-pagination/jquery.twbsPagination.min.js"></script>
+
     @RenderSection("Scripts", required: false)
-   
+
     <!--Newsletter Popup Start-->
     <div id="myModal" class="modal fade">
         <div class="modal-dialog newsletter-popup">

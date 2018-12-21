@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.Interfaces
 {
@@ -41,13 +42,14 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
-        List<ProductViewModel> GetAllByCategoryPaging(int CategoryId, int page, int pageSize, string sort, out int totalRow);
+        List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
 
        List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow);
 
        List<ProductViewModel> GetProductRelate(int CategoryId);
 
-    
+       List<TagViewModel> GetAllTag(int number);
+   
         void SaveChanges();
     }
 }

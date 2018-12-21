@@ -17,10 +17,11 @@ namespace TeduCoreApp.Utilities.Constants
             public const string Home = "Home";
             public const string Orther = "Orther";         
         }
-        public class PositonName
+        public class PositionName
         {
             public const string Top = "Top";
             public const string Bottom = "Bottom";
+            public const string Default = "Default";
         }
     }
 }

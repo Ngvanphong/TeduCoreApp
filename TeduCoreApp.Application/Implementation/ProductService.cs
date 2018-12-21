@@ -7,6 +7,7 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Data.ViewModels.Tag;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Helpers;
@@ -202,9 +203,33 @@ namespace TeduCoreApp.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public List<ProductViewModel> GetAllByCategoryPaging(int CategoryId, int page, int pageSize, string sort, out int totalRow)
+        public List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow)
         {
-            throw new NotImplementedException();
+            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active && x.CategoryId == categoryId,c=>c.ProductCategory);
+            switch (sort)
+            {              
+                case "promotion":
+                    query = query.Where(x => x.PromotionPrice.HasValue).OrderBy(x => x.PromotionPrice);
+                    break;
+                case "nameIncrease":
+                    query = query.OrderBy(x => x.Name);
+                    break;
+                case "nameDecrease":
+                    query = query.OrderByDescending(x => x.Name);
+                    break;
+                case "priceIncrease":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                case "priceDecrease":
+                    query = query.OrderByDescending(x => x.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.DateModified);
+                    break;
+            }
+            totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
         public List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow)
@@ -242,6 +267,12 @@ namespace TeduCoreApp.Application.Implementation
         {
             return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
                 .OrderByDescending(x => x.DateModified).Take(number).ToList());
+        }
+
+        public List<TagViewModel> GetAllTag(int number)
+        {
+           return _mapper.Map<List<TagViewModel>>(_tagRepository.FindAll(x => x.Type == CommonConstants.ProductTag)
+               .OrderByDescending(x => x.Id).Take(number).ToList());            
         }
     }
 }
