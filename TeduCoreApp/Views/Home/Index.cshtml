@@ -177,18 +177,18 @@
                                             <div class="info-inner">
                                                 <div class="item-title"> <a title="@hotProduct.Name" href="@urlHot"> @hotProduct.Name </a> </div>
                                                 <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
                                                         <div class="price-box">
                                                             @if (hotProduct.PromotionPrice.HasValue)
-                                                            {
-                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @hotProduct.PromotionPrice@hotProduct.Unit </span> </p>
-                                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @hotProduct.Price@hotProduct.Unit</span> </p>
-                                                            }
-                                                            else
-                                                            {
-                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @hotProduct.Price@hotProduct.Unit</span> </p>
-                                                            }
+            {
+                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @hotProduct.PromotionPrice@hotProduct.Unit </span> </p>
+                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @hotProduct.Price@hotProduct.Unit</span> </p>
+}
+else
+{
+                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @hotProduct.Price@hotProduct.Unit</span> </p>
+}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -219,7 +219,7 @@
                                             <div class="info-inner">
                                                 <div class="item-title"> <a title="@promotionProduct.Name" href="@urlPromotion"> @promotionProduct.Name </a> </div>
                                                 <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
                                                         <div class="price-box">
                                                             <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @promotionProduct.PromotionPrice@promotionProduct.Unit</span> </p>

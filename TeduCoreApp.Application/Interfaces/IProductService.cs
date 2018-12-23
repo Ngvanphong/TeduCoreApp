@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
@@ -8,7 +7,7 @@ using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.Interfaces
 {
-    public interface IProductService: IDisposable
+    public interface IProductService : IDisposable
     {
         Task<ProductViewModel> AddAsync(ProductViewModel product);
 
@@ -40,16 +39,22 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAllPromotionProduct(int page, int pageSize, out int totalRow);
 
-        List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
+        List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, string sort, out int totalRow);
 
         List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
 
-       List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow);
+        List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow);
 
-       List<ProductViewModel> GetProductRelate(int CategoryId);
+        List<ProductViewModel> GetProductRelate(int categoryId, int number);
 
-       List<TagViewModel> GetAllTag(int number);
-   
+        List<ProductViewModel> GetProductUpsell(int number);
+
+        List<TagViewModel> GetAllTag(int number);
+
+        List<TagViewModel> GetTagByProductId(int productId);
+
+        TagViewModel GetTagById(string id);
+
         void SaveChanges();
     }
 }

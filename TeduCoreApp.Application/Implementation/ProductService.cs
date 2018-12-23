@@ -141,8 +141,8 @@ namespace TeduCoreApp.Application.Implementation
             }
             if (!string.IsNullOrEmpty(keyword))
             {
-                int id = 0;
-                bool flagId = int.TryParse(keyword, out id);
+                
+                bool flagId = int.TryParse(keyword, out int id);
                 if (flagId == true)
                 {
                     listProduct = _productRepository
@@ -170,7 +170,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public ProductViewModel GetById(int id)
         {
-            return _mapper.Map<ProductViewModel>(_productRepository.FindById(id));
+            return _mapper.Map<ProductViewModel>(_productRepository.FindById(id,c=>c.ProductCategory));
         }
 
         public List<ProductViewModel> GetHotProduct(int number)
@@ -198,9 +198,38 @@ namespace TeduCoreApp.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
+        public List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, string sort, out int totalRow)
         {
-            throw new NotImplementedException();
+            var products = _productRepository.FindAll(x=>x.Status==Data.Enums.Status.Active);
+            var productTags = _productTagRepository.FindAll();
+            var query = from p in products
+                        join pt in productTags on p.Id equals pt.ProductId
+                        where pt.TagId == tag
+                        select p;
+            switch (sort)
+            {
+                case "promotion":
+                    query = query.Where(x => x.PromotionPrice.HasValue).OrderBy(x => x.PromotionPrice);
+                    break;
+                case "nameIncrease":
+                    query = query.OrderBy(x => x.Name);
+                    break;
+                case "nameDecrease":
+                    query = query.OrderByDescending(x => x.Name);
+                    break;
+                case "priceIncrease":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                case "priceDecrease":
+                    query = query.OrderByDescending(x => x.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.DateModified);
+                    break;
+            }
+            totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
         public List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow)
@@ -237,9 +266,10 @@ namespace TeduCoreApp.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public List<ProductViewModel> GetProductRelate(int CategoryId)
+        public List<ProductViewModel> GetProductRelate(int categoryId,int number)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.CategoryId == categoryId&&x.Status==Data.Enums.Status.Active)
+                .OrderByDescending(x=>x.DateModified).Take(number).ToList());   
         }
 
         public void SaveChanges()
@@ -273,6 +303,28 @@ namespace TeduCoreApp.Application.Implementation
         {
            return _mapper.Map<List<TagViewModel>>(_tagRepository.FindAll(x => x.Type == CommonConstants.ProductTag)
                .OrderByDescending(x => x.Id).Take(number).ToList());            
+        }
+
+        public List<ProductViewModel> GetProductUpsell(int number)
+        {
+            return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
+                .OrderByDescending(x => x.ViewCount).Take(number).ToList());
+        }
+
+        public List<TagViewModel> GetTagByProductId(int productId)
+        {
+            var productTags = _productTagRepository.FindAll();
+            var tags = _tagRepository.FindAll();
+            var query = from pt in productTags
+                        join t in tags on pt.TagId equals t.Id
+                        where pt.ProductId == productId
+                        select t;
+            return _mapper.Map<List<TagViewModel>>(query.OrderBy(x=>x.Name).ToList());
+        }
+
+        public TagViewModel GetTagById(string id)
+        {
+            return _mapper.Map<TagViewModel>(_tagRepository.FindById(id));
         }
     }
 }

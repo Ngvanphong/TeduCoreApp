@@ -1,0 +1,317 @@
+﻿@model ProductDetailViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/client-side/js/cloud-zoom.js"></script>
+}
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
+                    <li> <strong>@Model.ProductDetail.ProductCategory.Name</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-main">
+                    <div class="product-view">
+                        <div class="product-essential">
+                            <form action="#" method="post" id="product">
+                                <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
+                                    <div class="new-label new-top-left"> New </div>
+                                    <div class="product-image">
+                                        <div class="product-full"> <img class="img-responsive" id="product-zoom" src="@Model.DomainApi@Model.ProductDetail.ThumbnailImage" data-zoom-image="@Model.DomainApi@Model.ProductDetail.ThumbnailImage" alt="@Model.ProductDetail.Name" /> </div>
+                                        <div class="more-views">
+                                            <div class="slider-items-products">
+                                                <div id="gallery_01" class="product-flexslider hidden-buttons product-img-thumb">
+                                                    <div class="slider-items slider-width-col4 block-content">
+                                                        @foreach (var productImage in Model.ProductImages)
+                                                        {
+                                                            <div class="more-views-items"> <a href="#" data-image="@Model.DomainApi@productImage.Path" data-zoom-image="@Model.DomainApi@productImage.Path"> <img class="img-responsive" id="product-zoom" src="@Model.DomainApi@productImage.Path" alt="@productImage.Caption" /> </a></div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end: more-images -->
+                                </div>
+                                <div class="product-shop col-lg-7 col-sm-7 col-xs-12">
+
+                                    <div class="product-name">
+                                        <h1>@Model.ProductDetail.Name</h1>
+                                    </div>
+                                    <div class="price-block">
+                                        <div class="price-box">
+                                            @if (Model.ProductDetail.PromotionPrice.HasValue)
+                                            {
+                                                <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> @Model.ProductDetail.PromotionPrice@Model.ProductDetail.Unit </span> </p>
+                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @Model.ProductDetail.Price@Model.ProductDetail.Unit </span> </p>
+
+                                            }
+                                            else
+                                            {
+                                                <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> @Model.ProductDetail.Price@Model.ProductDetail.Unit </span> </p>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="info-orther">
+                                        <p>Giá sỉ:</p>
+                                        @foreach (var wholePrice in Model.WholePrices)
+                                        {
+                                            <p>Số lượng: @wholePrice.FromQuantity đến @wholePrice.ToQuantity => Giá: @wholePrice.Price@Model.ProductDetail.Unit</p>
+                                        }
+                                    </div>
+                                    <div class="short-description">
+                                        <h2>Mô tả</h2>
+                                        <p>@Model.ProductDetail.Description</p>
+                                    </div>
+                                    <div class="form-option">
+                                        <p class="form-option-title">Chọn màu sắc và size:</p>
+                                        <div class="attributes">
+
+                                            <div class="attribute-list">
+                                                <select style="float:left" id="productColor">
+                                                    @foreach (var color in Model.Colors)
+                                                    {
+                                                        <option value="@color.Id">@color.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="attribute-list">
+                                                <select id="productSize">
+                                                    @foreach (var size in Model.Sizes)
+                                                    {
+                                                        <option value="@size.Id">@size.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-box">
+                                            <div class="add-to-cart">
+                                                <div class="pull-left">
+                                                    <div class="custom pull-left">
+                                                        <label>Số lượng :</label>
+                                                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
+                                                        <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
+                                                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
+                                                    </div>
+                                                </div>
+                                                <button onClick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Cart" type="button"><span>Thêm vào giỏ hàng</span></button>
+                                            </div>
+                                            <div class="email-addto-box">
+                                                <ul class="add-to-links">
+                                                    <li> <a class="link-wishlist" title="Yêu thích" href="wishlist.html"><span>Thêm yêu thích</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-share">
+                                        <div class="sendtofriend-print">
+                                            @foreach (var tag in Model.ProductTags)
+                                            {
+                                                var urlTag = "/pt-" + tag.Id + ".html";
+                                                <a href="@urlTag"><i class="fa fa-tag"></i> @tag.Name</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-collateral col-lg-12 col-sm-12 col-xs-12">
+                    <div class="add_info">
+                        <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                            <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Mô tả sản phẩm </a> </li>
+                            <li> <a href="#reviews_tabs" data-toggle="tab">Nhận xét sản phẩm</a> </li>
+                        </ul>
+                        <div id="productTabContent" class="tab-content">
+                            <div class="tab-pane fade in active" id="product_tabs_description">
+                                <div class="std">
+                                    @Html.Raw(Model.ProductDetail.Content)
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="reviews_tabs">
+                                <div class="box-collateral box-reviews" id="customer-reviews">
+                                    <div class="box-reviews1">
+                                        <div class="form-add">
+                                            <form id="review-form" method="post" action="http://www.jtvcommerce.com/review/product/post/id/176/">
+                                                <h3>Nhận xét sản phẩm</h3>
+                                                <fieldset>
+                                                    <div class="review1">
+                                                        <ul class="form-list">
+                                                            <li>
+                                                                <label class="required" for="nickname_field">Tên khách hàng<em>*</em></label>
+                                                                <div class="input-box">
+                                                                    <input type="text" class="input-text" id="nickname_field" name="nickname">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="review2">
+                                                        <ul>
+                                                            <li>
+                                                                <label class="required " for="review_field">Nhận xét<em>*</em></label>
+                                                                <div class="input-box">
+                                                                    <textarea rows="3" cols="5" id="review_field" name="detail"></textarea>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="buttons-set">
+                                                            <button class="button submit" title="Submit Review" type="submit"><span>Nhận xét</span></button>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="box-reviews2">
+                                        <h3>Nhận xét mới nhất:</h3>
+                                        <div class="box visible">
+                                            <ul>
+                                                <li>
+                                                    <div class="review">
+                                                        <h6><a href="#/catalog/product/view/id/59/">Nicely</a></h6>
+                                                        <small>Review by <span>Anthony  Lewis</span>on 1/3/2014 </small>
+                                                        <div class="review-txt last"> Unbeatable service and selection. This store has the best business model I have seen on the net. They are true to their word, and go the extra mile for their customers. I felt like a purchasing partner more than a customer. You have a lifetime client in me. </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="actions col-md-12"> <a class="button view-all" id="revies-button" href="#"><span><span>View all</span></span></a> </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+<!-- Related Products Slider -->
+
+<div class="container">
+    <div class="related-section">
+        <div class="slider-items-products">
+            <div class="related-block">
+                <div class="jtv-block-inner">
+                    <div class="block-title">
+                        <h2>Sản phẩm liên quan</h2>
+                    </div>
+                </div>
+                <div id="related-products-slider" class="product-flexslider hidden-buttons">
+                    <div class="slider-items slider-width-col4 products-grid block-content">
+                        @foreach (var productRelate in Model.ProductRelate)
+                        {
+                            var urlRelate = "/" + productRelate.SeoAlias + ".p-" + productRelate.Id + ".html";
+                            <div class="item">
+                                <div class="item-inner">
+                                    <div class="item-img">
+                                        <div class="item-img-info">
+                                            <a class="product-image" title="@productRelate.Name" href="@urlRelate"> <img class="img-responsive" alt="@productRelate.Name" src="@Model.DomainApi@productRelate.ThumbnailImage"> </a>
+                                            <div class="action">  <a href="@urlRelate" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="info-inner">
+                                            <div class="item-title"> <a title="@productRelate.Name" href="@urlRelate"> @productRelate.Name </a> </div>
+                                            <div class="item-content">
+                                                <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                <div class="item-price">
+                                                    <div class="price-box">
+                                                        @if (productRelate.PromotionPrice.HasValue)
+                                                        {
+                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @productRelate.PromotionPrice@productRelate.Unit </span> </p>
+                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @productRelate.Price@productRelate.Unit </span> </p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @productRelate.Price@productRelate.Unit </span> </p>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Related Products Slider End -->
+<!-- Upsell Product Slider -->
+<div class="container">
+    <div class="upsell-section">
+        <div class="slider-items-products">
+            <div class="upsell-block">
+                <div class="jtv-block-inner">
+                    <div class="block-title">
+                        <h2>Sản phẩm bán chạy</h2>
+                    </div>
+                </div>
+                <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
+                    <div class="slider-items slider-width-col4 products-grid block-content">
+                        @foreach (var upsell in Model.ProductUpsell)
+                        {
+                            var urlUpSell = "/" + upsell.SeoAlias + ".p-" + upsell.Id + ".html";
+                            <div class="item">
+                                <div class="item-inner">
+                                    <div class="item-img">
+                                        <div class="item-img-info">
+                                            <a class="product-image" title="@upsell.Name" href="@urlUpSell"> <img class="img-responsive" alt="@upsell.Name" src="@Model.DomainApi@upsell.ThumbnailImage"> </a>
+                                            <div class="action">  <a href="@urlUpSell" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="info-inner">
+                                            <div class="item-title"> <a title="@upsell.Name" href="@urlUpSell"> @upsell.Name </a> </div>
+                                            <div class="item-content">
+                                                <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                <div class="item-price">
+                                                    <div class="price-box">
+                                                        @if (upsell.PromotionPrice.HasValue)
+                                                        {
+                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> @upsell.PromotionPrice@upsell.Unit </span> </p>
+                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> @upsell.Price@upsell.Unit </span> </p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">@upsell.Price@upsell.Unit </span> </p>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

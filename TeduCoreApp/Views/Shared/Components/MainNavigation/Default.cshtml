@@ -49,7 +49,7 @@
                 </li>
 
                 @{
-                    var parentDisplays = Model.Where(x => x.ParentId == null && x.HomeFlag == true).OrderBy(x => x.HomeOrder).Take(4);
+                    var parentDisplays = Model.Where(x => x.ParentId == null && x.HomeFlag == true).OrderBy(x => x.HomeOrder).Take(5);
                     foreach (var parentDisplay in parentDisplays)
                     {
                         if (Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id).Count() == 0)

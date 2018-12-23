@@ -86,6 +86,7 @@ namespace TeduCoreApp.Data.EF
             builder.Entity<Product>().Property(Product => Product.Price).HasColumnType("decimal(12,3)");
             builder.Entity<Product>().Property(Product => Product.PromotionPrice).HasColumnType("decimal(12,3)");
             builder.Entity<Product>().Property(Product => Product.OriginalPrice).HasColumnType("decimal(12,3)");
+            builder.Entity<WholePrice>().Property(WholePrice => WholePrice.Price).HasColumnType("decimal(12,3)");
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());

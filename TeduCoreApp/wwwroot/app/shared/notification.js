@@ -1,7 +1,5 @@
-﻿
-var notification = function () {
-    var alertify;
-    this.init = function () {
+﻿var notification = function () {
+    this.init = function () {      
         alertify.defaults = {
             // dialogs defaults
             autoReset: true,
@@ -25,7 +23,7 @@ var notification = function () {
 
             // notifier defaults
             notifier: {
-                // auto-dismiss wait time (in seconds)  
+                // auto-dismiss wait time (in seconds)
                 delay: 5,
                 // default position
                 position: 'bottom-right',
@@ -33,7 +31,7 @@ var notification = function () {
                 closeButton: false
             },
 
-            // language resources 
+            // language resources
             glossary: {
                 // dialogs default title
                 title: 'AlertifyJS',
@@ -49,30 +47,26 @@ var notification = function () {
                 input: 'ajs-input',
                 // class name attached to ok button
                 ok: 'ajs-ok',
-                // class name attached to cancel button 
+                // class name attached to cancel button
                 cancel: 'ajs-cancel'
             }
         };
     };
-    var _notify = alertify;
+
     this.printSuccesError = function (message) {
-        _notify.error(message);
+        alertify.error(message);
     };
     this.printSuccesMessage = function (message) {
-        _notify.success(message);
-    };  
+        alertify.success(message);
+    };
     this.printConfirmationDialog = function (message, okCallback) {
-    this._notify.confirm(message, function (e) {
-        if (e) {
-            okCallback();
-        }
-        else {
-
-        };
-    })
+        alertify.confirm(message, function (e) {
+            if (e) {
+                okCallback();
+            }
+            else {
+            };
+        })
+    }
+  
 }
-}
-
-
-
-   

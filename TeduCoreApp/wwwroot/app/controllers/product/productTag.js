@@ -1,20 +1,20 @@
-﻿var productController = function () {
+﻿var productTagController = function () {
     this.initializers = function () {
-        loadData(false);     
+        loadData(false);
         registerEvents();
     }
     registerEvents = function () {
         $('#input-limit').on('change', function () {
             pageSize = $(this).val();
             pageIndex = 1;
-            wrapPaging(totalRowsPaging, function () { loadData(true) },true)
+            wrapPaging(totalRowsPaging, function () { loadData(true) }, true)
         });
         $('#input-sort').on('change', function () {
             pageIndex = 1;
             flagPaging = false;
             if (flagPaging == false) {
                 loadData(true)
-            };            
+            };
         });
     }
 
@@ -28,34 +28,34 @@
         $.ajax({
             type: 'GET',
             data: {
-                id: $('#productCategoryId').text(),
+                tag: $('#productTagyId').text(),
                 sort: $('#input-sort').val(),
                 page: pageIndex,
                 pageSize: pageSize,
             },
-            url: '/product/getProductByCategory',
-            dataType: 'json',           
-            success: function (response) {  
-                totalRowsPaging = response.TotalRows;               
+            url: '/productTag/getProductByTag',
+            dataType: 'json',
+            success: function (response) {
+                totalRowsPaging = response.TotalRows;
                 $.each(response.Items, function (i, item) {
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
                         SeoAlias: item.SeoAlias,
-                        ThumbnailImage:item.ThumbnailImage,
-                        PromotionPrice:item.PromotionPrice,
-                        Price:item.Price,
+                        ThumbnailImage: item.ThumbnailImage,
+                        PromotionPrice: item.PromotionPrice,
+                        Price: item.Price,
                     });
                 });
                 if (render != '') {
                     $('#productContent').html(render);
-                } 
-                if (flagPaging == false) {                 
-                    wrapPaging(response.TotalRows, function () {                        
+                }
+                if (flagPaging == false) {
+                    wrapPaging(response.TotalRows, function () {
                         loadData();
                     }, isPageChanged);
                 }
-               
+
             },
         })
     }
@@ -75,7 +75,7 @@
             first: 'Đầu',
             prev: 'Trước',
             next: 'Tiếp',
-            last: 'Cuối',           
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 pageIndex = p;
                 if (flagPaging == false) {
@@ -84,7 +84,7 @@
                 else {
                     setTimeout(callBack(), 200);
                 }
-                
+
             }
         });
     }
