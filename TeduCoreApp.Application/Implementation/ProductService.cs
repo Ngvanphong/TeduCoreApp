@@ -21,15 +21,17 @@ namespace TeduCoreApp.Application.Implementation
         private IRepository<Product, int> _productRepository;
         private IUnitOfWork _unitOfWork;
         private IRepository<ProductTag, int> _productTagRepository;
+        private IRepository<ProductCategory, int> _productCategoryRepository;
 
         public ProductService(IMapper mapper, ITagRepository tagRepository, IRepository<Product, int> productRepository, IUnitOfWork unitOfWork,
-            IRepository<ProductTag, int> productTagRepository)
+            IRepository<ProductTag, int> productTagRepository, IRepository<ProductCategory, int> productCategoryRepository)
         {
             _mapper = mapper;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _unitOfWork = unitOfWork;
             _productRepository = productRepository;
+            _productCategoryRepository = productCategoryRepository;
         }
 
         public void Dispose()
@@ -193,11 +195,7 @@ namespace TeduCoreApp.Application.Implementation
                .OrderByDescending(x => x.DateModified).Take(number).ToList());
         }
 
-        public List<ProductViewModel> GetAllPromotionProduct(int page, int pageSize, out int totalRow)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, string sort, out int totalRow)
         {
             var products = _productRepository.FindAll(x=>x.Status==Data.Enums.Status.Active);
@@ -325,6 +323,49 @@ namespace TeduCoreApp.Application.Implementation
         public TagViewModel GetTagById(string id)
         {
             return _mapper.Map<TagViewModel>(_tagRepository.FindById(id));
+        }
+
+        public List<ProductViewModel> GetAllPromotionProductByCatygory(int? category, string sort, int page, int pageSize, out int totalRow)
+        {
+            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active && x.PromotionPrice.HasValue);
+            if (category != null)
+            {
+                query = query.Where(x => x.CategoryId == category);
+            }
+            switch (sort)
+            {             
+                case "nameIncrease":
+                    query = query.OrderBy(x => x.Name);
+                    break;
+                case "nameDecrease":
+                    query = query.OrderByDescending(x => x.Name);
+                    break;
+                case "priceIncrease":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                case "priceDecrease":
+                    query = query.OrderByDescending(x => x.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.DateModified);
+                    break;
+            }
+            totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(query.ToList());
+
+
+        }
+
+        public List<ProductCategoryViewModel> GetListCategoryHasPromotion()
+        {
+            var product = _productRepository.FindAll(x => x.PromotionPrice.HasValue);
+            var productCategory = _productCategoryRepository.FindAll();
+            var query = from p in product
+                        join pc in productCategory on p.CategoryId equals pc.Id
+                        select pc;
+            return _mapper.Map<List<ProductCategoryViewModel>>(query.Distinct().ToList());
+
         }
     }
 }

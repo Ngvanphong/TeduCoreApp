@@ -37,7 +37,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetPromotionProduct(int number);
 
-        List<ProductViewModel> GetAllPromotionProduct(int page, int pageSize, out int totalRow);
+        List<ProductViewModel> GetAllPromotionProductByCatygory(int? category,string sort, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, string sort, out int totalRow);
 
@@ -54,6 +54,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<TagViewModel> GetTagByProductId(int productId);
 
         TagViewModel GetTagById(string id);
+
+        List<ProductCategoryViewModel> GetListCategoryHasPromotion();
 
         void SaveChanges();
     }
