@@ -26,7 +26,7 @@
                 // auto-dismiss wait time (in seconds)
                 delay: 5,
                 // default position
-                position: 'bottom-right',
+                position: 'top-right',
                 // adds a close button to notifier messages
                 closeButton: false
             },

@@ -108,7 +108,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ColorViewModel> GetColorByProductId(int productId)
         {
-            return _mapper.Map<List<ColorViewModel>>(_produtQuantityRepository.FindAll(x => x.ProductId == productId).Select(x => x.Color).ToList());
+            return _mapper.Map<List<ColorViewModel>>(_produtQuantityRepository.FindAll(x => x.ProductId == productId).Select(x => x.Color)
+                .OrderBy(x=>x.Name).Distinct().ToList());
         }
 
         public List<ColorViewModel> GetListColor()
@@ -134,7 +135,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<SizeViewModel> GetSizeByProductId(int productId)
         {
-            return _mapper.Map<List<SizeViewModel>>(_produtQuantityRepository.FindAll(x => x.ProductId == productId).Select(x => x.Size).ToList());
+            return _mapper.Map<List<SizeViewModel>>(_produtQuantityRepository.FindAll(x => x.ProductId == productId).Select(x => x.Size)
+                .OrderBy(x=>x.Name).Distinct().ToList());
         }
 
         public void SaveChanges()

@@ -41,5 +41,7 @@ namespace TeduCoreApp.Controllers
             productDetail.WholePrices = _wholePriceService.GetAllByProductId(id);
             return View(productDetail);
         }
+       
+
     }
 }

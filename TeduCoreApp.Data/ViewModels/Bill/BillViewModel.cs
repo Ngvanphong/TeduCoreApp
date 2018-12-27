@@ -39,7 +39,16 @@ namespace TeduCoreApp.Data.ViewModels.Bill
         public Status Status { set; get; } 
 
         public Guid? CustomerId { set; get; }
-      
+
+   
+        public decimal? FeeShipping { get; set; }
+
+  
+        public decimal? TotalMoneyOrder { get; set; }
+
+   
+        public decimal? TotalMoneyPayment { get; set; }
+
         public virtual List<BillDetailViewModel> BillDetails { set; get; }
     }
 }

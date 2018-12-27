@@ -1,0 +1,241 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- main-container -->
+<div class="main-container col1-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-12 col-xs-12">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h1>Thanh toán</h1>
+                    </div>
+                    <div class="page-content checkout-page">
+                        <h3 class="checkout-sep">1.Thanh toán như khách hay đăng nhập</h3>
+                        <div class="box-border">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                                                       
+                                    <ul>
+                                        <li>
+                                            <label>
+                                                <input type="radio" checked name="radio1">
+                                                Không sử dụng thông tin đăng nhập
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="radio1">
+                                                Sử dụng thông tin đăng nhập
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <br>                                                                     
+                                </div>
+                                <div class="col-sm-6">                                                         
+                                    <label>Tài khoản</label>
+                                    <input class="form-control input">
+                                    <label>Mật khẩu</label>
+                                    <input  type="password" class="form-control input">                                   
+                                    <button class="button">Đăng nhập</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="checkout-sep">2.Thông tin khách hàng</h3>
+                        <div class="box-border">
+                            <ul>
+                                <li class="row">
+                                    <div class="col-sm-6">
+                                        <label  class="required">Tên</label>
+                                        <input type="text" class="input form-control" name="" id="name">
+                                    </div>
+                                    <!--/ [col] -->
+                                    <div class="col-sm-6">
+                                        <label  class="required">Địa chỉ nhận hàng</label>
+                                        <input type="text" name="" class="input form-control" id="adress">
+                                    </div>
+                                    <!--/ [col] -->
+                                </li>
+                                <!--/ .row -->
+                                <li class="row">
+                                    <div class="col-sm-6">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" name="" class="input form-control" id="mobile">
+                                    </div>
+                                    <!--/ [col] -->
+                                    <div class="col-sm-6">
+                                        <label  class="required">Email</label>
+                                        <input type="text" class="input form-control" name="" id="email">
+                                    </div>
+                                    <!--/ [col] -->
+                                    <!--/ [col] -->
+                                    <div class="col-sm-12">
+                                        <label  class="required">Ghi chú</label>
+                                        <textarea rows="3" class="input form-control" name="" id="note"></textarea>                                      
+                                    </div>
+                                    <!--/ [col] -->
+                                </li>                             
+                                               
+                            </ul>
+                        </div>
+                     
+                        <h3 class="checkout-sep">3.Phí vận chuyển</h3>
+                        <div class="box-border">
+                            <ul class="shipping_method">
+                                <li>                                 
+                                    <div class="col-sm-2">
+                                        <label class="required">Country</label>
+                                        <select class="input form-control" name="">
+                                            <option value="USA">USA</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="Argentina">Argentina</option>
+                                            <option value="Canada">Canada</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                   
+                                    <div class="col-sm-2">
+                                        <label class="required">Country</label>
+                                        <select class="input form-control" name="">
+                                            <option value="USA">USA</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="Argentina">Argentina</option>
+                                            <option value="Canada">Canada</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label class="required">Phí vận chuyển</label><br />
+                                    <label> 20,000VND</label>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <h3 class="checkout-sep">4.Phương pháp thanh toán</h3>
+                        <div class="box-border">
+                            <ul>
+                                <li>
+                                    <label for="radio_button_5">
+                                        <input type="radio" checked name="radio_4" id="radio_button_5">
+                                        Check / Money order
+                                    </label>
+                                </li>
+                                <li>
+                                    <label for="radio_button_6">
+                                        <input type="radio" name="radio_4" id="radio_button_6">
+                                        Credit card (saved)
+                                    </label>
+                                </li>
+                            </ul>                         
+                        </div>
+                        <h3 class="checkout-sep">6. Order Review</h3>
+                        <div class="box-border">
+                            <div class="order-detail-content">
+                                <table class="table table-bordered table-responsive jtv-cart-summary">
+                                    <thead>
+                                        <tr>
+                                            <th class="cart_product">Product</th>
+                                            <th>Description</th>
+                                            <th>Avail.</th>
+                                            <th>Unit price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th class="action"><i class="fa fa-trash-o"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="cart_product"><a href="#"><img class="img-responsive" src="images/products/img01.jpg" alt="Product"></a></td>
+                                            <td class="cart_description">
+                                                <p class="product-name"><a href="#"> Product Title Here </a></p>
+                                                <small class="cart_ref">SKU : #987654</small><br>
+                                                <small><a href="#">Color : Pink</a></small><br>
+                                            </td>
+                                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                                            <td class="price"><span>$99.00</span></td>
+                                            <td class="qty">
+                                                <input class="form-control input-sm" type="text" value="1">
+                                                <a href="#"><i class="fa fa-plus"></i></a> <a href="#"><i class="fa fa-minus"></i></a>
+                                            </td>
+                                            <td class="price"><span>$99.00</span></td>
+                                            <td class="action"><a href="#">Delete item</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_product"><a href="#"><img class="img-responsive" src="images/products/img01.jpg" alt="Product"></a></td>
+                                            <td class="cart_description">
+                                                <p class="product-name"><a href="#"> Product Title Here </a></p>
+                                                <small class="cart_ref">SKU : #123654999</small><br>
+                                                <small><a href="#">Color : Orange</a></small><br>
+                                            </td>
+                                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                                            <td class="price"><span>$49.00</span></td>
+                                            <td class="qty">
+                                                <input class="form-control input-sm" type="text" value="2">
+                                                <a href="#"><i class="fa fa-plus"></i></a> <a href="#"><i class="fa fa-minus"></i></a>
+                                            </td>
+                                            <td class="price"><span>$98.00</span></td>
+                                            <td class="action"><a href="#">Delete item</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_product"><a href="#"><img class="img-responsive" src="images/products/img01.jpg" alt="Product"></a></td>
+                                            <td class="cart_description">
+                                                <p class="product-name"><a href="#"> Product Title Here </a></p>
+                                                <small class="cart_ref">SKU : #123654999</small><br>
+                                                <small><a href="#">Color : Red</a></small><br>
+                                            </td>
+                                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                                            <td class="price"><span>$89.00</span></td>
+                                            <td class="qty">
+                                                <input class="form-control input-sm" type="text" value="1">
+                                                <a href="#"><i class="fa fa-plus"></i></a> <a href="#"><i class="fa fa-minus"></i></a>
+                                            </td>
+                                            <td class="price"><span>$89.00</span></td>
+                                            <td class="action"><a href="#">Delete item</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_product"><a href="#"><img class="img-responsive" src="images/products/img01.jpg" alt="Product"></a></td>
+                                            <td class="cart_description">
+                                                <p class="product-name"><a href="#"> Product Title Here </a></p>
+                                                <small class="cart_ref">SKU : #123654999</small><br>
+                                                <small><a href="#">Color : Grey</a></small><br>
+                                            </td>
+                                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                                            <td class="price"><span>$69.00</span></td>
+                                            <td class="qty">
+                                                <input class="form-control input-sm" type="text" value="1">
+                                                <a href="#"><i class="fa fa-plus"></i></a> <a href="#"><i class="fa fa-minus"></i></a>
+                                            </td>
+                                            <td class="price"><span>$69.00</span></td>
+                                            <td class="action"><a href="#">Delete item</a></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2" rowspan="2"></td>
+                                            <td colspan="3">Total products (tax incl.)</td>
+                                            <td colspan="2">$355.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><strong>Total</strong></td>
+                                            <td colspan="2"><strong>$355.00</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="cart_navigation">
+                                    <button class="button pull-right">Place Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!--End main-container -->

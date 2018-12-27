@@ -27,6 +27,10 @@ namespace TeduCoreApp.Data.Entities
             Status = billVm.Status;
             CustomerId = billVm.CustomerId;
             CustomerEmail = billVm.CustomerEmail;
+            FeeShipping = billVm.FeeShipping;
+            TotalMoneyOrder = billVm.TotalMoneyOrder;
+            TotalMoneyPayment = billVm.TotalMoneyPayment;
+            
         }
     
         [Required]
@@ -61,6 +65,15 @@ namespace TeduCoreApp.Data.Entities
 
         [ForeignKey("CustomerId")]
         public virtual AppUser User { set; get; }
+
+        [Column(TypeName = "decimal(12,3)")]
+        public decimal? FeeShipping { get; set; }
+
+        [Column(TypeName="decimal(12,3)")]
+        public decimal? TotalMoneyOrder { get; set; }
+
+        [Column(TypeName = "decimal(12,3)")]
+        public decimal? TotalMoneyPayment { get; set; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
     }

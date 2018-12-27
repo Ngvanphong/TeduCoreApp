@@ -59,6 +59,16 @@ namespace TeduCoreApp
                 option.User.RequireUniqueEmail = true;
             });
 
+            //section setting
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.Cookie.HttpOnly = true;
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             // Seek database
@@ -139,6 +149,8 @@ namespace TeduCoreApp
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseSession();
 
             logerFactory.AddFile("Logs/tedu-{Date}.txt");
 

@@ -23,5 +23,9 @@ namespace TeduCoreApp.Utilities.Constants
             public const string Bottom = "Bottom";
             public const string Default = "Default";
         }
+
+        public const string SesstionCart = "ShoppingCart";
+        public const string SesstionOrder = "OrderSession";
+        public const string CountShopping = "CountShopping";
     }
 }

@@ -18,7 +18,7 @@
                             </ul>
                         </div>
                         <!-- End Header Language -->
-                       
+
 
                     </div>
                     <div class="col-xs-6 col-sm-8 col-md-6 hidden-xs">
@@ -57,48 +57,18 @@
                     <div class="jtv-top-cart-box">
                         <!-- Top Cart -->
                         <div class="mini-cart">
-                            <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="shopping_cart.html"> <i class="pe-7s-cart"></i><span class="cart_count">2</span><span class="price">My Cart / $259.00</span> </a> </div>
+                            <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="shopping_cart.html"> <i class="pe-7s-cart"></i><span class="cart_count"></span><span class="price">Giỏ hàng</span> </a> </div>
                             <div>
                                 <div class="jtv-top-cart-content">
 
                                     <!--block-subtitle-->
                                     <ul class="mini-products-list" id="cart-sidebar">
-                                        <li class="item first">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" ref="#"><img class="img-responsive" alt="Product Title Here" src="/client-side/images/products/img01.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$79.99</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" href="single_product.html"><img class="img-responsive" alt="Product Title Here" src="/client-side/images/products/img01.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$88.89</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item last">
-                                            <div class="item-inner">
-                                                <a class="product-image" title="Product Title Here" href="single_product.html"><img class="img-responsive" alt="Product Title Here" src="/client-side/images/products/img01.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                    <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$85.99</span>
-                                                </div>
-                                            </div>
-                                        </li>
+
                                     </ul>
 
                                     <!--actions-->
                                     <div class="actions">
-                                        <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Checkout</span> </button>
-                                        <a href="shopping_cart.html" class="view-cart"><span>View Cart</span></a>
+                                        <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Thanh toán</span> </button>
                                     </div>
                                 </div>
                             </div>
@@ -122,3 +92,18 @@
         </div>
     </div>
 </header>
+
+<script id="productShopping-template" type="x-tmpl-mustache">
+    <li class="item">
+        <div class="item-inner">
+            <a class="product-image" title="{{Name}}" href="/{{SeoAlias}}.p-{{Id}}.html"><img class="img-responsive" alt="{{Name}}" src="{{DomainApi}}{{ThumbnailImage}}"> </a>
+            <div class="product-details">
+                <div class="access"><a class="jtv-btn-remove" title="Xóa" href="#" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}">Remove</a> </div>
+                <p class="product-name"><a href="/{{SeoAlias}}.p-{{Id}}.html">{{Name}}</a> </p>
+                <strong>Màu: {{Color}}, Size: {{Size}}, SL: {{Quantity}} </strong>
+            </div>
+        </div>
+    </li>
+</script>
+   
+

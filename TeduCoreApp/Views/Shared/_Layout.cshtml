@@ -81,6 +81,11 @@
         var notifications = new notification();
         notifications.init();
     </script>
+    <script src="~/app/controllers/product/shoppingCard.js"></script>
+    <script>
+        var shopingCarts = new shoppingCard();
+        shopingCarts.initializer();
+    </script>
 
     @RenderSection("Scripts", required: false)
 
