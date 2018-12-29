@@ -66,7 +66,8 @@ namespace TeduCoreApp.Controllers
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {                     
+                {
+                    if (returnUrl == null) return Redirect("/index.html");                 
                     return Redirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -202,7 +203,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("account/logout.html")]
+        [Route("account/lockout.html")]
         public IActionResult Lockout()
         {
             return View();
@@ -348,6 +349,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("account/forget.html")]
         public IActionResult ForgotPassword()
         {
             return View();
@@ -356,12 +358,13 @@ namespace TeduCoreApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("account/forget.html")]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return RedirectToAction(nameof(ForgotPasswordConfirmation));
@@ -371,8 +374,8 @@ namespace TeduCoreApp.Controllers
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
-                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                await _emailSender.SendEmailAsync(model.Email, "Đổi lại mật khẩu mới",
+                   $"Để lấy lại mật khẩu xin click vào link bên dưới: <a href='{callbackUrl}'>link</a>");
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 

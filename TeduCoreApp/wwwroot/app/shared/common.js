@@ -19,14 +19,13 @@
         })      
     } 
     function loadReturnUrl() {
-        var returnUrl = "/account/login.html?returnUrl="+window.location.href;
-        $(".aSendLoginGet").attr("href", returnUrl);
+        try {
+            var returnUrl = "/account/login.html?returnUrl=" + window.location.href;
+            $(".aSendLoginGet").attr("href", returnUrl);
+        }
+        catch (error) {
+           
+        }
+        
     }
 }
-
-$(document).ajaxSend(function (e, xhr, options) {
-    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
-        var token = $('form').find("input[name='__RequestVerificationToken']").val();
-        xhr.setRequestHeader("RequestVerificationToken", token);
-    }
-});
