@@ -440,6 +440,21 @@ namespace TeduCoreApp.Controllers
             return View();
         }
 
+        [HttpPost]      
+        [AllowAnonymous]
+        [Route("account/checkIsLogin")]
+        public async  Task<IActionResult> IsLogin()
+        {
+            bool isLogin = User.Identity.IsAuthenticated;
+            if (isLogin == false)
+            {
+                return new OkObjectResult(new { status = false });
+            }
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name.ToString());
+            return new OkObjectResult(new { status = true, data = appUser });
+        }
+
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)

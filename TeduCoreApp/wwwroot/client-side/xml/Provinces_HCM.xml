@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<Item id="" type="" value=""></Item>
+	<Item id="701" type="province" value="TP Hồ Chí Minh">
+		<Item id="70139" type="district" value="Huyện Bình Chánh">		
+		</Item>
+		<Item id="70143" type="district" value="Huyện Cần Giờ">			
+		</Item>
+		<Item id="70135" type="district" value="Huyện Củ Chi">			
+		</Item>
+		<Item id="70137" type="district" value="Huyện Hóc Môn">			
+		</Item>
+		<Item id="70141" type="district" value="Huyện Nhà Bè">			
+		</Item>
+		<Item id="70101" type="district" value="Quận 1">			
+		</Item>
+		<Item id="70119" type="district" value="Quận 10">			
+		</Item>
+		<Item id="70121" type="district" value="Quận 11">		
+		</Item>
+		<Item id="70123" type="district" value="Quận 12">			
+		</Item>
+		<Item id="70103" type="district" value="Quận 2">			
+		</Item>
+		<Item id="70105" type="district" value="Quận 3">			
+		</Item>
+		<Item id="70107" type="district" value="Quận 4">			
+		</Item>
+		<Item id="70109" type="district" value="Quận 5">			
+		</Item>
+		<Item id="70111" type="district" value="Quận 6">			
+		</Item>
+		<Item id="70113" type="district" value="Quận 7">			
+		</Item>
+		<Item id="70115" type="district" value="Quận 8">			
+		</Item>
+		<Item id="70117" type="district" value="Quận 9">			
+		</Item>
+		<Item id="70129" type="district" value="Quận Bình Thạnh">			
+		</Item>
+		<Item id="70134" type="district" value="Quận Bình Tân">			
+		</Item>
+		<Item id="70125" type="district" value="Quận Gò Vấp">			
+		</Item>
+		<Item id="70131" type="district" value="Quận Phú Nhuận">			
+		</Item>
+		<Item id="70133" type="district" value="Quận Thủ Đức">			
+		</Item>
+		<Item id="70127" type="district" value="Quận Tân Bình">			
+		</Item>
+		<Item id="70128" type="district" value="Quận Tân Phú">			
+		</Item>
+	</Item>		
+
+</Root>

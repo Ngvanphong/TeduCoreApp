@@ -8665,3 +8665,9 @@ button.subscribe:before {
 }
 .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
     display: inline-block;}
+
+.error {
+    text-decoration: underline;
+    font-style: italic;
+    text-decoration-color:red
+}
