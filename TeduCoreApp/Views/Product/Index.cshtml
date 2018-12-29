@@ -19,9 +19,8 @@
                 <ul>
                     <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
                     <li> <strong>@Model.ProductCategory.Name</strong> </li>
-                    <li><label class="hidden" id="productCategoryId">@Model.ProductCategory.Id</label></li>                   
+                    <li><label class="hidden" id="productCategoryId">@Model.ProductCategory.Id</label></li>
                 </ul>
-               
             </div>
         </div>
     </div>
@@ -86,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="category-products">                      
+                    <div class="category-products">
                         <ul class="products-grid" id="productContent"></ul>
                     </div>
                     <div class="toolbar">
@@ -102,46 +101,17 @@
             <div class="sidebar col-sm-4 col-md-3 col-xs-12 col-md-pull-9 col-sm-pull-8">
                 <aside class="sidebar">
                     <div class="block block-cart">
-                        <div class="block-title ">My Cart</div>
+                        <div class="block-title ">Giỏ hàng</div>
                         <div class="block-content">
                             <div class="summary">
-                                <p class="amount">There are <a href="shopping_cart.html">3 items</a> in your cart.</p>
-                                <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">$227.99</span> </p>
+                                <p class="amount">Giỏ hàng có <a href="checkout.html" id="pageCountShopping"></a> sản phẩm</p>
                             </div>
                             <div class="ajax-checkout">
-                                <button class="button button-checkout" title="Submit" type="submit"><span>Checkout</span></button>
+                                <a href="checkout.html" class="view-cart"><span>Thanh toán</span></a>
+                                <p class="block-subtitle"></p>
                             </div>
-                            <p class="block-subtitle">Recently added item(s) </p>
-                            <ul>
-                                <li class="item">
-                                    <a href="shopping_cart.html" title="Product Title Here" class="product-image"><img class="img-responsive" src="images/products/img01.jpg" alt="Product Title Here"></a>
-                                    <div class="product-details">
-                                        <div class="access"> <a href="shopping_cart.html" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                        <strong>1</strong> x <span class="price">$99.99</span>
-                                        <p class="product-name"> <a href="shopping_cart.html">Product Title Here</a> </p>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <a href="shopping_cart.html" title="Product Title Here" class="product-image"><img class="img-responsive" src="images/products/img01.jpg" alt="Product Title Here"></a>
-                                    <div class="product-details">
-                                        <div class="access"> <a href="shopping_cart.html" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                        <strong>1</strong> x <span class="price">$88.00</span>
-                                        <p class="product-name"> <a href="shopping_cart.html">Product Title Here</a> </p>
-
-                                        <!--access clearfix-->
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <a href="shopping_cart.html" title="Product Title Here" class="product-image"><img class="img-responsive" src="images/products/img01.jpg" alt="Product Title Here"></a>
-                                    <div class="product-details">
-                                        <div class="access"> <a href="shopping_cart.html" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                        <strong>1</strong> x <span class="price">$98.00</span>
-                                        <p class="product-name"> <a href="shopping_cart.html">Product Title Here</a> </p>
-
-                                        <!--access clearfix-->
-                                    </div>
-                                </li>
-                            </ul>
+                            <!--	///*///======    Shoppoing Cart  ========= //*/// -->
+                            @await Component.InvokeAsync("ShoppingCartPage")
                         </div>
                     </div>
                     <div class="custom-slider">
@@ -197,7 +167,7 @@
                         </div>
                     </div>
                     <div class="block block-tags">
-                        <div class="block-title"> Popular Tags</div>
+                        <div class="block-title">Từ khóa chính</div>
                         <div class="block-content">
                             <div class="tags-list">
                                 @foreach (var tag in Model.Tags)
@@ -246,3 +216,4 @@
         </div>
     </li>
 </script>
+

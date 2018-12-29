@@ -1,0 +1,13 @@
+﻿<ul id="pageShoppingCart">
+
+</ul>
+<script id="pageShoppingCart-template" type="x-tmpl-mustache">
+    <li class="item">
+        <a href="/{{SeoAlias}}.p-{{Id}}.html" title="{{Name}}" class="product-image"><img class="img-responsive" src="@Model.DomainApi{{ThumbnailImage}}" alt="{{Name}}"></a>
+        <div class="product-details">
+            <div class="access"> <a href="#" title="Xóa" class="jtv-btn-remove removeForPage" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}"> <span class="icon"></span> Remove </a> </div>
+            <p class="product-name"><a href="/{{SeoAlias}}.p-{{Id}}.html">{{Name}}</a> </p>
+            <strong>Màu: {{Color}}, Size: {{Size}}, SL: {{Quantity}} </strong>
+        </div>
+    </li>
+</script>

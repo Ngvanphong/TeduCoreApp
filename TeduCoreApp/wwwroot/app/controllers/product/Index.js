@@ -2,6 +2,8 @@
     this.initializers = function () {
         loadData(false);     
         registerEvents();
+        getShoppingCartForPage();
+        
     }
     registerEvents = function () {
         $('#input-limit').on('change', function () {
@@ -15,6 +17,13 @@
             if (flagPaging == false) {
                 loadData(true)
             };            
+        });
+        $('body').on('click', '.removeForPage', function (e) {
+            e.preventDefault();
+            var productId = $(this).data('productid');
+            var colorId = $(this).data('colorid');
+            var sizeId = $(this).data('sizeid');
+            removeShoppingCartForPage(productId, colorId, sizeId);
         });
     }
 
@@ -88,6 +97,96 @@
             }
         });
     }
+
+    //Shoping Cart
+    function getShoppingCartForPage() {
+        var template = $('#pageShoppingCart-template').html();
+        var render = "";
+        $.ajax({
+            url: '/shopping/getall',
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                $("#pageCountShopping").text(response.CountProduct);
+                $.each(response.Items, function (i, item) {
+                    render += Mustache.render(template, {
+                        Id: item.ProductVm.Id,
+                        Name: item.ProductVm.Name,
+                        SeoAlias: item.ProductVm.SeoAlias,
+                        ThumbnailImage: item.ProductVm.ThumbnailImage,
+                        Quantity: item.Quantity,
+                        DomainApi: response.DomainApi,
+                        ProductId: item.ProductId,
+                        Size: item.SizeVm.Name,
+                        Color: item.ColorVm.Name,
+                        ColorId: item.ColorVm.Id,
+                        SizeId: item.SizeVm.Id,
+
+                    });
+                });
+                if (render != '') {
+                    $('#pageShoppingCart').html(render);
+                }
+                else {
+                    $('#pageShoppingCart').html("")
+                }
+            }
+        })
+    }
+
+    function removeShoppingCartForPage(productId, colorId, sizeId) {
+        $.ajax({
+            url: '/shopping/removeCartItem',
+            data: {
+                productId: productId,
+                colorId: colorId,
+                sizeId: sizeId,
+            },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                getShoppingCartForPage();
+                shopingCarts.getShoppingCartToUpdate();
+            }
+        })
+    }
+
+    this.getShoppingCartForPageToUpdate= function() {
+        var template = $('#pageShoppingCart-template').html();
+        var render = "";
+        $.ajax({
+            url: '/shopping/getall',
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                $("#pageCountShopping").text(response.CountProduct);
+                $.each(response.Items, function (i, item) {
+                    render += Mustache.render(template, {
+                        Id: item.ProductVm.Id,
+                        Name: item.ProductVm.Name,
+                        SeoAlias: item.ProductVm.SeoAlias,
+                        ThumbnailImage: item.ProductVm.ThumbnailImage,
+                        Quantity: item.Quantity,
+                        DomainApi: response.DomainApi,
+                        ProductId: item.ProductId,
+                        Size: item.SizeVm.Name,
+                        Color: item.ColorVm.Name,
+                        ColorId: item.ColorVm.Id,
+                        SizeId: item.SizeVm.Id,
+
+                    });
+                });
+                if (render != '') {
+                    $('#pageShoppingCart').html(render);
+                }
+                else {
+                    $('#pageShoppingCart').html("")
+                }
+            }
+        })
+    }
+
+
 
 
 

@@ -68,7 +68,7 @@
                 }
                 else
                 {
-                    <li >
+                    <li>
                         @{
                             var childDisplays = Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id);
                         }
@@ -89,11 +89,17 @@
     </ul>
     <div class="jtv-top-link-mob">
         <ul class="links">
-            <li><a title="My Account" href="account_page.html">My Account</a> </li>
-            <li><a title="Wishlist" href="wishlist.html">Wishlist</a> </li>
-            <li><a title="Checkout" href="checkout.html">Checkout</a> </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a title="Thông tin" href="account_page.html">Tài khoản</a> </li>
+            }
+            else
+            {
+                <li class="last"><a class="aSendLoginGet" title="Đăng nhập" href="#"><span>Đăng nhập</span></a> </li>
+            }
+            <li><a title="Yêu thích" href="wishlist.html">Yêu thích</a> </li>
+            <li><a title="Thanh toán" href="checkout.html">Thanh toán</a> </li>
             <li><a title="Blog" href="blog.html"><span>Blog</span></a> </li>
-            <li class="last"><a title="Login" href="account_page.html"><span>Login</span></a> </li>
         </ul>
     </div>
 </div>

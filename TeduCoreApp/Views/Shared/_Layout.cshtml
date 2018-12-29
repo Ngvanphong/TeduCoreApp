@@ -30,8 +30,8 @@
     @await Component.InvokeAsync("MobileMenu")
     <div id="page">
         <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
         <!-- Header -->
         @Html.Partial("_Header.cshtml")
         <!-- end header -->
@@ -39,8 +39,8 @@
         @await Component.InvokeAsync("MainNavigation")
         <!-- end nav -->
 
-        
-      
+
+
         @RenderBody()
 
         <!-- Footer -->
@@ -82,9 +82,12 @@
         notifications.init();
     </script>
     <script src="~/app/controllers/product/shoppingCard.js"></script>
+    <script src="~/app/shared/common.js"></script>
     <script>
         var shopingCarts = new shoppingCard();
         shopingCarts.initializer();
+        var shareCommons = new shareCommon();
+        shareCommons.initilizer();
     </script>
 
     @RenderSection("Scripts", required: false)

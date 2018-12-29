@@ -156,10 +156,18 @@ namespace TeduCoreApp
 
             app.UseMvc(routes =>
             {
+            routes.MapRoute(
+
+               name: "home",
+               template: "index.html",
+               defaults: new { controller = "Home", action = "Index"}
+                   );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

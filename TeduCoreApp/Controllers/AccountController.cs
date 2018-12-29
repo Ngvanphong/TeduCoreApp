@@ -17,8 +17,7 @@ using TeduCoreApp.Services;
 
 namespace TeduCoreApp.Controllers
 {
-    [Authorize]
-    [Route("[controller]/[action]")]
+    [Authorize]   
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -43,47 +42,50 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("account/login.html")]
         public async Task<IActionResult> Login(string returnUrl = null)
-        {
+        {            
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
-
             ViewData["ReturnUrl"] = returnUrl;
             return View();
+            
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("account/login.html")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+            TempData["ErrorMessage"] = "";
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+                {                     
+                    return Redirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
+                    TempData["ErrorMessage"] = "Bạn đã bấm 2 lần";
                     return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
+                    TempData["ErrorMessage"] = "Tài khoản bị khóa";
                     return RedirectToAction(nameof(Lockout));
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    TempData["ErrorMessage"] = "Tên đăng nhập hoặc mật khẩu không đúng";
                     return View(model);
                 }
             }
-
+            TempData["ErrorMessage"] = "Bạn chưa nhập đủ thông tin";
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -200,6 +202,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("account/logout.html")]
         public IActionResult Lockout()
         {
             return View();
@@ -207,6 +210,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("account/register.html")]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -216,23 +220,18 @@ namespace TeduCoreApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("account/register.html")]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                var user = new AppUser { UserName = model.UserName, Email = model.Email,PhoneNumber=model.PhoneNumber,
+                FullName=model.FullName};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
+                {                                    
+                    await _signInManager.SignInAsync(user, isPersistent: false);                  
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -243,12 +242,12 @@ namespace TeduCoreApp.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
+        [Route("account/logout.html")]
         public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+        {           
+            await _signInManager.SignOutAsync();          
+            return new OkObjectResult(new { status = true});
         }
 
         [HttpPost]

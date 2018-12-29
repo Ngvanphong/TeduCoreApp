@@ -18,31 +18,39 @@
                             </ul>
                         </div>
                         <!-- End Header Language -->
-
-
                     </div>
                     <div class="col-xs-6 col-sm-8 col-md-6 hidden-xs">
                         <!-- Header Top Links -->
                         <div class="jtv-top-links">
                             <div class="links">
                                 <ul>
-                                    <li> <a title="My Account" href="account_page.html"><span class="hidden-xs">My Account</span></a> </li>
-                                    <li> <a title="Wishlist" href="wishlist.html">Wishlist</a> </li>
-                                    <li> <a title="Checkout" href="checkout.html"><span class="hidden-xs">Checkout</span></a> </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+
+                                        <li> <a title="Thông tin tài khoản" href="account_page.html"><span class="hidden-xs">Xin chào: @User.Identity.Name</span></a> </li>
+                                        <li> <a title="Đăng xuất" id="logoutPost" href="#">Đăng xuất</a> </li>
+
+                                    }
+                                    <li> <a title="Yêu thích" href="wishlist.html">Yêu thích</a> </li>
+                                    <li> <a title="Thanh toán" href="checkout.html"><span class="hidden-xs">Thanh toán</span></a> </li>
                                     <li>
                                         <div class="dropdown block-company-wrapper hidden-xs">
                                             <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="about_us.html"> About Us </a> </li>
-                                                <li><a href="#"> Customer Service </a> </li>
-                                                <li><a href="#"> Privacy Policy </a> </li>
-                                                <li><a href="sitemap.html">Site Map </a> </li>
-                                                <li><a href="#">Search Terms </a> </li>
-                                                <li><a href="#">Advanced Search </a> </li>
+                                                <li><a href="about_us.html"> Giới thiệu</a> </li>
+                                                <li><a href="sitemap.html">Liên hệ</a> </li>
+                                                <li><a href="#">Chính sách</a> </li>
+                                                @if (!User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a href="/account/register.html">Đăng ký</a> </li>
+                                                }
                                             </ul>
                                         </div>
                                     </li>
-                                    <li> <a href="account_page.html"><span class="hidden-xs">Log In</span></a> </li>
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <li> <a class="aSendLoginGet" href="#"><span class="hidden-xs">Đăng nhập</span></a> </li>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -62,13 +70,11 @@
                                 <div class="jtv-top-cart-content">
 
                                     <!--block-subtitle-->
-                                    <ul class="mini-products-list" id="cart-sidebar">
-
-                                    </ul>
+                                    <ul class="mini-products-list" id="cart-sidebar"></ul>
 
                                     <!--actions-->
                                     <div class="actions">
-                                        <button class="btn-checkout" title="Checkout" type="button" onClick="checkout.html"><span>Thanh toán</span> </button>
+                                        <a href="checkout.html" class="view-cart"><span>Thanh toán</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -98,12 +104,10 @@
         <div class="item-inner">
             <a class="product-image" title="{{Name}}" href="/{{SeoAlias}}.p-{{Id}}.html"><img class="img-responsive" alt="{{Name}}" src="{{DomainApi}}{{ThumbnailImage}}"> </a>
             <div class="product-details">
-                <div class="access"><a class="jtv-btn-remove" title="Xóa" href="#" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}">Remove</a> </div>
+                <div class="access"><a class="jtv-btn-remove removeForIcon" title="Xóa" href="#" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}">Remove</a> </div>
                 <p class="product-name"><a href="/{{SeoAlias}}.p-{{Id}}.html">{{Name}}</a> </p>
                 <strong>Màu: {{Color}}, Size: {{Size}}, SL: {{Quantity}} </strong>
             </div>
         </div>
     </li>
 </script>
-   
-
