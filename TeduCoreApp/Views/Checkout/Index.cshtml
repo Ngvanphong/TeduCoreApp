@@ -5,6 +5,7 @@
 @model TeduCoreApp.Models.CheckoutViewModel
 @section Scripts {
     <script src="~/app/controllers/product/checkout.js"></script>
+    
     <script>
         var checkoutControllers = new checkoutController();
         checkoutControllers.initilizer();
@@ -97,13 +98,12 @@
                                     <li>
                                         <div class="col-sm-2" id="proviceDisplay">
                                             <label class="required">Quận/Huyện</label>
-                                            <select class="input form-control" name="" id="districtSelectList">                                             
-                                            </select>
+                                            <select class="input form-control" name="" id="districtSelectList"></select>
                                         </div>
                                     </li>
                                     <li>
                                         <label class="required">Phí vận chuyển</label><br />
-                                        <label id="taxtransfer"></label>
+                                        <label class="taxtransfer"></label>
                                     </li>
                                 </ul>
                             </div>
@@ -134,8 +134,7 @@
                                                 <th class="cart_product">Sản phẩm</th>
                                                 <th>Chi tiết</th>
                                                 <th>Giá</th>
-                                                <th>Giá khuyến mãi</th>
-                                                <th>Giá sỉ</th>
+                                                <th>Giá khuyến mãi</th>                                               
                                                 <th>Số lượng</th>
                                                 <th>Tổng tiền</th>
                                                 <th class="action"><i class="fa fa-trash-o"></i></th>
@@ -145,13 +144,17 @@
                                         <tfoot>
                                             <tr>
                                                 <td colspan="2" rowspan="2"></td>
-                                                <td colspan="5">Phí vận chuyển</td>
-                                                <td id="feeShipForShopping" colspan="2"></td>
+                                                <td colspan="4">Phí vận chuyển</td>
+                                                <td class="taxtransfer" colspan="2"></td>
+                                            </tr>
+                                            <tr class="hidden">
+                                                <td id="totalMoneyShoppingCart" colspan="2"></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="5"><strong>Tổng tiền cần thanh toán</strong></td>
-                                                <td id="totalCountPayment" colspan="2"><strong>$355.00</strong></td>
+                                                <td colspan="4"><strong>Tổng tiền cần thanh toán</strong></td>
+                                                <td id="totalCountPayment" colspan="2"><strong></strong></td>
                                             </tr>
+
                                         </tfoot>
                                     </table>
                                     <div class="cart_navigation">
@@ -173,16 +176,16 @@
         <td class="cart_product"><a href="/{{SeoAlias}}.p-{{Id}}.html"><img class="img-responsive" src="{{DomainApi}}{{ThumbnailImage}}" alt="{{Name}}"></a></td>
         <td class="cart_description">
             <p class="product-name"><a href="/{{SeoAlias}}.p-{{Id}}.html"> {{Name}} </a></p>
-            <small class="cart_ref">Size: {{Size}}</small><br>
-            <small><a href="#">Color: {{Color}}</a></small><br>
+            <small style="text-transform: none" class="cart_ref">Size: {{Size}}</small><br>
+            <small style="text-transform: none" class="cart_ref">Color: {{Color}}</small><br>
         </td>
         <td class="price"><span>{{Price}}</span></td>
-        <td class="price"><span>{{PromotionPrice}}</span></td>
-        <td class="price"><span>{{WholePrice}}</span></td>
+        <td class="price"><span>{{PromotionPrice}}</span></td> 
+        <td class="price hidden"><span>{{SalePrice}}</span></td>
         <td class="qty">
             <input class="form-control input-sm" type="text" value="{{Quantity}}">
         </td>
         <td class="price"><span>{{TotalPriceItem}}</span></td>
-        <td class="action"><a class="aRemoveShoppingItem" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}" href="#">Delete item</a></td>
+        <td class="action"><a class="removeCheckout" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}" href="#">Delete item</a></td>
     </tr>
 </script>

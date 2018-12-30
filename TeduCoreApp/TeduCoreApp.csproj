@@ -52,6 +52,10 @@
     <Content Include="wwwroot\node_modules\alertifyjs\build\css\themes\semantic.rtl.css" />
     <Content Include="wwwroot\node_modules\alertifyjs\build\css\themes\semantic.rtl.min.css" />
     <Content Include="wwwroot\node_modules\alertifyjs\package.json" />
+    <Content Include="wwwroot\node_modules\jquery-number-master\bower.json" />
+    <Content Include="wwwroot\node_modules\jquery-number-master\df-number-format.jquery.json" />
+    <Content Include="wwwroot\node_modules\jquery-number-master\examples\demo-as-you-type.html" />
+    <Content Include="wwwroot\node_modules\jquery-number-master\LICENSE.txt" />
     <Content Include="wwwroot\node_modules\mustache\package.json" />
     <Content Include="wwwroot\node_modules\twbs-pagination\bower.json" />
     <Content Include="wwwroot\node_modules\twbs-pagination\examples\bootstrap-v4.html" />
@@ -160,6 +164,11 @@
     <None Include="wwwroot\node_modules\alertifyjs\src\less\themes\bootstrap.less" />
     <None Include="wwwroot\node_modules\alertifyjs\src\less\themes\default.less" />
     <None Include="wwwroot\node_modules\alertifyjs\src\less\themes\semantic.less" />
+    <None Include="wwwroot\node_modules\jquery-number-master\.gitignore" />
+    <None Include="wwwroot\node_modules\jquery-number-master\jquery.number.js" />
+    <None Include="wwwroot\node_modules\jquery-number-master\jquery.number.min.js" />
+    <None Include="wwwroot\node_modules\jquery-number-master\jquery.number.min.js.map" />
+    <None Include="wwwroot\node_modules\jquery-number-master\README.markdown" />
     <None Include="wwwroot\node_modules\mustache\bin\mustache" />
     <None Include="wwwroot\node_modules\mustache\CHANGELOG.md" />
     <None Include="wwwroot\node_modules\mustache\LICENSE" />

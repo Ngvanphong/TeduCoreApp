@@ -48,7 +48,7 @@ namespace TeduCoreApp.Controllers
         [HttpPost]
         public IActionResult GetTaxHCM(int districtId)
         {
-            string taxTransfar="12.000 VND";
+            string taxTransfar="12.000";
             List<int> listOutsiteDistrict = new List<int>()
             {
                 70139,70143,70135,70137,70141,70134,70133
@@ -57,10 +57,17 @@ namespace TeduCoreApp.Controllers
             {
                 if (item == districtId)
                 {
-                    taxTransfar = "14.000 VND";
+                    taxTransfar = "14.000";
                 }
             }
             return new OkObjectResult(new { status = true, data = taxTransfar });
+        }
+
+        [HttpPost]
+        [Route("checkout.html")]
+        public IActionResult Checkout(CheckoutViewModel checkoutVm)
+        {
+            return new OkObjectResult("true");
         }
 
     }

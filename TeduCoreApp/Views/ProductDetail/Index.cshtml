@@ -69,10 +69,13 @@
                                         </div>
                                     </div>
                                     <div class="info-orther">
-                                        <p>Giá sỉ:</p>
-                                        @foreach (var wholePrice in Model.WholePrices)
+                                        @if (Model.WholePrices.Count() > 0)
                                         {
-                                            <p>Số lượng: @wholePrice.FromQuantity đến @wholePrice.ToQuantity => Giá: @wholePrice.Price@Model.ProductDetail.Unit</p>
+                                            <p>Giá sỉ (Mua tại shop):</p>
+                                            @foreach (var wholePrice in Model.WholePrices)
+                                            {
+                                                <p>Số lượng: @wholePrice.FromQuantity đến @wholePrice.ToQuantity => Giá: @wholePrice.Price@Model.ProductDetail.Unit</p>
+                                            }
                                         }
                                     </div>
                                     <div class="short-description">

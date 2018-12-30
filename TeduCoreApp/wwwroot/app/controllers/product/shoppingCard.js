@@ -87,12 +87,14 @@
             type: 'POST',
             success: function (res) {              
                 getShoppingCart();
-                try {
-                    productControllers.getShoppingCartForPageToUpdate();
+                try {                   
+                    productControllers.getShoppingCartForPageToUpdate();             
                 }
-                catch(error){
-
-                }                                
+                catch(error){} 
+                try {
+                    checkoutControllers.getShoppingCartForCheckoutUpdate();
+                }
+                catch (error) { }
             }
         })
     }

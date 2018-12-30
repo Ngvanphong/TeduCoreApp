@@ -1,9 +1,9 @@
 ﻿var checkoutController = function () {
     this.initilizer = function () {
         registerEvents();
+        getShoppingCartForCheckout();
     }
     function registerEvents() {
-
         $("#formBillShopping").validate({
             rules: {
                 name: "required",
@@ -13,7 +13,6 @@
                 },
                 mobile: "required",
                 citySelectList: "required",
-
             },
             messages: {
                 name: "Bạn phải nhập tên",
@@ -29,7 +28,6 @@
         $("#addBillShopping").off('click').on('click', function (e) {
             e.preventDefault();
             var valid = $("#formBillShopping").valid();
-           
         });
 
         $("#citySelectList").off('change').on('change', function (e) {
@@ -41,20 +39,21 @@
             }
             else {
                 $("#proviceDisplay").hide();
-                $("#taxtransfer").text("20.000 VND");
+                $(".taxtransfer").text("20.000");
+                setTimeout(getTotalPayment, 200);
             }
-
         });
 
         $("#districtSelectList").off('change').on('change', function (e) {
             e.preventDefault();
-
             var districtId = $(this).val();
             if (districtId != "") {
-               getTaxForHCM(districtId);
+                getTaxForHCM(districtId);
+                setTimeout(getTotalPayment, 200);
             }
             else {
-                $("#taxtransfer").text("14.000 VND");
+                $(".taxtransfer").text("14.000");
+                setTimeout(getTotalPayment, 200);
             }
         });
         $(".radioLogin").off('change').on('change', function (e) {
@@ -62,10 +61,16 @@
             var isLogin = $(this).val();
             getCustomerLogin(isLogin);
         });
-
+        $('body').on('click', '.removeCheckout', function (e) {
+            e.preventDefault();
+            var productId = $(this).data('productid');
+            var colorId = $(this).data('colorid');
+            var sizeId = $(this).data('sizeid');
+            removeShoppingCart(productId, colorId, sizeId);
+        });
     }
 
-    function loadDistrict (provinceId) {
+    function loadDistrict(provinceId) {
         $.ajax({
             url: "/checkout/loadDistrict",
             type: "POST",
@@ -83,9 +88,7 @@
                     $("#districtSelectList").html(html);
                 }
             }
-
         })
-
     }
 
     function getTaxForHCM(districtId) {
@@ -99,10 +102,9 @@
             success: function (res) {
                 if (res.status) {
                     var taxTransfer = res.data;
-                    $("#taxtransfer").text(taxTransfer);
+                    $(".taxtransfer").text(taxTransfer);
                 }
             }
-
         });
     }
 
@@ -119,11 +121,10 @@
                         $("#phoneNumber").val(res.data.PhoneNumber);
                         $("#email").val(res.data.Email);
                     }
-                    else {                       
+                    else {
                         notifications.printSuccesMessage("Bạn chưa đăng nhập");
                     }
                 }
-
             })
         }
         else {
@@ -133,5 +134,117 @@
         }
     }
 
+    function getShoppingCartForCheckout() {
+        var template = $('#productShoppingTable-template').html();
+        var render = "";
+        $.ajax({
+            url: '/shopping/getall',
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                var totalMoneyShoppingCart = 0;
+                $.each(response.Items, function (i, item) {
+                    var salePrice;
+                    if (item.ProductVm.PromotionPrice > 0) {
+                        salePrice = item.ProductVm.PromotionPrice;
+                    } else {
+                        salePrice = item.ProductVm.Price;
+                    };
+                    totalMoneyShoppingCart = totalMoneyShoppingCart + salePrice * item.Quantity;
+                    render += Mustache.render(template, {
+                        Id: item.ProductVm.Id,
+                        Name: item.ProductVm.Name,
+                        SeoAlias: item.ProductVm.SeoAlias,
+                        ThumbnailImage: item.ProductVm.ThumbnailImage,
+                        Quantity: item.Quantity,
+                        DomainApi: response.DomainApi,
+                        ProductId: item.ProductId,
+                        Size: item.SizeVm.Name,
+                        Color: item.ColorVm.Name,
+                        ColorId: item.ColorVm.Id,
+                        SizeId: item.SizeVm.Id,
+                        Price: $.number(item.ProductVm.Price, 3),
+                        PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                    });
+                });
+                if (render != '') {
+                    $('#tableShoppingContent').html(render);
+                    $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
+                }
+                setTimeout(getTotalPayment, 200);
+            }
+        })
+    }
+
+    function getTotalPayment() {
+        var totalMoneyShopping = $('#totalMoneyShoppingCart').text();
+        var shipping = $('.taxtransfer').text().split(".",1);
+        $('#totalCountPayment').text($.number(parseInt(shipping) + parseInt(totalMoneyShopping), 3));
+    }
+
+    function removeShoppingCart(productId, colorId, sizeId) {
+        $.ajax({
+            url: '/shopping/removeCartItem',
+            data: {
+                productId: productId,
+                colorId: colorId,
+                sizeId: sizeId,
+            },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                getShoppingCartForCheckout();               
+                shopingCarts.getShoppingCartToUpdate();                             
+            }
+        })
+    }
+
+    this.getShoppingCartForCheckoutUpdate=function() {
+        var template = $('#productShoppingTable-template').html();
+        var render = "";
+        $.ajax({
+            url: '/shopping/getall',
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                var totalMoneyShoppingCart = 0;
+                $.each(response.Items, function (i, item) {
+                    var salePrice;
+                    if (item.ProductVm.PromotionPrice > 0) {
+                        salePrice = item.ProductVm.PromotionPrice;
+                    } else {
+                        salePrice = item.ProductVm.Price;
+                    };
+                    totalMoneyShoppingCart = totalMoneyShoppingCart + salePrice * item.Quantity;
+                    render += Mustache.render(template, {
+                        Id: item.ProductVm.Id,
+                        Name: item.ProductVm.Name,
+                        SeoAlias: item.ProductVm.SeoAlias,
+                        ThumbnailImage: item.ProductVm.ThumbnailImage,
+                        Quantity: item.Quantity,
+                        DomainApi: response.DomainApi,
+                        ProductId: item.ProductId,
+                        Size: item.SizeVm.Name,
+                        Color: item.ColorVm.Name,
+                        ColorId: item.ColorVm.Id,
+                        SizeId: item.SizeVm.Id,
+                        Price: $.number(item.ProductVm.Price, 3),
+                        PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                    });
+                });
+                if (render != '') {
+                    $('#tableShoppingContent').html(render);
+                    $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
+                }
+                else {
+                    $('#tableShoppingContent').html("");
+                    $('#totalMoneyShoppingCart').text("");
+                }
+                setTimeout(getTotalPayment, 200);
+            }
+        })
+    }
     
 }
