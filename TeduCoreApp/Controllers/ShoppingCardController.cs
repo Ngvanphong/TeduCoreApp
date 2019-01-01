@@ -100,5 +100,23 @@ namespace TeduCoreApp.Controllers
             HttpContext.Session.SetList<ShoppingCardViewModel>(CommonConstants.SesstionCart, shoppingCart);
             return new OkObjectResult(productId);
         }
+
+        [HttpPost]
+        [Route("shopping/updateShopping")]
+        public IActionResult UpdateShoppingCart(int productId,int colorId, int sizeId,int quantity)
+        {
+            var shoppingCart = HttpContext.Session.GetList<ShoppingCardViewModel>(CommonConstants.SesstionCart);
+            foreach (var item in shoppingCart)
+            {
+
+                if (item.ProductId == productId && item.SizeVm.Id == sizeId && item.ColorVm.Id == colorId)
+                {
+                    item.Quantity = quantity;
+                    break;
+                }
+            }
+            HttpContext.Session.SetList<ShoppingCardViewModel>(CommonConstants.SesstionCart, shoppingCart);
+            return new OkObjectResult(productId);
+        }
     }
 }

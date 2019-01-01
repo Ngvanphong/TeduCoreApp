@@ -1,0 +1,26 @@
+{
+  "name": "TeduCoreApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@aspnet/signalr": "^1.1.0",
+    "alertifyjs": "^1.11.2",
+    "signalr": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ngvanphong/TeduCoreApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ngvanphong/TeduCoreApp/issues"
+  },
+  "homepage": "https://github.com/Ngvanphong/TeduCoreApp#readme",
+  "description": ""
+}

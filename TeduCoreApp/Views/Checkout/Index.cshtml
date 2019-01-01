@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var domainApi = ViewData["DomainApi"];
 }
-@model TeduCoreApp.Models.CheckoutViewModel
-@section Scripts {
+
+@section Scripts {  
     <script src="~/app/controllers/product/checkout.js"></script>
-    
     <script>
         var checkoutControllers = new checkoutController();
         checkoutControllers.initilizer();
@@ -19,6 +19,7 @@
                 <div class="col-main">
                     <div class="page-title">
                         <h1>Thanh toán</h1>
+                        <label class="hidden" id="domainApiSignalr">@domainApi</label>
                     </div>
                     <div class="page-content checkout-page">
                         <h3 class="checkout-sep">1.Thanh toán như khách hay đăng nhập ?</h3>
@@ -111,7 +112,7 @@
                             <div class="box-border">
                                 <ul>
                                     <li>
-                                        <select class="input form-control" name="pamentMethod">
+                                        <select class="input form-control" name="pamentMethod" id="pamentMethod">
                                             <option value="0">Tiền mặt</option>
                                             <option value="1">OnlinBanking</option>
                                             <option value="2">PaymentGateway</option>
@@ -134,7 +135,7 @@
                                                 <th class="cart_product">Sản phẩm</th>
                                                 <th>Chi tiết</th>
                                                 <th>Giá</th>
-                                                <th>Giá khuyến mãi</th>                                               
+                                                <th>Giá khuyến mãi</th>
                                                 <th>Số lượng</th>
                                                 <th>Tổng tiền</th>
                                                 <th class="action"><i class="fa fa-trash-o"></i></th>
@@ -180,10 +181,9 @@
             <small style="text-transform: none" class="cart_ref">Color: {{Color}}</small><br>
         </td>
         <td class="price"><span>{{Price}}</span></td>
-        <td class="price"><span>{{PromotionPrice}}</span></td> 
-        <td class="price hidden"><span>{{SalePrice}}</span></td>
+        <td class="price"><span>{{PromotionPrice}}</span></td>
         <td class="qty">
-            <input class="form-control input-sm" type="text" value="{{Quantity}}">
+            <input class="form-control input-sm updatePriceShoppingCart" data-productid="{{ProductId}}" data-colorid="{{ColorId}}" data-sizeid="{{SizeId}}" type="text" value="{{Quantity}}">
         </td>
         <td class="price"><span>{{TotalPriceItem}}</span></td>
         <td class="action"><a class="removeCheckout" data-sizeid="{{SizeId}}" data-colorid="{{ColorId}}" data-productid="{{ProductId}}" href="#">Delete item</a></td>

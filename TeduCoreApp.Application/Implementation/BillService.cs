@@ -32,6 +32,7 @@ namespace TeduCoreApp.Application.Implementation
             Bill bill = new Bill();
             bill = _mapper.Map<Bill>(billVm);
             _billRepository.Add(bill);
+            _unitOfWork.Commit();
             return bill.Id;
         }
 

@@ -123,13 +123,7 @@ namespace TeduCoreApp
             services.AddTransient<IAdvertistmentService, AdvertistmentService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-
-            services.AddSignalR()
-           .AddJsonProtocol(options =>
-           {
-               options.PayloadSerializerSettings.ContractResolver =
-               new DefaultContractResolver();
-           });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -168,6 +162,7 @@ namespace TeduCoreApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+           
         }
     }
 }

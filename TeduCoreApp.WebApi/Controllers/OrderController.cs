@@ -52,12 +52,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] BillViewModel billVm)
+        public IActionResult Add([FromBody] BillViewModel billVmPost)
         {
             if (ModelState.IsValid)
             {
                 try
-                {               
+                {
+                    BillViewModel billVm=billVmPost;
                     var listBillDetails = new List<BillDetailViewModel>();
                     foreach (var item in billVm.BillDetails)
                     {
@@ -71,8 +72,9 @@ namespace TeduCoreApp.WebApi.Controllers
                         });
                     }
                     billVm.BillDetails = listBillDetails;
-                    _billService.Add(billVm);
-                    _billService.SaveChanges();                 
+                   int billId= _billService.Add(billVm);
+                    billVm.Id = billId;
+                    billVm.DateCreated = DateTime.Now;
                     return new OkObjectResult(billVm);
                 }
                 catch(Exception ex)

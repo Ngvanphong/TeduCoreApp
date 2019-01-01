@@ -72,7 +72,6 @@
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
@@ -185,6 +184,8 @@
     <None Include="wwwroot\node_modules\mustache\wrappers\qooxdoo\mustache.js.pre" />
     <None Include="wwwroot\node_modules\mustache\wrappers\yui3\mustache.js.post" />
     <None Include="wwwroot\node_modules\mustache\wrappers\yui3\mustache.js.pre" />
+    <None Include="wwwroot\node_modules\signalr\dist\browser\signalr.js" />
+    <None Include="wwwroot\node_modules\signalr\dist\browser\signalr.min.js" />
     <None Include="wwwroot\node_modules\twbs-pagination\.npmignore" />
     <None Include="wwwroot\node_modules\twbs-pagination\Gruntfile.js" />
     <None Include="wwwroot\node_modules\twbs-pagination\jquery.twbsPagination.js" />

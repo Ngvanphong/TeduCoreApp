@@ -1,7 +1,9 @@
 ﻿var checkoutController = function () {
+    var connections;
     this.initilizer = function () {
         registerEvents();
         getShoppingCartForCheckout();
+        getSignalr();
     }
     function registerEvents() {
         $("#formBillShopping").validate({
@@ -24,12 +26,6 @@
                 citySelectList: "",
             }
         });
-
-        $("#addBillShopping").off('click').on('click', function (e) {
-            e.preventDefault();
-            var valid = $("#formBillShopping").valid();
-        });
-
         $("#citySelectList").off('change').on('change', function (e) {
             e.preventDefault();
             var province = $("#citySelectList").val();
@@ -43,7 +39,6 @@
                 setTimeout(getTotalPayment, 200);
             }
         });
-
         $("#districtSelectList").off('change').on('change', function (e) {
             e.preventDefault();
             var districtId = $(this).val();
@@ -67,6 +62,35 @@
             var colorId = $(this).data('colorid');
             var sizeId = $(this).data('sizeid');
             removeShoppingCart(productId, colorId, sizeId);
+        });
+        $('body').on('change', '.updatePriceShoppingCart', function (e) {
+            e.preventDefault();
+            var productId = $(this).data('productid');
+            var colorId = $(this).data('colorid');
+            var sizeId = $(this).data('sizeid');
+            var quantity = $(this).val();
+            updateShoppingCart(productId, colorId, sizeId, quantity);
+        });
+        $('body').on('click', '#addBillShopping', function (e) {
+            e.preventDefault();
+            var valid = $("#formBillShopping").valid();
+            if (valid) {
+                var billVm = {
+                    CustomerName: $('#name').val(),
+                    CustomerAddress: $('#address').val(),
+                    CustomerMobile: $('#phoneNumber').val(),
+                    CustomerEmail: $('#email').val(),
+                    CustomerMessage: $('#note').val(),
+                    PaymentMethod: $('#pamentMethod').val(),
+                }
+                var feeShiping = $('.taxtransfer').text().split(".", 1);
+                var totalMoneyOrder = $('#totalMoneyShoppingCart').text().split(".", 1);
+                var getTotalPayment = $('#totalCountPayment').text().split(".", 1);
+                addCheackout(billVm, feeShiping, totalMoneyOrder, getTotalPayment);
+            }
+            else {
+                notifications.printSuccesError("Quý khách nhập thiếu thông tin");
+            }
         });
     }
 
@@ -172,6 +196,10 @@
                     $('#tableShoppingContent').html(render);
                     $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
                 }
+                else {
+                    $('#tableShoppingContent').html("");
+                    $('#totalMoneyShoppingCart').text("");
+                }
                 setTimeout(getTotalPayment, 200);
             }
         })
@@ -179,7 +207,7 @@
 
     function getTotalPayment() {
         var totalMoneyShopping = $('#totalMoneyShoppingCart').text();
-        var shipping = $('.taxtransfer').text().split(".",1);
+        var shipping = $('.taxtransfer').text().split(".", 1);
         $('#totalCountPayment').text($.number(parseInt(shipping) + parseInt(totalMoneyShopping), 3));
     }
 
@@ -194,13 +222,13 @@
             dataType: 'json',
             type: 'POST',
             success: function (res) {
-                getShoppingCartForCheckout();               
-                shopingCarts.getShoppingCartToUpdate();                             
+                getShoppingCartForCheckout();
+                shopingCarts.getShoppingCartToUpdate();
             }
         })
     }
 
-    this.getShoppingCartForCheckoutUpdate=function() {
+    this.getShoppingCartForCheckoutUpdate = function () {
         var template = $('#productShoppingTable-template').html();
         var render = "";
         $.ajax({
@@ -246,5 +274,63 @@
             }
         })
     }
-    
+
+    function updateShoppingCart(productId, colorId, sizeId, quantity) {
+        $.ajax({
+            url: '/shopping/updateShopping',
+            data: {
+                productId: productId,
+                colorId: colorId,
+                sizeId: sizeId,
+                quantity: quantity,
+            },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                getShoppingCartForCheckout();
+                shopingCarts.getShoppingCartToUpdate();
+            }
+        })
+    }
+
+    function addCheackout(billVm, feeShiping, totalMoneyOrder, totalMoneyPayment) {
+        $.ajax({
+            url: '/checkout.html',
+            data: {
+                billVm: billVm,
+                feeShipping: feeShiping,
+                totalMoneyOrder: totalMoneyOrder,
+                totalMoneyPayment: totalMoneyPayment,
+            },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status) {
+                    connections.invoke("NewMessage", res.billVm).catch(function (err) {
+                        return console.error(err.toString());
+                    });
+                    notifications.printSuccesMessage("Quý khách đã đặt thành công");
+                    setTimeout(window.location.href = "/index.html", 200);
+                }
+                else {
+                    notifications.printSuccesError("Quý khách chưa đặt thành công");
+                }
+            }
+        });
+    }
+    function getSignalr() {
+        var domainApi = $('#domainApiSignalr').text();
+
+        var connection = new signalR.HubConnectionBuilder().withUrl(domainApi + "/hub").build();
+
+        connection.on("messageReceived", function (message) {
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+        connections = connection;
+    }
+
+   
 }
