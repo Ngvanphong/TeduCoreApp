@@ -53,5 +53,30 @@ namespace TeduCoreApp.Controllers
             });
         }
 
+        [Route("product/search")]
+        [HttpGet]
+        public IActionResult Search(string term)
+        {
+            List<string> listNames = _productService.GetProductName(term);
+            return new OkObjectResult(new { data = listNames });
+        }
+
+        [Route("product/search.html")]
+        [HttpGet]
+        public IActionResult SearchProduct(string searchProduct, int page=1,int pageSize=9)
+        {
+            ViewBag.SearchName = searchProduct;
+            ViewBag.DomainApi = _config["DomainApi:Domain"];
+            List<ProductViewModel> products = _productService.GetAllByNamePaging(searchProduct, page, pageSize, out int totalRows);
+            WebResultPaging<ProductViewModel> resultPagging =new WebResultPaging<ProductViewModel>()
+            {
+                Items = products,
+                PageIndex = page,
+                PageSize = pageSize,
+                TotalRows = totalRows,
+            };
+            return View(resultPagging);
+        }
+
     }
 }

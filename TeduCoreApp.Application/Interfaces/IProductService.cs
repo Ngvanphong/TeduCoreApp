@@ -43,7 +43,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
 
-        List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow);
+        List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetProductRelate(int categoryId, int number);
 

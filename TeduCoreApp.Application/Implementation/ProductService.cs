@@ -259,9 +259,12 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
-        public List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, string sort, out int totalRow)
+        public List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, out int totalRow)
         {
-            throw new NotImplementedException();
+            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active &&x.Name.Contains(Name));          
+            totalRow = query.Count();
+            query = query.OrderBy(x=>x.Name).Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
         public List<ProductViewModel> GetProductRelate(int categoryId,int number)
