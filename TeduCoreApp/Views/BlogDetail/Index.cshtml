@@ -1,9 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model BlogIndexViewModel
-<!-- end nav -->
+@model BlogDetailIndexViewModel
 <div class="main-container col2-right-layout">
     <div class="main container">
         <div class="row">
@@ -14,74 +14,28 @@
                     </div>
                     <div class="blog-wrapper" id="main">
                         <div class="site-content" id="primary">
-                            <div role="main" id="content">
-                                @foreach (var item in Model.ResultPagging.Items)
-                                {
-                                    var urlBlog = "/" + item.SeoAlias + ".b-" + item.Id + ".html";
+                            <div role="main" id="content">                              
                                     <article class="blog_entry">
-                                        <div class="entry-content">
-                                            <div class="featured-thumb"><a href="@urlBlog"><img class="img-responsive" alt="@item.Name" src="@Model.DomainApi@item.Image"></a></div>
+                                        <div class="entry-content">                        
                                             <header class="blog_entry-header">
                                                 <div class="blog_entry-header-inner">
-                                                    <h2 class="blog_entry-title"> <a rel="bookmark" href="@urlBlog">@item.Name</a> </h2>
+                                                    <h2 class="blog_entry-title"> <a rel="bookmark" href="#">@Model.Bog.Name</a> </h2>
                                                 </div>
                                             </header>
-                                            <div class="entry-meta-data">  <span class="date"><i class="fa fa-calendar"></i>&nbsp;@item.DateCreated</span> </div>
-                                            <div class="entry-content">
-                                                @item.Description
+                                            <div class="entry-meta-data">
+                                                <span class="date"><i class="fa fa-calendar"></i>&nbsp;@Model.Bog.DateCreated</span>
+                                                @foreach (var tag in Model.TagsForBlogDetail)
+                                                {
+                                                    var urlTagBlog = "/bt-" + tag.Id + ".html";
+                                                    <a href="@urlTagBlog"><i class="fa fa-tag"></i> @tag.Name</a>
+                                                }
                                             </div>
-                                            <p> <a class="btn" href="@urlBlog">Xem thêm</a> </p>
+                                            <div class="entry-content">
+                                              @Html.Raw(Model.Bog.Content) 
+                                            </div>                                         
                                         </div>
-                                    </article>
-                                }
-                            </div>
-                            <ul class="pagination">
-
-                                @if (Model.ResultPagging.TotalRows > 1)
-                                {
-                                    var startPageIndex = Math.Max(1, Model.ResultPagging.PageIndex - 8 / 2);
-                                    var endPageIndex = Math.Min(Model.ResultPagging.TotalPages, Model.ResultPagging.PageIndex + 8 / 2);
-                                    @if (Model.ResultPagging.PageIndex > 1)
-                                    {
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex - 1)&pageSize=@Model.ResultPagging.PageSize" tabindex="-1">Previous</a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                    }
-                                    for (int i = startPageIndex; i <= endPageIndex; i++)
-                                    {
-                                        if (i == Model.ResultPagging.PageIndex)
-                                        {
-                                            <li class="page-item active">
-                                                <a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i<span class="sr-only">(current)</span></a>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li class="page-item"><a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i</a></li>
-                                        }
-                                    }
-                                    @if (Model.ResultPagging.PageIndex < Model.ResultPagging.TotalPages)
-                                    {
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex + 1)&pageSize=@Model.ResultPagging.PageSize">Next</a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    }
-
-
-                                }
-                            </ul>
+                                    </article>                             
+                            </div>                       
                         </div>
                     </div>
                 </div>
