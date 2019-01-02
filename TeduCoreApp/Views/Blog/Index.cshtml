@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BlogIndexViewModel
+<!-- end nav -->
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h2>Blog</h2>
+                    </div>
+                    <div class="blog-wrapper" id="main">
+                        <div class="site-content" id="primary">
+                            <div role="main" id="content">
+                                @foreach (var item in Model.ResultPagging.Items)
+                                {
+                                    var urlBlog = "/" + item.SeoAlias + ".b-" + item.Id + ".html";
+                                    <article class="blog_entry">
+                                        <div class="entry-content">
+                                            <div class="featured-thumb"><a href="@urlBlog"><img class="img-responsive" alt="@item.Name" src="@Model.DomainApi@item.Image"></a></div>
+                                            <header class="blog_entry-header">
+                                                <div class="blog_entry-header-inner">
+                                                    <h2 class="blog_entry-title"> <a rel="bookmark" href="@urlBlog">@item.Name</a> </h2>
+                                                </div>
+                                            </header>
+                                            <div class="entry-meta-data">  <span class="date"><i class="fa fa-calendar"></i>&nbsp;@item.DateCreated</span> </div>
+                                            <div class="entry-content">
+                                                @item.Description
+                                            </div>
+                                            <p> <a class="btn" href="@urlBlog">Xem thêm</a> </p>
+                                        </div>
+                                    </article>
+                                }
+                            </div>
+                            <ul class="pagination">
+
+                                @if (Model.ResultPagging.TotalRows > 1)
+                                {
+                                    var startPageIndex = Math.Max(1, Model.ResultPagging.PageIndex - 10 / 2);
+                                    var endPageIndex = Math.Min(Model.ResultPagging.TotalPages, Model.ResultPagging.PageIndex + 10 / 2);
+                                    @if (Model.ResultPagging.PageIndex > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex - 1)&pageSize=@Model.ResultPagging.PageSize" tabindex="-1">Previous</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                        </li>
+                                    }
+                                    for (int i = startPageIndex; i <= endPageIndex; i++)
+                                    {
+                                        if (i == Model.ResultPagging.PageIndex)
+                                        {
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i<span class="sr-only">(current)</span></a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="page-item"><a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i</a></li>
+                                        }
+                                    }
+                                    @if (Model.ResultPagging.PageIndex < Model.ResultPagging.TotalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex + 1)&pageSize=@Model.ResultPagging.PageSize">Next</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    }
+
+
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-right sidebar col-sm-3">
+                <div role="complementary" class="widget_wrapper13" id="secondary">
+
+                    <div class="custom-slider">
+                        <div>
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    @for (int i = 0; i < Model.Advertistments.Count(); i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <li class="active" data-target="#carousel-example-generic" data-slide-to="@i"></li>
+
+                                        }
+                                        else
+                                        {
+                                            <li data-target="#carousel-example-generic" data-slide-to="@i" class=""></li>
+                                        }
+
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    @{ int flagAd = 1;}
+                                    @foreach (var advertistment in Model.Advertistments)
+                                    {
+                                        if (flagAd == 1)
+                                        {
+                                            <div class="item active">
+                                                <img class="img-responsive" src="@Model.DomainApi@advertistment.Image" alt="@advertistment.Name">
+                                                <div class="carousel-caption">
+                                                    <h3><a title="@advertistment.Name" href="@advertistment.Url">@advertistment.Name</a></h3>
+                                                    <p>@advertistment.Description</p>
+                                                </div>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="item">
+                                                <img class="img-responsive" src="@Model.DomainApi@advertistment.Image" alt="@advertistment.Name">
+                                                <div class="carousel-caption">
+                                                    <h3><a title="@advertistment.Name" href="@advertistment.Url">@advertistment.Name</a></h3>
+                                                    <p>@advertistment.Description</p>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                        flagAd += 1;
+                                    }
+                                </div>
+                                <a class="left carousel-control" href="#" data-slide="prev"> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#" data-slide="next"> <span class="sr-only">Next</span> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block block-tags">
+                        <div class="block-title"> Từ khóa chính</div>
+                        <div class="block-content">
+                            <div class="tags-list">
+                                @foreach (var tag in Model.Tags)
+                                {
+                                    var urlTag = "/bt-" + tag.Id + ".html";
+                                    <a href="@urlTag">@tag.Name</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

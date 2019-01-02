@@ -13,7 +13,7 @@ namespace TeduCoreApp.Utilities.Dtos
         public int TotalRows { get; set; }
         public int TotalPages
         {
-            get { return (int)Math.Ceiling((double)(TotalRows / PageSize)); }
+            get { return (int)Math.Ceiling((double)((double)TotalRows / (double)PageSize)); }
         }
     }
 }

@@ -11,6 +11,10 @@ namespace TeduCoreApp.Data.IRepositories
     {
         List<Tag> GetTagByProductId(int productId);
         List<Product> GetProductAllByTag(string tagId, int pageIndex, int pageSize, out int totalRow);
-       
+
+        List<Blog> GetBlogByTag(string tagId, int pageIndex, int pageSize, out int totalRow);
+        List<Tag> GetTagByBlogId(int blogId);
+
+
     }
 }

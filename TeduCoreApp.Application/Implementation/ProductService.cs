@@ -310,14 +310,8 @@ namespace TeduCoreApp.Application.Implementation
         }
 
         public List<TagViewModel> GetTagByProductId(int productId)
-        {
-            var productTags = _productTagRepository.FindAll();
-            var tags = _tagRepository.FindAll();
-            var query = from pt in productTags
-                        join t in tags on pt.TagId equals t.Id
-                        where pt.ProductId == productId
-                        select t;
-            return _mapper.Map<List<TagViewModel>>(query.OrderBy(x=>x.Name).ToList());
+        {           
+            return _mapper.Map<List<TagViewModel>>(_tagRepository.GetTagByProductId(productId));
         }
 
         public TagViewModel GetTagById(string id)

@@ -8,6 +8,7 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Data.ViewModels.Blog;
+using TeduCoreApp.Data.ViewModels.Tag;
 using TeduCoreApp.Infrastructure.Interfaces;
 using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Helpers;
@@ -21,7 +22,8 @@ namespace TeduCoreApp.Application.Implementation
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
         private ITagRepository _tagRepository;
-        private IRepository<BlogTag, int> _blogTagRepository;
+        private IRepository<BlogTag, int> _blogTagRepository;        
+
 
         public BlogService(IRepository<Blog, int> blogRepository, IUnitOfWork unitOfWork, IMapper mapper,
             ITagRepository tagRepository, IRepository<BlogTag, int> blogTagRepository)
@@ -80,9 +82,12 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<BlogViewModel>>(_blogRepository.FindAll(x=>x.Status==Data.Enums.Status.Active).OrderByDescending(x=>x.DateCreated).ToList());
         }
 
-        public List<BlogViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
+        public List<BlogViewModel> GetAllPaggingByActive(int page, int pageSize, out int totalRow)
         {
-            throw new NotImplementedException();
+            var listBlog = _blogRepository.FindAll();           
+            totalRow = listBlog.Count();
+            listBlog = listBlog.OrderByDescending(x => x.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<BlogViewModel>>(listBlog.ToList());
         }
 
         public List<BlogViewModel> GetAllPaging(string filter,int page, int pageSize, out int totalRow)
@@ -97,6 +102,14 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<BlogViewModel>>(listBlog.ToList());
         }
 
+        public List<BlogViewModel> GetBlogByTagPagging(string tag, int page, int pageSize, out int totalRow)
+        {
+            var query = _tagRepository.GetBlogByTag(tag, page, pageSize, out int totalRows);
+            totalRow = totalRows;
+            return _mapper.Map<List<BlogViewModel>>(query.ToList());
+        }
+       
+
         public BlogViewModel GetById(int id)
         {
             return _mapper.Map<BlogViewModel>(_blogRepository.FindById(id));
@@ -105,6 +118,17 @@ namespace TeduCoreApp.Application.Implementation
         public Blog GetByIdDb(int id)
         {
             return _blogRepository.FindById(id);
+        }
+
+        public List<TagViewModel> GetTagBlogTop(int number)
+        {
+            return _mapper.Map<List<TagViewModel>>(_tagRepository.FindAll(x => x.Type == CommonConstants.BlogTag)
+                .OrderByDescending(x => x.Id).Take(number).ToList());
+        }
+
+        public List<TagViewModel> GetTagByBlogId(int blogId)
+        {
+            return _mapper.Map<List<TagViewModel>>(_tagRepository.GetTagByBlogId(blogId));
         }
 
         public void SaveChanges()

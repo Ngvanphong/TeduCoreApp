@@ -15,6 +15,7 @@
                 },
                 mobile: "required",
                 citySelectList: "required",
+               
             },
             messages: {
                 name: "Bạn phải nhập tên",
@@ -24,6 +25,7 @@
                 },
                 mobile: "Bạn phải nhập số điện thoại",
                 citySelectList: "",
+                
             }
         });
         $("#citySelectList").off('change').on('change', function (e) {
@@ -74,7 +76,8 @@
         $('body').on('click', '#addBillShopping', function (e) {
             e.preventDefault();
             var valid = $("#formBillShopping").valid();
-            if (valid) {
+            var totalMoneyPayment = $('#totalCountPayment').text().split(".", 1);
+            if (valid && parseInt(totalMoneyPayment)>50) {
                 var billVm = {
                     CustomerName: $('#name').val(),
                     CustomerAddress: $('#address').val(),
@@ -85,7 +88,7 @@
                 }
                 var feeShiping = $('.taxtransfer').text().split(".", 1);
                 var totalMoneyOrder = $('#totalMoneyShoppingCart').text().split(".", 1);
-                var getTotalPayment = $('#totalCountPayment').text().split(".", 1);
+                var getTotalPayment = totalMoneyPayment;
                 addCheackout(billVm, feeShiping, totalMoneyOrder, getTotalPayment);
             }
             else {
@@ -310,7 +313,7 @@
                         return console.error(err.toString());
                     });
                     notifications.printSuccesMessage("Quý khách đã đặt thành công");
-                    setTimeout(window.location.href = "/index.html", 200);
+                    setTimeout(window.location.href = "/index.html", 2000);
                 }
                 else {
                     notifications.printSuccesError("Quý khách chưa đặt thành công");
