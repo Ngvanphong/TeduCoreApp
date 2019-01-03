@@ -17,6 +17,7 @@ namespace TeduCoreApp.Data.Entities
         public string Name { get; set; }
 
         public string Value1 { get; set; }
+
         public int? Value2 { get; set; }
 
         public bool? Value3 { get; set; }

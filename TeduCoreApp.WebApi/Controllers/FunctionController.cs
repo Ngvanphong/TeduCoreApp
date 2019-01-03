@@ -29,7 +29,7 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpGet]
         [Route("getlisthierarchy")]
-        public ActionResult GetAllHierachy()
+        public IActionResult GetAllHierachy()
         {
             string userId = User.GetSpecialClaimsApi("Id");
 

@@ -5,6 +5,7 @@ using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
+using TeduCoreApp.Data.ViewModels.Contact;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
@@ -45,23 +46,25 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<BlogTagViewModel, BlogTag>()
            .ConstructUsing(c => new BlogTag(c));
             CreateMap<BlogImageViewModel, BlogImage>()
-          .ConstructUsing(c => new BlogImage(c));
+            .ConstructUsing(c => new BlogImage(c));
             CreateMap<SlideViewModel, Slide>()
-         .ConstructUsing(c => new Slide(c));
+             .ConstructUsing(c => new Slide(c));
             CreateMap<BillViewModel, Bill>()
-         .ConstructUsing(c => new Bill(c));
+            .ConstructUsing(c => new Bill(c));
             CreateMap<BillDetailViewModel, BillDetail>()
-         .ConstructUsing(c => new BillDetail(c));
+             .ConstructUsing(c => new BillDetail(c));
             CreateMap<BillUserAnnoucementViewModel, BillUserAnnoucement>()
-        .ConstructUsing(c => new BillUserAnnoucement(c));
+            .ConstructUsing(c => new BillUserAnnoucement(c));
             CreateMap<WholePriceViewModel, WholePrice>()
-        .ConstructUsing(c => new WholePrice(c));
+            .ConstructUsing(c => new WholePrice(c));
             CreateMap<AdvertistmentViewModel, Advertistment>()
-        .ConstructUsing(c => new Advertistment(c));
+            .ConstructUsing(c => new Advertistment(c));
             CreateMap<AdvertistmentPageViewModel, AdvertistmentPage>()
-        .ConstructUsing(c => new AdvertistmentPage(c));
+            .ConstructUsing(c => new AdvertistmentPage(c));
             CreateMap<AdvertistmentPositionViewModel, AdvertistmentPosition>()
-       .ConstructUsing(c => new AdvertistmentPosition(c));
+           .ConstructUsing(c => new AdvertistmentPosition(c));
+            CreateMap<ContactViewModel, Contact>()
+           .ConstructUsing(c => new Contact(c));
         }
     }
 }

@@ -4,6 +4,7 @@ using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.BillUserAnnoucement;
 using TeduCoreApp.Data.ViewModels.Blog;
+using TeduCoreApp.Data.ViewModels.Contact;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
@@ -39,6 +40,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Advertistment, AdvertistmentViewModel>();
             CreateMap<AdvertistmentPage, AdvertistmentPageViewModel>();
             CreateMap<AdvertistmentPosition, AdvertistmentPositionViewModel>();
+            CreateMap<Contact, ContactViewModel>();
         }
     }
 }
