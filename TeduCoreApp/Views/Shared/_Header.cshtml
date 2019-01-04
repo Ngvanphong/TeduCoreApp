@@ -5,19 +5,7 @@
                 <div class="row">
                     <!-- Header Language -->
                     <div class="col-xs-12 col-sm-4 col-md-6">
-                        <div class="welcome-msg">Welcome to our store! </div>
-                        <div class="dropdown jtv-language-box">
-                            <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img class="img-responsive" src="/client-side/images/flag-english.jpg" alt="language"> English <span class="caret"></span> </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li> <a class="selected" href="#"> <img class="img-responsive" src="/client-side/images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
-                                <li> <a href="#"> <img class="img-responsive" src="/client-side/images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
-                                <li> <a href="#"> <img class="img-responsive" src="/client-side/images/flag-german.jpg" alt="flag"> <span>German</span> </a> </li>
-                                <li> <a href="#"> <img class="img-responsive" src="/client-side/images/flag-brazil.jpg" alt="flag"> <span>Brazil</span> </a> </li>
-                                <li> <a href="#"> <img class="img-responsive" src="/client-side/images/flag-chile.jpg" alt="flag"> <span>Chile</span> </a> </li>
-                                <li> <a href="#"> <img class="img-responsive" src="/client-side/images/flag-spain.jpg" alt="flag"> <span>Spain</span> </a> </li>
-                            </ul>
-                        </div>
-                        <!-- End Header Language -->
+                        <div class="welcome-msg">Welcome to our store! </div>                        
                     </div>
                     <div class="col-xs-6 col-sm-8 col-md-6 hidden-xs">
                         <!-- Header Top Links -->
@@ -37,9 +25,9 @@
                                         <div class="dropdown block-company-wrapper hidden-xs">
                                             <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="about_us.html"> Giới thiệu</a> </li>
-                                                <li><a href="sitemap.html">Liên hệ</a> </li>
-                                                <li><a href="#">Chính sách</a> </li>
+                                                <li><a href="/about.html"> Giới thiệu</a> </li>
+                                                <li><a href="/contact.html">Liên hệ</a> </li>
+                                                <li><a href="/policy.html">Chính sách</a> </li>
                                                 @if (!User.Identity.IsAuthenticated)
                                                 {
                                                     <li><a href="/account/register.html">Đăng ký</a> </li>

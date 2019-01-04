@@ -1,0 +1,69 @@
+﻿@using TeduCoreApp.Data.ViewModels.Contact
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ContactViewModel
+<!-- main-container -->
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-12 wow">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h2>Liên hệ</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6" id="contact_form_map">
+                            <h3 class="page-subheading">Hãy giữ liên lạc với chúng tôi.</h3>
+                            <p>Cảm ơn quý khách đã ghé thêm website, mọi thắc mắc xin quý khách liên hệ địa chỉ bên dưới.</p>
+                            <br />
+                            <ul class="store_info">
+                                <li><i class="fa fa-user"></i> @Model.Name</li>
+                                <li id="address"><i class="fa fa-home"></i> @Model.Address</li>
+                                <li><i class="fa fa-phone"></i><span> @Model.Phone</span></li>
+                                <li><i class="fa fa-envelope"></i> Email: <span><a href="#"> @Model.Email</a></span></li>
+                                <li><i class="fa fa-internet-explorer"></i><span> @Model.Website</span></li>
+                            </ul>
+                            <label class="hidden" id="lat"> @Model.Lat</label>
+                            <label class="hidden" id="lng"> @Model.Lng</label>
+                        </div>
+                        <div style="width: 100%;height: 400px;background-color: grey;" id="map" class="col-sm-6">
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+<!--End main-container -->
+
+<script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+    var map, infoWindow, marker;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: parseFloat($("#lat").text()), lng: parseFloat($("#lng").text()) },
+            zoom: 17
+        });
+        infoWindow = new google.maps.InfoWindow;
+        marker = new google.maps.Marker({
+            position: { lat: parseFloat($("#lat").text()), lng: parseFloat($("#lng").text()) },
+            map: map,
+            title: $('#address').text(),
+        }
+        );
+        infoWindow.open(map, marker);
+        infoWindow.setContent($("#address").text());
+        // Try HTML5 geolocation.
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYMX_Li2zERYJmlzkcARfTAnOXSpp1IJU&callback=initMap"
+        async defer></script>
+
