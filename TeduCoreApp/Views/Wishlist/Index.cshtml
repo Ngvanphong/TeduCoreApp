@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var domainApi = (string)ViewBag.DomainApi;
+}
+@model List<WishlistViewModel>
+<div class="main-container col1-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-12 col-xs-12">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h1>Sản phẩm yêu thích</h1>
+                        <label class="hidden" id="domainApiSignalr">@domainApi</label>
+                    </div>
+                    <div class="page-content checkout-page">                      
+                        <div class="box-border">
+                            <div class="order-detail-content reponsive-table-shopping">
+                                <table class="table table-bordered table-responsive jtv-cart-summary">
+                                    <thead>
+                                        <tr>
+                                            <th class="cart_product">Sản phẩm</th>
+                                            <th>Chi tiết</th>
+                                            <th>Giá</th>
+                                            <th>Giá khuyến mãi</th>
+                                            <th class="action"><i class="fa fa-trash-o"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Except(Model.FindAll(x=>x.ProductId==0)))
+                                        {
+                                            var url = item.ProductVm.SeoAlias + ".p-" + item.ProductVm.Id + ".html";
+                                            <tr>
+                                                <td class="cart_product"><a href="@url"><img class="img-responsive" src="@domainApi@item.ProductVm.ThumbnailImage" alt="@item.ProductVm.Name"></a></td>
+                                                <td class="cart_description">
+                                                    <p class="product-name"><a href="@url"> @item.ProductVm.Name </a></p>
+                                                </td>
+                                                <td class="price"><span>@item.ProductVm.Price@item.ProductVm.Unit</span></td>
+                                                <td class="price"><span>@item.ProductVm.PromotionPrice@item.ProductVm.Unit</span></td>
+                                                <td class="action"><a class="removeWisglistIeem"  data-productid="@item.ProductId" href="#">Delete item</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

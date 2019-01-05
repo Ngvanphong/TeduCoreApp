@@ -77,8 +77,7 @@ namespace TeduCoreApp.Controllers
                 };
                 shoppingCart.Add(cart);
             }
-            HttpContext.Session.SetList<ShoppingCardViewModel>(CommonConstants.SesstionCart, shoppingCart);
-            shoppingCart = HttpContext.Session.GetList<ShoppingCardViewModel>(CommonConstants.SesstionCart);
+            HttpContext.Session.SetList<ShoppingCardViewModel>(CommonConstants.SesstionCart, shoppingCart);          
             return new OkObjectResult(productId);
         }
 

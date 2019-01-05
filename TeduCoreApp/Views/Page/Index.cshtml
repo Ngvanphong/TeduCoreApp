@@ -1,0 +1,48 @@
+﻿@using TeduCoreApp.Data.ViewModels.Page
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PageViewModel
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Trang chủ" href="/index.html">Home</a> <span>/</span> </li>
+                    <li> <strong>@Model.Name</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- main-container -->
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-9">
+                <div class="col-main">                  
+                    <div class="static-contain">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+            </section>
+            <aside class="col-right sidebar col-sm-3 wow">
+                <div class="block block-company">
+                    <div class="block-title">Về cửa hàng</div>
+                    <div class="block-content">
+                        <ol id="recently-viewed-items">
+                            <li class="item even"><a href="/page.html?alias=about">Giới thiệu</a></li>
+                            <li class="item even"><a href="/contact.html">Liên hệ</a></li>
+                            <li class="item  even"><a href="/page.html?alias=policy">Chính sách bán hàng</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<!--End main-container -->

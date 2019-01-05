@@ -94,7 +94,7 @@
                 try {
                     checkoutControllers.getShoppingCartForCheckoutUpdate();
                 }
-                catch (error) { }
+                catch (error) {}
             }
         })
     }

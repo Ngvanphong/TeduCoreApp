@@ -8671,3 +8671,9 @@ button.subscribe:before {
     font-style: italic;
     text-decoration-color:red
 }
+@media only screen and (max-width: 900px) {
+    .reponsive-table-shopping {
+        max-width:100%;
+        overflow-x: auto;
+    }
+}

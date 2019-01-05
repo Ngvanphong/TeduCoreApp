@@ -15,19 +15,19 @@
                                     @if (User.Identity.IsAuthenticated)
                                     {
 
-                                        <li> <a title="Thông tin tài khoản" href="account_page.html"><span class="hidden-xs">Xin chào: @User.Identity.Name</span></a> </li>
+                                        <li> <a title="Thông tin tài khoản" href="/account_page.html"><span class="hidden-xs">Xin chào: @User.Identity.Name</span></a> </li>
                                         <li> <a title="Đăng xuất" id="logoutPost" href="#">Đăng xuất</a> </li>
 
                                     }
-                                    <li> <a title="Yêu thích" href="wishlist.html">Yêu thích</a> </li>
-                                    <li> <a title="Thanh toán" href="checkout.html"><span class="hidden-xs">Thanh toán</span></a> </li>
+                                    <li> <a title="Yêu thích" href="/wishlist.html">Yêu thích</a> </li>
+                                    <li> <a title="Thanh toán" href="/checkout.html"><span class="hidden-xs">Thanh toán</span></a> </li>
                                     <li>
                                         <div class="dropdown block-company-wrapper hidden-xs">
                                             <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/about.html"> Giới thiệu</a> </li>
+                                                <li><a href="/page.html?alias=about"> Giới thiệu</a> </li>
                                                 <li><a href="/contact.html">Liên hệ</a> </li>
-                                                <li><a href="/policy.html">Chính sách</a> </li>
+                                                <li><a href="/page.html?alias=policy">Chính sách</a> </li>
                                                 @if (!User.Identity.IsAuthenticated)
                                                 {
                                                     <li><a href="/account/register.html">Đăng ký</a> </li>
@@ -63,7 +63,7 @@
 
                                     <!--actions-->
                                     <div class="actions">
-                                        <a href="checkout.html" class="view-cart"><span>Thanh toán</span></a>
+                                        <a href="/checkout.html" class="view-cart"><span>Thanh toán</span></a>
                                     </div>
                                 </div>
                             </div>

@@ -1,26 +1,11 @@
 ﻿@using TeduCoreApp.Data.ViewModels.Product
 @model List<ProductCategoryViewModel>
 <div id="jtv-mobile-menu">
-    <ul>
+    <ul>       
         <li>
-            <div class="jtv-search-mob">
-                <form id="search1" name="search">
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-                        </div>
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-                    </div>
-                </form>
-            </div>
-        </li>
-        <li>
-            <a href="index.html">Home</a>
+            <a href="/index.html">Home</a>
             <ul>
-                <li><a href="../index.html"><span>Home Version 1</span></a></li>
-                <li><a href="index.html"><span>Home Version 2</span></a></li>
-                <li><a href="../version3/index.html"><span>Home Version 3</span></a></li>
-                <li><a href="../version4/index.html"><span>Home Version 4</span></a></li>
+                <li><a href="/promotionprice.html"><span>Khuyến mãi</span></a></li>            
             </ul>
         </li>
         <li>
@@ -91,15 +76,15 @@
         <ul class="links">
             @if (User.Identity.IsAuthenticated)
             {
-                <li><a title="Thông tin" href="account_page.html">Tài khoản</a> </li>
+                <li><a title="Thông tin" href="/account_page.html">Tài khoản</a> </li>
             }
             else
             {
                 <li class="last"><a class="aSendLoginGet" title="Đăng nhập" href="#"><span>Đăng nhập</span></a> </li>
             }
-            <li><a title="Yêu thích" href="wishlist.html">Yêu thích</a> </li>
-            <li><a title="Thanh toán" href="checkout.html">Thanh toán</a> </li>
-            <li><a title="Blog" href="blog.html"><span>Blog</span></a> </li>
+            <li><a title="Yêu thích" href="/wishlist.html">Yêu thích</a> </li>
+            <li><a title="Thanh toán" href="/checkout.html">Thanh toán</a> </li>
+            <li><a title="Blog" href="/blog.html"><span>Blog</span></a> </li>
         </ul>
     </div>
 </div>

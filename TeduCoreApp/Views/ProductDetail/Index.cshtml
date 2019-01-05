@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="email-addto-box">
                                                 <ul class="add-to-links">
-                                                    <li> <a class="link-wishlist" title="Yêu thích" href="wishlist.html"><span>Thêm yêu thích</span></a></li>
+                                                    <li> <a class="link-wishlist btnWistlistAddItem" title="Yêu thích"  data-productid="@Model.ProductDetail.Id" href="#"><span>Thêm yêu thích</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -230,7 +230,7 @@
                                     <div class="item-img">
                                         <div class="item-img-info">
                                             <a class="product-image" title="@productRelate.Name" href="@urlRelate"> <img class="img-responsive" alt="@productRelate.Name" src="@Model.DomainApi@productRelate.ThumbnailImage"> </a>
-                                            <div class="action">  <a href="@urlRelate" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
+                                            <div class="action">  <a href="@urlRelate" title="Chi tiết"><i class="fa fa-search"></i></a> <a class="btnWistlistAddItem" data-productid="@productRelate.Id" href="#" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
                                         </div>
                                     </div>
                                     <div class="item-info">
@@ -284,7 +284,7 @@
                                     <div class="item-img">
                                         <div class="item-img-info">
                                             <a class="product-image" title="@upsell.Name" href="@urlUpSell"> <img class="img-responsive" alt="@upsell.Name" src="@Model.DomainApi@upsell.ThumbnailImage"> </a>
-                                            <div class="action">  <a href="@urlUpSell" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
+                                            <div class="action">  <a href="@urlUpSell" title="Chi tiết"><i class="fa fa-search"></i></a> <a class="btnWistlistAddItem" data-productid="@upsell.Id" href="#" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
                                         </div>
                                     </div>
                                     <div class="item-info">

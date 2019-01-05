@@ -11,12 +11,7 @@
                 <li class="drop-menu">
                     <a href="/index.html" class="level-top active"><span>Home</span></a>
                     <ul>
-                        <li><a href="../index.html"><span>Home Version 1</span></a></li>
-                        <li><a href="index.html"><span>Home Version 2</span></a></li>
-                        <li><a href="../version3/index.html"><span>Home Version 3</span></a></li>
-                        <li><a href="../version4/index.html"><span>Home Version 4</span></a></li>
-                        <li><a href="../version3/index.html"><span>Home Version 3</span></a></li>
-                        <li><a href="../version4/index.html"><span>Home Version 4</span></a></li>
+                        <li><a href="/promotionprice.html"><span>Khuyến mãi</span></a></li>                                         
                     </ul>
                 </li>
                 <li class="drop-menu">
@@ -49,7 +44,7 @@
                 </li>
 
                 @{
-                    var parentDisplays = Model.Where(x => x.ParentId == null && x.HomeFlag == true).OrderBy(x => x.HomeOrder).Take(5);
+                    var parentDisplays = Model.Where(x => x.ParentId == null && x.HomeFlag == true).OrderBy(x => x.HomeOrder).Take(6);
                     foreach (var parentDisplay in parentDisplays)
                     {
                         if (Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id).Count() == 0)
@@ -83,7 +78,7 @@
                     }
                 }
 
-                <li class="mega-menu"> <a class="level-top" href="blog.html"><span>Blog</span></a> </li>               
+                <li class="mega-menu"> <a class="level-top" href="/blog.html"><span>Blog</span></a> </li>               
             </ul>
         </div>
     </div>

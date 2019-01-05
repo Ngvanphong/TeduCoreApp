@@ -126,7 +126,7 @@
                                             <div class="item-img-info">
                                                 <a class="product-image" title="@newProduct.Name" href="@urlNew"> <img class="img-responsive" alt="@newProduct.Name" src="@Model.DomainApi@newProduct.ThumbnailImage"> </a>
                                                 <div class="new-label new-top-left">new</div>
-                                                <div class="action">  <a href="@urlNew" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
+                                                <div class="action">  <a href="@urlNew" title="Chi tiết"><i class="fa fa-search"></i></a> <a class="btnWistlistAddItem" data-productid="@newProduct.Id" href="#" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
                                             </div>
                                         </div>
                                         <div class="item-info">
@@ -170,7 +170,7 @@
                                         <div class="item-img">
                                             <div class="item-img-info">
                                                 <a class="product-image" title="@hotProduct.Name" href="@urlHot"> <img class="img-responsive" alt="@hotProduct.Name" src="@Model.DomainApi@hotProduct.ThumbnailImage"> </a>
-                                                <div class="action">  <a href="@urlHot" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
+                                                <div class="action">  <a href="@urlHot" title="Chi tiết"><i class="fa fa-search"></i></a> <a class="btnWistlistAddItem" data-productid="@hotProduct.Id" href="#" title="Yêu thích"><i class="fa fa-heart-o"></i></a>  </div>
                                             </div>
                                         </div>
                                         <div class="item-info">
@@ -212,7 +212,7 @@ else
                                         <div class="item-img">
                                             <div class="item-img-info">
                                                 <a class="product-image" title="@promotionProduct.Name" href="@urlPromotion"> <img class="img-responsive" alt="@promotionProduct.Name" src="@Model.DomainApi@promotionProduct.ThumbnailImage"> </a>
-                                                <div class="action">  <a href="@urlPromotion" title="Chi tiết"><i class="fa fa-search"></i></a> <a href="wishlist.html" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
+                                                <div class="action">  <a href="@urlPromotion" title="Chi tiết"><i class="fa fa-search"></i></a> <a class="btnWistlistAddItem" data-productid="@promotionProduct" href="#" title="Yêu thích"><i class="fa fa-heart-o"></i></a> </div>
                                             </div>
                                         </div>
                                         <div class="item-info">
