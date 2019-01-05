@@ -30,6 +30,7 @@ namespace TeduCoreApp.Application.Interfaces
         List<BlogViewModel> GetBlogByTagPagging(string tag, int page, int pageSize, out int totalRow);
 
         List<TagViewModel> GetTagByBlogId(int blogId);
+       
 
         void SaveChanges();
 

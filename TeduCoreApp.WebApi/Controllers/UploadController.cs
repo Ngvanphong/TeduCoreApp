@@ -66,6 +66,10 @@ namespace TeduCoreApp.WebApi.Controllers
                             {
                                 directory = @"/UploadedFiles/Advertistments/";
                             }
+                            else if (type == "page")
+                            {
+                                directory = @"/UploadedFiles/Pages/";
+                            }
                             else
                             {
                                 directory = @"/UploadedFiles/";

@@ -48,6 +48,7 @@ namespace TeduCoreApp.Data.EF
         public DbSet<ProductQuantity> ProductQuantities { set; get; }
         public DbSet<ProductTag> ProductTags { set; get; }
         public DbSet<BillUserAnnoucement> BillUserAnnoucements { set; get; }
+        public DbSet<PageImage> PageImages { get; set; }
 
         public DbSet<Size> Sizes { set; get; }
         public DbSet<Slide> Slides { set; get; }
@@ -60,6 +61,9 @@ namespace TeduCoreApp.Data.EF
         public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
         public DbSet<Advertistment> Advertistments { get; set; }
         public DbSet<AdvertistmentPosition> AdvertistmentPositions { get; set; }
+
+   
+
        
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -92,8 +96,7 @@ namespace TeduCoreApp.Data.EF
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());
-            builder.AddConfiguration(new FooterConfiguration());
-            builder.AddConfiguration(new PageConfiguration());        
+            builder.AddConfiguration(new FooterConfiguration());               
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
             builder.AddConfiguration(new AdvertistmentPagesCongiguration());

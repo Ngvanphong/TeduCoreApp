@@ -19,6 +19,7 @@ namespace TeduCoreApp.Application.Interfaces
         List<BlogImageViewModel> GetAllByBlogId(int blogId);
 
         void Delete(int id);
+
         
         void SaveChanges();
     }

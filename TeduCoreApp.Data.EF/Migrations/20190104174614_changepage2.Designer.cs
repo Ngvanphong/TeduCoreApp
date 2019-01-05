@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeduCoreApp.Data.EF;
 
 namespace TeduCoreApp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190104174614_changepage2")]
+    partial class changepage2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -645,6 +647,27 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.ToTable("Pages");
                 });
 
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.PageImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Caption")
+                        .HasMaxLength(250);
+
+                    b.Property<int>("PageId");
+
+                    b.Property<string>("Path")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("PageImages");
+                });
+
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -1055,6 +1078,14 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.HasOne("TeduCoreApp.Data.Entities.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId");
+                });
+
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.PageImage", b =>
+                {
+                    b.HasOne("TeduCoreApp.Data.Entities.Page", "Page")
+                        .WithMany()
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Permission", b =>

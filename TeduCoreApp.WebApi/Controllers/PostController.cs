@@ -18,11 +18,13 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private IBlogService _blogService;
         private IHostingEnvironment _env;
+        private IBlogImageService _blogImageService;
            
-        public PostController(IBlogService blogService, IHostingEnvironment env)
+        public PostController(IBlogService blogService, IHostingEnvironment env, IBlogImageService blogImageService)
         {
             _env = env;
             _blogService = blogService;
+            _blogImageService = blogImageService;
         }
         [HttpGet]
         [Route("getall")]
@@ -85,11 +87,16 @@ namespace TeduCoreApp.WebApi.Controllers
             try
             {
                 string pathImage = _blogService.GetById(id).Image;
+                List<BlogImageViewModel> listBlogImage = _blogImageService.GetAllByBlogId(id);
                 _blogService.Delete(id);
                 _blogService.SaveChanges();
                 if (!string.IsNullOrEmpty(pathImage))
                 {
                     pathImage.DeletementByString(_env);
+                }
+                foreach(var item in listBlogImage)
+                {
+                    item.Path.DeletementByString(_env);
                 }
                 return new OkObjectResult(id);
             }
