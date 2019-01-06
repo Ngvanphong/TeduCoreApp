@@ -14,15 +14,17 @@ namespace TeduCoreApp.Controllers
         private IAdvertistmentService _advertistmentService;
         private IBlogService _blogService;
         private IConfiguration _config;
+        private ISubcribleService _subcribleService;
 
         public HomeController(IProductService productService, ISlideService slideService,
-            IAdvertistmentService advertistmentService, IBlogService blogService, IConfiguration config)
+            IAdvertistmentService advertistmentService, IBlogService blogService, IConfiguration config, ISubcribleService subcribleService)
         {
             _productService = productService;
             _slideService = slideService;
             _advertistmentService = advertistmentService;
             _blogService = blogService;
             _config = config;
+            _subcribleService = subcribleService;
         }
 
         public IActionResult Index()
@@ -37,6 +39,26 @@ namespace TeduCoreApp.Controllers
             homeVm.ListBlog = _blogService.GetAll();
             homeVm.DomainApi = _config["DomainApi:Domain"];
             return View(homeVm);
+        }
+
+        [Route("subcrible/add")]
+        [HttpPost]
+        public IActionResult AddSubcrible(string email)
+        {
+            if (email != null && email != "")
+            {
+                if (_subcribleService.CheckExit(email) == false)
+                {
+                    _subcribleService.Add(email);
+                    _subcribleService.SaveChanges();
+                    return new OkObjectResult(new { status = true });
+                }
+                else
+                {
+                    return new OkObjectResult(new { status = false });
+                }
+            }
+            return new OkObjectResult(new { status = false });
         }
 
         public IActionResult About()

@@ -4,6 +4,7 @@ using TeduCoreApp.Data.ViewModels.Advertistment;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
+using TeduCoreApp.Data.ViewModels.Pantner;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
@@ -106,6 +107,14 @@ namespace TeduCoreApp.WebApi.Extensions
          advertistment.SortOrder = advertistmentVm.SortOrder;
         }
 
-       
+        public static void UpdatePantner(this Pantner pantner, PantnerViewModel pantnerVm)
+        {
+            pantner.Name = pantnerVm.Name;
+            pantner.Image = pantnerVm.Image;
+            pantner.Status = pantnerVm.Status;
+            pantner.Url = pantnerVm.Url;            
+        }
+
+
     }
 }

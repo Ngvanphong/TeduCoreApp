@@ -31,6 +31,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductCategoryViewModel> GetHomeCategories(int top);
 
+        List<ProductCategoryViewModel> GetCategoryFooter(int top);
+
         void SaveChanges();
     }
 }

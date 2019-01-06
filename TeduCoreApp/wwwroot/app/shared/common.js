@@ -22,6 +22,26 @@
         $('body').on('click', '#btnSearchProduct', function (e) {
             $("#search_mini_form").submit();
         });
+
+        $('body').on('click', '#btnSubcribleEmail', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/subcrible/add',
+                dataType: 'json',
+                data: {
+                    email: $("#emailSucbrile").val()
+                },
+                type: 'POST',
+                success: function (res) {
+                    if (res.status) {
+                        notifications.printSuccesMessage("Cảm ơn quý khách đã đăng ký");
+                    }
+                    else {
+                        notifications.printSuccesError("Email bị lỗi hoặc đã tồn tại");
+                    }
+                }
+            });
+        });
         
 
     }

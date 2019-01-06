@@ -8,9 +8,11 @@ using TeduCoreApp.Data.ViewModels.Contact;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Page;
+using TeduCoreApp.Data.ViewModels.Pantner;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
+using TeduCoreApp.Data.ViewModels.Subcrible;
 using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -44,6 +46,8 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Contact, ContactViewModel>();
             CreateMap<Page, PageViewModel>();
             CreateMap<PageImage, PageImageViewModel>();
+            CreateMap<Pantner, PantnerViewModel>();
+            CreateMap<Subcrible, SubcribleViewModel>();
         }
     }
 }

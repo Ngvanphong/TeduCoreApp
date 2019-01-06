@@ -108,6 +108,8 @@ namespace TeduCoreApp
             services.AddTransient<IRepository<Data.Entities.Contact, string>, EFRepository<Data.Entities.Contact, string>>();
             services.AddTransient<IRepository<Page, int>, EFRepository<Page, int>>();
             services.AddTransient<IRepository<PageImage, int>, EFRepository<PageImage, int>>();
+            services.AddTransient<IRepository<Pantner, int>, EFRepository<Pantner, int>>();
+            services.AddTransient<IRepository<Subcrible, int>, EFRepository<Subcrible, int>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -127,6 +129,8 @@ namespace TeduCoreApp
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IPageImageService, PageImageService>();
+            services.AddTransient<IPantnerService, PantnerService>();
+            services.AddTransient<ISubcribleService, SubcribleService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
            
