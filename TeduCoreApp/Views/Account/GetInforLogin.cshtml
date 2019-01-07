@@ -1,0 +1,71 @@
+﻿@using TeduCoreApp.Data.Entities
+@{
+    ViewData["Title"] = "GetInforLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var result = (string)TempData["ResultUpdate"];
+}
+@model AppUser
+@section Scripts{
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+    <script src="~/app/controllers/product/accountController.js"></script>
+    <script>
+        var accountControllers = new accountController();
+        accountControllers.initializers();
+    </script>
+
+}
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="account-login">
+            <div class="page-title">
+                <h2>Thông tin tài khoản</h2>
+
+                <span><strong style="color:darkblue">@result</strong></span>
+            </div>
+            <fieldset class="col2-set">
+                <div class="registered-users">
+                    <div class="content">
+                        <form method="post" asp-controller="Account" asp-action="UpdateAccount">
+                            <ul class="form-list">
+                                <li>
+                                    <label>Tên tài khoản<span class="required">*</span></label>
+                                    <br>
+                                    <input asp-for="Id" type="text" class="input-text required-entry hidden" id="id" name="id">                       
+                                </li>
+                                <li>
+                                    <label>Họ và tên<span class="required">*</span></label>
+                                    <br />
+                                    <input asp-for="FullName" type="text" title="FullName" class="input-text required-entry" id="fullname" name="fullname">
+                                </li>
+                                <li>
+                                    <label>Số điện thoại<span class="required">*</span></label>
+                                    <br />
+                                    <input asp-for="PhoneNumber" type="text" title="PhoneNumber" class="input-text required-entry" id="phonenumber" name="phonenumber">
+                                </li>
+                                <li>
+                                    <label>Email<span class="required">*</span></label>
+                                    <br />
+                                    <input asp-for="Email" type="text" title="Email" class="input-text required-entry" id="email" name="email">
+                                </li>
+                                <li>
+                                    <label>Số dư tài khoản: <span class="required" id="balanceMoney"></span></label>
+                                    <br />                        
+                                </li>
+                            </ul>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <recaptcha />
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span><br>
+                                </div>
+                            </div>
+                            <div class="buttons-set">
+                                <button id="sendchangeAccount" name="sendchangeAccount" type="submit" class="button login"><span>Cập nhật</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>

@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
-using TeduCoreApp.Models;
 using TeduCoreApp.Models.AccountViewModels;
 using TeduCoreApp.Services;
 
 namespace TeduCoreApp.Controllers
 {
-    [Authorize]   
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -44,12 +40,11 @@ namespace TeduCoreApp.Controllers
         [AllowAnonymous]
         [Route("account/login.html")]
         public async Task<IActionResult> Login(string returnUrl = null)
-        {            
+        {
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             ViewData["ReturnUrl"] = returnUrl;
             return View();
-            
         }
 
         [HttpPost]
@@ -67,7 +62,7 @@ namespace TeduCoreApp.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    if (returnUrl == null) return Redirect("/index.html");                 
+                    if (returnUrl == null) return Redirect("/index.html");
                     return Redirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -227,12 +222,17 @@ namespace TeduCoreApp.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.UserName, Email = model.Email,PhoneNumber=model.PhoneNumber,
-                FullName=model.FullName};
+                var user = new AppUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    FullName = model.FullName
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {                                    
-                    await _signInManager.SignInAsync(user, isPersistent: false);                  
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -246,9 +246,9 @@ namespace TeduCoreApp.Controllers
         //[ValidateAntiForgeryToken]
         [Route("account/logout.html")]
         public async Task<IActionResult> Logout()
-        {           
-            await _signInManager.SignOutAsync();          
-            return new OkObjectResult(new { status = true});
+        {
+            await _signInManager.SignOutAsync();
+            return new OkObjectResult(new { status = true });
         }
 
         [HttpPost]
@@ -433,17 +433,16 @@ namespace TeduCoreApp.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult AccessDenied()
         {
             return View();
         }
 
-        [HttpPost]      
+        [HttpPost]
         [AllowAnonymous]
         [Route("account/checkIsLogin")]
-        public async  Task<IActionResult> IsLogin()
+        public async Task<IActionResult> IsLogin()
         {
             bool isLogin = User.Identity.IsAuthenticated;
             if (isLogin == false)
@@ -454,6 +453,63 @@ namespace TeduCoreApp.Controllers
             return new OkObjectResult(new { status = true, data = appUser });
         }
 
+        [HttpGet]
+        [Route("account_page.html")]
+        [AllowAnonymous]
+        public IActionResult GetInforLogin()
+        {
+            bool isLogin = User.Identity.IsAuthenticated;
+            if (isLogin)
+            {
+                return View();
+            }
+            return Redirect("/account/login.html");
+        }
+
+        [HttpGet]
+        [Route("account/loadUserAccount")]
+        public async Task<IActionResult> GetUserAccount()
+        {
+            AppUser userCurrent = await _userManager.FindByNameAsync(User.Identity.Name);
+            return new OkObjectResult(new {data = userCurrent });
+        }
+
+        [ValidateRecaptcha]
+        [HttpPost]
+        [Route("account_page/update")]
+        public async Task<IActionResult> UpdateAccount(AppUser appUser)
+        {
+            TempData["ResultUpdate"] = "Điền thông tin còn thiếu";
+            if (ModelState.IsValid)
+            {
+                AppUser appUseDb = await _userManager.FindByIdAsync(appUser.Id.ToString());
+                if (appUseDb != null)
+                {
+                    try
+                    {                       
+                        appUseDb.FullName = appUser.FullName;
+                        appUseDb.PhoneNumber = appUser.PhoneNumber;
+                        appUseDb.Email = appUser.Email;
+                       var result= await _userManager.UpdateAsync(appUseDb);
+                        if (result.Succeeded)
+                        {
+                            TempData["ResultUpdate"] = "Cập nhật thành công";
+                        }
+                        else
+                        {
+                            TempData["ResultUpdate"] = "Cập nhật không thành công";
+                        }                     
+                        return Redirect("/account_page.html");
+                    }
+                    catch 
+                    {
+                        TempData["ResultUpdate"] = "Cập nhật không thành công";
+                        return Redirect("/account_page.html");
+                    }
+                }
+            }
+            return Redirect("/account_page.html");
+        }
 
         #region Helpers
 
@@ -477,7 +533,6 @@ namespace TeduCoreApp.Controllers
             }
         }
 
-        #endregion
-       
+        #endregion Helpers
     }
 }

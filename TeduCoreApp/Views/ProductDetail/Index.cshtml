@@ -5,6 +5,16 @@
 }
 @section Scripts{
     <script src="~/client-side/js/cloud-zoom.js"></script>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <script>
+    (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 }
 
 <!-- Breadcrumbs -->
@@ -13,8 +23,10 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
-                    <li> <strong>@Model.ProductDetail.ProductCategory.Name</strong> </li>
+                    <li class="home"> <a href="/index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
+                    @{var urlCategory = "/" + Model.ProductDetail.ProductCategory.SeoAlias + ".pc-" + Model.ProductDetail.ProductCategory.Id + ".html";}
+                    <li class="home"> <a href="@urlCategory" title="@Model.ProductDetail.ProductCategory.Name">@Model.ProductDetail.ProductCategory.Name</a><span>/</span> </li>
+                    <li> <strong>@Model.ProductDetail.Name</strong> </li>
                 </ul>
             </div>
         </div>
@@ -117,7 +129,7 @@
                                             </div>
                                             <div class="email-addto-box">
                                                 <ul class="add-to-links">
-                                                    <li> <a class="link-wishlist btnWistlistAddItem" title="Yêu thích"  data-productid="@Model.ProductDetail.Id" href="#"><span>Thêm yêu thích</span></a></li>
+                                                    <li> <a class="link-wishlist btnWistlistAddItem" title="Yêu thích" data-productid="@Model.ProductDetail.Id" href="#"><span>Thêm yêu thích</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -153,50 +165,9 @@
                                 <div class="box-collateral box-reviews" id="customer-reviews">
                                     <div class="box-reviews1">
                                         <div class="form-add">
-                                            <form id="review-form" method="post" action="http://www.jtvcommerce.com/review/product/post/id/176/">
-                                                <h3>Nhận xét sản phẩm</h3>
-                                                <fieldset>
-                                                    <div class="review1">
-                                                        <ul class="form-list">
-                                                            <li>
-                                                                <label class="required" for="nickname_field">Tên khách hàng<em>*</em></label>
-                                                                <div class="input-box">
-                                                                    <input type="text" class="input-text" id="nickname_field" name="nickname">
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="review2">
-                                                        <ul>
-                                                            <li>
-                                                                <label class="required " for="review_field">Nhận xét<em>*</em></label>
-                                                                <div class="input-box">
-                                                                    <textarea rows="3" cols="5" id="review_field" name="detail"></textarea>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="buttons-set">
-                                                            <button class="button submit" title="Submit Review" type="submit"><span>Nhận xét</span></button>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </form>
+                                            @{ var urlCurerent = "/" + Model.ProductDetail.SeoAlias + ".p-" + Model.ProductDetail.Id + ".html";}
+                                            <div class="fb-comments" data-href="@urlCurerent" data-numposts="5"></div>
                                         </div>
-                                    </div>
-                                    <div class="box-reviews2">
-                                        <h3>Nhận xét mới nhất:</h3>
-                                        <div class="box visible">
-                                            <ul>
-                                                <li>
-                                                    <div class="review">
-                                                        <h6><a href="#/catalog/product/view/id/59/">Nicely</a></h6>
-                                                        <small>Review by <span>Anthony  Lewis</span>on 1/3/2014 </small>
-                                                        <div class="review-txt last"> Unbeatable service and selection. This store has the best business model I have seen on the net. They are true to their word, and go the extra mile for their customers. I felt like a purchasing partner more than a customer. You have a lifetime client in me. </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="actions col-md-12"> <a class="button view-all" id="revies-button" href="#"><span><span>View all</span></span></a> </div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>

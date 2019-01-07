@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using System;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Application.Interfaces;
@@ -133,7 +134,11 @@ namespace TeduCoreApp
             services.AddTransient<ISubcribleService, SubcribleService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-           
+            services.AddRecaptcha(new RecaptchaOptions
+            {
+                SiteKey = Configuration["Recaptcha:SiteKey"],
+                SecretKey = Configuration["Recaptcha:SecretKey"]
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
