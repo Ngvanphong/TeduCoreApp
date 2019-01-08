@@ -21,8 +21,7 @@ namespace TeduCoreApp.Controllers
         private IHostingEnvironment _env;
         private UserManager<AppUser> _userManager;
         private IBillService _billService;
-        private IConfiguration _config;
-
+        private IConfiguration _config;       
         public CheckoutController(IHostingEnvironment env, UserManager<AppUser> userManager, IBillService billService,IConfiguration config)
         {
             _env = env;
@@ -33,7 +32,7 @@ namespace TeduCoreApp.Controllers
 
         [Route("checkout.html")]
         public IActionResult Index()
-        {
+        {            
             ViewData["DomainApi"]= _config["DomainApi:Domain"];
             return View();
         }
@@ -79,7 +78,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpPost]
         [Route("checkout.html")]
-        public async Task<IActionResult> Checkout(BillViewModel billVm,decimal feeShipping,decimal totalMoneyOrder,decimal totalMoneyPayment)
+        public async Task<IActionResult> Checkout(BillViewModel billVm,decimal feeShipping,decimal totalMoneyOrder,decimal balanceForBill,decimal totalMoneyPayment)
         {
             try
             {
@@ -87,13 +86,14 @@ namespace TeduCoreApp.Controllers
                 BillViewModel billViewModel;
                 billViewModel = billVm;
                 billViewModel.FeeShipping = feeShipping;
-                billViewModel.TotalMoneyOrder = totalMoneyOrder;
+                billViewModel.TotalMoneyOrder = totalMoneyOrder;             
                 billViewModel.TotalMoneyPayment = totalMoneyPayment;
                 billViewModel.BillStatus = Data.Enums.BillStatus.New;
                 billViewModel.Status = Data.Enums.Status.Active;
                 if (User.Identity.IsAuthenticated)
                 {
                     var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                    billViewModel.BalanceForBill = balanceForBill;
                     billViewModel.CustomerId = user.Id;
                 } 
                 var listBillDetails = new List<BillDetailViewModel>();
@@ -123,6 +123,19 @@ namespace TeduCoreApp.Controllers
                 int billId= _billService.Add(billViewModel);                            
                 billViewModel.Id = billId;
                 billViewModel.DateCreated = DateTime.Now;
+                if (User.Identity.IsAuthenticated)
+                {
+                    AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    if(totalMoneyPayment> 0)
+                    {
+                        appUser.Balance = balanceForBill;
+                    }
+                    else
+                    {
+                        appUser.Balance = appUser.Balance - totalMoneyOrder-feeShipping + balanceForBill;
+                    }
+                    await _userManager.UpdateAsync(appUser);
+                }
                 HttpContext.Session.SetList<ShoppingCardViewModel>(CommonConstants.SesstionCart, null);
                 return new OkObjectResult(new { status = true,billVm=billViewModel });
             }

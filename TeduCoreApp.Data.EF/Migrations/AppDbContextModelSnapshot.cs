@@ -292,6 +292,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal?>("BalanceForBill");
+
                     b.Property<int>("BillStatus");
 
                     b.Property<string>("CustomerAddress")

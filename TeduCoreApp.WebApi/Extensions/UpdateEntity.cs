@@ -40,6 +40,7 @@ namespace TeduCoreApp.WebApi.Extensions
             appUser.Status = appUserVm.Status;
             appUser.PhoneNumber = appUserVm.PhoneNumber;
             appUser.UserName = appUserVm.UserName;
+            appUser.Balance = appUserVm.Balance;
         }
 
         public static void UpdatePermission(this Permission permission,PermissionViewModel permissionVm)

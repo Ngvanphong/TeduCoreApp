@@ -11,6 +11,7 @@ using TeduCoreApp.Models;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace TeduCoreApp.Controllers
 {
@@ -18,13 +19,13 @@ namespace TeduCoreApp.Controllers
     {
         private IProductService _productService;
         private IProductQuantityService _productQuantityService;
-        private IConfiguration _config;
+        private IConfiguration _config;        
         public ShoppingCardController(IProductService productService, IProductQuantityService productQuantityService,
             IConfiguration config)
         {
             _productService = productService;
             _productQuantityService = productQuantityService;
-            _config = config;
+            _config = config;           
         }
         [Route("shopping/getall")]
         public IActionResult Index()
@@ -35,7 +36,7 @@ namespace TeduCoreApp.Controllers
                 shoppingCart = new List<ShoppingCardViewModel>();
             }
             string domainApi= _config["DomainApi:Domain"];
-            int countProduct = shoppingCart.Count();
+            int countProduct = shoppingCart.Count();          
             return new OkObjectResult(new { Items=shoppingCart,DomainApi=domainApi,CountProduct=countProduct});
         }
 
@@ -43,7 +44,7 @@ namespace TeduCoreApp.Controllers
         [Route("shopping/addToCart")]
         public IActionResult AddToCart(int productId, int colorId, int sizeId, int quantity)
         {
-            var shoppingCart = HttpContext.Session.GetList<ShoppingCardViewModel>(CommonConstants.SesstionCart);
+            var shoppingCart = HttpContext.Session.GetList<ShoppingCardViewModel>(CommonConstants.SesstionCart);           
             if (shoppingCart== null)
             {
                 shoppingCart = new List<ShoppingCardViewModel>();

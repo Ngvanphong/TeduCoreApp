@@ -4,6 +4,7 @@
         registerEvents();
         getShoppingCartForCheckout();
         getSignalr();
+        loadBalanceUser();
     }
     function registerEvents() {
         $("#formBillShopping").validate({
@@ -15,7 +16,6 @@
                 },
                 mobile: "required",
                 citySelectList: "required",
-               
             },
             messages: {
                 name: "Bạn phải nhập tên",
@@ -25,10 +25,10 @@
                 },
                 mobile: "Bạn phải nhập số điện thoại",
                 citySelectList: "",
-                
             }
         });
-        $("#citySelectList").off('change').on('change', function (e) {
+
+        $('body').on('change', '#citySelectList', function (e) {
             e.preventDefault();
             var province = $("#citySelectList").val();
             if (province == 701) {
@@ -41,7 +41,8 @@
                 setTimeout(getTotalPayment, 200);
             }
         });
-        $("#districtSelectList").off('change').on('change', function (e) {
+             
+        $('body').on('change','#districtSelectList', function (e) {
             e.preventDefault();
             var districtId = $(this).val();
             if (districtId != "") {
@@ -53,11 +54,13 @@
                 setTimeout(getTotalPayment, 200);
             }
         });
-        $(".radioLogin").off('change').on('change', function (e) {
+       
+        $('body').on('change', '.radioLogin', function (e) {
             e.preventDefault();
             var isLogin = $(this).val();
             getCustomerLogin(isLogin);
         });
+
         $('body').on('click', '.removeCheckout', function (e) {
             e.preventDefault();
             var productId = $(this).data('productid');
@@ -73,26 +76,29 @@
             var quantity = $(this).val();
             updateShoppingCart(productId, colorId, sizeId, quantity);
         });
+
         $('body').on('click', '#addBillShopping', function (e) {
             e.preventDefault();
+            $("#addBillShopping").attr('disabled', true);
             var valid = $("#formBillShopping").valid();
-            var totalMoneyPayment = $('#totalCountPayment').text().split(".", 1);
-            if (valid && parseInt(totalMoneyPayment)>50) {
+            var totalMoneyPayment = parseInt($('#totalCountPaymentForPrice').text());
+            var totalMoneyOrder = $('#totalMoneyShoppingCart').text();
+            var feeShiping = parseInt($('.taxtransfer').text().split(".", 1));
+            if (valid && parseInt(totalMoneyOrder) > 0 && feeShiping>0) {
                 var billVm = {
                     CustomerName: $('#name').val(),
                     CustomerAddress: $('#address').val(),
                     CustomerMobile: $('#phoneNumber').val(),
                     CustomerEmail: $('#email').val(),
                     CustomerMessage: $('#note').val(),
-                    PaymentMethod: $('#pamentMethod').val(),
-                }
-                var feeShiping = $('.taxtransfer').text().split(".", 1);
-                var totalMoneyOrder = $('#totalMoneyShoppingCart').text().split(".", 1);
-                var getTotalPayment = totalMoneyPayment;
-                addCheackout(billVm, feeShiping, totalMoneyOrder, getTotalPayment);
+                    PaymentMethod: $('#pamentMethod').val()
+                };               
+                var balanceForBill = parseInt(parseInt(totalMoneyOrder) * 5 / 100);                
+                addCheackout(billVm, feeShiping, totalMoneyOrder, balanceForBill, totalMoneyPayment);
             }
             else {
-                notifications.printSuccesError("Quý khách nhập thiếu thông tin");
+                notifications.printSuccesError("Phí vận chuyển không hợp lệ hay nhập chưa đủ thông tin");
+                $("#addBillShopping").attr('disabled', false);
             }
         });
     }
@@ -147,6 +153,8 @@
                         $("#name").val(res.data.FullName);
                         $("#phoneNumber").val(res.data.PhoneNumber);
                         $("#email").val(res.data.Email);
+                        $("#totalBalance").text($.number(res.data.Balance, 3));
+                        $("#totalBalanceForPrice").text(res.data.Balance);
                     }
                     else {
                         notifications.printSuccesMessage("Bạn chưa đăng nhập");
@@ -201,17 +209,26 @@
                 }
                 else {
                     $('#tableShoppingContent').html("");
-                    $('#totalMoneyShoppingCart').text("");
+                    $('#totalMoneyShoppingCart').text("0");
                 }
-                setTimeout(getTotalPayment, 200);
+                setTimeout(getTotalPayment, 2000);
             }
         })
     }
 
     function getTotalPayment() {
-        var totalMoneyShopping = $('#totalMoneyShoppingCart').text();
-        var shipping = $('.taxtransfer').text().split(".", 1);
-        $('#totalCountPayment').text($.number(parseInt(shipping) + parseInt(totalMoneyShopping), 3));
+        var totalMoneyShopping = parseInt($('#totalMoneyShoppingCart').text());
+        var shipping = parseInt($('.taxtransfer').text().split(".", 1));
+        var totalBalance = parseInt($('#totalBalanceForPrice').text());
+        var totalMoneyPayment = 0;
+        if (totalBalance > (totalMoneyShopping + shipping)) {
+            totalMoneyPayment = 0;
+        }
+        else {
+            totalMoneyPayment = totalMoneyShopping + shipping - totalBalance;
+        }
+        $('#totalCountPayment').text($.number(totalMoneyPayment, 3));
+        $('#totalCountPaymentForPrice').text(totalMoneyPayment);
     }
 
     function removeShoppingCart(productId, colorId, sizeId) {
@@ -248,6 +265,7 @@
                         salePrice = item.ProductVm.Price;
                     };
                     totalMoneyShoppingCart = totalMoneyShoppingCart + salePrice * item.Quantity;
+
                     render += Mustache.render(template, {
                         Id: item.ProductVm.Id,
                         Name: item.ProductVm.Name,
@@ -271,7 +289,7 @@
                 }
                 else {
                     $('#tableShoppingContent').html("");
-                    $('#totalMoneyShoppingCart').text("");
+                    $('#totalMoneyShoppingCart').text("0");
                 }
                 setTimeout(getTotalPayment, 200);
             }
@@ -296,7 +314,7 @@
         })
     }
 
-    function addCheackout(billVm, feeShiping, totalMoneyOrder, totalMoneyPayment) {
+    function addCheackout(billVm, feeShiping, totalMoneyOrder, balanceForBill, totalMoneyPayment) {
         $.ajax({
             url: '/checkout.html',
             data: {
@@ -304,6 +322,7 @@
                 feeShipping: feeShiping,
                 totalMoneyOrder: totalMoneyOrder,
                 totalMoneyPayment: totalMoneyPayment,
+                balanceForBill: balanceForBill
             },
             dataType: 'json',
             type: 'POST',
@@ -317,10 +336,26 @@
                 }
                 else {
                     notifications.printSuccesError("Quý khách chưa đặt thành công");
+                    $("#addBillShopping").attr('disabled', false);
                 }
             }
         });
     }
+
+    function loadBalanceUser() {
+        $.ajax({
+            url: "account/checkIsLogin",
+            type: "POST",
+            dataType: "Json",
+            success: function (res) {
+                if (res.status) {
+                    $("#totalBalance").text($.number(res.data.Balance, 3));
+                    $("#totalBalanceForPrice").text(res.data.Balance);
+                }
+            }
+        });
+    }
+
     function getSignalr() {
         var domainApi = $('#domainApiSignalr').text();
 
@@ -334,6 +369,4 @@
         });
         connections = connection;
     }
-
-   
 }

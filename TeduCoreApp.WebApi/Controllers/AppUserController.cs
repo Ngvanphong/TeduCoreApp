@@ -49,7 +49,7 @@ namespace TeduCoreApp.WebApi.Controllers
             int totalRow = 0;
             if (!string.IsNullOrEmpty(filter))
             {
-                listUser = listUser.Where(x => x.UserName.Contains(filter) || x.FullName.Contains(filter));
+                listUser = listUser.Where(x => (x.Id.ToString()==filter)||x.UserName.Contains(filter) || x.FullName.Contains(filter));
             }
             totalRow = listUser.Count();
             listUser = listUser.OrderByDescending(x => x.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);

@@ -43,6 +43,15 @@
                                     </ul>
                                     <br>
                                 </div>
+                                <div class="col-sm-6">
+                                    <h4 style="color:red">Quý khách nên tạo tài khoản để thanh toán !</h4>
+                                    <label style="color:brown">
+                                        Nếu quý khách đăng nhập trước khi thanh toán sẽ được cộng (5% số tiền của hóa đơn)
+                                        vào số dư tài khoản cho mỗi đơn hàng thành công.
+                                    </label>
+                                    <p style="color:brown">Số tiền sẽ này được trừ khi quý khách mua hàng những lần sau.</p>
+                                    <a class="aSendLoginGet button" href="#">Đăng nhập</a>
+                                </div>
                             </div>
                         </div>
                         <form id="formBillShopping">
@@ -104,7 +113,7 @@
                                     </li>
                                     <li>
                                         <label class="required">Phí vận chuyển</label><br />
-                                        <label class="taxtransfer" name="taxtranferRequeired"></label>
+                                        <label class="taxtransfer" name="taxtranferRequeired">0.000</label>
                                     </li>
                                 </ul>
                             </div>
@@ -143,16 +152,26 @@
                                             <tbody id="tableShoppingContent"></tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="2" rowspan="2"></td>
+                                                    <td colspan="2" rowspan="3"></td>
                                                     <td colspan="4">Phí vận chuyển</td>
-                                                    <td class="taxtransfer" colspan="2"></td>
+                                                    <td class="taxtransfer">0.000</td>
                                                 </tr>
                                                 <tr class="hidden">
-                                                    <td id="totalMoneyShoppingCart" colspan="2"></td>
+                                                    <td id="totalMoneyShoppingCart" colspan="2">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4"><strong>Tổng tiền còn dư trong tài khoản</strong></td>
+                                                    <td id="totalBalance" colspan="2">0.000</td>
+                                                </tr>
+                                                <tr class="hidden">
+                                                    <td id="totalBalanceForPrice" colspan="2">0</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="4"><strong>Tổng tiền cần thanh toán</strong></td>
                                                     <td id="totalCountPayment" colspan="2"><strong></strong></td>
+                                                </tr>
+                                                <tr class="hidden">                                                
+                                                    <td id="totalCountPaymentForPrice" colspan="2">0</td>
                                                 </tr>
 
                                             </tfoot>
