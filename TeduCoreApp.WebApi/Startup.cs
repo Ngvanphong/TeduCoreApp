@@ -140,7 +140,8 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IRepository<Page, int>, EFRepository<Page, int>>();
             services.AddTransient<IRepository<PageImage, int>, EFRepository<PageImage, int>>();
             services.AddTransient<IRepository<Pantner, int>, EFRepository<Pantner, int>>();
-            services.AddTransient<IRepository<Subcrible, int>, EFRepository<Subcrible, int>>();
+            services.AddTransient<IRepository<Subcrible, int>, EFRepository<Subcrible, int>>();            
+            services.AddTransient<IRepository<SystemConfig, string>, EFRepository<SystemConfig, string>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -162,6 +163,8 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<IPageImageService, PageImageService>();
             services.AddTransient<IPantnerService, PantnerService>();
             services.AddTransient<ISubcribleService, SubcribleService>();
+            services.AddTransient<ITagService, TagService>();
+            services.AddTransient<ISystemConfigService, SystemConfigService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 

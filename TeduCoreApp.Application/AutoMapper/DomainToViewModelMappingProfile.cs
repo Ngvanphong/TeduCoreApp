@@ -13,6 +13,7 @@ using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
 using TeduCoreApp.Data.ViewModels.Subcrible;
+using TeduCoreApp.Data.ViewModels.SystemConfig;
 using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -48,6 +49,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<PageImage, PageImageViewModel>();
             CreateMap<Pantner, PantnerViewModel>();
             CreateMap<Subcrible, SubcribleViewModel>();
+            CreateMap<SystemConfig, SystemConfigViewModel>();
         }
     }
 }

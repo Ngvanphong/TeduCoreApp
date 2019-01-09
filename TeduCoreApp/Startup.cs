@@ -111,6 +111,7 @@ namespace TeduCoreApp
             services.AddTransient<IRepository<PageImage, int>, EFRepository<PageImage, int>>();
             services.AddTransient<IRepository<Pantner, int>, EFRepository<Pantner, int>>();
             services.AddTransient<IRepository<Subcrible, int>, EFRepository<Subcrible, int>>();
+            services.AddTransient<IRepository<SystemConfig, string>, EFRepository<SystemConfig, string>>();
 
             // Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -132,6 +133,7 @@ namespace TeduCoreApp
             services.AddTransient<IPageImageService, PageImageService>();
             services.AddTransient<IPantnerService, PantnerService>();
             services.AddTransient<ISubcribleService, SubcribleService>();
+            services.AddTransient<ISystemConfigService, SystemConfigService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddRecaptcha(new RecaptchaOptions

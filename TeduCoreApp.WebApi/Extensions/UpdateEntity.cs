@@ -8,6 +8,7 @@ using TeduCoreApp.Data.ViewModels.Pantner;
 using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
+using TeduCoreApp.Data.ViewModels.SystemConfig;
 
 namespace TeduCoreApp.WebApi.Extensions
 {
@@ -114,6 +115,17 @@ namespace TeduCoreApp.WebApi.Extensions
             pantner.Image = pantnerVm.Image;
             pantner.Status = pantnerVm.Status;
             pantner.Url = pantnerVm.Url;            
+        }
+
+        public static void UpdateSystemConfig(this SystemConfig systemConfig,SystemConfigViewModel systemConfigVm)
+        {
+            systemConfig.Name = systemConfigVm.Name;
+            systemConfig.Value1 = systemConfigVm.Value1;
+            systemConfig.Value2 = systemConfigVm.Value2;
+            systemConfig.Value3 = systemConfigVm.Value3;
+            systemConfig.Value4 = systemConfigVm.Value4;
+            systemConfig.Value5 = systemConfigVm.Value5;
+            systemConfig.Status = systemConfigVm.Status;
         }
 
 

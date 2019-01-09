@@ -14,6 +14,7 @@ using TeduCoreApp.Data.ViewModels.Permission;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
 using TeduCoreApp.Data.ViewModels.Subcrible;
+using TeduCoreApp.Data.ViewModels.SystemConfig;
 using TeduCoreApp.Data.ViewModels.Tag;
 
 namespace TeduCoreApp.Application.AutoMapper
@@ -76,6 +77,8 @@ namespace TeduCoreApp.Application.AutoMapper
           .ConstructUsing(c => new Pantner(c));
             CreateMap<SubcribleViewModel, Subcrible>()
           .ConstructUsing(c => new Subcrible(c));
+            CreateMap<SystemConfigViewModel, SystemConfig>()
+         .ConstructUsing(c => new SystemConfig(c));
         }
     }
 }
