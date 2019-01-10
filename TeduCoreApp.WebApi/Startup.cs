@@ -12,6 +12,8 @@ using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Text;
+using TeduCoreApp.Application.Dapper.Implementation;
+using TeduCoreApp.Application.Dapper.Interfaces;
 using TeduCoreApp.Application.Implementation;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.EF;
@@ -165,6 +167,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<ISubcribleService, SubcribleService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ISystemConfigService, SystemConfigService>();
+            services.AddTransient<IReportService, ReportService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 

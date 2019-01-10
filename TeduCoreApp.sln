@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infrastructure", "4-Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.WebApi", "TeduCoreApp.WebApi\TeduCoreApp.WebApi.csproj", "{CF946CEA-8271-425D-8F9E-DD38C2C0C4BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Application.Dapper", "TeduCoreApp.Application.Dapper\TeduCoreApp.Application.Dapper.csproj", "{AF374E25-EB59-4DF5-AA25-E040984525DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{CF946CEA-8271-425D-8F9E-DD38C2C0C4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF946CEA-8271-425D-8F9E-DD38C2C0C4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF946CEA-8271-425D-8F9E-DD38C2C0C4BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF374E25-EB59-4DF5-AA25-E040984525DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF374E25-EB59-4DF5-AA25-E040984525DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF374E25-EB59-4DF5-AA25-E040984525DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF374E25-EB59-4DF5-AA25-E040984525DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{993941C5-C3BE-4F08-BC6D-DEFF3DEB6A2E} = {F009528F-957B-4EA1-AEDF-504FF2040A0B}
 		{20B5EFC7-8A45-4217-B5CD-4C4E5070A7DF} = {3BB831A0-07AB-4422-A2A9-9BE3CA62D967}
 		{CF946CEA-8271-425D-8F9E-DD38C2C0C4BF} = {A2CC614E-9D3C-4B02-AFE6-C7D93E5A8DCB}
+		{AF374E25-EB59-4DF5-AA25-E040984525DE} = {3BB831A0-07AB-4422-A2A9-9BE3CA62D967}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13DA25B1-B2D5-47FE-BF14-BC6A0F671EB5}
