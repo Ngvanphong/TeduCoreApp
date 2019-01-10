@@ -8,9 +8,9 @@ namespace TeduCoreApp.Application.Interfaces
 {
     public interface ISystemConfigService : IDisposable
     {
-       
+        List<SystemConfigViewModel> GetAll();
 
-        SystemConfigViewModel Detail(string id);
+         SystemConfigViewModel Detail(string id);
 
         SystemConfig DetailDb(string id);
       

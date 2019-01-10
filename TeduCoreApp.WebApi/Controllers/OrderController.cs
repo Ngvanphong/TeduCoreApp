@@ -7,19 +7,22 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Bill;
+using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
     public class OrderController : ApiController
     {
-        private IBillService _billService;
+        private IBillService _billService;       
         private UserManager<AppUser> _userManger;
+        private IProductService _productService;
 
-        public OrderController(IBillService billService, UserManager<AppUser> userManger)
+        public OrderController(IBillService billService, UserManager<AppUser> userManger, IProductService productService)
         {
             _billService = billService;
             _userManger = userManger;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -92,6 +95,17 @@ namespace TeduCoreApp.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (billVmPost.BillStatus == BillStatus.Completed)
+                {
+                    List<BillDetailViewModel> billDetailVm = _billService.GetBillDetails(billVmPost.Id);
+                    foreach(var item in billDetailVm)
+                    {
+                        Product productDb = _productService.GetProductDbById(item.ProductId);
+                        productDb.ViewCount = productDb.ViewCount + item.Quantity;
+                        _productService.UpdateDb(productDb);
+                        _billService.SaveChanges();
+                    }
+                }
                 if (string.IsNullOrEmpty(billVmPost.CustomerId.ToString()))
                 {
                     _billService.Update(billVmPost);

@@ -20,10 +20,16 @@ namespace TeduCoreApp.WebApi.Controllers
         {
             _systemConfigService = systemConfigService;
         }
+        [Route("getall")]
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return new OkObjectResult(_systemConfigService.GetAll());
+        }
 
         [Route("detail/{id}")]
         [HttpGet]
-        public IActionResult Get(string id)
+        public IActionResult Detail(string id)
         {
             return new OkObjectResult(_systemConfigService.Detail(id));
         }
@@ -54,6 +60,15 @@ namespace TeduCoreApp.WebApi.Controllers
                 return new OkObjectResult(systemConfigVm.Id);
             }
             return new BadRequestObjectResult(ModelState);
+        }
+
+        [HttpDelete]
+        [Route("delete")]
+        public IActionResult Delete(string id)
+        {
+            _systemConfigService.Delete(id);
+            _systemConfigService.SaveChanges();
+            return new OkObjectResult(id);
         }
 
     }

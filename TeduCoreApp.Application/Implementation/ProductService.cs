@@ -127,19 +127,18 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductViewModel> GetAll(int? categoryId, string hotPromotion, string keyword, int page, int pageSize, out int totalRow)
         {
-            List<Product> listProduct = _productRepository
-                     .FindAll(c => c.ProductCategory).OrderByDescending(d => d.DateCreated).ToList();
+            var listProduct = _productRepository.FindAll(c => c.ProductCategory);
             if (categoryId.HasValue)
             {
-                listProduct = _productRepository
-                    .FindAll(x => x.CategoryId == categoryId, c => c.ProductCategory)
-                    .OrderByDescending(d => d.DateCreated).ToList();
+                listProduct = listProduct.Where(x => x.CategoryId == categoryId);
             }
-            if (!string.IsNullOrEmpty(hotPromotion))
+            if (hotPromotion=="Hot")
             {
-                listProduct = _productRepository
-                    .FindAll(x => x.HotFlag == true, c => c.ProductCategory)
-                    .OrderByDescending(d => d.DateCreated).ToList();
+                listProduct = listProduct.Where(x => x.HotFlag == true);
+            }
+            if (hotPromotion == "Promotion")
+            {
+                listProduct = listProduct.Where(x => x.PromotionPrice!=null&&x.PromotionPrice!=0);
             }
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -147,20 +146,16 @@ namespace TeduCoreApp.Application.Implementation
                 bool flagId = int.TryParse(keyword, out int id);
                 if (flagId == true)
                 {
-                    listProduct = _productRepository
-                    .FindAll(x => x.Id == id, c => c.ProductCategory)
-                    .OrderByDescending(d => d.DateCreated).ToList();
+                    listProduct = listProduct.Where(x => x.Id == id);
                 }
                 else
                 {
-                    listProduct = _productRepository
-                    .FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword), c => c.ProductCategory)
-                    .OrderByDescending(d => d.DateCreated).ToList();
+                    listProduct = listProduct.Where(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
                 }
             }
             totalRow = listProduct.Count();
-            listProduct = listProduct.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            return _mapper.Map<List<ProductViewModel>>(listProduct);
+            listProduct = listProduct.OrderByDescending(d => d.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(listProduct.ToList());
         }
 
         public List<ProductViewModel> GetAllPaging(int page, int pageSize, out int totalRow)
@@ -183,10 +178,10 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductViewModel> GetAllHotProduct(int page, int pageSize, out int totalRow)
         {
-            List<Product> listHotProduct = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active && x.HotFlag == true)
-                .OrderByDescending(x => x.DateModified).ToList();
+            var listHotProduct = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active && x.HotFlag == true)
+                .OrderByDescending(x => x.DateModified);
             totalRow = listHotProduct.Count();
-            return _mapper.Map<List<ProductViewModel>>(listHotProduct.Take((page - 1) * pageSize).Take(pageSize));
+            return _mapper.Map<List<ProductViewModel>>(listHotProduct.Take((page - 1) * pageSize).Take(pageSize).ToList());
         }
 
         public List<ProductViewModel> GetPromotionProduct(int number)

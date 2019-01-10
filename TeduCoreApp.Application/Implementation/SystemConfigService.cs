@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
@@ -44,6 +45,11 @@ namespace TeduCoreApp.Application.Implementation
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public List<SystemConfigViewModel> GetAll()
+        {
+            return _mapper.Map<List<SystemConfigViewModel>>(_systemConfigRepository.FindAll().ToList());
         }
 
         public void SaveChanges()

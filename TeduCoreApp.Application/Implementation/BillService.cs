@@ -70,7 +70,6 @@ namespace TeduCoreApp.Application.Implementation
         public List<BillViewModel> GetList(string startDate, string endDate, string customerName,BillStatus? billStatus, 
             int pageIndex,int pageSize, out int totalRow)
         {
-            
 
             var query = _billRepository.FindAll();
             if (!string.IsNullOrEmpty(startDate))
