@@ -10,6 +10,8 @@ namespace TeduCoreApp.Utilities.Constants
         public const string ProductTag = "Product";
         public const string BlogTag = "Blog";
         public const string Admin = "Admin";
+        public const string Staff = "Staff";
+        public const string Customer = "Customer";
         public const string Forbidden = "Forbidden";
 
         public class PageName

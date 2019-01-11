@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Permission;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.WebApi.Models;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -55,8 +56,11 @@ namespace TeduCoreApp.WebApi.Controllers
                 }
                 var roles = await _userManager.GetRolesAsync(user);
 
+                if (roles.Count()==0||(roles.Any(x=>x==CommonConstants.Customer)&&roles.Count()==1))
+                {
+                    return new BadRequestObjectResult("Login failure");
+                }
                 var permissionViewModels = new List<PermissionViewModel>();
-
                 permissionViewModels = _premissionService.GetByUserId(user.Id).ToList();
 
                 var claims = new[]
