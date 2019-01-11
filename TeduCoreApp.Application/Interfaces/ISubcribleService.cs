@@ -7,6 +7,8 @@ namespace TeduCoreApp.Application.Interfaces
 {
   public interface ISubcribleService:IDisposable
     {
+        List<SubcribleViewModel> GetPaging(int page, int pageSize,out int totalRow);
+
         void Add(string email);
 
         void SaveChanges();
@@ -14,6 +16,8 @@ namespace TeduCoreApp.Application.Interfaces
         bool CheckExit(string email);
 
         List<SubcribleViewModel> GetAll();
+
+        List<string> GetAllEmail();
 
         void Delete(int id);
     }

@@ -168,6 +168,7 @@ namespace TeduCoreApp.WebApi
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ISystemConfigService, SystemConfigService>();
             services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<ISendMailService, SendMailService>();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 

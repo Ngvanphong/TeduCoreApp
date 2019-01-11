@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Models;
 using static TeduCoreApp.Utilities.Constants.CommonConstants;
@@ -47,16 +48,24 @@ namespace TeduCoreApp.Controllers
         {
             if (email != null && email != "")
             {
-                if (_subcribleService.CheckExit(email) == false)
+                const string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                bool isEmail= regex.IsMatch(email);
+                if (isEmail)
                 {
-                    _subcribleService.Add(email);
-                    _subcribleService.SaveChanges();
-                    return new OkObjectResult(new { status = true });
+                    if (_subcribleService.CheckExit(email) == false)
+                    {
+                        _subcribleService.Add(email);
+                        _subcribleService.SaveChanges();
+                        return new OkObjectResult(new { status = true });
+                    }
+                    else
+                    {
+                        return new OkObjectResult(new { status = false });
+                    }
                 }
-                else
-                {
-                    return new OkObjectResult(new { status = false });
-                }
+                return new OkObjectResult(new { status = false });
+
             }
             return new OkObjectResult(new { status = false });
         }

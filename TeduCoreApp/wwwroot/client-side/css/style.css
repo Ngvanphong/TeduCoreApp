@@ -8677,3 +8677,10 @@ button.subscribe:before {
         overflow-x: auto;
     }
 }
+@media only screen and (max-width: 900px) {
+    .imageReponsiteContent img {
+       width: 100%;
+       height:100%;
+    }
+}
+

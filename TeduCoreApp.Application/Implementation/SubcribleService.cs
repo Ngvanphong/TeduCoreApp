@@ -53,6 +53,19 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<SubcribleViewModel>>(_subcribleRepository.FindAll().ToList());
         }
 
+        public List<string> GetAllEmail()
+        {
+            return _subcribleRepository.FindAll().Select(x => x.Email).ToList();
+        }
+
+        public List<SubcribleViewModel> GetPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _subcribleRepository.FindAll();
+            totalRow = query.Count();
+            query = query.OrderBy(x => x.Id).Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<SubcribleViewModel>>(query.ToList());
+        }
+
         public void SaveChanges()
         {
             _unitOfWork.Commit();
