@@ -37,7 +37,7 @@ namespace TeduCoreApp.WebApi.Controllers
         [HttpGet]
         [Route("getall")]
         public IActionResult GetAll(string keyword, int? categoryId, string filterHotPromotion, int pageSize = 10, int page = 1)
-        {
+        {           
             int totalRow = 0;
             List<ProductViewModel> listProduct = _productService.GetAll(categoryId, filterHotPromotion, keyword, page, pageSize, out totalRow);
             return new OkObjectResult(new ApiResultPaging<ProductViewModel>()

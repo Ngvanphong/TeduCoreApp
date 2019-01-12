@@ -14,7 +14,7 @@ using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
 using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
-
+using TeduCoreApp.WebApi.ViewModel;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -26,20 +26,23 @@ namespace TeduCoreApp.WebApi.Controllers
         private IAppUserService _appUserService;
         private readonly IAuthorizationService _authorizationService;
 
+        private readonly SignInManager<AppUser> _signInManager;
+
         public AppUserController(UserManager<AppUser> userManager, IMapper mapper, IHostingEnvironment env, IAppUserService appUserService,
-         IAuthorizationService authorizationService)
+         IAuthorizationService authorizationService, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _mapper = mapper;
             _env = env;
             _appUserService = appUserService;
             _authorizationService = authorizationService;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
         [Route("getlistpaging")]
         public async Task<IActionResult> Get(int pageSize, int page = 1, string filter = "")
-        {
+        {          
             var hasPermission = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
             if (hasPermission.Succeeded == false)
             {
@@ -162,6 +165,26 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             await _userManager.DeleteAsync(appUser);
             return new OkObjectResult(id);
+        }
+
+        [HttpPost]
+        [Route("changepassword")]
+        public async Task<IActionResult> ChangePassword(string username,string oldpass,string newpass)
+        {
+            AppUser appUser = await _userManager.FindByNameAsync(username);          
+            var newPassword = _userManager.PasswordHasher.HashPassword(appUser, newpass);
+            var result = await _signInManager.PasswordSignInAsync(username, oldpass, false, true);
+            if (result.Succeeded)
+            {
+                appUser.PasswordHash = newPassword;
+                var resultUpdate = await _userManager.UpdateAsync(appUser);
+                if (resultUpdate.Succeeded)
+                {
+                    return new OkObjectResult("Success");
+                }
+                return new BadRequestObjectResult("Fail");
+            }
+            return new BadRequestObjectResult("Fail");
         }
     }
 }

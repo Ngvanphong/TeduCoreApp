@@ -81,8 +81,7 @@ namespace TeduCoreApp.WebApi.Controllers
                         {"username", user.UserName},
                         {"permissions",JsonConvert.SerializeObject(permissionViewModels) },
                         {"roles",JsonConvert.SerializeObject(roles) }
-                    };
-               
+                    };                
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(_config["Tokens:Issuer"],

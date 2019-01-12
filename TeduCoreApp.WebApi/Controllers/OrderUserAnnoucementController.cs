@@ -35,7 +35,7 @@ namespace TeduCoreApp.WebApi.Controllers
         public IActionResult MarkAsRead( int id)
         {
             string userId = User.GetSpecialClaimsApi("Id");
-            BillUserAnnoucementViewModel query = _billUserAnnoucementService.GetById(id);
+            BillUserAnnoucement query = _billUserAnnoucementService.GetByUserBill(id, Guid.Parse(userId));
             if (query == null)
             {
                 BillUserAnnoucement billUserAnnoucement = new BillUserAnnoucement() { };
@@ -49,6 +49,7 @@ namespace TeduCoreApp.WebApi.Controllers
             else
             {
                 query.HasRead = true;
+                _billUserAnnoucementService.UpdateDb(query);
                 _billUserAnnoucementService.SaveChanges();
                 return new OkObjectResult(id);
             }

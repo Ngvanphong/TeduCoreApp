@@ -61,10 +61,15 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<BillUserAnnoucementViewModel>(_billUserAnnoucementRepository.FindById(id));
         }
 
+        public BillUserAnnoucement GetByUserBill(int id, Guid userId)
+        {
+            return _mapper.Map<BillUserAnnoucement>(_billUserAnnoucementRepository.FindSingle(x=>x.BillId==id&&x.UserId==userId));
+        }
+
         public List<BillViewModel> ListAllUnread(string userId)
         {
-            List<int> ListBillinAnnoucement = _billUserAnnoucementRepository.FindAll(x => x.UserId.ToString() == userId).Select(x => x.BillId).ToList();
-            List<int> ListOrder = _billRepository.FindAll().Select(x => x.Id).ToList();
+            var ListBillinAnnoucement = _billUserAnnoucementRepository.FindAll(x => x.UserId.ToString() == userId).Select(x => x.BillId);
+            var ListOrder = _billRepository.FindAll().Select(x => x.Id);
             List<int> ListOrdreCanRead = ListOrder.Except(ListBillinAnnoucement).ToList();
             List<Bill> query = new List<Bill>
             {
@@ -80,6 +85,11 @@ namespace TeduCoreApp.Application.Implementation
         public void SaveChanges()
         {
             _unitOfWork.Commit();
+        }
+
+        public void UpdateDb(BillUserAnnoucement billUserAnnoucement)
+        {
+            _billUserAnnoucementRepository.Update(billUserAnnoucement);
         }
     }
 }

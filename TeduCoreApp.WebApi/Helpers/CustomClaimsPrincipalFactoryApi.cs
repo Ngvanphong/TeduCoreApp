@@ -30,7 +30,7 @@ namespace TeduCoreApp.WebApi.Helpers
                 new Claim("fullName",user.FullName),
                 new Claim("avatar",user.Avatar??string.Empty),
                 new Claim(ClaimTypes.Role,string.Join(";",roles)),
-                new Claim("userId",user.Id.ToString())
+                new Claim("",user.Id.ToString())
             });
             return principal;
         }

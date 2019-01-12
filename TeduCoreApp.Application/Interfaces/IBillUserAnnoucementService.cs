@@ -12,7 +12,11 @@ namespace TeduCoreApp.Application.Interfaces
 
         void AddDb(BillUserAnnoucement billUserAnnoucement);
 
+        void UpdateDb(BillUserAnnoucement billUserAnnoucement);
+
         BillUserAnnoucementViewModel GetById(int id);
+
+        BillUserAnnoucement GetByUserBill(int id,Guid userId);
 
         List<BillViewModel> ListAllUnread(string userId);
 
