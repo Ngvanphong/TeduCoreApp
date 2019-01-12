@@ -1,5 +1,5 @@
 ﻿var notification = function () {
-    this.init = function () {      
+    this.init = function () {
         alertify.defaults = {
             // dialogs defaults
             autoReset: true,
@@ -65,8 +65,9 @@
                 okCallback();
             }
             else {
-            };
-        })
-    }
-  
-}
+                console.log("ok");
+            }
+        });
+    };
+
+};

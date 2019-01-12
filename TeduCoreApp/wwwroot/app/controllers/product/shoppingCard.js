@@ -2,7 +2,7 @@
     this.initializer = function () {
         registerEvents();
         getShoppingCart();
-    }
+    };
     registerEvents = function () {
         $('body').on('click', '#btnShoppingCard', function (e) {
             e.preventDefault();
@@ -20,7 +20,7 @@
             removeShoppingCart(productId, colorId, sizeId);
         });
 
-    }
+    };
 
     function addToCard(productId, colorId, sizeId, quatity) {
         $.ajax({
@@ -29,7 +29,7 @@
                 productId: productId,
                 colorId: colorId,
                 sizeId: sizeId,
-                quantity: quatity,
+                quantity: quatity
             },
             dataType: 'json',
             type: 'POST',
@@ -37,69 +37,10 @@
                 notifications.printSuccesMessage("Đã thêm sản phẩm vào giỏ hàng");
                 getShoppingCart();
             }
-        })
+        });
     }
 
     function getShoppingCart() {
-        var template = $('#productShopping-template').html();
-        var render = "";
-        $.ajax({
-            url: '/shopping/getall',           
-            dataType: 'json',
-            type: 'GET',
-            success: function (response) {
-                $(".cart_count").text(response.CountProduct);
-                $.each(response.Items, function (i, item) {
-                    render += Mustache.render(template, {
-                        Id: item.ProductVm.Id,
-                        Name: item.ProductVm.Name,
-                        SeoAlias: item.ProductVm.SeoAlias,
-                        ThumbnailImage: item.ProductVm.ThumbnailImage,                      
-                        Quantity: item.Quantity,
-                        DomainApi: response.DomainApi,
-                        ProductId: item.ProductId,
-                        Size: item.SizeVm.Name,
-                        Color: item.ColorVm.Name,
-                        ColorId: item.ColorVm.Id,
-                        SizeId:item.SizeVm.Id,
-                       
-                    });
-                });
-                if (render != '') {
-                    $('#cart-sidebar').html(render);
-                }
-                else {
-                    $('#cart-sidebar').html("<strong>CHƯA CÓ SẢN PHẨM NÀO!</strong>")
-                }
-            }
-        })
-    }
-
-    function removeShoppingCart(productId,colorId,sizeId) {
-        $.ajax({
-            url: '/shopping/removeCartItem',
-            data: {
-                productId: productId,
-                colorId: colorId,
-                sizeId: sizeId,             
-            },
-            dataType: 'json',
-            type: 'POST',
-            success: function (res) {              
-                getShoppingCart();
-                try {                   
-                    productControllers.getShoppingCartForPageToUpdate();             
-                }
-                catch(error){} 
-                try {
-                    checkoutControllers.getShoppingCartForCheckoutUpdate();
-                }
-                catch (error) {}
-            }
-        })
-    }
-
-    this.getShoppingCartToUpdate=function() {
         var template = $('#productShopping-template').html();
         var render = "";
         $.ajax({
@@ -120,18 +61,77 @@
                         Size: item.SizeVm.Name,
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
-                        SizeId: item.SizeVm.Id,
+                        SizeId: item.SizeVm.Id
 
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#cart-sidebar').html(render);
                 }
                 else {
-                    $('#cart-sidebar').html("<strong>CHƯA CÓ SẢN PHẨM NÀO!</strong>")
+                    $('#cart-sidebar').html("<strong>CHƯA CÓ SẢN PHẨM NÀO!</strong>");
                 }
             }
-        })
+        });
     }
 
-}
+    function removeShoppingCart(productId, colorId, sizeId) {
+        $.ajax({
+            url: '/shopping/removeCartItem',
+            data: {
+                productId: productId,
+                colorId: colorId,
+                sizeId: sizeId
+            },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                getShoppingCart();
+                try {
+                    productControllers.getShoppingCartForPageToUpdate();
+                }
+                catch (error) { console.log(error); }
+                try {
+                    checkoutControllers.getShoppingCartForCheckoutUpdate();
+                }
+                catch (error) { console.log(error); }
+            }
+        });
+    }
+
+    this.getShoppingCartToUpdate = function () {
+        var template = $('#productShopping-template').html();
+        var render = "";
+        $.ajax({
+            url: '/shopping/getall',
+            dataType: 'json',
+            type: 'GET',
+            success: function (response) {
+                $(".cart_count").text(response.CountProduct);
+                $.each(response.Items, function (i, item) {
+                    render += Mustache.render(template, {
+                        Id: item.ProductVm.Id,
+                        Name: item.ProductVm.Name,
+                        SeoAlias: item.ProductVm.SeoAlias,
+                        ThumbnailImage: item.ProductVm.ThumbnailImage,
+                        Quantity: item.Quantity,
+                        DomainApi: response.DomainApi,
+                        ProductId: item.ProductId,
+                        Size: item.SizeVm.Name,
+                        Color: item.ColorVm.Name,
+                        ColorId: item.ColorVm.Id,
+                        SizeId: item.SizeVm.Id
+
+                    });
+                });
+                if (render !== '') {
+                    $('#cart-sidebar').html(render);
+                }
+                else {
+                    $('#cart-sidebar').html("<strong>CHƯA CÓ SẢN PHẨM NÀO!</strong>");
+                }
+            }
+        });
+    };
+
+};

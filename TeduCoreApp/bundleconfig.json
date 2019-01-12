@@ -5,13 +5,60 @@
     "outputFileName": "wwwroot/css/site.min.css",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
-      "wwwroot/css/site.css"
+      //"wwwroot/css/site.css",
+
+      "wwwroot/client-side/css/bootstrap.min.css",
+      "wwwroot/client-side/css/animate.css",
+      "wwwroot/client-side/css/font-awesome.min.css",
+      "wwwroot/client-side/css/simple-line-icons.css",
+      "wwwroot/client-side/css/pe-icon-7-stroke.min.css",
+      "wwwroot/client-side/css/owl.carousel.css",
+      "wwwroot/client-side/css/owl.transitions.css",
+      "wwwroot/client-side/css/flexslider.css",
+      "wwwroot/client-side/css/cloud-zoom.css",
+      "wwwroot/client-side/css/revolution-slider.css",
+      "wwwroot/client-side/css/jquery-ui.css",
+
+      "wwwroot/client-side/css/jquery.fancybox.css",
+      "wwwroot/client-side/css/quick_view_popup.css",
+      "wwwroot/client-side/css/blogmate.css",
+      "wwwroot/client-side/css/jtv-mobile-menu.css",
+      "wwwroot/client-side/css/style.css",
+      "wwwroot/client-side/css/responsive.css",
+
+      "wwwroot/node_modules/alertifyjs/build/css/alertify.min.css",
+      "wwwroot/node_modules/jquery-ui-1.12.1/jquery-ui.min.css"
+
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      //"wwwroot/js/site.js",
+
+      //"wwwroot/client-side/js/jquery.min.js",
+      //"wwwroot/client-side/js/bootstrap.min.js",
+      //"wwwroot/node_modules/jquery-ui-1.12.1/jquery-ui.min.js",
+      //"wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      //"wwwroot/node_modules/mustache/mustache.min.js",
+
+
+      "wwwroot/client-side/js/owl.carousel.min.js",
+      "wwwroot/client-side/js/jtv-mobile-menu.js",
+      "wwwroot/client-side/js/countdown.js",
+      "wwwroot/client-side/js/main.js",
+      "wwwroot/client-side/js/rev-slider.js",
+
+      "wwwroot/node_modules/alertifyjs/build/alertify.min.js",
+      "wwwroot/node_modules/twbs-pagination/jquery.twbsPagination.min.js",
+
+      "wwwroot/node_modules/jquery-number-master/jquery.number.min.js",
+      "wwwroot/node_modules/signalr/dist/browser/signalr.min.js",
+      "wwwroot/app/shared/notification.js",
+      "wwwroot/app/controllers/product/shoppingCard.js",
+      "wwwroot/app/shared/common.js",
+      "wwwroot/app/controllers/product/wishlistCart.js"
+
     ],
     // Optionally specify minification options
     "minify": {

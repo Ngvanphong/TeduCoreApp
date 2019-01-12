@@ -5,17 +5,17 @@
         getShoppingCartForCheckout();
         getSignalr();
         loadBalanceUser();
-    }
+    };
     function registerEvents() {
         $("#formBillShopping").validate({
             rules: {
                 name: "required",
                 address: "required",
                 email: {
-                    email: true,
+                    email: true
                 },
                 mobile: "required",
-                citySelectList: "required",
+                citySelectList: "required"
             },
             messages: {
                 name: "Bạn phải nhập tên",
@@ -24,14 +24,14 @@
                     email: "Email không đúng"
                 },
                 mobile: "Bạn phải nhập số điện thoại",
-                citySelectList: "",
+                citySelectList: ""
             }
         });
 
         $('body').on('change', '#citySelectList', function (e) {
             e.preventDefault();
             var province = $("#citySelectList").val();
-            if (province == 701) {
+            if (province === 701) {
                 $("#proviceDisplay").show();
                 loadDistrict(province);
             }
@@ -41,11 +41,11 @@
                 setTimeout(getTotalPayment, 200);
             }
         });
-             
-        $('body').on('change','#districtSelectList', function (e) {
+
+        $('body').on('change', '#districtSelectList', function (e) {
             e.preventDefault();
             var districtId = $(this).val();
-            if (districtId != "") {
+            if (districtId !== "") {
                 getTaxForHCM(districtId);
                 setTimeout(getTotalPayment, 200);
             }
@@ -54,7 +54,7 @@
                 setTimeout(getTotalPayment, 200);
             }
         });
-       
+
         $('body').on('change', '.radioLogin', function (e) {
             e.preventDefault();
             var isLogin = $(this).val();
@@ -84,7 +84,7 @@
             var totalMoneyPayment = parseInt($('#totalCountPaymentForPrice').text());
             var totalMoneyOrder = $('#totalMoneyShoppingCart').text();
             var feeShiping = parseInt($('.taxtransfer').text().split(".", 1));
-            if (valid && parseInt(totalMoneyOrder) > 0 && feeShiping>0) {
+            if (valid && parseInt(totalMoneyOrder) > 0 && feeShiping > 0) {
                 var billVm = {
                     CustomerName: $('#name').val(),
                     CustomerAddress: $('#address').val(),
@@ -92,8 +92,8 @@
                     CustomerEmail: $('#email').val(),
                     CustomerMessage: $('#note').val(),
                     PaymentMethod: $('#pamentMethod').val()
-                };               
-                var balanceForBill = parseInt(parseInt(totalMoneyOrder) * 5 / 100);                
+                };
+                var balanceForBill = parseInt(parseInt(totalMoneyOrder) * 5 / 100);
                 addCheackout(billVm, feeShiping, totalMoneyOrder, balanceForBill, totalMoneyPayment);
             }
             else {
@@ -109,19 +109,19 @@
             type: "POST",
             dataType: "json",
             data: {
-                provinceId: provinceId,
+                provinceId: provinceId
             },
             success: function (res) {
                 if (res.status) {
                     var html = '<option value="">Chọn quận/huyện</option>';
                     var data = res.data;
                     $.each(data, function (i, item) {
-                        html += '<option value="' + item.Id + '">' + item.Name + '</option>'
+                        html += '<option value="' + item.Id + '">' + item.Name + '</option>';
                     });
                     $("#districtSelectList").html(html);
                 }
             }
-        })
+        });
     }
 
     function getTaxForHCM(districtId) {
@@ -142,7 +142,7 @@
     }
 
     function getCustomerLogin(isLogin) {
-        if (isLogin == 1) {
+        if (isLogin === 1) {
             $.ajax({
                 url: "account/checkIsLogin",
                 type: "POST",
@@ -160,7 +160,7 @@
                         notifications.printSuccesMessage("Bạn chưa đăng nhập");
                     }
                 }
-            })
+            });
         }
         else {
             $("#name").val("");
@@ -184,7 +184,7 @@
                         salePrice = item.ProductVm.PromotionPrice;
                     } else {
                         salePrice = item.ProductVm.Price;
-                    };
+                    }
                     totalMoneyShoppingCart = totalMoneyShoppingCart + salePrice * item.Quantity;
                     render += Mustache.render(template, {
                         Id: item.ProductVm.Id,
@@ -200,10 +200,10 @@
                         SizeId: item.SizeVm.Id,
                         Price: $.number(item.ProductVm.Price, 3),
                         PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
-                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3)
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#tableShoppingContent').html(render);
                     $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
                 }
@@ -213,7 +213,7 @@
                 }
                 setTimeout(getTotalPayment, 2000);
             }
-        })
+        });
     }
 
     function getTotalPayment() {
@@ -221,7 +221,7 @@
         var shipping = parseInt($('.taxtransfer').text().split(".", 1));
         var totalBalance = parseInt($('#totalBalanceForPrice').text());
         var totalMoneyPayment = 0;
-        if (totalBalance > (totalMoneyShopping + shipping)) {
+        if (totalBalance > parseInt(totalMoneyShopping + shipping)) {
             totalMoneyPayment = 0;
         }
         else {
@@ -237,7 +237,7 @@
             data: {
                 productId: productId,
                 colorId: colorId,
-                sizeId: sizeId,
+                sizeId: sizeId
             },
             dataType: 'json',
             type: 'POST',
@@ -245,7 +245,7 @@
                 getShoppingCartForCheckout();
                 shopingCarts.getShoppingCartToUpdate();
             }
-        })
+        });
     }
 
     this.getShoppingCartForCheckoutUpdate = function () {
@@ -263,7 +263,7 @@
                         salePrice = item.ProductVm.PromotionPrice;
                     } else {
                         salePrice = item.ProductVm.Price;
-                    };
+                    }
                     totalMoneyShoppingCart = totalMoneyShoppingCart + salePrice * item.Quantity;
 
                     render += Mustache.render(template, {
@@ -280,10 +280,10 @@
                         SizeId: item.SizeVm.Id,
                         Price: $.number(item.ProductVm.Price, 3),
                         PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
-                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3)
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#tableShoppingContent').html(render);
                     $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
                 }
@@ -293,8 +293,8 @@
                 }
                 setTimeout(getTotalPayment, 200);
             }
-        })
-    }
+        });
+    };
 
     function updateShoppingCart(productId, colorId, sizeId, quantity) {
         $.ajax({
@@ -303,7 +303,7 @@
                 productId: productId,
                 colorId: colorId,
                 sizeId: sizeId,
-                quantity: quantity,
+                quantity: quantity
             },
             dataType: 'json',
             type: 'POST',
@@ -311,7 +311,7 @@
                 getShoppingCartForCheckout();
                 shopingCarts.getShoppingCartToUpdate();
             }
-        })
+        });
     }
 
     function addCheackout(billVm, feeShiping, totalMoneyOrder, balanceForBill, totalMoneyPayment) {
@@ -369,4 +369,4 @@
         });
         connections = connection;
     }
-}
+};

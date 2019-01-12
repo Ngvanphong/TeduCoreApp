@@ -2,7 +2,7 @@
     this.initializers = function () {
         loadData(false);
         registerEvents();
-    }
+    };
     registerEvents = function () {
         $('#input-limit').on('change', function () {
             pageSize = $(this).val();
@@ -12,18 +12,18 @@
         $('#input-sort').on('change', function () {
             pageIndex = 1;
             flagPaging = false;
-            if (flagPaging == false) {
-                loadData(true)
-            };
+            if (flagPaging === false) {
+                loadData(true);
+            }
         });
         $('#input-category').on('change', function () {
             pageIndex = 1;
             flagPaging = false;
-            if (flagPaging == false) {
-                loadData(true)
-            };
+            if (flagPaging === false) {
+                loadData(true);
+            }
         });
-    }
+    };
 
     var totalRowsPaging;
     var pageIndex = 1;
@@ -51,21 +51,21 @@
                         SeoAlias: item.SeoAlias,
                         ThumbnailImage: item.ThumbnailImage,
                         PromotionPrice: item.PromotionPrice,
-                        Price: item.Price,
+                        Price: item.Price
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#productContent').html(render);
                 }
-                if (flagPaging == false) {
+                if (flagPaging === false) {
                     wrapPaging(response.TotalRows, function () {
                         loadData();
                     }, isPageChanged);
                 }
 
-            },
-        })
-    }
+            }
+        });
+    };
 
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / pageSize);
@@ -85,7 +85,7 @@
             last: 'Cuối',
             onPageClick: function (event, p) {
                 pageIndex = p;
-                if (flagPaging == false) {
+                if (flagPaging === false) {
                     flagPaging = true;
                 }
                 else {
@@ -96,6 +96,4 @@
         });
     }
 
-
-
-}
+};

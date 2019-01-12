@@ -3,7 +3,7 @@
         registerEvents();
         loadReturnUrl();
         searchProduct();
-    }
+    };
     function registerEvents() {
         $('body').on('click', '#logoutPost', function (e) {
             e.preventDefault();
@@ -42,7 +42,7 @@
                 }
             });
         });
-        
+
 
     }
     function loadReturnUrl() {
@@ -62,7 +62,7 @@
                 $.ajax({
                     url: "/product/search",
                     dataType: "json",
-                    type:"GET",
+                    type: "GET",
                     data: {
                         term: request.term
                     },
@@ -87,4 +87,4 @@
             };
     }
 
-}
+};

@@ -1,22 +1,22 @@
 ﻿var productController = function () {
     this.initializers = function () {
-        loadData(false);     
+        loadData(false);
         registerEvents();
         getShoppingCartForPage();
-        
-    }
+
+    };
     registerEvents = function () {
         $('#input-limit').on('change', function () {
             pageSize = $(this).val();
             pageIndex = 1;
-            wrapPaging(totalRowsPaging, function () { loadData(true) },true)
+            wrapPaging(totalRowsPaging, function () { loadData(true) }, true)
         });
         $('#input-sort').on('change', function () {
             pageIndex = 1;
             flagPaging = false;
-            if (flagPaging == false) {
-                loadData(true)
-            };            
+            if (flagPaging === false) {
+                loadData(true);
+            }
         });
         $('body').on('click', '.removeForPage', function (e) {
             e.preventDefault();
@@ -25,7 +25,7 @@
             var sizeId = $(this).data('sizeid');
             removeShoppingCartForPage(productId, colorId, sizeId);
         });
-    }
+    };
 
     var totalRowsPaging;
     var pageIndex = 1;
@@ -40,34 +40,34 @@
                 id: $('#productCategoryId').text(),
                 sort: $('#input-sort').val(),
                 page: pageIndex,
-                pageSize: pageSize,
+                pageSize: pageSize
             },
             url: '/product/getProductByCategory',
-            dataType: 'json',           
-            success: function (response) {  
-                totalRowsPaging = response.TotalRows;               
+            dataType: 'json',
+            success: function (response) {
+                totalRowsPaging = response.TotalRows;
                 $.each(response.Items, function (i, item) {
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
                         SeoAlias: item.SeoAlias,
-                        ThumbnailImage:item.ThumbnailImage,
-                        PromotionPrice:item.PromotionPrice,
-                        Price:item.Price,
+                        ThumbnailImage: item.ThumbnailImage,
+                        PromotionPrice: item.PromotionPrice,
+                        Price: item.Price
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#productContent').html(render);
-                } 
-                if (flagPaging == false) {                 
-                    wrapPaging(response.TotalRows, function () {                        
+                }
+                if (flagPaging === false) {
+                    wrapPaging(response.TotalRows, function () {
                         loadData();
                     }, isPageChanged);
                 }
-               
-            },
-        })
-    }
+
+            }
+        });
+    };
 
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / pageSize);
@@ -84,16 +84,16 @@
             first: 'Đầu',
             prev: 'Trước',
             next: 'Tiếp',
-            last: 'Cuối',           
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 pageIndex = p;
-                if (flagPaging == false) {
+                if (flagPaging === false) {
                     flagPaging = true;
                 }
                 else {
                     setTimeout(callBack(), 200);
                 }
-                
+
             }
         });
     }
@@ -120,18 +120,18 @@
                         Size: item.SizeVm.Name,
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
-                        SizeId: item.SizeVm.Id,
+                        SizeId: item.SizeVm.Id
 
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#pageShoppingCart').html(render);
                 }
                 else {
-                    $('#pageShoppingCart').html("")
+                    $('#pageShoppingCart').html("");
                 }
             }
-        })
+        });
     }
 
     function removeShoppingCartForPage(productId, colorId, sizeId) {
@@ -140,7 +140,7 @@
             data: {
                 productId: productId,
                 colorId: colorId,
-                sizeId: sizeId,
+                sizeId: sizeId
             },
             dataType: 'json',
             type: 'POST',
@@ -148,10 +148,10 @@
                 getShoppingCartForPage();
                 shopingCarts.getShoppingCartToUpdate();
             }
-        })
+        });
     }
 
-    this.getShoppingCartForPageToUpdate= function() {
+    this.getShoppingCartForPageToUpdate = function () {
         var template = $('#pageShoppingCart-template').html();
         var render = "";
         $.ajax({
@@ -172,22 +172,19 @@
                         Size: item.SizeVm.Name,
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
-                        SizeId: item.SizeVm.Id,
+                        SizeId: item.SizeVm.Id
 
                     });
                 });
-                if (render != '') {
+                if (render !== '') {
                     $('#pageShoppingCart').html(render);
                 }
                 else {
-                    $('#pageShoppingCart').html("")
+                    $('#pageShoppingCart').html("");
                 }
             }
-        })
-    }
+        });
+    };
 
 
-
-
-
-}
+};

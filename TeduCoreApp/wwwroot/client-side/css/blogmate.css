@@ -676,7 +676,7 @@ blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
 }
 }
 @media only screen and (min-width: 480px) and (max-width: 567px) {
-.comment-form textarea; {
+.comment-form textarea {
 width:250px;
 }
 .blog_entry-title a {

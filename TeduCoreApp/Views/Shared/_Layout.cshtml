@@ -17,12 +17,20 @@
     <!-- Favicon  -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
+    @*/*Google Fonts*/*@
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
+
+    
     <!-- CSS Style -->
-    <link rel="stylesheet" href="~/client-side/style.css">
+    <link href="~/css/site.min.css" rel="stylesheet" />
 
-    <link href="~/node_modules/alertifyjs/build/css/alertify.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/client-side/style.css">
 
-    <link href="~/node_modules/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+        <link href="~/node_modules/alertifyjs/build/css/alertify.min.css" rel="stylesheet" />
+
+        <link href="~/node_modules/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />*@
 
 </head>
 
@@ -49,52 +57,55 @@
         @await Component.InvokeAsync("Footer")
     </div>
 
-    <!-- End Footer -->
+
+
     <!-- jquery js -->
     <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
-
     <script src="~/node_modules/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-
     <!-- bootstrap js -->
     <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
-
-    <!-- owl.carousel.min js -->
-    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
-
-    <!-- jtv-jtv-mobile-menu js -->
-    <script type="text/javascript" src="~/client-side/js/jtv-mobile-menu.js"></script>
-
-    <!-- countdown js -->
-    <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
-
-    <!-- main js -->
-    <script type="text/javascript" src="~/client-side/js/main.js"></script>
-
-    <!-- rev-slider js -->
-    <script type="text/javascript" src="~/client-side/js/rev-slider.js"></script>
-
     <!-- mustache js -->
     <script src="~/node_modules/mustache/mustache.min.js"></script>
     <!-- alertify js -->
-    <script src="~/node_modules/alertifyjs/build/alertify.min.js"></script>
-    <!-- twbs pagination-->
-    <script src="~/node_modules/twbs-pagination/jquery.twbsPagination.min.js"></script>
-
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 
+    <script src="~/js/site.min.js"></script>
 
-    <script src="~/node_modules/jquery-number-master/jquery.number.min.js"></script>
+    @*<!-- End Footer -->
 
-    <script src="~/node_modules/signalr/dist/browser/signalr.min.js"></script>
+        <!-- owl.carousel.min js -->
+        <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
 
-    <script src="~/app/shared/notification.js"></script>
+        <!-- jtv-jtv-mobile-menu js -->
+        <script type="text/javascript" src="~/client-side/js/jtv-mobile-menu.js"></script>
+
+        <!-- countdown js -->
+        <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
+
+        <!-- main js -->
+        <script type="text/javascript" src="~/client-side/js/main.js"></script>
+
+        <!-- rev-slider js -->
+        <script type="text/javascript" src="~/client-side/js/rev-slider.js"></script>
+
+
+        <script src="~/node_modules/alertifyjs/build/alertify.min.js"></script>
+        <!-- twbs pagination-->
+        <script src="~/node_modules/twbs-pagination/jquery.twbsPagination.min.js"></script>
+
+
+        <script src="~/node_modules/jquery-number-master/jquery.number.min.js"></script>
+
+        <script src="~/node_modules/signalr/dist/browser/signalr.min.js"></script>
+
+        <script src="~/app/shared/notification.js"></script>*@
     <script>
         var notifications = new notification();
         notifications.init();
     </script>
-    <script src="~/app/controllers/product/shoppingCard.js"></script>
-    <script src="~/app/shared/common.js"></script>
-    <script src="~/app/controllers/product/wishlistCart.js"></script>
+    @*<script src="~/app/controllers/product/shoppingCard.js"></script>
+        <script src="~/app/shared/common.js"></script>
+        <script src="~/app/controllers/product/wishlistCart.js"></script>*@
     <script>
         var shopingCarts = new shoppingCard();
         shopingCarts.initializer();
@@ -102,7 +113,6 @@
         shareCommons.initilizer();
         var wishlistItemControllers = new wistlistCartController();
         wishlistItemControllers.initilizer();
-
     </script>
 
     @RenderSection("Scripts", required: false)

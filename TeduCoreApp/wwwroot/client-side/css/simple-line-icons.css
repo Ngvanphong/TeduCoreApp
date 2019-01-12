@@ -15,7 +15,7 @@
 	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: .grayscale1;
+	/*-moz-osx-font-smoothing: .grayscale1;*/
 }
 /* Use the following CSS code if you want to have a class per icon */
 /*
