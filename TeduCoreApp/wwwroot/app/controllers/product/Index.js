@@ -14,7 +14,7 @@
         $('#input-sort').on('change', function () {
             pageIndex = 1;
             flagPaging = false;
-            if (flagPaging === false) {
+            if (flagPaging == false) {
                 loadData(true);
             }
         });
@@ -56,10 +56,10 @@
                         Price: item.Price
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#productContent').html(render);
                 }
-                if (flagPaging === false) {
+                if (flagPaging == false) {
                     wrapPaging(response.TotalRows, function () {
                         loadData();
                     }, isPageChanged);
@@ -72,7 +72,7 @@
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationUL a').length === 0 || changePageSize === true) {
+        if ($('#paginationUL a').length == 0 || changePageSize == true) {
             $('#paginationUL').empty();
             $('#paginationUL').removeData("twbs-pagination");
             $('#paginationUL').unbind("page");
@@ -87,7 +87,7 @@
             last: 'Cuối',
             onPageClick: function (event, p) {
                 pageIndex = p;
-                if (flagPaging === false) {
+                if (flagPaging == false) {
                     flagPaging = true;
                 }
                 else {
@@ -124,7 +124,7 @@
 
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#pageShoppingCart').html(render);
                 }
                 else {
@@ -176,7 +176,7 @@
 
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#pageShoppingCart').html(render);
                 }
                 else {

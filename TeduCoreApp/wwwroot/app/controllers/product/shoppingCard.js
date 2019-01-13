@@ -65,7 +65,7 @@
 
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#cart-sidebar').html(render);
                 }
                 else {
@@ -124,7 +124,7 @@
 
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#cart-sidebar').html(render);
                 }
                 else {
