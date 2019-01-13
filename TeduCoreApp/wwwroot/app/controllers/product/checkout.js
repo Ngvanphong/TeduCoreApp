@@ -31,7 +31,7 @@
         $('body').on('change', '#citySelectList', function (e) {
             e.preventDefault();
             var province = $("#citySelectList").val();
-            if (province === 701) {
+            if (province == 701) {
                 $("#proviceDisplay").show();
                 loadDistrict(province);
             }
@@ -45,7 +45,7 @@
         $('body').on('change', '#districtSelectList', function (e) {
             e.preventDefault();
             var districtId = $(this).val();
-            if (districtId !== "") {
+            if (districtId != "") {
                 getTaxForHCM(districtId);
                 setTimeout(getTotalPayment, 200);
             }
@@ -142,7 +142,7 @@
     }
 
     function getCustomerLogin(isLogin) {
-        if (isLogin === 1) {
+        if (isLogin == 1) {
             $.ajax({
                 url: "account/checkIsLogin",
                 type: "POST",
@@ -203,7 +203,7 @@
                         TotalPriceItem: $.number(salePrice * item.Quantity, 3)
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#tableShoppingContent').html(render);
                     $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
                 }
@@ -283,7 +283,7 @@
                         TotalPriceItem: $.number(salePrice * item.Quantity, 3)
                     });
                 });
-                if (render !== '') {
+                if (render != '') {
                     $('#tableShoppingContent').html(render);
                     $('#totalMoneyShoppingCart').text(totalMoneyShoppingCart);
                 }
