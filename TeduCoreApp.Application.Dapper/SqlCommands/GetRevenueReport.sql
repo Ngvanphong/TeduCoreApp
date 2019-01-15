@@ -1,4 +1,4 @@
-﻿alter PROC GetRevenueDaily
+﻿create PROC GetRevenueDaily
 	@fromDate VARCHAR(10),
 	@toDate VARCHAR(10)
 AS
