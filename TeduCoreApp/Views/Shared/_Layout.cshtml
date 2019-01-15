@@ -65,6 +65,9 @@
     <!-- alertify js -->
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 
+    <!--signalr js-->
+    <script src="~/node_modules/signalr/dist/browser/signalr.min.js"></script>
+
     <script src="~/js/site.min.js"></script>
 
     @*<!-- End Footer -->
@@ -108,8 +111,9 @@
         var shareCommons = new shareCommon();
         shareCommons.initilizer();
         var wishlistItemControllers = new wistlistCartController();
-        wishlistItemControllers.initilizer();
+        wishlistItemControllers.initilizer();      
     </script>
+ 
 
     @RenderSection("Scripts", required: false)
 

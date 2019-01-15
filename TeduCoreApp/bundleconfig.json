@@ -53,12 +53,11 @@
       "wwwroot/node_modules/twbs-pagination/jquery.twbsPagination.min.js",
 
       "wwwroot/node_modules/jquery-number-master/jquery.number.min.js",
-      "wwwroot/node_modules/signalr/dist/browser/signalr.min.js",
       "wwwroot/app/shared/notification.js",
       "wwwroot/app/controllers/product/shoppingCard.js",
       "wwwroot/app/shared/common.js",
-      "wwwroot/app/controllers/product/wishlistCart.js"
-
+      "wwwroot/app/controllers/product/wishlistCart.js",
+      "wwwroot/app/controllers/product/checkout.js"
     ],
     // Optionally specify minification options
     "minify": {

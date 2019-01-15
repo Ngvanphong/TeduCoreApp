@@ -211,7 +211,7 @@
                     $('#tableShoppingContent').html("");
                     $('#totalMoneyShoppingCart').text("0");
                 }
-                setTimeout(getTotalPayment, 2000);
+                setTimeout(getTotalPayment, 200);
             }
         });
     }
