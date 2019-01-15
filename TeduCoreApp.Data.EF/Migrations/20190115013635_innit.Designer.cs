@@ -10,8 +10,8 @@ using TeduCoreApp.Data.EF;
 namespace TeduCoreApp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181208162220_changebill2")]
-    partial class changebill2
+    [Migration("20190115013635_innit")]
+    partial class innit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,6 +117,9 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(250);
 
+                    b.Property<string>("PageId")
+                        .HasMaxLength(20);
+
                     b.Property<string>("PositionId")
                         .HasMaxLength(20);
 
@@ -128,6 +131,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .HasMaxLength(250);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PageId");
 
                     b.HasIndex("PositionId");
 
@@ -156,12 +161,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(250);
 
-                    b.Property<string>("PageId")
-                        .HasMaxLength(20);
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PageId");
 
                     b.ToTable("AdvertistmentPositions");
                 });
@@ -294,6 +294,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal?>("BalanceForBill");
+
                     b.Property<int>("BillStatus");
 
                     b.Property<string>("CustomerAddress")
@@ -320,9 +322,18 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.Property<DateTime>("DateModified");
 
+                    b.Property<decimal?>("FeeShipping")
+                        .HasColumnType("decimal(12,3)");
+
                     b.Property<int>("PaymentMethod");
 
                     b.Property<int>("Status");
+
+                    b.Property<decimal?>("TotalMoneyOrder")
+                        .HasColumnType("decimal(12,3)");
+
+                    b.Property<decimal?>("TotalMoneyPayment")
+                        .HasColumnType("decimal(12,3)");
 
                     b.HasKey("Id");
 
@@ -617,10 +628,9 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Page", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 64)))
-                        .HasColumnType("varchar(255)");
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Alias")
                         .IsRequired()
@@ -630,13 +640,56 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .HasMaxLength(255);
 
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
                     b.ToTable("Pages");
+                });
+
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.PageImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Caption")
+                        .HasMaxLength(250);
+
+                    b.Property<int>("PageId");
+
+                    b.Property<string>("Path")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("PageImages");
+                });
+
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.Pantner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250);
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Url")
+                        .HasMaxLength(250);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pantners");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Permission", b =>
@@ -693,11 +746,14 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<decimal>("OriginalPrice");
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(12,3)");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(12,3)");
 
-                    b.Property<decimal?>("PromotionPrice");
+                    b.Property<decimal?>("PromotionPrice")
+                        .HasColumnType("decimal(12,3)");
 
                     b.Property<string>("SeoAlias")
                         .HasColumnType("varchar(255)");
@@ -893,6 +949,20 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.ToTable("Slides");
                 });
 
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.Subcrible", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subcribles");
+                });
+
             modelBuilder.Entity("TeduCoreApp.Data.Entities.SystemConfig", b =>
                 {
                     b.Property<string>("Id")
@@ -947,7 +1017,8 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.Property<int>("FromQuantity");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(12,3)");
 
                     b.Property<int>("ProductId");
 
@@ -962,16 +1033,13 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Advertistment", b =>
                 {
+                    b.HasOne("TeduCoreApp.Data.Entities.AdvertistmentPage", "AdvertistmentPage")
+                        .WithMany("Advertistments")
+                        .HasForeignKey("PageId");
+
                     b.HasOne("TeduCoreApp.Data.Entities.AdvertistmentPosition", "AdvertistmentPosition")
                         .WithMany("Advertistments")
                         .HasForeignKey("PositionId");
-                });
-
-            modelBuilder.Entity("TeduCoreApp.Data.Entities.AdvertistmentPosition", b =>
-                {
-                    b.HasOne("TeduCoreApp.Data.Entities.AdvertistmentPage", "AdvertistmentPage")
-                        .WithMany("AdvertistmentPositions")
-                        .HasForeignKey("PageId");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.AnnouncementUser", b =>
@@ -1048,6 +1116,14 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.HasOne("TeduCoreApp.Data.Entities.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId");
+                });
+
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.PageImage", b =>
+                {
+                    b.HasOne("TeduCoreApp.Data.Entities.Page", "Page")
+                        .WithMany()
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Permission", b =>

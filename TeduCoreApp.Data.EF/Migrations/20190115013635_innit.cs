@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeduCoreApp.Data.EF.Migrations
 {
-    public partial class initial : Migration
+    public partial class innit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,18 @@ namespace TeduCoreApp.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AdvertistmentPages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AdvertistmentPositions",
+                columns: table => new
+                {
+                    Id = table.Column<string>(maxLength: 20, nullable: false),
+                    Name = table.Column<string>(maxLength: 250, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdvertistmentPositions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,7 +144,9 @@ namespace TeduCoreApp.Data.EF.Migrations
                     Avatar = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateModified = table.Column<DateTime>(nullable: false),
-                    Status = table.Column<int>(nullable: false)
+                    Status = table.Column<int>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    Gender = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -280,8 +294,9 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Pages",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(255)", nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
                     Alias = table.Column<string>(maxLength: 256, nullable: false),
                     Content = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
@@ -289,6 +304,22 @@ namespace TeduCoreApp.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pantners",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 250, nullable: true),
+                    Image = table.Column<string>(maxLength: 250, nullable: true),
+                    Url = table.Column<string>(maxLength: 250, nullable: true),
+                    Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pantners", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -343,11 +374,24 @@ namespace TeduCoreApp.Data.EF.Migrations
                     DisplayOrder = table.Column<int>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
                     Content = table.Column<string>(nullable: true),
-                    GroupAlias = table.Column<string>(maxLength: 25, nullable: false)
+                    OrtherPageHome = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Slides", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subcribles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subcribles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -382,20 +426,35 @@ namespace TeduCoreApp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AdvertistmentPositions",
+                name: "Advertistments",
                 columns: table => new
                 {
-                    Id = table.Column<string>(maxLength: 20, nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 250, nullable: true),
+                    Description = table.Column<string>(maxLength: 250, nullable: true),
+                    Image = table.Column<string>(maxLength: 250, nullable: true),
+                    Url = table.Column<string>(maxLength: 250, nullable: true),
+                    PositionId = table.Column<string>(maxLength: 20, nullable: true),
                     PageId = table.Column<string>(maxLength: 20, nullable: true),
-                    Name = table.Column<string>(maxLength: 250, nullable: true)
+                    Status = table.Column<int>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateModified = table.Column<DateTime>(nullable: false),
+                    SortOrder = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AdvertistmentPositions", x => x.Id);
+                    table.PrimaryKey("PK_Advertistments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AdvertistmentPositions_AdvertistmentPages_PageId",
+                        name: "FK_Advertistments_AdvertistmentPages_PageId",
                         column: x => x.PageId,
                         principalTable: "AdvertistmentPages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Advertistments_AdvertistmentPositions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "AdvertistmentPositions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -436,13 +495,18 @@ namespace TeduCoreApp.Data.EF.Migrations
                     CustomerName = table.Column<string>(maxLength: 256, nullable: false),
                     CustomerAddress = table.Column<string>(maxLength: 256, nullable: false),
                     CustomerMobile = table.Column<string>(maxLength: 50, nullable: false),
-                    CustomerMessage = table.Column<string>(maxLength: 256, nullable: false),
+                    CustomerEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    CustomerMessage = table.Column<string>(maxLength: 256, nullable: true),
                     PaymentMethod = table.Column<int>(nullable: false),
                     BillStatus = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateModified = table.Column<DateTime>(nullable: false),
                     Status = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<Guid>(nullable: false)
+                    CustomerId = table.Column<Guid>(nullable: true),
+                    FeeShipping = table.Column<decimal>(type: "decimal(12,3)", nullable: true),
+                    TotalMoneyOrder = table.Column<decimal>(type: "decimal(12,3)", nullable: true),
+                    BalanceForBill = table.Column<decimal>(nullable: true),
+                    TotalMoneyPayment = table.Column<decimal>(type: "decimal(12,3)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -451,6 +515,27 @@ namespace TeduCoreApp.Data.EF.Migrations
                         name: "FK_Bills_AppUsers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "AppUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlogImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BlogId = table.Column<int>(nullable: false),
+                    Path = table.Column<string>(maxLength: 250, nullable: true),
+                    Caption = table.Column<string>(maxLength: 250, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BlogImages_Blogs_BlogId",
+                        column: x => x.BlogId,
+                        principalTable: "Blogs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -486,6 +571,27 @@ namespace TeduCoreApp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PageImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PageId = table.Column<int>(nullable: false),
+                    Path = table.Column<string>(maxLength: 255, nullable: true),
+                    Caption = table.Column<string>(maxLength: 250, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PageImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PageImages_Pages_PageId",
+                        column: x => x.PageId,
+                        principalTable: "Pages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -493,12 +599,12 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
-                    Image = table.Column<string>(maxLength: 255, nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    PromotionPrice = table.Column<decimal>(nullable: true),
-                    OriginalPrice = table.Column<decimal>(nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(12,3)", nullable: false),
+                    PromotionPrice = table.Column<decimal>(type: "decimal(12,3)", nullable: true),
+                    OriginalPrice = table.Column<decimal>(type: "decimal(12,3)", nullable: false),
                     Description = table.Column<string>(maxLength: 500, nullable: true),
                     Content = table.Column<string>(nullable: true),
+                    ThumbnailImage = table.Column<string>(maxLength: 500, nullable: true),
                     HomeFlag = table.Column<bool>(nullable: true),
                     HotFlag = table.Column<bool>(nullable: true),
                     ViewCount = table.Column<int>(nullable: false),
@@ -550,30 +656,30 @@ namespace TeduCoreApp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Advertistments",
+                name: "BillUserAnnoucements",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 250, nullable: true),
-                    Description = table.Column<string>(maxLength: 250, nullable: true),
-                    Image = table.Column<string>(maxLength: 250, nullable: true),
-                    Url = table.Column<string>(maxLength: 250, nullable: true),
-                    PositionId = table.Column<string>(maxLength: 20, nullable: true),
-                    Status = table.Column<int>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    DateModified = table.Column<DateTime>(nullable: false),
-                    SortOrder = table.Column<int>(nullable: false)
+                    BillId = table.Column<int>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
+                    HasRead = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Advertistments", x => x.Id);
+                    table.PrimaryKey("PK_BillUserAnnoucements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Advertistments_AdvertistmentPositions_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "AdvertistmentPositions",
+                        name: "FK_BillUserAnnoucements_Bills_BillId",
+                        column: x => x.BillId,
+                        principalTable: "Bills",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BillUserAnnoucements_AppUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AppUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -626,7 +732,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(nullable: false),
                     Path = table.Column<string>(maxLength: 250, nullable: true),
-                    Caption = table.Column<string>(maxLength: 250, nullable: true)
+                    Caption = table.Column<string>(maxLength: 250, nullable: true),
+                    SwitchImage = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -708,7 +815,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                     ProductId = table.Column<int>(nullable: false),
                     FromQuantity = table.Column<int>(nullable: false),
                     ToQuantity = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(12,3)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -722,8 +829,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AdvertistmentPositions_PageId",
-                table: "AdvertistmentPositions",
+                name: "IX_Advertistments_PageId",
+                table: "Advertistments",
                 column: "PageId");
 
             migrationBuilder.CreateIndex(
@@ -767,6 +874,21 @@ namespace TeduCoreApp.Data.EF.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BillUserAnnoucements_BillId",
+                table: "BillUserAnnoucements",
+                column: "BillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BillUserAnnoucements_UserId",
+                table: "BillUserAnnoucements",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogImages_BlogId",
+                table: "BlogImages",
+                column: "BlogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_BlogTags_BlogId",
                 table: "BlogTags",
                 column: "BlogId");
@@ -775,6 +897,11 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "IX_BlogTags_TagId",
                 table: "BlogTags",
                 column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PageImages_PageId",
+                table: "PageImages",
+                column: "PageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permissions_FunctionId",
@@ -854,6 +981,12 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "BillDetails");
 
             migrationBuilder.DropTable(
+                name: "BillUserAnnoucements");
+
+            migrationBuilder.DropTable(
+                name: "BlogImages");
+
+            migrationBuilder.DropTable(
                 name: "BlogTags");
 
             migrationBuilder.DropTable(
@@ -869,7 +1002,10 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Languages");
 
             migrationBuilder.DropTable(
-                name: "Pages");
+                name: "PageImages");
+
+            migrationBuilder.DropTable(
+                name: "Pantners");
 
             migrationBuilder.DropTable(
                 name: "Permissions");
@@ -887,10 +1023,16 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Slides");
 
             migrationBuilder.DropTable(
+                name: "Subcribles");
+
+            migrationBuilder.DropTable(
                 name: "SystemConfigs");
 
             migrationBuilder.DropTable(
                 name: "WholePrices");
+
+            migrationBuilder.DropTable(
+                name: "AdvertistmentPages");
 
             migrationBuilder.DropTable(
                 name: "AdvertistmentPositions");
@@ -903,6 +1045,9 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "Blogs");
+
+            migrationBuilder.DropTable(
+                name: "Pages");
 
             migrationBuilder.DropTable(
                 name: "Functions");
@@ -921,9 +1066,6 @@ namespace TeduCoreApp.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "AdvertistmentPages");
 
             migrationBuilder.DropTable(
                 name: "AppUsers");

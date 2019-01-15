@@ -53,9 +53,11 @@ namespace TeduCoreApp.Data.EF
                     FullName = "Nguyễn Văn Phong",
                     Email = "ngvanphong2012@gmail.com",
                     Balance = 0,
-                }, "ngvanphong2012");
-                var user = await _userManager.FindByNameAsync("admin");
+                }, "vanphong2012");
+                var user = await _userManager.FindByNameAsync("ngvanphong"); 
+                
                 await _userManager.AddToRoleAsync(user, "Admin");
+                                            
             }
             if (_context.Functions.Count() == 0)
             {
@@ -64,7 +66,7 @@ namespace TeduCoreApp.Data.EF
                     new Function() {Id = "SYSTEM", Name = "Hệ thống",ParentId = null,SortOrder = 1,Status = Status.Active,URL = "/",IconCss = "fa-desktop"  },
                     new Function() {Id = "ROLE", Name = "Nhóm",ParentId = "SYSTEM",SortOrder = 1,Status = Status.Active,URL = "/main/role/index",IconCss = "fa-home"  },
                     new Function() {Id = "FUNCTION", Name = "Chức năng",ParentId = "SYSTEM",SortOrder = 2,Status = Status.Active,URL = "/main/function/index",IconCss = "fa-home"  },
-                    new Function() {Id = "USER", Name = "Người dùng",ParentId = "SYSTEM",SortOrder =3,Status = Status.Active,URL = "/admin/user/index",IconCss = "fa-home"  },
+                    new Function() {Id = "USER", Name = "Người dùng",ParentId = "SYSTEM",SortOrder =3,Status = Status.Active,URL = "/main/user/index",IconCss = "fa-home"  },
                    
                     new Function() {Id = "PRODUCT",Name = "Sản phẩm",ParentId = null,SortOrder = 2,Status = Status.Active,URL = "/",IconCss = "fa-chevron-down"  },
                     new Function() {Id = "PRODUCT_CATEGORY",Name = "Danh mục",ParentId = "PRODUCT",SortOrder =1,Status = Status.Active,URL = "/main/productcategory/index",IconCss = "fa-chevron-down"  },
@@ -141,23 +143,23 @@ namespace TeduCoreApp.Data.EF
                     new ProductCategory() { Name="Áo nam",SeoAlias="ao-nam",ParentId = null,Status=Status.Active,SortOrder=1,
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Sản phẩm 1",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,OriginalPrice = 1000},                            
+                            new Product(){Name = "Sản phẩm 1",SeoAlias = "san-pham-1",Price = 1000,Status = Status.Active,OriginalPrice = 1000,Content="Content 1"},                            
                         }
                     },
                     new ProductCategory() { Name="Áo nữ",SeoAlias="ao-nu",ParentId = null,Status=Status.Active ,SortOrder=2,
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Sản phẩm 6",SeoAlias = "san-pham-6",Price = 1000,Status = Status.Active,OriginalPrice = 1000},                           
+                            new Product(){Name = "Sản phẩm 6",SeoAlias = "san-pham-6",Price = 1000,Status = Status.Active,OriginalPrice = 1000,Content="Content 6"},                           
                         }},
                     new ProductCategory() { Name="Giày nam",SeoAlias="giay-nam",ParentId = null,Status=Status.Active ,SortOrder=3,
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Sản phẩm 11",SeoAlias = "san-pham-11",Price = 1000,Status = Status.Active,OriginalPrice = 1000},                       
+                            new Product(){Name = "Sản phẩm 11",SeoAlias = "san-pham-11",Price = 1000,Status = Status.Active,OriginalPrice = 1000,Content="Content 11"},                       
                         }},
                     new ProductCategory() { Name="Giày nữ",SeoAlias="giay-nu",ParentId = null,Status=Status.Active,SortOrder=4,
                         Products = new List<Product>()
                         {
-                            new Product(){Name = "Sản phẩm 16",SeoAlias = "san-pham-16",Price = 1000,Status = Status.Active,OriginalPrice = 1000},
+                            new Product(){Name = "Sản phẩm 16",SeoAlias = "san-pham-16",Price = 1000,Status = Status.Active,OriginalPrice = 1000,Content="Content 16"},
                             
                         }}
                 };
