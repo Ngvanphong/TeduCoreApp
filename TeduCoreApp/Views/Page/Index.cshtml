@@ -1,6 +1,8 @@
 ﻿@using TeduCoreApp.Data.ViewModels.Page
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.Name;
+    ViewData["MetaDescription"] = Model.Name;
+    ViewData["MetaKeyword"] = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model PageViewModel

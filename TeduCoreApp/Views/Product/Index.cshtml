@@ -1,6 +1,9 @@
 ﻿@model ProductIndexViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.ProductCategory.SeoPageTitle;
+    ViewData["MetaDescription"] = Model.ProductCategory.SeoDescription;
+    ViewData["MetaKeyword"] = Model.ProductCategory.SeoKeywords;
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{

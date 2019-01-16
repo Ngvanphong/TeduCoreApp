@@ -1,6 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.ProductTag.Name;
+    ViewData["MetaDescription"] = Model.ProductTag.Name;
+    ViewData["MetaKeyword"] = Model.ProductTag.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model ProductTagIndexViewModel

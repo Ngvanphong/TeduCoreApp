@@ -1,5 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" :  "Bài viết-trang " + Model.ResultPagging.PageIndex;
+    ViewData["MetaDescription"] = Model.ResultPagging.PageIndex == 1 ? "Nội dung bài viết" : "Nội dung bài viết-trang " + Model.ResultPagging.PageIndex;
+    ViewData["MetaKeyword"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" : "Bài viết-trang " + Model.ResultPagging.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model BlogIndexViewModel

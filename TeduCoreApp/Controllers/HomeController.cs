@@ -16,9 +16,9 @@ namespace TeduCoreApp.Controllers
         private IBlogService _blogService;
         private IConfiguration _config;
         private ISubcribleService _subcribleService;
-
-        public HomeController(IProductService productService, ISlideService slideService,
-            IAdvertistmentService advertistmentService, IBlogService blogService, IConfiguration config, ISubcribleService subcribleService)
+        private ISystemConfigService _systemConfig;
+        public HomeController(IProductService productService, ISlideService slideService,IAdvertistmentService advertistmentService,
+            IBlogService blogService, IConfiguration config, ISubcribleService subcribleService, ISystemConfigService systemConfig)
         {
             _productService = productService;
             _slideService = slideService;
@@ -26,10 +26,12 @@ namespace TeduCoreApp.Controllers
             _blogService = blogService;
             _config = config;
             _subcribleService = subcribleService;
+            _systemConfig = systemConfig;
         }
 
         public IActionResult Index()
         {
+            
             HomeViewModel homeVm = new HomeViewModel() { };
             homeVm.ListHotProduct = _productService.GetHotProduct(8);
             homeVm.ListNewProduct = _productService.GetNewProduct(8);
@@ -39,6 +41,9 @@ namespace TeduCoreApp.Controllers
             homeVm.ListAdvertistmentTop = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositionName.Top);
             homeVm.ListBlog = _blogService.GetAll();
             homeVm.DomainApi = _config["DomainApi:Domain"];
+            ViewBag.HomeTitle = _systemConfig.Detail("HomeTitle").Value1;
+            ViewBag.HomeMetaDescription = _systemConfig.Detail("HomeMetaDescription").Value1;
+            ViewBag.HomeMetaKeyword = _systemConfig.Detail("HomeMetaKeyword").Value1;
             return View(homeVm);
         }
 
@@ -70,19 +75,6 @@ namespace TeduCoreApp.Controllers
             return new OkObjectResult(new { status = false });
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Error()
         {

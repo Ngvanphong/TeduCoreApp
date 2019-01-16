@@ -1,5 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = (string)ViewBag.HomeTitle;
+    ViewData["MetaDescription"] = (string)ViewBag.HomeMetaDescription;
+    ViewData["MetaKeyword"]=(string)ViewBag.HomeMetaKeyword;
 }
 @model HomeViewModel
 @section Scripts{

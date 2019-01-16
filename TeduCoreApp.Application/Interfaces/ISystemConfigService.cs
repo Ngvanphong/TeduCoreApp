@@ -10,7 +10,7 @@ namespace TeduCoreApp.Application.Interfaces
     {
         List<SystemConfigViewModel> GetAll();
 
-         SystemConfigViewModel Detail(string id);
+        SystemConfigViewModel Detail(string id);
 
         SystemConfig DetailDb(string id);
       
