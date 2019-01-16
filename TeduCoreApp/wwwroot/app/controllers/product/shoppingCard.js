@@ -2,6 +2,7 @@
     this.initializer = function () {
         registerEvents();
         getShoppingCart();
+        disableButtonAdd();
     };
     registerEvents = function () {
         $('body').on('click', '#btnShoppingCard', function (e) {
@@ -73,6 +74,17 @@
                 }
             }
         });
+    }
+
+    function disableButtonAdd() {
+        var sizeId = $("#productSize").val();
+        var colorId = $("#productColor").val();
+        if (sizeId != null && sizeId != undefined && colorId != null && colorId != undefined) {
+            $("#btnShoppingCard").attr('disabled', false);
+        }
+        else {
+            $("#btnShoppingCard").attr('disabled', true);
+        }
     }
 
     function removeShoppingCart(productId, colorId, sizeId) {
