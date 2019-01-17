@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,7 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Identity;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -16,25 +19,31 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private RoleManager<AppRole> _roleManager;
         private IMapper _mapper;
-
-        public AppRoleController(RoleManager<AppRole> roleManager, IMapper mapper)
+        private readonly IAuthorizationService _authorizationService;
+        public AppRoleController(RoleManager<AppRole> roleManager, IMapper mapper, IAuthorizationService authorizationService)
         {
             _roleManager = roleManager;
             _mapper = mapper;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getlistall")]
         public IActionResult Get()
-        {
+        {          
             List<AppRole> listRoles = _roleManager.Roles.ToList();
             return new OkObjectResult(_mapper.Map<List<AppRoleViewModel>>(listRoles));
         }
 
         [HttpGet]
         [Route("getlistpaging")]
-        public IActionResult Get(int pageSize, int page = 1, string filter = null)
+        public async Task<IActionResult> Get(int pageSize, int page = 1, string filter = null)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             int totalRows = 0;
             var listRole = _roleManager.Roles;
             if (!string.IsNullOrEmpty(filter))
@@ -65,6 +74,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("add")]
         public async Task<IActionResult> Add([FromBody] AppRoleViewModel appRoleVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -85,6 +99,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("update")]
         public async Task<IActionResult> Update([FromBody] AppRoleViewModel appRoleVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -106,6 +125,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("delete")]
         public async Task<IActionResult> Delete(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             try
             {
                 AppRole appRole = await _roleManager.FindByIdAsync(id);              

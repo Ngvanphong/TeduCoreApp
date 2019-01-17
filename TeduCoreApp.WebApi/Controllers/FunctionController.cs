@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.FunctionVm;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Permission;
+using TeduCoreApp.Utilities.Constants;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 using TeduCoreApp.WebApi.ViewModel;
 
@@ -18,19 +22,25 @@ namespace TeduCoreApp.WebApi.Controllers
         private IFunctionService _functionService;
         private IPermissionService _permissionService;
         private RoleManager<AppRole> _roleManager;
-
+        private readonly IAuthorizationService _authorizationService;
         public FunctionController(IFunctionService functionService, IPermissionService permissionService,
-            RoleManager<AppRole> roleManager)
+            RoleManager<AppRole> roleManager, IAuthorizationService authorizationService)
         {
             _functionService = functionService;
             _permissionService = permissionService;
             _roleManager = roleManager;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getlisthierarchy")]
-        public IActionResult GetAllHierachy()
+        public async Task<IActionResult> GetAllHierachy()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             string userId = User.GetSpecialClaimsApi("Id");
 
             List<FunctionViewModel> funtionVm;
@@ -107,8 +117,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("savePermission")]
-        public IActionResult SavePermission([FromBody] SavePermissionRequest data)
+        public async Task<IActionResult> SavePermission([FromBody] SavePermissionRequest data)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 _permissionService.DeleteAll(data.FunctionId);
@@ -142,8 +157,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpGet]
         [Route("getall")]
-        public IActionResult Get(string filter)
+        public async Task<IActionResult> Get(string filter)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_functionService.GetAll(filter));
         }
 
@@ -156,8 +176,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] FunctionViewModel functionVm)
+        public async Task<IActionResult> Add([FromBody] FunctionViewModel functionVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -176,8 +201,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] FunctionViewModel functionVm)
+        public async Task<IActionResult> Update([FromBody] FunctionViewModel functionVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -196,8 +226,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "FUNCTION", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             _functionService.Delete(id);
             _functionService.SaveChanges();
             return new OkObjectResult(id);

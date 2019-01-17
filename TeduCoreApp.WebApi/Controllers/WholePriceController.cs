@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Utilities.Constants;
+using TeduCoreApp.WebApi.Authorization;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -13,9 +16,11 @@ namespace TeduCoreApp.WebApi.Controllers
     public class WholePriceController : ApiController
     {
         private IWholePriceService _wholePriceService;
-        public WholePriceController(IWholePriceService wholePriceService)
+        private readonly IAuthorizationService _authorizationService;
+        public WholePriceController(IWholePriceService wholePriceService, IAuthorizationService authorizationService)
         {
             _wholePriceService = wholePriceService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
@@ -27,8 +32,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] WholePriceViewModel wholePriceVm)
+        public async Task<IActionResult> Add([FromBody] WholePriceViewModel wholePriceVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -47,8 +57,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] WholePriceViewModel wholePriceVm)
+        public async Task<IActionResult> Update([FromBody] WholePriceViewModel wholePriceVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -67,8 +82,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             _wholePriceService.Delete(id);
             _wholePriceService.SaveChanges();
             return new OkObjectResult(id);

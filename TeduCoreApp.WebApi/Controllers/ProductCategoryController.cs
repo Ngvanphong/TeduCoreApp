@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.Utilities.Constants;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -13,24 +17,36 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private IProductCategoryService _productCategoryService;
         private IHostingEnvironment _env;
+        private readonly IAuthorizationService _authorizationService;
 
-        public ProductCategoryController(IProductCategoryService productCategoryService, IHostingEnvironment env)
+        public ProductCategoryController(IProductCategoryService productCategoryService, IHostingEnvironment env, IAuthorizationService authorizationService)
         {
             _productCategoryService = productCategoryService;
             _env = env;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getallhierachy")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_productCategoryService.GetAll());
         }
 
         [HttpGet]
         [Route("getall")]
-        public IActionResult Get(string filter = "")
+        public async Task<IActionResult> Get(string filter = "")
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_productCategoryService.GetAll(filter));
         }
 
@@ -43,8 +59,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] ProductCategoryViewModel productCategoryVm)
+        public async Task<IActionResult> Add([FromBody] ProductCategoryViewModel productCategoryVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 _productCategoryService.Add(productCategoryVm);
@@ -56,8 +77,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] ProductCategoryViewModel productCategoryVm)
+        public async Task<IActionResult> Update([FromBody] ProductCategoryViewModel productCategoryVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 ProductCategory productCategoryDb = _productCategoryService.GetByIdDb(productCategoryVm.Id);
@@ -76,8 +102,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             try
             {
                 string pathImage = _productCategoryService.GetById(id).Image;

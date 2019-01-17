@@ -1,7 +1,7 @@
 ﻿@using TeduCoreApp.Utilities.Dtos
 @using TeduCoreApp.Data.ViewModels.Product
 @{
-    ViewData["Title"] = Model.PageIndex == 1 ? "Tìm kiếm sản phẩm" : "Tìm kiếm sẩn phẩm-trang " + Model.PageIndex;
+    ViewData["Title"] = Model.PageIndex == 1 ? "Tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Tìm kiếm sẩn phẩm-trang "+(string)ViewBag.SearchName+"-trang " + Model.PageIndex;
     ViewData["MetaDescription"] = Model.PageIndex == 1 ? "Nội dung tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Nội dung tìm kiếm sản phẩm: " + (string)ViewBag.SearchName + "-trang " + Model.PageIndex;
     ViewData["MetaKeyword"] = Model.PageIndex == 1 ? "Từ khóa tìm kiếm sản phẩm: "+ (string)ViewBag.SearchName : "Từ khóa tìm kiếm sản phẩm: "+(string)ViewBag.SearchName +"-trang " + Model.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";

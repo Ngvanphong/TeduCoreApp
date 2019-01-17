@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Advertistment;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -18,16 +21,23 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private IAdvertistmentService _advertistmentService;
         private  IHostingEnvironment _env;
-        public AdvertistmentController(IAdvertistmentService advertistmentService, IHostingEnvironment env)
+        private readonly IAuthorizationService _authorizationService;
+        public AdvertistmentController(IAdvertistmentService advertistmentService, IHostingEnvironment env, IAuthorizationService authorizationService)
         {
             _advertistmentService = advertistmentService;
             _env = env;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getallpaging")]
-        public IActionResult Get(int page,int pageSize, string filter)
+        public async Task<IActionResult> Get(int page,int pageSize, string filter)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             List<AdvertistmentViewModel> listAdvertistmentVm = _advertistmentService.GetAll(page, pageSize, filter, out int totalRows);
 
             return new OkObjectResult(new ApiResultPaging<AdvertistmentViewModel>()
@@ -41,30 +51,45 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpGet]
         [Route("getpage")]
-        public IActionResult GetPage()
+        public async Task<IActionResult> GetPage()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_advertistmentService.GetAllPage());
         }
 
         [HttpGet]
         [Route("getposition")]
-        public IActionResult GetPosition()
+        public async Task<IActionResult> GetPosition()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_advertistmentService.GetAllPosition());
         }
 
         [HttpGet]
         [Route("detail/{id}")]
         public IActionResult Detail(int id)
-        {
+        {           
             return new OkObjectResult(_advertistmentService.Detail(id));
         }
 
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] AdvertistmentViewModel advertistmentVm)
+        public async Task<IActionResult> Add([FromBody] AdvertistmentViewModel advertistmentVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -85,8 +110,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] AdvertistmentViewModel advertistmentVm)
+        public async Task<IActionResult> Update([FromBody] AdvertistmentViewModel advertistmentVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -114,8 +144,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("addpage")]
-        public IActionResult AddPage([FromBody] AdvertistmentPageViewModel advertistmentPageVm)
+        public async Task<IActionResult> AddPage([FromBody] AdvertistmentPageViewModel advertistmentPageVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -136,8 +171,13 @@ namespace TeduCoreApp.WebApi.Controllers
         
         [HttpPost]
         [Route("addposition")]
-        public IActionResult AddPosition([FromBody] AdvertistmentPositionViewModel advertistmentPositionVm)
+        public async Task<IActionResult> AddPosition([FromBody] AdvertistmentPositionViewModel advertistmentPositionVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -157,8 +197,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             try
             {
                 string pathImage = _advertistmentService.DetailDb(id).Image;
@@ -178,8 +223,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("deletePage")]
-        public IActionResult DeletePage(string id)
+        public async Task<IActionResult> DeletePage(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             try
             {
                 _advertistmentService.DeletePageName(id);
@@ -194,8 +244,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("deletePosition")]
-        public IActionResult DeletePosition(string id)
+        public async Task<IActionResult> DeletePosition(string id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "ADVERTISMENT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             try
             {
                 _advertistmentService.DeletePositionName(id);

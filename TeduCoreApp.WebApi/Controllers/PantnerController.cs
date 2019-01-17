@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Pantner;
+using TeduCoreApp.Utilities.Constants;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -16,15 +19,22 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private IPantnerService _pantnerService;
         private IHostingEnvironment _env;
-        public PantnerController(IPantnerService pantnerService, IHostingEnvironment env)
+        private readonly IAuthorizationService _authorizationService;
+        public PantnerController(IPantnerService pantnerService, IHostingEnvironment env, IAuthorizationService authorizationService)
         {
             _pantnerService = pantnerService;
             _env = env;
+            _authorizationService = authorizationService;
         }
         [HttpGet]
         [Route("getall")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PANTNER", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_pantnerService.GetAll());
         }
 
@@ -37,8 +47,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] PantnerViewModel pantnerVm)
+        public async Task<IActionResult> Add([FromBody] PantnerViewModel pantnerVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PANTNER", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 _pantnerService.Add(pantnerVm);
@@ -50,8 +65,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] PantnerViewModel pantnerVm)
+        public async Task<IActionResult> Update([FromBody] PantnerViewModel pantnerVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PANTNER", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 Pantner pantnerDb = _pantnerService.GetByIdDb(pantnerVm.Id);
@@ -71,8 +91,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PANTNER", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             string oldPath = _pantnerService.GetByIdDb(id).Image;
             if (!string.IsNullOrEmpty(oldPath))
             {

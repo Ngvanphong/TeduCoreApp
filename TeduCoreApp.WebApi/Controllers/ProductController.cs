@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
@@ -8,7 +9,9 @@ using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -18,26 +21,38 @@ namespace TeduCoreApp.WebApi.Controllers
         private IProductService _productService;
         private IProductImageService _productImageService;
         private IHostingEnvironment _env;
-
-        public ProductController(IProductService productService, IProductImageService productImageService, IHostingEnvironment env)
+        private readonly IAuthorizationService _authorizationService;
+        public ProductController(IProductService productService, IProductImageService productImageService, IHostingEnvironment env,
+            IAuthorizationService authorizationService)
         {
             _productService = productService;
             _productImageService = productImageService;
             _env = env;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getallparents")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_productService.GetAll());
         }
 
 
         [HttpGet]
         [Route("getall")]
-        public IActionResult GetAll(string keyword, int? categoryId, string filterHotPromotion, int pageSize = 10, int page = 1)
-        {           
+        public async Task<IActionResult> GetAll(string keyword, int? categoryId, string filterHotPromotion, int pageSize = 10, int page = 1)
+        {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             int totalRow = 0;
             List<ProductViewModel> listProduct = _productService.GetAll(categoryId, filterHotPromotion, keyword, page, pageSize, out totalRow);
             return new OkObjectResult(new ApiResultPaging<ProductViewModel>()
@@ -51,8 +66,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpGet]
         [Route("detail/{id:int}")]
-        public IActionResult Detail(int id)
-        {          
+        public async Task<IActionResult> Detail(int id)
+        {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             return new OkObjectResult(_productService.GetById(id));
         }
 
@@ -60,7 +80,12 @@ namespace TeduCoreApp.WebApi.Controllers
         [HttpPost]
         [Route("add")]
         public async Task<IActionResult> Add([FromBody] ProductViewModel productVm)
-        {         
+        {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {               
                 await _productService.AddAsync(productVm);
@@ -72,8 +97,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] ProductViewModel productVm)
+        public async Task<IActionResult> Update([FromBody] ProductViewModel productVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 _productService.Update(productVm);
@@ -105,8 +135,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             List<ProductImageViewModel> listProductImageVm = _productImageService.GetProductImageByProdutId(id);
             _productService.Delete(id);
             _productService.SaveChanges();
@@ -119,8 +154,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("deletemulti")]
-        public IActionResult Delete(string checkedProducts)
-        {     
+        public async Task<IActionResult> Delete(string checkedProducts)
+        {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "PRODUCT", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             List<int>listProductId= Newtonsoft.Json.JsonConvert.DeserializeObject<List<int>>(checkedProducts);
             foreach (int item in listProductId)
             {

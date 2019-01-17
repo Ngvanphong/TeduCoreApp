@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,9 @@ using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Bill;
 using TeduCoreApp.Data.ViewModels.Product;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 
 namespace TeduCoreApp.WebApi.Controllers
 {
@@ -17,19 +20,25 @@ namespace TeduCoreApp.WebApi.Controllers
         private IBillService _billService;       
         private UserManager<AppUser> _userManger;
         private IProductService _productService;
-
-        public OrderController(IBillService billService, UserManager<AppUser> userManger, IProductService productService)
+        private readonly IAuthorizationService _authorizationService;
+        public OrderController(IBillService billService, UserManager<AppUser> userManger, IProductService productService, IAuthorizationService authorizationService)
         {
             _billService = billService;
             _userManger = userManger;
             _productService = productService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getlistpaging")]
-        public IActionResult Get(string startDate, string endDate,
+        public async Task<IActionResult> Get(string startDate, string endDate,
             string customerName, BillStatus billStatus, int pageSize, int page = 1)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "BILL", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             List<BillViewModel> listBillVm = _billService.GetList(startDate, endDate, customerName, billStatus, page, pageSize, out int totalRows);
             return new OkObjectResult(new ApiResultPaging<BillViewModel>()
             {
@@ -56,8 +65,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] BillViewModel billVmPost)
+        public async Task<IActionResult> Add([FromBody] BillViewModel billVmPost)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "BILL", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -93,6 +107,11 @@ namespace TeduCoreApp.WebApi.Controllers
         [Route("update")]
         public async Task<IActionResult> Update([FromBody] BillViewModel billVmPost)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "BILL", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 if (billVmPost.BillStatus == BillStatus.Completed)
@@ -148,8 +167,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "BILL", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             _billService.DeleteBill(id);
             _billService.SaveChanges();
             return new OkObjectResult(id);

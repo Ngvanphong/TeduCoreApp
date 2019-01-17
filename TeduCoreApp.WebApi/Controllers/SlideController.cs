@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Slide;
+using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.WebApi.Authorization;
 using TeduCoreApp.WebApi.Extensions;
 
 namespace TeduCoreApp.WebApi.Controllers
@@ -18,17 +21,23 @@ namespace TeduCoreApp.WebApi.Controllers
     {
         private ISlideService _slideService;
         private IHostingEnvironment _env;
-
-        public SlideController(ISlideService slideService, IHostingEnvironment env)
+        private readonly IAuthorizationService _authorizationService;
+        public SlideController(ISlideService slideService, IHostingEnvironment env, IAuthorizationService authorizationService)
         {
             _slideService = slideService;
             _env = env;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
         [Route("getallPagging")]
-        public IActionResult Get(int page,int pageSize, string filter)
+        public async Task<IActionResult> Get(int page,int pageSize, string filter)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "SLIDE", Operations.Read);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             int totalRows = 0;
             List<SlideViewModel> listSlideVm = _slideService.GetAllPagging(page, pageSize, filter, out totalRows);
             return new OkObjectResult(new ApiResultPaging<SlideViewModel>()
@@ -49,8 +58,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPost]
         [Route("add")]
-        public IActionResult Add([FromBody] SlideViewModel slideVm)
+        public async Task<IActionResult> Add([FromBody] SlideViewModel slideVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "SLIDE", Operations.Create);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 _slideService.Add(slideVm);
@@ -62,8 +76,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpPut]
         [Route("update")]
-        public IActionResult Update([FromBody] SlideViewModel slideVm)
+        public async Task<IActionResult> Update([FromBody] SlideViewModel slideVm)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "SLIDE", Operations.Update);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             if (ModelState.IsValid)
             {
                 Slide slideDb = _slideService.GetByIdDb(slideVm.Id);
@@ -83,8 +102,13 @@ namespace TeduCoreApp.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hasPermission = await _authorizationService.AuthorizeAsync(User, "SLIDE", Operations.Delete);
+            if (hasPermission.Succeeded == false)
+            {
+                return new BadRequestObjectResult(CommonConstants.Forbidden);
+            }
             string oldPath = _slideService.GetByIdDb(id).Image;
             if (!string.IsNullOrEmpty(oldPath))
             {
