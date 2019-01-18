@@ -1,0 +1,117 @@
+{
+  "_args": [
+    [
+      "alertifyjs@~1.11.2",
+      "C:\\Users\\Nguyenvan.PHONGNGUYEN\\Documents\\TeduCoreApp\\TeduCoreApp\\TeduCoreApp"
+    ]
+  ],
+  "_from": "alertifyjs@>=1.11.2-0 <1.12.0-0",
+  "_hasShrinkwrap": false,
+  "_id": "alertifyjs@1.11.2",
+  "_inCache": true,
+  "_location": "/alertifyjs",
+  "_nodeVersion": "6.11.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/alertifyjs_1.11.2_1540936810837_0.9779160291722602"
+  },
+  "_npmUser": {
+    "email": "myounes@gmail.com",
+    "name": "myounes"
+  },
+  "_npmVersion": "6.1.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "alertifyjs",
+    "raw": "alertifyjs@~1.11.2",
+    "rawSpec": "~1.11.2",
+    "scope": null,
+    "spec": ">=1.11.2-0 <1.12.0-0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/alertifyjs/-/alertifyjs-1.11.2.tgz",
+  "_shasum": "ffe6d1054855b7685203794f993e00513e1ba885",
+  "_shrinkwrap": null,
+  "_spec": "alertifyjs@~1.11.2",
+  "_where": "C:\\Users\\Nguyenvan.PHONGNGUYEN\\Documents\\TeduCoreApp\\TeduCoreApp\\TeduCoreApp",
+  "author": {
+    "email": "Mohammad@alertifyjs.com",
+    "name": "Mohammad Younes",
+    "url": "http://alertifyjs.com"
+  },
+  "bugs": {
+    "url": "https://github.com/MohammadYounes/AlertifyJS/issues"
+  },
+  "dependencies": {},
+  "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+  "devDependencies": {
+    "autoprefixer": "x.x.x",
+    "docpad": "~6.69.0",
+    "docpad-plugin-eco": "~2.1.0",
+    "docpad-plugin-ghpages": "~2.4.3",
+    "docpad-plugin-highlightjs": "~2.2.2",
+    "docpad-plugin-livereload": "~2.6.0",
+    "docpad-plugin-marked": "~2.2.1",
+    "docpad-plugin-partials": "~2.9.1",
+    "grunt": "~0.4.1",
+    "grunt-banner": "~0.3.1",
+    "grunt-cli": "~0.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "x.x.x",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "x.x.x",
+    "grunt-contrib-cssmin": "x.x.x",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-less": "x.x.x",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-postcss": "~0.8.0",
+    "grunt-rtlcss": "1.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 48,
+    "integrity": "sha512-WhNCHCz5WycRJ34/gDAQQU4hqiOc6VyvDPi/eiPUJf3HIYm0U0L23zDGXR1cSXdYCzvZVxlHdQH7asXVjHBHqA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb2NRrCRA9TVsSAnZWagAAP70P/i+nA3o1rSI4BSrrD76f\n3Lzsu9IqkiknQgNegYuJ8kKRbAVLz6IH2J3c1HjFAaJUYOQQIKG+b9DwOF7m\nIiv7SK8oF3q/KWg1dNHmlI2sg2eS+6v9UtvNPbSK145Z2D6zQ1sTDHnKlXRI\n1kZTTIb2VYGLgJRlYirvcfNQjfvVqmL1I2YnBFshUDcLzFo7Dl3BKPx3DiDF\nogdTggzKMjSQq4OOImXme/NDx25x9ZAO0JgxUMA+xQwIp9KmlyGMdseq5Ihi\n2jKweXpLYh5A7EXbpYDd6nNCAv6PPOEdnlblgJMh1RMbbcsaUPFDMLJ470mo\nQyDcAx9ijd1rd6NOd0wWNMNy81qxbiuuS2UCppIp7cwYQFR1Urj+T4E9Y54J\nBLL23fP+/WSWfyHHmlYsz4S7I5c/LI3wHJ08VcCsJ0fGaE9BV6cdtqu+M8Vg\nj07moOMOCSE0jPofetMCMDK6CnoCMf0Tz5m96IBFkGXEiyMd3K2V7cFUbqfe\n7Jd7yYhpqjyaMVqRTHYvZgJSPQ3cGIzDt+ydG32LqvmJAMl3tyCtzylDAXCA\n1YVhN/dDZ4GrCv4kl6sG1bXICoVdXyiO5FzYp2QfIYRffRkO3nMh0fO5fKQz\n1o5CakiUyDAeK+vxk/UIIWvvncnv2UV7OvPpOLtdwYX3mtm8cYC/cEgPEBMD\nD2QG\r\n=paXY\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "ffe6d1054855b7685203794f993e00513e1ba885",
+    "tarball": "https://registry.npmjs.org/alertifyjs/-/alertifyjs-1.11.2.tgz",
+    "unpackedSize": 583856
+  },
+  "gitHead": "5517b36145241248a0a6fb28598299271a820cbb",
+  "homepage": "http://alertifyjs.com",
+  "installable": true,
+  "keywords": [
+    "alert",
+    "alertify",
+    "alertifyjs",
+    "confirm",
+    "dialog",
+    "javascript framework",
+    "pretty dialogs",
+    "prompt"
+  ],
+  "licenses": [
+    {
+      "type": "GPL 3",
+      "url": "https://opensource.org/licenses/gpl-3.0"
+    }
+  ],
+  "main": "./build/alertify.js",
+  "maintainers": [
+    {
+      "name": "myounes",
+      "email": "myounes@gmail.com"
+    }
+  ],
+  "name": "alertifyjs",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MohammadYounes/AlertifyJS.git"
+  },
+  "version": "1.11.2"
+}
