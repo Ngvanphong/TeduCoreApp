@@ -32,11 +32,13 @@
                                     var child = Model.Except(parent).Where(x => x.ParentId == item.Id);
                                     <li class="sub-cat">
                                         <a href="#"> <span>@item.Name</span> </a>
-                                        @foreach (var subItem in child)
-                                        {
-                                            var subUrl = "/" + item.SeoAlias + ".pc-" + subItem.Id + ".html";
-                                            <ul><li> <a href="@subUrl"> <span>@subItem.Name</span> </a> </li></ul>
-                                        }
+                                        <ul>
+                                            @foreach (var subItem in child)
+                                            {
+                                                var subUrl = "/" + item.SeoAlias + ".pc-" + subItem.Id + ".html";
+                                                <li> <a href="@subUrl"> <span>@subItem.Name</span> </a> </li>
+                                            }
+                                        </ul>
                                     </li>
                                 }
                             }
@@ -79,7 +81,7 @@
                     }
                 }
 
-                <li class="mega-menu"> <a class="level-top" href="/blog.html"><span>Blog</span></a> </li>               
+                <li class="mega-menu"> <a class="level-top" href="/blog.html"><span>Blog</span></a> </li>
             </ul>
         </div>
     </div>

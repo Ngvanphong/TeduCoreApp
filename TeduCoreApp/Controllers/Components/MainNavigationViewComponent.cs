@@ -19,7 +19,7 @@ namespace TeduCoreApp.Controllers.Components
             _cache = cache;
         }
         public async Task<IViewComponentResult> InvokeAsync()
-        {
+        {           
             var category = _cache.GetOrCreate(CacheKeys.CategoryMain, entry =>
             {
                 entry.SlidingExpiration = TimeSpan.FromMinutes(60);
