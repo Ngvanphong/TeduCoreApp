@@ -26,8 +26,8 @@
       "wwwroot/client-side/css/style.css",
       "wwwroot/client-side/css/responsive.css",
 
-      "wwwroot/node_modules/alertifyjs/build/css/alertify.min.css",
-      "wwwroot/node_modules/jquery-ui-1.12.1/jquery-ui.min.css"
+      "wwwroot/lib/alertifyjs/build/css/alertify.css",
+      "wwwroot/lib/jquery-ui-1.12.1/jquery-ui.css"
 
     ]
   },
@@ -38,9 +38,9 @@
 
       //"wwwroot/client-side/js/jquery.min.js",
       //"wwwroot/client-side/js/bootstrap.min.js",
-      //"wwwroot/node_modules/jquery-ui-1.12.1/jquery-ui.min.js",
+      //"wwwroot/lib/jquery-ui-1.12.1/jquery-ui.min.js",
       //"wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
-      //"wwwroot/node_modules/mustache/mustache.min.js",
+      //"wwwroot/lib/mustache/mustache.min.js",
 
 
       "wwwroot/client-side/js/owl.carousel.min.js",
@@ -49,10 +49,10 @@
       "wwwroot/client-side/js/main.js",
       "wwwroot/client-side/js/rev-slider.js",
 
-      "wwwroot/node_modules/alertifyjs/build/alertify.min.js",
-      "wwwroot/node_modules/twbs-pagination/jquery.twbsPagination.min.js",
+      "wwwroot/lib/alertifyjs/build/alertify.min.js",
+      "wwwroot/lib/twbs-pagination/jquery.twbsPagination.min.js",
 
-      "wwwroot/node_modules/jquery-number-master/jquery.number.min.js",
+      "wwwroot/lib/jquery-number-master/jquery.number.min.js",
       "wwwroot/app/shared/notification.js",
       "wwwroot/app/controllers/product/shoppingCard.js",
       "wwwroot/app/shared/common.js",
