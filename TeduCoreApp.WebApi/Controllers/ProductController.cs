@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +21,7 @@ namespace TeduCoreApp.WebApi.Controllers
         private IProductImageService _productImageService;
         private IHostingEnvironment _env;
         private readonly IAuthorizationService _authorizationService;
+
         public ProductController(IProductService productService, IProductImageService productImageService, IHostingEnvironment env,
             IAuthorizationService authorizationService)
         {
@@ -42,7 +42,6 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             return new OkObjectResult(_productService.GetAll());
         }
-
 
         [HttpGet]
         [Route("getall")]
@@ -76,7 +75,6 @@ namespace TeduCoreApp.WebApi.Controllers
             return new OkObjectResult(_productService.GetById(id));
         }
 
-
         [HttpPost]
         [Route("add")]
         public async Task<IActionResult> Add([FromBody] ProductViewModel productVm)
@@ -87,7 +85,7 @@ namespace TeduCoreApp.WebApi.Controllers
                 return new BadRequestObjectResult(CommonConstants.Forbidden);
             }
             if (ModelState.IsValid)
-            {               
+            {
                 await _productService.AddAsync(productVm);
                 _productService.SaveChanges();
                 return new OkObjectResult(productVm);
@@ -106,7 +104,9 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             if (ModelState.IsValid)
             {
-                _productService.Update(productVm);
+                Product productDb = _productService.GetProductDbById(productVm.Id);
+                productDb.UpdateProductDb(productVm);
+                _productService.UpdateDb(productDb);
                 _productService.SaveChanges();
                 return new OkObjectResult(productVm);
             }
@@ -130,7 +130,6 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 return new BadRequestObjectResult("Not found image");
             }
-           
         }
 
         [HttpDelete]
@@ -161,7 +160,7 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 return new BadRequestObjectResult(CommonConstants.Forbidden);
             }
-            List<int>listProductId= Newtonsoft.Json.JsonConvert.DeserializeObject<List<int>>(checkedProducts);
+            List<int> listProductId = Newtonsoft.Json.JsonConvert.DeserializeObject<List<int>>(checkedProducts);
             foreach (int item in listProductId)
             {
                 List<ProductImageViewModel> listProductImageVm = _productImageService.GetProductImageByProdutId(item);
@@ -174,7 +173,5 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             return Ok();
         }
-
-       
     }
 }
