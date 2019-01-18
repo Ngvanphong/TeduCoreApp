@@ -54,7 +54,7 @@ namespace TeduCoreApp
                 option.Password.RequireUppercase = false;
                 option.Password.RequireLowercase = false;
                 //lock setting
-                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(60);
                 option.Lockout.MaxFailedAccessAttempts = 10;
                 // check had email
                 option.User.RequireUniqueEmail = true;
