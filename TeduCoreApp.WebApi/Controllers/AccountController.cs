@@ -49,7 +49,7 @@ namespace TeduCoreApp.WebApi.Controllers
             var user = await _userManager.FindByNameAsync(userName);
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(userName, password, false, true);
+                var result = await _signInManager.PasswordSignInAsync(userName, password, rememberMe, true);
                 if (!result.Succeeded)
                 {
                     return new BadRequestObjectResult(result.ToString());
