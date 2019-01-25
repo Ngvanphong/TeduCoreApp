@@ -44,7 +44,8 @@
                         SeoAlias: item.SeoAlias,
                         ThumbnailImage: item.ThumbnailImage,
                         PromotionPrice: item.PromotionPrice,
-                        Price: item.Price
+                        Price: item.Price,
+                        Unit:item.Unit
                     });
                 });
                 if (render != '') {

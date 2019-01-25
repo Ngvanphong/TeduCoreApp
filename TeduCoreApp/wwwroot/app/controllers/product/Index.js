@@ -53,7 +53,8 @@
                         SeoAlias: item.SeoAlias,
                         ThumbnailImage: item.ThumbnailImage,
                         PromotionPrice: item.PromotionPrice,
-                        Price: item.Price
+                        Price: item.Price,
+                        Unit: item.Unit
                     });
                 });
                 if (render != '') {
@@ -120,7 +121,8 @@
                         Size: item.SizeVm.Name,
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
-                        SizeId: item.SizeVm.Id
+                        SizeId: item.SizeVm.Id,
+                        Unit: item.Unit
 
                     });
                 });
@@ -172,7 +174,8 @@
                         Size: item.SizeVm.Name,
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
-                        SizeId: item.SizeVm.Id
+                        SizeId: item.SizeVm.Id,
+                        Unit: item.Unit
 
                     });
                 });

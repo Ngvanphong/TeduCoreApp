@@ -38,7 +38,7 @@
                 category: $('#input-category').val(),
                 sort: $('#input-sort').val(),
                 page: pageIndex,
-                pageSize: pageSize,
+                pageSize: pageSize
             },
             url: '/productPromotion/getall',
             dataType: 'json',
@@ -51,7 +51,8 @@
                         SeoAlias: item.SeoAlias,
                         ThumbnailImage: item.ThumbnailImage,
                         PromotionPrice: item.PromotionPrice,
-                        Price: item.Price
+                        Price: item.Price,
+                        Unit: item.Unit
                     });
                 });
                 if (render != '') {
