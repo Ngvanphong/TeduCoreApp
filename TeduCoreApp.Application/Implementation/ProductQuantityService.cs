@@ -114,12 +114,12 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ColorViewModel> GetListColor()
         {
-            return _mapper.Map<List<ColorViewModel>>(_colorRepository.FindAll().ToList());
+            return _mapper.Map<List<ColorViewModel>>(_colorRepository.FindAll().OrderBy(x=>x.Name).ToList());
         }
 
         public List<SizeViewModel> GetListSize()
         {
-            return _mapper.Map<List<SizeViewModel>>(_sizeRepository.FindAll().ToList());
+            return _mapper.Map<List<SizeViewModel>>(_sizeRepository.FindAll().OrderBy(x=>x.Name).ToList());
         }
 
         public ProductQuantityViewModel GetSingle(int productId, int sizeId, int colorId)

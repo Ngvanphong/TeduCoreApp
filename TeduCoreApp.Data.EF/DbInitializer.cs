@@ -85,6 +85,8 @@ namespace TeduCoreApp.Data.EF
                     new Function() {Id = "SYSTEMCONFIG",Name = "Cấu hình Seo",ParentId = "UTILITY",SortOrder = 6,Status = Status.Active,URL = "/main/systemconfig/index",IconCss = "fa-clone"  },
                     new Function() {Id = "SENDEMAIL",Name = "Gửi mail",ParentId = "UTILITY",SortOrder = 7,Status = Status.Active,URL = "/main/sendemail/index",IconCss = "fa-clone"  },
                     new Function() {Id = "TAG",Name = "Quản lý Tag",ParentId = "UTILITY",SortOrder = 8,Status = Status.Active,URL = "/main/tag/index",IconCss = "fa-clone"  },
+                    new Function() {Id = "SIZE",Name = "Quản lý Size",ParentId = "UTILITY",SortOrder = 9,Status = Status.Active,URL = "/main/size/index",IconCss = "fa-clone"  },
+                    new Function() {Id = "COLOR",Name = "Quản lý Color",ParentId = "UTILITY",SortOrder =10,Status = Status.Active,URL = "/main/color/index",IconCss = "fa-clone"  },
 
                     new Function() {Id = "REPORT",Name = "Báo cáo",ParentId = null,SortOrder = 5,Status = Status.Active,URL = "/",IconCss = "fa-bar-chart-o"  },
                     new Function() {Id = "REVENUE",Name = "Báo cáo doanh thu",ParentId = "REPORT",SortOrder = 1,Status = Status.Active,URL = "/main/revenue",IconCss = "fa-bar-chart-o"  },
