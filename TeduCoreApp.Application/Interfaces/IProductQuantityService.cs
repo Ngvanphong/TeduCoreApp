@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Product;
 
 namespace TeduCoreApp.Application.Interfaces
@@ -11,6 +12,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Update(ProductQuantityViewModel productQuantityVm);
 
+        void UpdateDb(ProductQuantity productQuantity);
+
         void Delete(int productId, int sizeId, int colorId);
 
         void DeleteByProductId(int productId);
@@ -20,6 +23,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductQuantityViewModel> GetAll(int productId, int? sizeId, int? colorId);
 
         ProductQuantityViewModel GetSingle(int productId, int sizeId, int colorId);
+
+        ProductQuantity GetSingleDb(int productId, int sizeId, int colorId);
 
         bool CheckExist(int productId, int sizeId, int colorId);
         //Size
@@ -34,6 +39,8 @@ namespace TeduCoreApp.Application.Interfaces
         void UpdateSize(SizeViewModel size);
 
         List<SizeViewModel> GetSizeByProductId(int productId);
+
+        List<SizeViewModel> GetSizeByColor(int productId,int colorId);
         //Color
         List<ColorViewModel> GetListColor();
 

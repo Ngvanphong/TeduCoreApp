@@ -128,6 +128,12 @@ namespace TeduCoreApp.Application.Implementation
                 .FindAll(x => x.ProductId == productId && x.SizeId == sizeId && x.ColorId == colorId).FirstOrDefault());
         }
 
+        public ProductQuantity GetSingleDb(int productId, int sizeId, int colorId)
+        {
+            return _produtQuantityRepository
+                .FindAll(x => x.ProductId == productId && x.SizeId == sizeId && x.ColorId == colorId).FirstOrDefault();
+        }
+
         public SizeViewModel GetSizeById(int id)
         {
             return _mapper.Map<SizeViewModel>(_sizeRepository.FindById(id));
@@ -149,6 +155,11 @@ namespace TeduCoreApp.Application.Implementation
             _produtQuantityRepository.Update(_mapper.Map<ProductQuantity>(productQuantityVm));
         }
 
+        public void UpdateDb(ProductQuantity productQuantityDb)
+        {
+            _produtQuantityRepository.Update(productQuantityDb);
+        }
+
         public void UpdateColor(ColorViewModel color)
         {
             _colorRepository.Update(_mapper.Map<Color>(color));
@@ -157,6 +168,12 @@ namespace TeduCoreApp.Application.Implementation
         public void UpdateSize(SizeViewModel size)
         {
             _sizeRepository.Update(_mapper.Map<Size>(size));
+        }
+
+        public List<SizeViewModel> GetSizeByColor(int productId, int colorId)
+        {
+            return _mapper.Map<List<SizeViewModel>>(_produtQuantityRepository
+                .FindAll(x => x.ProductId == productId && x.ColorId == colorId&&x.Quantity>0).Select(x => x.Size).OrderBy(x => x.Name).ToList());
         }
     }
 }

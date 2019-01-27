@@ -19,8 +19,6 @@ namespace TeduCoreApp.Models
 
         public List<ColorViewModel> Colors { get; set; }
 
-        public List<SizeViewModel> Sizes { get; set; }
-
         public List<WholePriceViewModel> WholePrices { get; set; }
 
         public string DomainApi { get; set; }

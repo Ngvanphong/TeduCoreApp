@@ -20,13 +20,16 @@ namespace TeduCoreApp.WebApi.Controllers
         private IBillService _billService;       
         private UserManager<AppUser> _userManger;
         private IProductService _productService;
+        private IProductQuantityService _productQuantityService;
         private readonly IAuthorizationService _authorizationService;
-        public OrderController(IBillService billService, UserManager<AppUser> userManger, IProductService productService, IAuthorizationService authorizationService)
+        public OrderController(IBillService billService, UserManager<AppUser> userManger, IProductService productService,
+            IAuthorizationService authorizationService, IProductQuantityService productQuantityService)
         {
             _billService = billService;
             _userManger = userManger;
             _productService = productService;
             _authorizationService = authorizationService;
+            _productQuantityService = productQuantityService;
         }
 
         [HttpGet]
@@ -120,9 +123,13 @@ namespace TeduCoreApp.WebApi.Controllers
                     foreach(var item in billDetailVm)
                     {
                         Product productDb = _productService.GetProductDbById(item.ProductId);
-                        productDb.ViewCount = productDb.ViewCount + item.Quantity;
+                        productDb.ViewCount = productDb.ViewCount + item.Quantity;                       
                         _productService.UpdateDb(productDb);
+                        ProductQuantity productQuantityDb = _productQuantityService.GetSingleDb(item.ProductId, item.SizeId, item.ColorId);
+                        productQuantityDb.Quantity = productQuantityDb.Quantity - item.Quantity;
+                        _productQuantityService.UpdateDb(productQuantityDb);
                         _billService.SaveChanges();
+
                     }
                 }
                 if (string.IsNullOrEmpty(billVmPost.CustomerId.ToString()))

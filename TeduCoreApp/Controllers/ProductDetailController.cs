@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Models;
 
 namespace TeduCoreApp.Controllers
@@ -36,10 +37,16 @@ namespace TeduCoreApp.Controllers
             productDetail.ProductTags = _productService.GetTagByProductId(id);
             productDetail.DomainApi= _config["DomainApi:Domain"];
             productDetail.ProductImages = _productImageService.GetProductImageByProdutId(id);
-            productDetail.Colors = _productQuantityService.GetColorByProductId(id);
-            productDetail.Sizes = _productQuantityService.GetSizeByProductId(id);
+            productDetail.Colors = _productQuantityService.GetColorByProductId(id);           
             productDetail.WholePrices = _wholePriceService.GetAllByProductId(id);
             return View(productDetail);
+        }
+
+        [Route("product/getsizebycolor")]
+        public IActionResult GetSizeByColor(int productid,int colorid)
+        {
+            List<SizeViewModel> listSizeVm = _productQuantityService.GetSizeByColor(productid, colorid);
+            return new OkObjectResult(listSizeVm);
         }
        
 

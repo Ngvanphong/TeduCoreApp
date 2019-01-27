@@ -292,7 +292,7 @@ namespace TeduCoreApp.Application.Implementation
         public List<ProductViewModel> GetNewProduct(int number)
         {
             return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
-                .OrderByDescending(x => x.DateModified).Take(number).ToList());
+                .OrderByDescending(x => x.DateCreated).Take(number).ToList());
         }
 
         public List<TagViewModel> GetAllTag(int number)

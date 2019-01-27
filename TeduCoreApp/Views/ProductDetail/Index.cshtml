@@ -7,6 +7,11 @@
 }
 @section Scripts{
     <script src="~/client-side/js/cloud-zoom.js"></script>
+    <script src="~/app/controllers/product/productDetail.js"></script>
+    <script>
+        var productDetailControllers = new productDetailController();
+        productDetailControllers.initializer();
+    </script>
     <div id="fb-root"></div>
     <div id="fb-root"></div>
     <script>
@@ -109,11 +114,8 @@
                                                 </select>
                                             </div>
                                             <div class="attribute-list">
-                                                <select id="productSize">
-                                                    @foreach (var size in Model.Sizes)
-                                                    {
-                                                        <option value="@size.Id">@size.Name</option>
-                                                    }
+                                                <select id="productSize" data-productidsize="@Model.ProductDetail.Id">
+                                                   
                                                 </select>
                                             </div>
                                         </div>
