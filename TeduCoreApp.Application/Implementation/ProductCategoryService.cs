@@ -52,7 +52,7 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (!string.IsNullOrEmpty(keyword))
             {
-                var productCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
+                var productCategory = _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword)).OrderBy(x=>x.ParentId)
                     .ToList();
                 return _mapper.Map<List<ProductCategoryViewModel>>(productCategory);
             }
