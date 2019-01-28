@@ -79,10 +79,12 @@ namespace TeduCoreApp.WebApi.Controllers
             {
                 try
                 {
+                    decimal totalPayment = 0;
                     BillViewModel billVm = billVmPost;
                     var listBillDetails = new List<BillDetailViewModel>();
                     foreach (var item in billVm.BillDetails)
                     {
+                        totalPayment = totalPayment + item.Quantity * item.Price;
                         listBillDetails.Add(new BillDetailViewModel()
                         {
                             ProductId = item.ProductId,
@@ -92,6 +94,8 @@ namespace TeduCoreApp.WebApi.Controllers
                             ColorId = item.ColorId,
                         });
                     }
+                    billVm.TotalMoneyPayment = totalPayment;
+                    billVm.TotalMoneyOrder = totalPayment;
                     billVm.BillDetails = listBillDetails;
                     int billId = _billService.Add(billVm);
                     billVm.Id = billId;
