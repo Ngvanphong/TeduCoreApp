@@ -17,6 +17,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<BlogViewModel> GetAll();
 
+        List<BlogViewModel> GetAllForHome(int number);
+
         List<BlogViewModel> GetAllPaging(string filter,int page, int pageSize, out int totalRow);
 
         List<BlogViewModel> GetAllPaggingByActive(int page, int pageSize, out int totalRow);

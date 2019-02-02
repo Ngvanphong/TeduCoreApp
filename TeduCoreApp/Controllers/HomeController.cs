@@ -39,7 +39,7 @@ namespace TeduCoreApp.Controllers
             homeVm.ListSlide = _slideService.GetAll(false);
             homeVm.ListAdvertistmentBottom = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositionName.Bottom);
             homeVm.ListAdvertistmentTop = _advertistmentService.GetbyPageAndPosition(PageName.Home, PositionName.Top);
-            homeVm.ListBlog = _blogService.GetAll();
+            homeVm.ListBlog = _blogService.GetAllForHome(3);
             homeVm.DomainApi = _config["DomainApi:Domain"];
             ViewBag.HomeTitle = _systemConfig.Detail("HomeTitle").Value1;
             ViewBag.HomeMetaDescription = _systemConfig.Detail("HomeMetaDescription").Value1;

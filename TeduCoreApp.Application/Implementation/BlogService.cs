@@ -79,7 +79,14 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<BlogViewModel> GetAll()
         {
-            return _mapper.Map<List<BlogViewModel>>(_blogRepository.FindAll(x=>x.Status==Data.Enums.Status.Active).OrderByDescending(x=>x.DateCreated).ToList());
+            return _mapper.Map<List<BlogViewModel>>(_blogRepository.FindAll(x=>x.Status==Data.Enums.Status.Active)
+                .OrderByDescending(x=>x.DateCreated).ToList());
+        }
+
+        public List<BlogViewModel> GetAllForHome(int number)
+        {
+            return _mapper.Map<List<BlogViewModel>>(_blogRepository.FindAll(x => x.Status == Data.Enums.Status.Active)
+                .OrderByDescending(x => x.DateCreated).Take(number).ToList());
         }
 
         public List<BlogViewModel> GetAllPaggingByActive(int page, int pageSize, out int totalRow)
