@@ -375,7 +375,7 @@ namespace TeduCoreApp.Controllers
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
                 await _emailSender.SendEmailAsync(model.Email, "Đổi lại mật khẩu mới",
-                   $"Để lấy lại mật khẩu xin click vào link bên dưới: <a href='{callbackUrl}'>link</a>");
+                   $"Để lấy lại mật khẩu xin click vào link bên: <a href='{callbackUrl}'>link</a>");
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 

@@ -74,7 +74,7 @@ namespace TeduCoreApp.WebApi
                 option.Password.RequireUppercase = false;
                 option.Password.RequireLowercase = false;
                 //lock setting
-                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1440);
                 option.Lockout.MaxFailedAccessAttempts = 10;
                 // check had email
                 option.User.RequireUniqueEmail = true;
@@ -83,16 +83,17 @@ namespace TeduCoreApp.WebApi
             //Config authen
             services.AddAuthentication(o =>
             {
+           
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;               
             }).AddJwtBearer(cfg =>
             {
                 cfg.RequireHttpsMetadata = false;
                 cfg.SaveToken = true;
                 cfg.TokenValidationParameters = new TokenValidationParameters()
-                {
+                {                  
                     ValidIssuer = Configuration["Tokens:Issuer"],
-                    ValidAudience = Configuration["Tokens:Issuer"],
+                    ValidAudience = Configuration["Tokens:Issuer"],                   
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
                 };
             });
