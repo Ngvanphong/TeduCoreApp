@@ -1,0 +1,2 @@
+///<binding AfterBuild='Update all files' Clean='Update all files' />
+produceoutput=true

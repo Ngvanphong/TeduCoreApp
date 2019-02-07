@@ -1,12 +1,7 @@
-﻿// Configure bundling and minification for the project.
-// More info at https://go.microsoft.com/fwlink/?LinkId=808241
-[
+﻿[
   {
     "outputFileName": "wwwroot/css/site.min.css",
-    // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
-      //"wwwroot/css/site.css",
-
       "wwwroot/client-side/css/bootstrap.min.css",
       "wwwroot/client-side/css/animate.css",
       "wwwroot/client-side/css/font-awesome.min.css",
@@ -18,40 +13,26 @@
       "wwwroot/client-side/css/cloud-zoom.css",
       "wwwroot/client-side/css/revolution-slider.css",
       "wwwroot/client-side/css/jquery-ui.css",
-
       "wwwroot/client-side/css/jquery.fancybox.css",
       "wwwroot/client-side/css/quick_view_popup.css",
       "wwwroot/client-side/css/blogmate.css",
       "wwwroot/client-side/css/jtv-mobile-menu.css",
       "wwwroot/client-side/css/style.css",
       "wwwroot/client-side/css/responsive.css",
-
       "wwwroot/lib/alertifyjs/build/css/alertify.css",
       "wwwroot/lib/jquery-ui-1.12.1/jquery-ui.css"
-
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      //"wwwroot/js/site.js",
-
-      //"wwwroot/client-side/js/jquery.min.js",
-      //"wwwroot/client-side/js/bootstrap.min.js",
-      //"wwwroot/lib/jquery-ui-1.12.1/jquery-ui.min.js",
-      //"wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
-      //"wwwroot/lib/mustache/mustache.min.js",
-
-
       "wwwroot/client-side/js/owl.carousel.min.js",
       "wwwroot/client-side/js/jtv-mobile-menu.js",
       "wwwroot/client-side/js/countdown.js",
       "wwwroot/client-side/js/main.js",
       "wwwroot/client-side/js/rev-slider.js",
-
       "wwwroot/lib/alertifyjs/build/alertify.min.js",
       "wwwroot/lib/twbs-pagination/jquery.twbsPagination.min.js",
-
       "wwwroot/lib/jquery-number-master/jquery.number.min.js",
       "wwwroot/app/shared/notification.js",
       "wwwroot/app/controllers/product/shoppingCard.js",
@@ -59,12 +40,10 @@
       "wwwroot/app/controllers/product/wishlistCart.js",
       "wwwroot/app/controllers/product/checkout.js"
     ],
-    // Optionally specify minification options
     "minify": {
       "enabled": true,
       "renameLocals": true
     },
-    // Optionally generate .map file
     "sourceMap": false
   }
 ]

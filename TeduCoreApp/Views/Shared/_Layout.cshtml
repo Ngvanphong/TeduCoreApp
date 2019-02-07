@@ -24,7 +24,8 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
     <!-- CSS Style -->
-    <link href="~/css/site.min.css" rel="stylesheet" />
+    @*<link href="~/css/site.min.css" rel="stylesheet" />*@
+    <link href="~/bundle/site.min.css" rel="stylesheet" />
 
     @*<link rel="stylesheet" href="~/client-side/style.css">
 
@@ -68,7 +69,16 @@
     <!--signalr js-->
     <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
 
-    <script src="~/js/site.min.js"></script>
+    @*<script src="~/js/site.min.js"></script>*@
+    <script src="~/bundle/site.min.js"></script>
+
+    <script src="~/app/shared/chatOnlineShop.js"></script>
+    <script>
+        var chatOnlineShopControllers = new chatOnlineShopController();
+        chatOnlineShopControllers.initializer();
+    </script>
+
+
 
     @*<!-- End Footer -->
 
@@ -110,6 +120,7 @@
         shareCommons.initilizer();
         var wishlistItemControllers = new wistlistCartController();
         wishlistItemControllers.initilizer();
+
     </script>
 
     @RenderSection("Scripts", required: false)
