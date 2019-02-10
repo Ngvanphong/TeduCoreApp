@@ -92,6 +92,7 @@ namespace TeduCoreApp.WebApi.Controllers
                             Price = item.Price,
                             SizeId = item.SizeId,
                             ColorId = item.ColorId,
+                            OriginalPrice=item.OriginalPrice
                         });
                     }
                     billVm.TotalMoneyPayment = totalPayment;

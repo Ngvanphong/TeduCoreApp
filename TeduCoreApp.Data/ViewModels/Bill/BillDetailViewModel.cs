@@ -21,6 +21,8 @@ namespace TeduCoreApp.Data.ViewModels.Bill
 
         public int SizeId { get; set; }
 
+        public decimal OriginalPrice { get; set; }
+
         public virtual ProductViewModel Product { set; get; }
 
         public virtual ColorViewModel Color { set; get; }

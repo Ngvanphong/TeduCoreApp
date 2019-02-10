@@ -5,13 +5,11 @@ AS
 BEGIN
 		  select
                 CAST(b.DateCreated AS DATE) as Date,			
-                sum(bd.Quantity * p.OriginalPrice) as MoneyIncome	
+                sum(bd.Quantity * bd.OriginalPrice) as MoneyIncome	
 				INTO ImcomeTable
                 from Bills b
                 inner join dbo.BillDetails bd
-                on b.Id = bd.BillId
-                inner join Products p
-                on bd.ProductId  = p.Id
+                on b.Id = bd.BillId                
                 where b.DateCreated <= cast(@toDate as date) 
 				AND b.DateCreated >= cast(@fromDate as date)
                 group by CAST(b.DateCreated AS DATE);
@@ -36,4 +34,4 @@ BEGIN
 END
 
 EXEC dbo.GetRevenueDaily @fromDate = '01/01/2017',
-                         @toDate = '01/31/2019' 
+                         @toDate = '03/31/2019' 

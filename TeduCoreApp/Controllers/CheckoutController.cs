@@ -110,12 +110,13 @@ namespace TeduCoreApp.Controllers
                     }
                     BillDetailViewModel billDetailVm = new BillDetailViewModel()
                     {
-                       
+
                         ProductId = item.ProductId,
                         ColorId = item.ColorVm.Id,
                         SizeId = item.SizeVm.Id,
                         Quantity = item.Quantity,
-                        Price = salePrice
+                        Price = salePrice,
+                        OriginalPrice = item.ProductVm.OriginalPrice
                     };
                     listBillDetails.Add(billDetailVm);
                 }

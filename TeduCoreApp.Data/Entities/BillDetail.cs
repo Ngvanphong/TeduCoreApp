@@ -18,6 +18,7 @@ namespace TeduCoreApp.Data.Entities
             ProductId = billDetailVm.ProductId;
             Quantity = billDetailVm.Quantity;
             Price = billDetailVm.Price;
+            OriginalPrice = billDetailVm.OriginalPrice;
             ColorId = billDetailVm.ColorId;
             SizeId = billDetailVm.SizeId;
         }
@@ -32,6 +33,8 @@ namespace TeduCoreApp.Data.Entities
         public int ColorId { get; set; }
 
         public int SizeId { get; set; }
+
+        public decimal OriginalPrice { get; set; }
 
         [ForeignKey("BillId")]
         public virtual Bill Bill { set; get; }
