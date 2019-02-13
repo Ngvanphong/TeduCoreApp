@@ -97,6 +97,7 @@ namespace TeduCoreApp.Controllers
                     billViewModel.CustomerId = user.Id;
                 } 
                 var listBillDetails = new List<BillDetailViewModel>();
+                decimal totalOriginalPrice = 0;
                 foreach (var item in shoppingCart)
                 {
                     decimal salePrice;
@@ -118,9 +119,11 @@ namespace TeduCoreApp.Controllers
                         Price = salePrice,
                         OriginalPrice = item.ProductVm.OriginalPrice
                     };
+                    totalOriginalPrice = totalOriginalPrice + item.Quantity * item.ProductVm.OriginalPrice;
                     listBillDetails.Add(billDetailVm);
                 }
                 billViewModel.BillDetails = listBillDetails;
+                billViewModel.TotalOriginalPrice = totalOriginalPrice;
                 int billId= _billService.Add(billViewModel);                            
                 billViewModel.Id = billId;
                 billViewModel.DateCreated = DateTime.Now;

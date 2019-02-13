@@ -49,6 +49,9 @@ namespace TeduCoreApp.Data.ViewModels.Bill
    
         public decimal? TotalMoneyPayment { get; set; }
 
+   
+        public decimal? TotalOriginalPrice { get; set; }
+
         public decimal? BalanceForBill { get; set; }
 
         public virtual List<BillDetailViewModel> BillDetails { set; get; }

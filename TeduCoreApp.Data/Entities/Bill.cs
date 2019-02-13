@@ -30,6 +30,7 @@ namespace TeduCoreApp.Data.Entities
             FeeShipping = billVm.FeeShipping;
             TotalMoneyOrder = billVm.TotalMoneyOrder;
             TotalMoneyPayment = billVm.TotalMoneyPayment;
+            TotalOriginalPrice = billVm.TotalOriginalPrice;
             BalanceForBill = billVm.BalanceForBill;
         }
     
@@ -76,6 +77,10 @@ namespace TeduCoreApp.Data.Entities
 
         [Column(TypeName = "decimal(12,3)")]
         public decimal? TotalMoneyPayment { get; set; }
+
+
+        [Column(TypeName = "decimal(12,3)")]
+        public decimal? TotalOriginalPrice { get; set; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
     }

@@ -82,9 +82,11 @@ namespace TeduCoreApp.WebApi.Controllers
                     decimal totalPayment = 0;
                     BillViewModel billVm = billVmPost;
                     var listBillDetails = new List<BillDetailViewModel>();
+                    decimal totalMoneyOriginnal = 0;
                     foreach (var item in billVm.BillDetails)
                     {
                         totalPayment = totalPayment + item.Quantity * item.Price;
+                        totalMoneyOriginnal = totalMoneyOriginnal + item.Quantity * item.OriginalPrice;
                         listBillDetails.Add(new BillDetailViewModel()
                         {
                             ProductId = item.ProductId,
@@ -97,7 +99,9 @@ namespace TeduCoreApp.WebApi.Controllers
                     }
                     billVm.TotalMoneyPayment = totalPayment;
                     billVm.TotalMoneyOrder = totalPayment;
-                    billVm.BillDetails = listBillDetails;
+                    billVm.TotalOriginalPrice = totalMoneyOriginnal;
+                    billVm.FeeShipping = 0;
+                    billVm.BillDetails = listBillDetails;                  
                     int billId = _billService.Add(billVm);
                     billVm.Id = billId;
                     billVm.DateCreated = DateTime.Now;

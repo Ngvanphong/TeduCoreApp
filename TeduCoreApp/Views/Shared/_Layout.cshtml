@@ -24,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
 
     <!-- CSS Style -->
-    <link href="~/css/site.min.css" rel="stylesheet" />   
+    <link href="~/css/site.min.css" rel="stylesheet" />
 
     @*<link rel="stylesheet" href="~/client-side/style.css">
 
@@ -34,7 +34,6 @@
 </head>
 
 <body class="cms-index-index cms-home-page">
-
 
     <!-- mobile menu -->
     @await Component.InvokeAsync("MobileMenu")
@@ -52,7 +51,8 @@
         @RenderBody()
 
         <!-- Footer -->
-        @await Component.InvokeAsync("Footer")
+        @await Component.InvokeAsync("Footer");
+       
     </div>
 
     <!-- jquery js -->
@@ -146,6 +146,5 @@
         </div>
     </div>
     <!--End of Newsletter Popup-->
-
 </body>
 </html>
