@@ -1484,6 +1484,10 @@ ul.level1 {
 	text-transform: capitalize;
 	background-color: inherit;
 }
+.arrow_header:after{
+        font-family: fontawesome;
+        content: "\f105";           
+    }
 #nav li.drop-menu ul li a span, #nav ul.level1 a span {
 	border: none;
 	padding: 0px;
@@ -1492,6 +1496,7 @@ ul.level1 {
 	width: 100%;
 	color: #333;
 }
+
 #nav li.drop-menu ul li a span:hover, #nav ul.level1 a span:hover {
 	color: #393b7d;
 }

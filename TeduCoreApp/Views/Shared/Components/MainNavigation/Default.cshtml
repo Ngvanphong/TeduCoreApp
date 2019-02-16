@@ -16,7 +16,7 @@
                     </ul>
                 </li>
                 <li class="drop-menu">
-                    <a href="#"> <span>Sản phẩm</span> </a>
+                    <a href="#"  style="pointer-events:none"> <span>Sản phẩm</span> </a>
                     <ul>
                         @{
                             var parent = Model.Where(x => x.ParentId == null);
@@ -30,9 +30,9 @@
                                 else
                                 {
                                     var child = Model.Except(parent).Where(x => x.ParentId == item.Id);
-                                    <li class="sub-cat">
-                                        <a href="#" style="pointer-events:none"> <span>@item.Name</span> </a>
-                                        <ul>
+                                    <li class="sub-cat" style="white-space:nowrap">
+                                        <a href="#" class="arrow_header" style="pointer-events:none"> <span>@item.Name</span> </a>
+                                        <ul style="white-space:normal">
                                             @foreach (var subItem in child)
                                             {
                                                 var subUrl = "/" + item.SeoAlias + ".pc-" + subItem.Id + ".html";
