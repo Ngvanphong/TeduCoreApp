@@ -31,7 +31,7 @@
                                 {
                                     var child = Model.Except(parent).Where(x => x.ParentId == item.Id);
                                     <li class="sub-cat">
-                                        <a href="#"> <span>@item.Name</span> </a>
+                                        <a href="#" style="pointer-events:none"> <span>@item.Name</span> </a>
                                         <ul>
                                             @foreach (var subItem in child)
                                             {
@@ -66,7 +66,7 @@
                                 @{
                                     var childDisplays = Model.Except(parentDisplays).Where(x => x.ParentId == parentDisplay.Id);
                                 }
-                                <a href="#"> <span>@parentDisplay.Name</span> </a>
+                                <a href="#" style="pointer-events:none"> <span>@parentDisplay.Name</span> </a>
                                 <ul>
 
                                     @foreach (var subDisplay in childDisplays)
