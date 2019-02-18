@@ -332,7 +332,7 @@
                         return console.error(err.toString());
                     });
                     notifications.printSuccesMessage("Quý khách đã đặt thành công");
-                    setTimeout(window.location.href = "/index.html", 3000);
+                    setTimeout(() => { window.location.href = "/index.html";}, 2000);
                 }
                 else {
                     notifications.printSuccesError("Quý khách chưa đặt thành công");

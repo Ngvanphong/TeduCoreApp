@@ -3015,3 +3015,195 @@ WHERE [x].[Id] = @__id_0" (0723d8ff)
 2019-02-16T22:31:24.7781064+07:00 0HLKK4DPPQ3JF:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
 2019-02-16T22:31:24.7851068+07:00 0HLKK4DPPQ3JF:00000003 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 17.4824ms (afa2e885)
 2019-02-16T22:31:24.8081082+07:00 0HLKK4DPPQ3JF:00000003 [INF] Request finished in 33.6097ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-16T22:34:39.0103698+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-16T22:34:39.0213704+07:00  [WRN] No type was specified for the decimal column '"BalanceForBill"' on entity type '"Bill"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-16T22:34:39.0463719+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-16T22:34:39.0513722+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-16T22:34:39.0633728+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-16T22:34:39.1953804+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-16T22:34:40.0974320+07:00  [INF] Executed DbCommand ("45"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-16T22:34:40.1844370+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-16T22:34:40.2274394+07:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2019-02-16T22:34:40.2384401+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2019-02-16T22:34:40.2494407+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2019-02-16T22:34:40.2594413+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2019-02-16T22:34:40.2754422+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2019-02-16T22:34:40.3814482+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-16T22:34:40.3934489+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-16T22:34:40.4024494+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-16T22:34:40.8314740+07:00 0HLKK4H254VPJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2019-02-16T22:34:40.8294739+07:00 0HLKK4H254VPK:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:50638/  0 (ca22a1cb)
+2019-02-16T22:34:40.9764823+07:00 0HLKK4H254VPK:00000001 [INF] Request finished in 185.7926ms 200  (791a596a)
+2019-02-16T22:34:41.5135130+07:00 0HLKK4H254VPJ:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-16T22:34:41.5485150+07:00 0HLKK4H254VPJ:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-16T22:34:41.7565269+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("93"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[HotFlag] = 1) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-16T22:34:41.9975407+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-16T22:34:42.0175418+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) AND [x].[PromotionPrice] IS NOT NULL
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-16T22:34:42.0395431+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-16T22:34:42.0855457+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-16T22:34:42.1205477+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-16T22:34:42.1435490+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-16T22:34:42.2845571+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-16T22:34:42.3475607+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-16T22:34:42.3685619+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-16T22:34:49.0029414+07:00 0HLKK4H254VPJ:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2019-02-16T22:34:49.6179765+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-16T22:34:50.2910150+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-16T22:34:50.5570302+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("33"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = N'Default'" (0723d8ff)
+2019-02-16T22:34:50.6010328+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[ParentId] IS NULL AND ([x].[Status] = 1)" (0723d8ff)
+2019-02-16T22:34:50.6690367+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.6810373+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.6850376+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"where ([x].ParentId == Convert(__item_Id_0, Nullable`1))"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.7040387+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Any()"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.7300401+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-16T22:34:50.7440409+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-16T22:34:50.7530415+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-16T22:34:50.7600419+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-16T22:34:50.7660422+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-16T22:34:50.7700424+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-16T22:34:50.7760428+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-16T22:34:50.7800430+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-16T22:34:50.7920437+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.7990441+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.8040444+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"orderby [x].Name asc"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.8100447+07:00 0HLKK4H254VPJ:00000001 [WRN] The LINQ expression '"Take(__p_1)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-16T22:34:50.8180452+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x0].[Id], [x0].[DateCreated], [x0].[DateModified], [x0].[Description], [x0].[HomeFlag], [x0].[HomeOrder], [x0].[Image], [x0].[Name], [x0].[ParentId], [x0].[SeoAlias], [x0].[SeoDescription], [x0].[SeoKeywords], [x0].[SeoPageTitle], [x0].[SortOrder], [x0].[Status]
+FROM [ProductCategories] AS [x0]
+WHERE [x0].[Status] = 1" (0723d8ff)
+2019-02-16T22:34:50.8350461+07:00 0HLKK4H254VPJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Image], [x].[Name], [x].[Status], [x].[Url]
+FROM [Pantners] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[Name]" (0723d8ff)
+2019-02-16T22:34:51.2060674+07:00 0HLKK4H254VPJ:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 9724.1608ms (afa2e885)
+2019-02-16T22:34:51.2430695+07:00 0HLKK4H254VPK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/css/site.min.css   (ca22a1cb)
+2019-02-16T22:34:51.2520700+07:00 0HLKK4H254VPJ:00000001 [INF] Request finished in 10477.379ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-16T22:34:51.2940724+07:00 0HLKK4H254VPK:00000002 [INF] The file "/css/site.min.css" was not modified (f1f8d725)
+2019-02-16T22:34:51.3240741+07:00 0HLKK4H254VPK:00000002 [INF] Request finished in 82.3479ms 304 text/css (791a596a)
+2019-02-16T22:34:52.1631221+07:00 0HLKK4H254VPJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-16T22:34:52.1931238+07:00 0HLKK4H254VPJ:00000002 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-16T22:34:52.2361263+07:00 0HLKK4H254VPJ:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-16T22:34:52.5831461+07:00 0HLKK4H254VPJ:00000002 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 400.2869ms (afa2e885)
+2019-02-16T22:34:52.6071475+07:00 0HLKK4H254VPJ:00000002 [INF] Request finished in 431.6538ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-16T22:37:20.0595813+07:00 0HLKK4H254VPL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/css/site.min.css   (ca22a1cb)
+2019-02-16T22:37:20.0665817+07:00 0HLKK4H254VPL:00000001 [INF] The file "/css/site.min.css" was not modified (f1f8d725)
+2019-02-16T22:37:20.0895830+07:00 0HLKK4H254VPL:00000001 [INF] Request finished in 23.0081ms 304 text/css (791a596a)
+2019-02-16T22:37:20.1085841+07:00 0HLKK4H254VPM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/lib/signalr/dist/browser/signalr.min.js.map   (ca22a1cb)
+2019-02-16T22:37:20.1245850+07:00 0HLKK4H254VPM:00000001 [INF] Request finished in 21.4144ms 404  (791a596a)
