@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Provider\" />
-    <Folder Include="wwwroot\UploadedFiles\" />
   </ItemGroup>
 
   <ItemGroup>

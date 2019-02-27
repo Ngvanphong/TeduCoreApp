@@ -86,7 +86,7 @@ namespace TeduCoreApp.Application.Implementation
             }
             if (!string.IsNullOrEmpty(customerName))
             {
-                query = query.Where(x => x.CustomerName.Contains(customerName));
+                query = query.Where(x =>x.CustomerId.ToString()==customerName||x.CustomerName.Contains(customerName));
             }
             if (billStatus.HasValue&& billStatus!=BillStatus.All)
             {

@@ -201,19 +201,21 @@ namespace TeduCoreApp.WebApi
 
             app.UseAuthentication();
 
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<WebHub>("/hub");
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
+           
             app.UseMvc();
 
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<WebHub>("/hub");
-            });
+           
         }
     }
 }

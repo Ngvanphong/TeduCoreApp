@@ -1,0 +1,1011 @@
+2019-02-20T10:11:22.1645789+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:11:22.1765796+07:00  [WRN] No type was specified for the decimal column '"BalanceForBill"' on entity type '"Bill"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:11:22.1815799+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:11:22.1865802+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:11:22.1905804+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:11:22.3625902+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:11:24.2837001+07:00  [INF] Executed DbCommand ("189"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:11:24.4437093+07:00  [INF] Executed DbCommand ("23"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:11:24.5807171+07:00  [INF] Executed DbCommand ("64"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2019-02-20T10:11:24.7707280+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2019-02-20T10:11:24.7847288+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2019-02-20T10:11:24.8087301+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2019-02-20T10:11:24.8267312+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2019-02-20T10:11:24.9707394+07:00  [INF] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:11:24.9807400+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:11:24.9947408+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:11:25.6847802+07:00 0HLKMS4CII859:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:50638/  0 (ca22a1cb)
+2019-02-20T10:11:25.6977810+07:00 0HLKMS4CII858:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2019-02-20T10:11:25.8407892+07:00 0HLKMS4CII859:00000001 [INF] Request finished in 217.3307ms 200  (791a596a)
+2019-02-20T10:11:26.5438294+07:00 0HLKMS4CII858:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:11:26.6218338+07:00 0HLKMS4CII858:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:11:26.9858547+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("150"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[HotFlag] = 1) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:11:27.2028671+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:11:27.2458695+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) AND [x].[PromotionPrice] IS NOT NULL
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:11:27.2718710+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:11:27.3168736+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:11:27.3478754+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:11:27.3658764+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:11:27.6958953+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:11:27.8409036+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:11:27.8619048+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:11:41.2236690+07:00 0HLKMS4CII858:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2019-02-20T10:11:42.5627456+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-20T10:11:43.2737863+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-20T10:11:43.6058053+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = N'Default'" (0723d8ff)
+2019-02-20T10:11:43.6468076+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[ParentId] IS NULL AND ([x].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.7128114+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.7298124+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.7438132+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"where ([x].ParentId == Convert(__item_Id_0, Nullable`1))"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.7568139+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Any()"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.7718148+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.7818153+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.7888157+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.7938160+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.7998164+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8068168+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8118170+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8168173+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8248178+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8288180+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8358184+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8408187+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8458190+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8518193+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8588197+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:11:43.8628200+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.8728205+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.8808210+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.8878214+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"orderby [x].Name asc"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.8948218+07:00 0HLKMS4CII858:00000001 [WRN] The LINQ expression '"Take(__p_1)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:11:43.9038223+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x0].[Id], [x0].[DateCreated], [x0].[DateModified], [x0].[Description], [x0].[HomeFlag], [x0].[HomeOrder], [x0].[Image], [x0].[Name], [x0].[ParentId], [x0].[SeoAlias], [x0].[SeoDescription], [x0].[SeoKeywords], [x0].[SeoPageTitle], [x0].[SortOrder], [x0].[Status]
+FROM [ProductCategories] AS [x0]
+WHERE [x0].[Status] = 1" (0723d8ff)
+2019-02-20T10:11:43.9368242+07:00 0HLKMS4CII858:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Image], [x].[Name], [x].[Status], [x].[Url]
+FROM [Pantners] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[Name]" (0723d8ff)
+2019-02-20T10:11:44.3948504+07:00 0HLKMS4CII859:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/css/site.min.css   (ca22a1cb)
+2019-02-20T10:11:44.4208519+07:00 0HLKMS4CII858:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 17930.113ms (afa2e885)
+2019-02-20T10:11:44.4468534+07:00 0HLKMS4CII859:00000002 [INF] The file "/css/site.min.css" was not modified (f1f8d725)
+2019-02-20T10:11:44.4588541+07:00 0HLKMS4CII858:00000001 [INF] Request finished in 18857.978ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:11:44.4748550+07:00 0HLKMS4CII859:00000002 [INF] Request finished in 81.9523ms 304 text/css (791a596a)
+2019-02-20T10:11:44.8248750+07:00 0HLKMS4CII858:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/js/site.min.js   (ca22a1cb)
+2019-02-20T10:11:44.8398759+07:00 0HLKMS4CII858:00000002 [INF] The file "/js/site.min.js" was not modified (f1f8d725)
+2019-02-20T10:11:44.8528766+07:00 0HLKMS4CII858:00000002 [INF] Request finished in 27.3803ms 304 application/javascript (791a596a)
+2019-02-20T10:11:45.8669346+07:00 0HLKMS4CII859:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:11:45.8779352+07:00 0HLKMS4CII859:00000003 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:11:45.9049368+07:00 0HLKMS4CII859:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:11:46.1159488+07:00 0HLKMS4CII859:00000003 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 231.7925ms (afa2e885)
+2019-02-20T10:11:46.1269495+07:00 0HLKMS4CII859:00000003 [INF] Request finished in 254.7131ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:11:59.5417167+07:00 0HLKMS4CII858:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/ao-nam-xanh-duong.p-15.html   (ca22a1cb)
+2019-02-20T10:11:59.7247272+07:00 0HLKMS4CII858:00000003 [INF] Executing action method "TeduCoreApp.Controllers.ProductDetailController.Index (TeduCoreApp)" with arguments (["15"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:11:59.7327277+07:00 0HLKMS4CII858:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:11:59.8767359+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE [c].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:11:59.9407396+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__categoryId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_1) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[CategoryId] = @__categoryId_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:11:59.9567405+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ViewCount] DESC" (0723d8ff)
+2019-02-20T10:12:00.7207842+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("692"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[Type]
+FROM [Tags] AS [t]
+INNER JOIN [ProductTags] AS [pt] ON [t].[Id] = [pt].[TagId]
+WHERE [pt].[ProductId] = @__productId_0
+ORDER BY [t].[Name]" (0723d8ff)
+2019-02-20T10:12:00.8287904+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("33"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Caption], [x].[Path], [x].[ProductId], [x].[SwitchImage]
+FROM [ProductImages] AS [x]
+WHERE ([x].[ProductId] = @__productId_0) AND ([x].[SwitchImage] = 0)
+ORDER BY [x].[Id] DESC" (0723d8ff)
+2019-02-20T10:12:00.9137952+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("9"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT DISTINCT [x.Color].[Id], [x.Color].[Code], [x.Color].[Name]
+FROM [ProductQuantities] AS [x]
+INNER JOIN [Colors] AS [x.Color] ON [x].[ColorId] = [x.Color].[Id]
+WHERE [x].[ProductId] = @__productId_0
+ORDER BY [x.Color].[Name]" (0723d8ff)
+2019-02-20T10:12:00.9687984+07:00 0HLKMS4CII858:00000003 [INF] Executed DbCommand ("18"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[FromQuantity], [x].[Price], [x].[ProductId], [x].[ToQuantity]
+FROM [WholePrices] AS [x]
+WHERE [x].[ProductId] = @__productId_0
+ORDER BY [x].[FromQuantity]" (0723d8ff)
+2019-02-20T10:12:01.2518146+07:00 0HLKMS4CII858:00000003 [INF] Executing ViewResult, running view at path "/Views/ProductDetail/Index.cshtml". (9707eebe)
+2019-02-20T10:12:01.3138181+07:00 0HLKMS4CII858:00000003 [INF] Executed action "TeduCoreApp.Controllers.ProductDetailController.Index (TeduCoreApp)" in 1732.3584ms (afa2e885)
+2019-02-20T10:12:01.3278189+07:00 0HLKMS4CII858:00000003 [INF] Request finished in 1786.6957ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:12:02.0688613+07:00 0HLKMS4CII859:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:12:02.0768617+07:00 0HLKMS4CII859:00000004 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:02.0858623+07:00 0HLKMS4CII859:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:02.1058634+07:00 0HLKMS4CII859:00000004 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 15.004ms (afa2e885)
+2019-02-20T10:12:02.1198642+07:00 0HLKMS4CII859:00000004 [INF] Request finished in 45.9156ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:02.4368823+07:00 0HLKMS4CII858:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/product/getsizebycolor?productid=15&colorid=3   (ca22a1cb)
+2019-02-20T10:12:02.4618838+07:00 0HLKMS4CII858:00000004 [INF] Executing action method "TeduCoreApp.Controllers.ProductDetailController.GetSizeByColor (TeduCoreApp)" with arguments (["15", "3"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:02.4698842+07:00 0HLKMS4CII858:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:12:03.1579236+07:00 0HLKMS4CII858:00000004 [INF] Executed DbCommand ("656"ms) [Parameters=["@__productId_0='?' (DbType = Int32), @__colorId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x.Size].[Id], [x.Size].[Name]
+FROM [ProductQuantities] AS [x]
+INNER JOIN [Sizes] AS [x.Size] ON [x].[SizeId] = [x.Size].[Id]
+WHERE (([x].[ProductId] = @__productId_0) AND ([x].[ColorId] = @__colorId_1)) AND ([x].[Quantity] > 0)
+ORDER BY [x.Size].[Name]" (0723d8ff)
+2019-02-20T10:12:03.1939256+07:00 0HLKMS4CII858:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:03.2309278+07:00 0HLKMS4CII858:00000004 [INF] Executed action "TeduCoreApp.Controllers.ProductDetailController.GetSizeByColor (TeduCoreApp)" in 756.7257ms (afa2e885)
+2019-02-20T10:12:03.2459286+07:00 0HLKMS4CII858:00000004 [INF] Request finished in 808.6739ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:04.2509861+07:00 0HLKMS4CII859:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:44356/shopping/addToCart application/x-www-form-urlencoded; charset=UTF-8 42 (ca22a1cb)
+2019-02-20T10:12:04.6070065+07:00 0HLKMS4CII859:00000005 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.AddToCart (TeduCoreApp)" with arguments (["15", "3", "3", "1"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:04.6150069+07:00 0HLKMS4CII859:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:12:04.6300078+07:00 0HLKMS4CII859:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:12:04.6830108+07:00 0HLKMS4CII859:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Code], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:12:04.6960116+07:00 0HLKMS4CII859:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE [c].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:12:04.8360196+07:00 0HLKMS4CII859:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:04.8430200+07:00 0HLKMS4CII859:00000005 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.AddToCart (TeduCoreApp)" in 576.4588ms (afa2e885)
+2019-02-20T10:12:04.8730217+07:00 0HLKMS4CII859:00000005 [INF] Session started; Key:"98fb7516-c837-7fd0-98ba-ede88effb879", Id:"c3c3d0b9-657c-1965-c0d5-ecdc29f2d2a7" (1d7cf8c0)
+2019-02-20T10:12:04.8930228+07:00 0HLKMS4CII859:00000005 [INF] Request finished in 638.0401ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:04.9080237+07:00 0HLKMS4CII858:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:12:04.9130240+07:00 0HLKMS4CII858:00000005 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:05.1790392+07:00 0HLKMS4CII858:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:05.2350424+07:00 0HLKMS4CII858:00000005 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 290.2029ms (afa2e885)
+2019-02-20T10:12:05.2600438+07:00 0HLKMS4CII858:00000005 [INF] Request finished in 342.0441ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:06.2130983+07:00 0HLKMS4CII859:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44356/checkout.html   (ca22a1cb)
+2019-02-20T10:12:06.2250990+07:00 0HLKMS4CII859:00000006 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:07.2121555+07:00 0HLKMS4CII859:00000006 [INF] Executing ViewResult, running view at path "/Views/Checkout/Index.cshtml". (9707eebe)
+2019-02-20T10:12:07.2451574+07:00 0HLKMS4CII859:00000006 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" in 1018.685ms (afa2e885)
+2019-02-20T10:12:07.2691587+07:00 0HLKMS4CII859:00000006 [INF] Request finished in 1038.4998ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:12:07.3541636+07:00 0HLKMS4CII858:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:12:07.3601639+07:00 0HLKMS4CII858:00000006 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:07.3681644+07:00 0HLKMS4CII858:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:07.3731647+07:00 0HLKMS4CII858:00000006 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 14.1757ms (afa2e885)
+2019-02-20T10:12:07.3851654+07:00 0HLKMS4CII858:00000006 [INF] Request finished in 24.0097ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:07.4111669+07:00 0HLKMS4CII859:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:12:07.4181673+07:00 0HLKMS4CII858:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:44356/account/checkIsLogin  0 (ca22a1cb)
+2019-02-20T10:12:07.4241676+07:00 0HLKMS4CII859:00000007 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:07.4301679+07:00 0HLKMS4CII859:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:07.4401685+07:00 0HLKMS4CII859:00000007 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 13.6702ms (afa2e885)
+2019-02-20T10:12:07.4481690+07:00 0HLKMS4CII859:00000007 [INF] Request finished in 37.8134ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:07.4891713+07:00 0HLKMS4CII858:00000007 [INF] Executing action method "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:07.5021721+07:00 0HLKMS4CII858:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:07.5731761+07:00 0HLKMS4CII858:00000007 [INF] Executed action "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" in 64.9295ms (afa2e885)
+2019-02-20T10:12:07.6101782+07:00 0HLKMS4CII858:00000007 [INF] Request finished in 165.4539ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:17.8287627+07:00 0HLKMS4CII859:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout/loadDistrict application/x-www-form-urlencoded; charset=UTF-8 14 (ca22a1cb)
+2019-02-20T10:12:17.8507640+07:00 0HLKMS4CII859:00000008 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.LoadDistrict (TeduCoreApp)" with arguments (["701"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:17.9077672+07:00 0HLKMS4CII859:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:17.9197679+07:00 0HLKMS4CII859:00000008 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.LoadDistrict (TeduCoreApp)" in 81.7885ms (afa2e885)
+2019-02-20T10:12:17.9277684+07:00 0HLKMS4CII859:00000008 [INF] Request finished in 109.4211ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:18.8828230+07:00 0HLKMS4CII858:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout/GetTaxHCM application/x-www-form-urlencoded; charset=UTF-8 16 (ca22a1cb)
+2019-02-20T10:12:18.9168249+07:00 0HLKMS4CII858:00000008 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.GetTaxHCM (TeduCoreApp)" with arguments (["70143"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:18.9238253+07:00 0HLKMS4CII858:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:18.9298257+07:00 0HLKMS4CII858:00000008 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.GetTaxHCM (TeduCoreApp)" in 34.4775ms (afa2e885)
+2019-02-20T10:12:18.9378261+07:00 0HLKMS4CII858:00000008 [INF] Request finished in 57.7792ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:12:22.0240027+07:00 0HLKMS4CII859:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout.html application/x-www-form-urlencoded; charset=UTF-8 276 (ca22a1cb)
+2019-02-20T10:12:22.6450382+07:00 0HLKMS4CII859:00000009 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.Checkout (TeduCoreApp)" with arguments (["TeduCoreApp.Data.ViewModels.Bill.BillViewModel", "14", "500", "25", "514"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:12:22.7200425+07:00 0HLKMS4CII859:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:12:23.9771144+07:00 0HLKMS4CII859:00000009 [ERR] Failed executing DbCommand ("83"ms) [Parameters=["@p0='?', @p1='?' (DbType = Int32), @p2='?' (Size = 256), @p3='?' (Size = 256), @p4='?' (DbType = Guid), @p5='?' (Size = 256), @p6='?' (Size = 50), @p7='?' (Size = 256), @p8='?' (DbType = DateTime2), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Decimal), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Decimal), @p14='?' (DbType = Decimal), @p15='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Bills] ([BalanceForBill], [BillStatus], [CustomerAddress], [CustomerEmail], [CustomerId], [CustomerMessage], [CustomerMobile], [CustomerName], [DateCreated], [DateModified], [FeeShipping], [PaymentMethod], [Status], [TotalMoneyOrder], [TotalMoneyPayment], [TotalOriginalPrice])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [Bills]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (627a98df)
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'TotalOriginalPrice'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:f39befc0-cbda-4a6f-8d46-63cd287c6e2c
+Error Number:207,State:1,Class:16
+2019-02-20T10:12:24.0151165+07:00 0HLKMS4CII859:00000009 [ERR] An exception occurred in the database while saving changes for context type '"TeduCoreApp.Data.EF.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid column name 'TotalOriginalPrice'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid column name 'TotalOriginalPrice'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2019-02-20T10:12:24.3161338+07:00 0HLKMS4CII859:00000009 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:12:24.3211340+07:00 0HLKMS4CII859:00000009 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.Checkout (TeduCoreApp)" in 1756.7082ms (afa2e885)
+2019-02-20T10:12:24.3291345+07:00 0HLKMS4CII859:00000009 [INF] Request finished in 2312.0378ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:18:33.4342461+07:00  [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:18:33.4472469+07:00  [WRN] No type was specified for the decimal column '"BalanceForBill"' on entity type '"Bill"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:18:33.4552473+07:00  [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:18:33.4602476+07:00  [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:18:33.4682481+07:00  [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'. (b5b4253a)
+2019-02-20T10:18:33.6162565+07:00  [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:18:34.5733113+07:00  [INF] Executed DbCommand ("97"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:18:34.6543159+07:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:18:34.6833176+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2019-02-20T10:18:34.6943182+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2019-02-20T10:18:34.7143193+07:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2019-02-20T10:18:34.7233198+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2019-02-20T10:18:34.7333204+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2019-02-20T10:18:34.8433267+07:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:18:34.8563274+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:18:34.8663280+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-02-20T10:18:35.2963526+07:00 0HLKMS8CKK41U:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/   (ca22a1cb)
+2019-02-20T10:18:35.2963526+07:00 0HLKMS8CKK41V:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:50638/  0 (ca22a1cb)
+2019-02-20T10:18:35.4353606+07:00 0HLKMS8CKK41V:00000001 [INF] Request finished in 190.2459ms 200  (791a596a)
+2019-02-20T10:18:35.9473899+07:00 0HLKMS8CKK41U:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:18:35.9693911+07:00 0HLKMS8CKK41U:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:18:36.1744028+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("71"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[HotFlag] = 1) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:18:36.3624136+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:18:36.3884151+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) AND [x].[PromotionPrice] IS NOT NULL
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:18:36.4084162+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:18:36.4734199+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("30"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:18:36.5014215+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:18:36.5184225+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:18:36.6544303+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:18:36.7334348+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:18:36.7424353+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:18:42.7257776+07:00 0HLKMS8CKK41U:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2019-02-20T10:18:43.2668085+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-20T10:18:43.8868440+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-02-20T10:18:44.1348582+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = N'Default'" (0723d8ff)
+2019-02-20T10:18:44.1678600+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[ParentId] IS NULL AND ([x].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.2208631+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.2318637+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Except({from ProductCategory x in value(Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[TeduCoreApp.Data.Entities.ProductCategory]) where (([x].ParentId == null) AndAlso (Convert([x].Status, Int32) == 1)) select [x]})"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.2378640+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"where ([x].ParentId == Convert(__item_Id_0, Nullable`1))"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.2508648+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Any()"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.2668657+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.2768663+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.2848667+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.2908671+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.2968674+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3018677+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3068680+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3128683+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3188687+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3258691+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3308694+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3358696+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3418700+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3478703+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3538707+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x2].[Id], [x2].[DateCreated], [x2].[DateModified], [x2].[Description], [x2].[HomeFlag], [x2].[HomeOrder], [x2].[Image], [x2].[Name], [x2].[ParentId], [x2].[SeoAlias], [x2].[SeoDescription], [x2].[SeoKeywords], [x2].[SeoPageTitle], [x2].[SortOrder], [x2].[Status]
+FROM [ProductCategories] AS [x2]
+WHERE [x2].[ParentId] IS NULL AND ([x2].[Status] = 1)" (0723d8ff)
+2019-02-20T10:18:44.3578709+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x1].[Id], [x1].[DateCreated], [x1].[DateModified], [x1].[Description], [x1].[HomeFlag], [x1].[HomeOrder], [x1].[Image], [x1].[Name], [x1].[ParentId], [x1].[SeoAlias], [x1].[SeoDescription], [x1].[SeoKeywords], [x1].[SeoPageTitle], [x1].[SortOrder], [x1].[Status]
+FROM [ProductCategories] AS [x1]
+WHERE [x1].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.3688715+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.3758719+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Except(__p_0)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.3808722+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"orderby [x].Name asc"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.3868726+07:00 0HLKMS8CKK41U:00000001 [WRN] The LINQ expression '"Take(__p_1)"' could not be translated and will be evaluated locally. (011792c6)
+2019-02-20T10:18:44.3978732+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x0].[Id], [x0].[DateCreated], [x0].[DateModified], [x0].[Description], [x0].[HomeFlag], [x0].[HomeOrder], [x0].[Image], [x0].[Name], [x0].[ParentId], [x0].[SeoAlias], [x0].[SeoDescription], [x0].[SeoKeywords], [x0].[SeoPageTitle], [x0].[SortOrder], [x0].[Status]
+FROM [ProductCategories] AS [x0]
+WHERE [x0].[Status] = 1" (0723d8ff)
+2019-02-20T10:18:44.4368754+07:00 0HLKMS8CKK41U:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Image], [x].[Name], [x].[Status], [x].[Url]
+FROM [Pantners] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[Name]" (0723d8ff)
+2019-02-20T10:18:44.7558937+07:00 0HLKMS8CKK41U:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 8847.562ms (afa2e885)
+2019-02-20T10:18:44.8198973+07:00 0HLKMS8CKK41U:00000001 [INF] Request finished in 9555.8183ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:18:44.9539050+07:00 0HLKMS8CKK41V:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:18:44.9679058+07:00 0HLKMS8CKK41V:00000002 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:18:44.9789064+07:00 0HLKMS8CKK41V:00000002 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:18:45.0169086+07:00 0HLKMS8CKK41V:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:18:45.2639227+07:00 0HLKMS8CKK41V:00000002 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 299.2612ms (afa2e885)
+2019-02-20T10:18:45.2689230+07:00 0HLKMS8CKK41V:00000002 [INF] Request finished in 321.2236ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:27.8387897+07:00 0HLKMS8CKK420:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/quan-jean.pc-6.html   (ca22a1cb)
+2019-02-20T10:20:27.9507961+07:00 0HLKMS8CKK420:00000001 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" with arguments (["6"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:27.9587965+07:00 0HLKMS8CKK420:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:27.9787977+07:00 0HLKMS8CKK420:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:20:27.9967987+07:00 0HLKMS8CKK420:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:20:28.0037991+07:00 0HLKMS8CKK420:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:20:28.1098052+07:00 0HLKMS8CKK420:00000001 [INF] Executed DbCommand ("89"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Type]
+FROM [Tags] AS [x]
+WHERE [x].[Type] = N'Product'
+ORDER BY [x].[Id] DESC" (0723d8ff)
+2019-02-20T10:20:28.5298292+07:00 0HLKMS8CKK420:00000001 [INF] Executing ViewResult, running view at path "/Views/Product/Index.cshtml". (9707eebe)
+2019-02-20T10:20:29.2838723+07:00 0HLKMS8CKK420:00000001 [INF] Executed action "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" in 1394.6119ms (afa2e885)
+2019-02-20T10:20:29.3408756+07:00 0HLKMS8CKK420:00000001 [INF] Request finished in 1449.5791ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:20:30.0859182+07:00 0HLKMS8CKK420:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:30.1069194+07:00 0HLKMS8CKK420:00000002 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:30.1159199+07:00 0HLKMS8CKK420:00000002 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:20:30.1379212+07:00 0HLKMS8CKK420:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:30.2309265+07:00 0HLKMS8CKK420:00000002 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 52.2491ms (afa2e885)
+2019-02-20T10:20:30.2549279+07:00 0HLKMS8CKK421:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/product/getProductByCategory?id=6&sort=&page=1&pageSize=9   (ca22a1cb)
+2019-02-20T10:20:30.2559279+07:00 0HLKMS8CKK420:00000002 [INF] Request finished in 151.4035ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:30.2699287+07:00 0HLKMS8CKK422:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:30.2909299+07:00 0HLKMS8CKK422:00000001 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:30.3009305+07:00 0HLKMS8CKK422:00000001 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:20:30.3079309+07:00 0HLKMS8CKK422:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:30.3209316+07:00 0HLKMS8CKK422:00000001 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 37.172ms (afa2e885)
+2019-02-20T10:20:30.3379326+07:00 0HLKMS8CKK422:00000001 [INF] Request finished in 73.0265ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:30.3619340+07:00 0HLKMS8CKK421:00000001 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" with arguments (["6", "", "1", "9"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:30.3719346+07:00 0HLKMS8CKK421:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:30.4019363+07:00 0HLKMS8CKK421:00000001 [WRN] The Include operation for navigation '"[c].ProductCategory"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-02-20T10:20:30.4289378+07:00 0HLKMS8CKK421:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [c]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)" (0723d8ff)
+2019-02-20T10:20:30.5599453+07:00 0HLKMS8CKK421:00000001 [INF] Executed DbCommand ("14"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)
+ORDER BY [c].[DateModified] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-02-20T10:20:30.5809465+07:00 0HLKMS8CKK421:00000001 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:30.5919471+07:00 0HLKMS8CKK421:00000001 [INF] Executed action "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" in 279.9831ms (afa2e885)
+2019-02-20T10:20:30.5989475+07:00 0HLKMS8CKK421:00000001 [INF] Request finished in 359.2637ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:33.5411158+07:00 0HLKMS8CKK420:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/ao-nam.pc-1.html   (ca22a1cb)
+2019-02-20T10:20:33.5461161+07:00 0HLKMS8CKK420:00000003 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" with arguments (["1"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:33.5531165+07:00 0HLKMS8CKK420:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:33.5581168+07:00 0HLKMS8CKK420:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:20:33.5661173+07:00 0HLKMS8CKK420:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:20:33.5731177+07:00 0HLKMS8CKK420:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:20:33.5791180+07:00 0HLKMS8CKK420:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Type]
+FROM [Tags] AS [x]
+WHERE [x].[Type] = N'Product'
+ORDER BY [x].[Id] DESC" (0723d8ff)
+2019-02-20T10:20:33.5851183+07:00 0HLKMS8CKK420:00000003 [INF] Executing ViewResult, running view at path "/Views/Product/Index.cshtml". (9707eebe)
+2019-02-20T10:20:33.6011193+07:00 0HLKMS8CKK420:00000003 [INF] Executed action "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" in 47.1044ms (afa2e885)
+2019-02-20T10:20:33.6471219+07:00 0HLKMS8CKK420:00000003 [INF] Request finished in 67.8241ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:20:33.7271265+07:00 0HLKMS8CKK422:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:33.7321268+07:00 0HLKMS8CKK422:00000002 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:33.7371270+07:00 0HLKMS8CKK422:00000002 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:20:33.7461276+07:00 0HLKMS8CKK422:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:33.7521279+07:00 0HLKMS8CKK422:00000002 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 19.4115ms (afa2e885)
+2019-02-20T10:20:33.7601284+07:00 0HLKMS8CKK422:00000002 [INF] Request finished in 31.6321ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:33.7851298+07:00 0HLKMS8CKK421:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44356/product/getProductByCategory?id=1&sort=&page=1&pageSize=9   (ca22a1cb)
+2019-02-20T10:20:33.7871299+07:00 0HLKMS8CKK420:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:33.7951304+07:00 0HLKMS8CKK420:00000004 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:33.8051309+07:00 0HLKMS8CKK421:00000002 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" with arguments (["1", "", "1", "9"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:33.8081311+07:00 0HLKMS8CKK420:00000004 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:20:33.8201318+07:00 0HLKMS8CKK420:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:33.8311324+07:00 0HLKMS8CKK421:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:33.8371328+07:00 0HLKMS8CKK420:00000004 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 34.711ms (afa2e885)
+2019-02-20T10:20:33.8471333+07:00 0HLKMS8CKK421:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [c]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)" (0723d8ff)
+2019-02-20T10:20:33.8501335+07:00 0HLKMS8CKK420:00000004 [INF] Request finished in 58.2427ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:33.8571339+07:00 0HLKMS8CKK421:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)
+ORDER BY [c].[DateModified] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-02-20T10:20:33.8841355+07:00 0HLKMS8CKK421:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:33.9421388+07:00 0HLKMS8CKK421:00000002 [INF] Executed action "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" in 147.64ms (afa2e885)
+2019-02-20T10:20:33.9551395+07:00 0HLKMS8CKK421:00000002 [INF] Request finished in 168.4259ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:36.5952905+07:00 0HLKMS8CKK422:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44356/wishlist/addItem application/x-www-form-urlencoded; charset=UTF-8 12 (ca22a1cb)
+2019-02-20T10:20:36.6982964+07:00 0HLKMS8CKK422:00000003 [INF] Executing action method "TeduCoreApp.Controllers.WishlistController.AddToCart (TeduCoreApp)" with arguments (["16"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:36.7052968+07:00 0HLKMS8CKK422:00000003 [INF] Accessing expired session, Key:"98fb7516-c837-7fd0-98ba-ede88effb879" (08c5a9e7)
+2019-02-20T10:20:36.7112972+07:00 0HLKMS8CKK422:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:36.7382987+07:00 0HLKMS8CKK422:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE [c].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:20:36.8203034+07:00 0HLKMS8CKK422:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:36.8283038+07:00 0HLKMS8CKK422:00000003 [INF] Executed action "TeduCoreApp.Controllers.WishlistController.AddToCart (TeduCoreApp)" in 221.364ms (afa2e885)
+2019-02-20T10:20:36.8363043+07:00 0HLKMS8CKK422:00000003 [INF] Session started; Key:"98fb7516-c837-7fd0-98ba-ede88effb879", Id:"d54c940a-1118-0c0a-f88f-589fa9e11ddd" (1d7cf8c0)
+2019-02-20T10:20:36.8683061+07:00 0HLKMS8CKK422:00000003 [INF] Request finished in 257.8322ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:39.9174805+07:00 0HLKMS8CKK420:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44356/checkout.html   (ca22a1cb)
+2019-02-20T10:20:39.9264811+07:00 0HLKMS8CKK420:00000005 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:40.1284926+07:00 0HLKMS8CKK420:00000005 [INF] Executing ViewResult, running view at path "/Views/Checkout/Index.cshtml". (9707eebe)
+2019-02-20T10:20:40.1754953+07:00 0HLKMS8CKK420:00000005 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" in 240.8269ms (afa2e885)
+2019-02-20T10:20:40.2014968+07:00 0HLKMS8CKK420:00000005 [INF] Request finished in 269.9716ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:20:40.2875017+07:00 0HLKMS8CKK421:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:40.2975023+07:00 0HLKMS8CKK421:00000003 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:40.3175034+07:00 0HLKMS8CKK421:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:40.3565056+07:00 0HLKMS8CKK421:00000003 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 29.6445ms (afa2e885)
+2019-02-20T10:20:40.3825071+07:00 0HLKMS8CKK421:00000003 [INF] Request finished in 73.5345ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:40.4015082+07:00 0HLKMS8CKK422:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:40.4225094+07:00 0HLKMS8CKK420:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:44356/account/checkIsLogin  0 (ca22a1cb)
+2019-02-20T10:20:40.4305099+07:00 0HLKMS8CKK422:00000004 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:40.4505110+07:00 0HLKMS8CKK422:00000004 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:40.4585115+07:00 0HLKMS8CKK422:00000004 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 48.4001ms (afa2e885)
+2019-02-20T10:20:40.4725123+07:00 0HLKMS8CKK422:00000004 [INF] Request finished in 91.5247ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:40.5125146+07:00 0HLKMS8CKK420:00000006 [INF] Executing action method "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:40.5245153+07:00 0HLKMS8CKK420:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:40.5935192+07:00 0HLKMS8CKK420:00000006 [INF] Executed action "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" in 117.3553ms (afa2e885)
+2019-02-20T10:20:40.6025197+07:00 0HLKMS8CKK420:00000006 [INF] Request finished in 219.3952ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:49.1910009+07:00 0HLKMS8CKK421:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44356/ao-nu.pc-2.html   (ca22a1cb)
+2019-02-20T10:20:49.1980013+07:00 0HLKMS8CKK421:00000004 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" with arguments (["2"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:49.2050017+07:00 0HLKMS8CKK421:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:49.2100020+07:00 0HLKMS8CKK421:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HomeOrder], [x].[Image], [x].[Name], [x].[ParentId], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[SortOrder], [x].[Status]
+FROM [ProductCategories] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:20:49.2180025+07:00 0HLKMS8CKK421:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:20:49.2240028+07:00 0HLKMS8CKK421:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:20:49.2300031+07:00 0HLKMS8CKK421:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Type]
+FROM [Tags] AS [x]
+WHERE [x].[Type] = N'Product'
+ORDER BY [x].[Id] DESC" (0723d8ff)
+2019-02-20T10:20:49.2360035+07:00 0HLKMS8CKK421:00000004 [INF] Executing ViewResult, running view at path "/Views/Product/Index.cshtml". (9707eebe)
+2019-02-20T10:20:49.2460041+07:00 0HLKMS8CKK421:00000004 [INF] Executed action "TeduCoreApp.Controllers.ProductController.Index (TeduCoreApp)" in 46.4634ms (afa2e885)
+2019-02-20T10:20:49.2600049+07:00 0HLKMS8CKK421:00000004 [INF] Request finished in 63.6355ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:20:49.3860121+07:00 0HLKMS8CKK422:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:49.3910124+07:00 0HLKMS8CKK422:00000005 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:49.3990128+07:00 0HLKMS8CKK422:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:49.4050132+07:00 0HLKMS8CKK422:00000005 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 13.3046ms (afa2e885)
+2019-02-20T10:20:49.4110135+07:00 0HLKMS8CKK422:00000005 [INF] Request finished in 25.5915ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:49.4720170+07:00 0HLKMS8CKK420:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44356/product/getProductByCategory?id=2&sort=&page=1&pageSize=9   (ca22a1cb)
+2019-02-20T10:20:49.4770173+07:00 0HLKMS8CKK421:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:20:49.5020187+07:00 0HLKMS8CKK421:00000005 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:49.5160195+07:00 0HLKMS8CKK420:00000007 [INF] Executing action method "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" with arguments (["2", "", "1", "9"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:20:49.5170196+07:00 0HLKMS8CKK421:00000005 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:49.5260201+07:00 0HLKMS8CKK420:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:20:49.5310204+07:00 0HLKMS8CKK421:00000005 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 45.2156ms (afa2e885)
+2019-02-20T10:20:49.5390208+07:00 0HLKMS8CKK420:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [c]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)" (0723d8ff)
+2019-02-20T10:20:49.5420210+07:00 0HLKMS8CKK421:00000005 [INF] Request finished in 68.5142ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:20:49.5590220+07:00 0HLKMS8CKK420:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=["@__categoryId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE ([c].[Status] = 1) AND ([c].[CategoryId] = @__categoryId_0)
+ORDER BY [c].[DateModified] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-02-20T10:20:49.5700226+07:00 0HLKMS8CKK420:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:20:49.5850234+07:00 0HLKMS8CKK420:00000007 [INF] Executed action "TeduCoreApp.Controllers.ProductController.GetProduct (TeduCoreApp)" in 100.3645ms (afa2e885)
+2019-02-20T10:20:49.5960241+07:00 0HLKMS8CKK420:00000007 [INF] Request finished in 128.3537ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:17.7733696+07:00 0HLKMS8CKK422:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44356/ao-so-mi-kieu.p-7.html   (ca22a1cb)
+2019-02-20T10:21:17.7823701+07:00 0HLKMS8CKK422:00000006 [INF] Executing action method "TeduCoreApp.Controllers.ProductDetailController.Index (TeduCoreApp)" with arguments (["7"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:17.7883704+07:00 0HLKMS8CKK422:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:21:17.7933707+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE [c].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:17.8183722+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_1='?' (DbType = Int32), @__categoryId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_1) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[CategoryId] = @__categoryId_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:21:17.8433736+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ViewCount] DESC" (0723d8ff)
+2019-02-20T10:21:17.9163778+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("21"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[Type]
+FROM [Tags] AS [t]
+INNER JOIN [ProductTags] AS [pt] ON [t].[Id] = [pt].[TagId]
+WHERE [pt].[ProductId] = @__productId_0
+ORDER BY [t].[Name]" (0723d8ff)
+2019-02-20T10:21:17.9473795+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("7"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Caption], [x].[Path], [x].[ProductId], [x].[SwitchImage]
+FROM [ProductImages] AS [x]
+WHERE ([x].[ProductId] = @__productId_0) AND ([x].[SwitchImage] = 0)
+ORDER BY [x].[Id] DESC" (0723d8ff)
+2019-02-20T10:21:18.0453851+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("25"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT DISTINCT [x.Color].[Id], [x.Color].[Code], [x.Color].[Name]
+FROM [ProductQuantities] AS [x]
+INNER JOIN [Colors] AS [x.Color] ON [x].[ColorId] = [x.Color].[Id]
+WHERE [x].[ProductId] = @__productId_0
+ORDER BY [x.Color].[Name]" (0723d8ff)
+2019-02-20T10:21:18.1033885+07:00 0HLKMS8CKK422:00000006 [INF] Executed DbCommand ("21"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[FromQuantity], [x].[Price], [x].[ProductId], [x].[ToQuantity]
+FROM [WholePrices] AS [x]
+WHERE [x].[ProductId] = @__productId_0
+ORDER BY [x].[FromQuantity]" (0723d8ff)
+2019-02-20T10:21:18.3834045+07:00 0HLKMS8CKK422:00000006 [INF] Executing ViewResult, running view at path "/Views/ProductDetail/Index.cshtml". (9707eebe)
+2019-02-20T10:21:18.4294071+07:00 0HLKMS8CKK422:00000006 [INF] Executed action "TeduCoreApp.Controllers.ProductDetailController.Index (TeduCoreApp)" in 641.4837ms (afa2e885)
+2019-02-20T10:21:18.4814101+07:00 0HLKMS8CKK422:00000006 [INF] Request finished in 665.0364ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:21:18.5994168+07:00 0HLKMS8CKK421:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:21:18.6064172+07:00 0HLKMS8CKK421:00000006 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:18.6144177+07:00 0HLKMS8CKK421:00000006 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:18.6214181+07:00 0HLKMS8CKK421:00000006 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 14.1988ms (afa2e885)
+2019-02-20T10:21:18.6334188+07:00 0HLKMS8CKK421:00000006 [INF] Request finished in 26.7281ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:18.8404306+07:00 0HLKMS8CKK420:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44356/product/getsizebycolor?productid=7&colorid=1   (ca22a1cb)
+2019-02-20T10:21:18.8544314+07:00 0HLKMS8CKK420:00000008 [INF] Executing action method "TeduCoreApp.Controllers.ProductDetailController.GetSizeByColor (TeduCoreApp)" with arguments (["7", "1"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:18.8634319+07:00 0HLKMS8CKK420:00000008 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:21:18.8924336+07:00 0HLKMS8CKK420:00000008 [INF] Executed DbCommand ("5"ms) [Parameters=["@__productId_0='?' (DbType = Int32), @__colorId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x.Size].[Id], [x.Size].[Name]
+FROM [ProductQuantities] AS [x]
+INNER JOIN [Sizes] AS [x.Size] ON [x].[SizeId] = [x.Size].[Id]
+WHERE (([x].[ProductId] = @__productId_0) AND ([x].[ColorId] = @__colorId_1)) AND ([x].[Quantity] > 0)
+ORDER BY [x.Size].[Name]" (0723d8ff)
+2019-02-20T10:21:18.9304358+07:00 0HLKMS8CKK420:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:19.0184408+07:00 0HLKMS8CKK420:00000008 [INF] Executed action "TeduCoreApp.Controllers.ProductDetailController.GetSizeByColor (TeduCoreApp)" in 90.6057ms (afa2e885)
+2019-02-20T10:21:19.0764441+07:00 0HLKMS8CKK420:00000008 [INF] Request finished in 197.3748ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:20.1515056+07:00 0HLKMS8CKK422:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:44356/shopping/addToCart application/x-www-form-urlencoded; charset=UTF-8 41 (ca22a1cb)
+2019-02-20T10:21:20.1585060+07:00 0HLKMS8CKK422:00000007 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.AddToCart (TeduCoreApp)" with arguments (["7", "1", "1", "1"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:20.1655064+07:00 0HLKMS8CKK422:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:21:20.1785071+07:00 0HLKMS8CKK422:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name]
+FROM [Sizes] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:20.1925079+07:00 0HLKMS8CKK422:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Code], [x].[Name]
+FROM [Colors] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:20.2045086+07:00 0HLKMS8CKK422:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [c].[Id], [c].[CategoryId], [c].[Content], [c].[DateCreated], [c].[DateModified], [c].[Description], [c].[HomeFlag], [c].[HotFlag], [c].[Name], [c].[OriginalPrice], [c].[Price], [c].[PromotionPrice], [c].[SeoAlias], [c].[SeoDescription], [c].[SeoKeywords], [c].[SeoPageTitle], [c].[Status], [c].[Tag], [c].[ThumbnailImage], [c].[Unit], [c].[ViewCount], [c.ProductCategory].[Id], [c.ProductCategory].[DateCreated], [c.ProductCategory].[DateModified], [c.ProductCategory].[Description], [c.ProductCategory].[HomeFlag], [c.ProductCategory].[HomeOrder], [c.ProductCategory].[Image], [c.ProductCategory].[Name], [c.ProductCategory].[ParentId], [c.ProductCategory].[SeoAlias], [c.ProductCategory].[SeoDescription], [c.ProductCategory].[SeoKeywords], [c.ProductCategory].[SeoPageTitle], [c.ProductCategory].[SortOrder], [c.ProductCategory].[Status]
+FROM [Products] AS [c]
+INNER JOIN [ProductCategories] AS [c.ProductCategory] ON [c].[CategoryId] = [c.ProductCategory].[Id]
+WHERE [c].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:20.2175094+07:00 0HLKMS8CKK422:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:20.2225097+07:00 0HLKMS8CKK422:00000007 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.AddToCart (TeduCoreApp)" in 63.8463ms (afa2e885)
+2019-02-20T10:21:20.2325102+07:00 0HLKMS8CKK422:00000007 [INF] Request finished in 78.6605ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:20.2415107+07:00 0HLKMS8CKK421:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:21:20.2465110+07:00 0HLKMS8CKK421:00000007 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:20.3595175+07:00 0HLKMS8CKK421:00000007 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:20.3745184+07:00 0HLKMS8CKK421:00000007 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 123.3903ms (afa2e885)
+2019-02-20T10:21:20.3825188+07:00 0HLKMS8CKK421:00000007 [INF] Request finished in 138.7613ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:21.9776100+07:00 0HLKMS8CKK420:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44356/client-side/images/btn_remove.png   (ca22a1cb)
+2019-02-20T10:21:22.0226126+07:00 0HLKMS8CKK420:00000009 [INF] Sending file. Request path: '"/client-side/images/btn_remove.png"'. Physical path: '"C:\Users\NGUYENVANPHONG\Documents\TeduCoreApp\TeduCoreApp\TeduCoreApp\wwwroot\client-side\images\btn_remove.png"' (27b0a520)
+2019-02-20T10:21:22.0596147+07:00 0HLKMS8CKK420:00000009 [INF] Request finished in 82.4791ms 200 image/png (791a596a)
+2019-02-20T10:21:23.0706726+07:00 0HLKMS8CKK422:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44356/checkout.html   (ca22a1cb)
+2019-02-20T10:21:23.0756729+07:00 0HLKMS8CKK422:00000008 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:23.0826733+07:00 0HLKMS8CKK422:00000008 [INF] Executing ViewResult, running view at path "/Views/Checkout/Index.cshtml". (9707eebe)
+2019-02-20T10:21:23.1136750+07:00 0HLKMS8CKK422:00000008 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.Index (TeduCoreApp)" in 16.4823ms (afa2e885)
+2019-02-20T10:21:23.1426767+07:00 0HLKMS8CKK422:00000008 [INF] Request finished in 50.3548ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:21:23.2216812+07:00 0HLKMS8CKK421:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:21:23.2256814+07:00 0HLKMS8CKK421:00000008 [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:23.2306817+07:00 0HLKMS8CKK421:00000008 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:23.2356820+07:00 0HLKMS8CKK421:00000008 [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 9.1147ms (afa2e885)
+2019-02-20T10:21:23.2416823+07:00 0HLKMS8CKK421:00000008 [INF] Request finished in 19.6185ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:23.3056860+07:00 0HLKMS8CKK420:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:21:23.3196868+07:00 0HLKMS8CKK422:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:44356/account/checkIsLogin  0 (ca22a1cb)
+2019-02-20T10:21:23.3186868+07:00 0HLKMS8CKK420:0000000A [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:23.3306874+07:00 0HLKMS8CKK422:00000009 [INF] Executing action method "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:23.3356877+07:00 0HLKMS8CKK420:0000000A [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:23.3446882+07:00 0HLKMS8CKK422:00000009 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:23.3536888+07:00 0HLKMS8CKK420:0000000A [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 32.1953ms (afa2e885)
+2019-02-20T10:21:23.3626893+07:00 0HLKMS8CKK420:0000000A [INF] Request finished in 63.4443ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:23.3656894+07:00 0HLKMS8CKK422:00000009 [INF] Executed action "TeduCoreApp.Controllers.AccountController.IsLogin (TeduCoreApp)" in 23.9422ms (afa2e885)
+2019-02-20T10:21:23.3746900+07:00 0HLKMS8CKK422:00000009 [INF] Request finished in 68.7276ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:30.9931101+07:00 0HLKMS8CKK421:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout/loadDistrict application/x-www-form-urlencoded; charset=UTF-8 14 (ca22a1cb)
+2019-02-20T10:21:31.0201116+07:00 0HLKMS8CKK421:00000009 [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.LoadDistrict (TeduCoreApp)" with arguments (["701"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:31.0351125+07:00 0HLKMS8CKK421:00000009 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:31.0451131+07:00 0HLKMS8CKK421:00000009 [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.LoadDistrict (TeduCoreApp)" in 31.0488ms (afa2e885)
+2019-02-20T10:21:31.0541136+07:00 0HLKMS8CKK421:00000009 [INF] Request finished in 66.8238ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:32.0881571+07:00 0HLKMS8CKK420:0000000B [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout/GetTaxHCM application/x-www-form-urlencoded; charset=UTF-8 16 (ca22a1cb)
+2019-02-20T10:21:32.0961575+07:00 0HLKMS8CKK420:0000000B [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.GetTaxHCM (TeduCoreApp)" with arguments (["70139"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:32.1001578+07:00 0HLKMS8CKK420:0000000B [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:32.1071582+07:00 0HLKMS8CKK420:0000000B [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.GetTaxHCM (TeduCoreApp)" in 12.2608ms (afa2e885)
+2019-02-20T10:21:32.1121585+07:00 0HLKMS8CKK420:0000000B [INF] Request finished in 28.2282ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:34.9953050+07:00 0HLKMS8CKK422:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:44356/checkout.html application/x-www-form-urlencoded; charset=UTF-8 253 (ca22a1cb)
+2019-02-20T10:21:35.0803098+07:00 0HLKMS8CKK422:0000000A [INF] Executing action method "TeduCoreApp.Controllers.CheckoutController.Checkout (TeduCoreApp)" with arguments (["TeduCoreApp.Data.ViewModels.Bill.BillViewModel", "14", "300", "15", "314"]) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:35.1553141+07:00 0HLKMS8CKK422:0000000A [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:21:36.3633380+07:00 0HLKMS8CKK422:0000000A [INF] Executed DbCommand ("899"ms) [Parameters=["@p0='?', @p1='?' (DbType = Int32), @p2='?' (Size = 256), @p3='?' (Size = 256), @p4='?' (DbType = Guid), @p5='?' (Size = 256), @p6='?' (Size = 50), @p7='?' (Size = 256), @p8='?' (DbType = DateTime2), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Decimal), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Decimal), @p14='?' (DbType = Decimal), @p15='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Bills] ([BalanceForBill], [BillStatus], [CustomerAddress], [CustomerEmail], [CustomerId], [CustomerMessage], [CustomerMobile], [CustomerName], [DateCreated], [DateModified], [FeeShipping], [PaymentMethod], [Status], [TotalMoneyOrder], [TotalMoneyPayment], [TotalOriginalPrice])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [Bills]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2019-02-20T10:21:36.4263383+07:00 0HLKMS8CKK422:0000000A [INF] Executed DbCommand ("32"ms) [Parameters=["@p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = Decimal), @p19='?' (DbType = Decimal), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32), @p22='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [BillDetails] ([BillId], [ColorId], [OriginalPrice], [Price], [ProductId], [Quantity], [SizeId])
+VALUES (@p16, @p17, @p18, @p19, @p20, @p21, @p22);
+SELECT [Id]
+FROM [BillDetails]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2019-02-20T10:21:36.4563389+07:00 0HLKMS8CKK422:0000000A [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:36.4733393+07:00 0HLKMS8CKK422:0000000A [INF] Executed action "TeduCoreApp.Controllers.CheckoutController.Checkout (TeduCoreApp)" in 1434.4818ms (afa2e885)
+2019-02-20T10:21:36.4833393+07:00 0HLKMS8CKK422:0000000A [INF] Request finished in 1491.1573ms 200 application/json; charset=utf-8 (791a596a)
+2019-02-20T10:21:38.5073820+07:00 0HLKMS8CKK421:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44356/index.html   (ca22a1cb)
+2019-02-20T10:21:38.5213828+07:00 0HLKMS8CKK421:0000000A [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:38.5343835+07:00 0HLKMS8CKK421:0000000A [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2019-02-20T10:21:38.5463842+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[HotFlag] = 1) AND ([x].[Status] = 1)
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:21:38.5533846+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:21:38.5593849+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tag], [x].[ThumbnailImage], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE ([x].[Status] = 1) AND [x].[PromotionPrice] IS NOT NULL
+ORDER BY [x].[DateModified] DESC" (0723d8ff)
+2019-02-20T10:21:38.5663853+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("1"ms) [Parameters=["@__ortherPageHome_0='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Content], [x].[Description], [x].[DisplayOrder], [x].[Image], [x].[Name], [x].[OrtherPageHome], [x].[Status], [x].[Url]
+FROM [Slides] AS [x]
+WHERE ([x].[OrtherPageHome] = @__ortherPageHome_0) AND ([x].[Status] = 1)
+ORDER BY [x].[DisplayOrder]" (0723d8ff)
+2019-02-20T10:21:38.5723857+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:21:38.5793861+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__pageId_0='?' (Size = 20), @__positonId_1='?' (Size = 20)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[Image], [x].[Name], [x].[PageId], [x].[PositionId], [x].[SortOrder], [x].[Status], [x].[Url]
+FROM [Advertistments] AS [x]
+WHERE (([x].[PageId] = @__pageId_0) AND ([x].[Status] = 1)) AND ([x].[PositionId] = @__positonId_1)
+ORDER BY [x].[SortOrder]" (0723d8ff)
+2019-02-20T10:21:38.5853864+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[ViewCount]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC" (0723d8ff)
+2019-02-20T10:21:38.5913868+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:38.5973871+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:38.6023874+07:00 0HLKMS8CKK421:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Name], [x].[Status], [x].[Value1], [x].[Value2], [x].[Value3], [x].[Value4], [x].[Value5]
+FROM [SystemConfigs] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2019-02-20T10:21:38.6073877+07:00 0HLKMS8CKK421:0000000A [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2019-02-20T10:21:39.0664139+07:00 0HLKMS8CKK421:0000000A [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 547.947ms (afa2e885)
+2019-02-20T10:21:39.0744144+07:00 0HLKMS8CKK421:0000000A [INF] Request finished in 563.8606ms 200 text/html; charset=utf-8 (791a596a)
+2019-02-20T10:21:39.4794376+07:00 0HLKMS8CKK420:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44356/shopping/getall   (ca22a1cb)
+2019-02-20T10:21:39.4934384+07:00 0HLKMS8CKK420:0000000C [INF] Executing action method "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2019-02-20T10:21:39.5054391+07:00 0HLKMS8CKK420:0000000C [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2019-02-20T10:21:39.5134395+07:00 0HLKMS8CKK420:0000000C [INF] Executed action "TeduCoreApp.Controllers.ShoppingCardController.Index (TeduCoreApp)" in 25.9623ms (afa2e885)
+2019-02-20T10:21:39.5204399+07:00 0HLKMS8CKK420:0000000C [INF] Request finished in 66.2602ms 200 application/json; charset=utf-8 (791a596a)

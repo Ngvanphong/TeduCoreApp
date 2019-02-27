@@ -97,7 +97,7 @@
                 addCheackout(billVm, feeShiping, totalMoneyOrder, balanceForBill, totalMoneyPayment);
             }
             else {
-                notifications.printSuccesError("Phí vận chuyển không hợp lệ hay nhập chưa đủ thông tin");
+                notifications.printSuccesError("Chưa chọn phí vận chuyển hay nhập chưa đủ thông tin");
                 $("#addBillShopping").attr('disabled', false);
             }
         });
