@@ -179,7 +179,13 @@
             success: function (response) {
                 var totalMoneyShoppingCart = 0;
                 $.each(response.Items, function (i, item) {
-                    var salePrice;
+                    var hideSize;
+                    if (item.SizeVm.Name == "HideSize") {
+                        hideSize = '';
+                    } else {
+                        hideSize ='show';
+                    }
+                    var salePrice;                 
                     if (item.ProductVm.PromotionPrice > 0) {
                         salePrice = item.ProductVm.PromotionPrice;
                     } else {
@@ -200,7 +206,8 @@
                         SizeId: item.SizeVm.Id,
                         Price: $.number(item.ProductVm.Price, 3),
                         PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
-                        TotalPriceItem: $.number(salePrice * item.Quantity, 3)
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                        HideSize:hideSize
                     });
                 });
                 if (render != '') {
@@ -258,6 +265,12 @@
             success: function (response) {
                 var totalMoneyShoppingCart = 0;
                 $.each(response.Items, function (i, item) {
+                    var hideSize;
+                    if (item.SizeVm.Name == "HideSize") {
+                        hideSize = '';
+                    } else {
+                        hideSize = 'show';
+                    }
                     var salePrice;
                     if (item.ProductVm.PromotionPrice > 0) {
                         salePrice = item.ProductVm.PromotionPrice;
@@ -280,7 +293,8 @@
                         SizeId: item.SizeVm.Id,
                         Price: $.number(item.ProductVm.Price, 3),
                         PromotionPrice: $.number(item.ProductVm.PromotionPrice, 3),
-                        TotalPriceItem: $.number(salePrice * item.Quantity, 3)
+                        TotalPriceItem: $.number(salePrice * item.Quantity, 3),
+                        HideSize:hideSize
                     });
                 });
                 if (render != '') {

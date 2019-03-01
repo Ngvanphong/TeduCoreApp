@@ -5506,6 +5506,7 @@ a#compare-total:hover {
 	text-align: left;
 	margin: 1px 0 0 0;
 	border-bottom: 1px dotted #ddd;
+    width:100%
 }
 .product-view .product-shop .add-to-box .btn-cart {
 	font-size: 16px;

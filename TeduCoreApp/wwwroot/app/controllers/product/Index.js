@@ -110,6 +110,12 @@
             success: function (response) {
                 $("#pageCountShopping").text(response.CountProduct);
                 $.each(response.Items, function (i, item) {
+                    var hideSize;
+                    if (item.SizeVm.Name == "HideSize") {
+                        hideSize = '';
+                    } else {
+                        hideSize = 'show';
+                    }
                     render += Mustache.render(template, {
                         Id: item.ProductVm.Id,
                         Name: item.ProductVm.Name,
@@ -122,7 +128,8 @@
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
                         SizeId: item.SizeVm.Id,
-                        Unit: item.Unit
+                        Unit: item.Unit,
+                        HideSize:hideSize
 
                     });
                 });
@@ -163,6 +170,12 @@
             success: function (response) {
                 $("#pageCountShopping").text(response.CountProduct);
                 $.each(response.Items, function (i, item) {
+                    var hideSize;
+                    if (item.SizeVm.Name == "HideSize") {
+                        hideSize = '';
+                    } else {
+                        hideSize = 'show';
+                    }
                     render += Mustache.render(template, {
                         Id: item.ProductVm.Id,
                         Name: item.ProductVm.Name,
@@ -175,7 +188,8 @@
                         Color: item.ColorVm.Name,
                         ColorId: item.ColorVm.Id,
                         SizeId: item.SizeVm.Id,
-                        Unit: item.Unit
+                        Unit: item.Unit,
+                        HideSize:hideSize
 
                     });
                 });

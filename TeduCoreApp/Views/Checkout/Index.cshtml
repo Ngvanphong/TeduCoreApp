@@ -198,7 +198,9 @@
         <td class="cart_product"><a href="/{{SeoAlias}}.p-{{Id}}.html"><img class="img-responsive" src="{{DomainApi}}{{ThumbnailImage}}" alt="{{Name}}"></a></td>
         <td class="cart_description">
             <p class="product-name"><a href="/{{SeoAlias}}.p-{{Id}}.html"> {{Name}} </a></p>
+            {{#HideSize}}
             <small style="text-transform: none" class="cart_ref">Size: {{Size}}</small><br>
+            {{/HideSize}}
             <small style="text-transform: none" class="cart_ref">Color: {{Color}}</small><br>
         </td>
         <td class="price"><span>{{Price}}</span></td>
