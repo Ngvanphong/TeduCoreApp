@@ -14,7 +14,7 @@
                 email: {
                     email: true
                 },
-                mobile: "required",
+                phoneNumber: "required",
                 citySelectList: "required"
             },
             messages: {
@@ -23,7 +23,7 @@
                 email: {
                     email: "Email không đúng"
                 },
-                mobile: "Bạn phải nhập số điện thoại",
+                phoneNumber: "Bạn phải nhập số điện thoại",
                 citySelectList: ""
             }
         });
