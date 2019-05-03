@@ -93,8 +93,10 @@ namespace TeduCoreApp.WebApi
                 cfg.TokenValidationParameters = new TokenValidationParameters()
                 {                  
                     ValidIssuer = Configuration["Tokens:Issuer"],
-                    ValidAudience = Configuration["Tokens:Issuer"],                   
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                    ValidAudience = Configuration["Tokens:Issuer"],                  
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(5),
                 };
             });
 
