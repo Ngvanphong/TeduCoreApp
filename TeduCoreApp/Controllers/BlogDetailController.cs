@@ -33,6 +33,7 @@ namespace TeduCoreApp.Controllers
             blogDetail.Tags = _blogService.GetTagBlogTop(15);
             blogDetail.Advertistments = _advertistmentService.GetbyPageAndPosition(PageName.Orther, PositionName.Default);
             return View(blogDetail);
+        
         }
     }
 }
